@@ -2,6 +2,8 @@ package net.avh4.framework.uilayer;
 
 import javax.swing.JFrame;
 
+import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
+
 public class UILayer {
 
 	public static void main(final SceneCreator game) {

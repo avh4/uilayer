@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer;
+package net.avh4.framework.uilayer.scene;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,6 +6,7 @@ import java.awt.Graphics;
 
 import javax.swing.JComponent;
 
+import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.scene.Image;
 import net.avh4.framework.uilayer.scene.Scene;
 

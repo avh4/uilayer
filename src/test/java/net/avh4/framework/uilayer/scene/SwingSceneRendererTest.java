@@ -1,10 +1,12 @@
-package net.avh4.framework.uilayer;
+package net.avh4.framework.uilayer.scene;
 
 import static net.avh4.util.imagecomparison.Matchers.isApproved;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.stub;
+import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.scene.Scene;
+import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
 
 import org.junit.Before;
 import org.junit.Test;

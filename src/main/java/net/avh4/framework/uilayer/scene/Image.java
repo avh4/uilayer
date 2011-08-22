@@ -6,7 +6,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-public class Image {
+class Image {
 
 	private final int x;
 	private final int y;
