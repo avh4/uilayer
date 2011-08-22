@@ -30,6 +30,7 @@ class Image {
 	private final int width;
 	private final int height;
 	private final URL resource;
+	private final BufferedImage image;
 
 	/**
 	 * @param imageName
@@ -47,16 +48,17 @@ class Image {
 			throw new IllegalArgumentException(String.format(
 					"No such resource '%s'", imageName));
 		}
+		try {
+			image = ImageIO.read(resource);
+		} catch (final IOException e) {
+			e.printStackTrace();
+			throw new IllegalArgumentException(String.format(
+					"Could not read image '%s'", imageName), e);
+		}
 	}
 
 	public java.awt.Image getImage() {
-		try {
-			final BufferedImage image = ImageIO.read(resource);
-			return image;
-		} catch (final IOException e) {
-			e.printStackTrace();
-			return null;
-		}
+		return image;
 	}
 
 }
