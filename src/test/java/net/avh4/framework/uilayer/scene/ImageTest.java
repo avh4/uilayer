@@ -1,6 +1,8 @@
-package net.avh4.framework.uilayer.model;
+package net.avh4.framework.uilayer.scene;
 
 import static org.junit.Assert.fail;
+
+import net.avh4.framework.uilayer.scene.Image;
 
 import org.junit.Test;
 

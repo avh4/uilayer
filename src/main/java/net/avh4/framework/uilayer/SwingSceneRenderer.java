@@ -6,26 +6,26 @@ import java.awt.Graphics;
 
 import javax.swing.JComponent;
 
-import net.avh4.framework.uilayer.model.Image;
-import net.avh4.framework.uilayer.model.Scenegraph;
+import net.avh4.framework.uilayer.scene.Image;
+import net.avh4.framework.uilayer.scene.Scene;
 
-public class SwingScenegraphRenderer extends JComponent {
+public class SwingSceneRenderer extends JComponent {
 
 	private static final long serialVersionUID = 1L;
-	private final ScenegraphCreator creator;
+	private final SceneCreator creator;
 
-	public SwingScenegraphRenderer(final ScenegraphCreator creator) {
+	public SwingSceneRenderer(final SceneCreator creator) {
 		this.creator = creator;
 	}
 
 	@Override
 	public Dimension getPreferredSize() {
-		return creator.getScenegraph().getBounds().getSize();
+		return creator.getScene().getBounds().getSize();
 	}
 
 	@Override
 	protected void paintComponent(final Graphics g) {
-		final Scenegraph s = creator.getScenegraph();
+		final Scene s = creator.getScene();
 		final int height = s.getBounds().height;
 		final int width = s.getBounds().width;
 

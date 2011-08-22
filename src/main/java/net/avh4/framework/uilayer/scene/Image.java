@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer.model;
+package net.avh4.framework.uilayer.scene;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

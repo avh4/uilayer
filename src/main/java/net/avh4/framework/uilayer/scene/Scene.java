@@ -1,19 +1,19 @@
-package net.avh4.framework.uilayer.model;
+package net.avh4.framework.uilayer.scene;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Scenegraph implements Iterable<Image> {
+public class Scene implements Iterable<Image> {
 
 	private final ArrayList<Image> children = new ArrayList<Image>();
 	private final String title;
 
-	public Scenegraph(final String title) {
+	public Scene(final String title) {
 		this.title = title;
 	}
 
-	public Scenegraph() {
+	public Scene() {
 		this("Untitled Scene");
 	}
 

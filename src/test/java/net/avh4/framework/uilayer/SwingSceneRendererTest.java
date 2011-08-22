@@ -4,27 +4,27 @@ import static net.avh4.util.imagecomparison.Matchers.isApproved;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.stub;
-import net.avh4.framework.uilayer.model.Scenegraph;
+import net.avh4.framework.uilayer.scene.Scene;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class SwingScenegraphRendererTest {
+public class SwingSceneRendererTest {
 
-	private ScenegraphCreator mockCreator;
-	private SwingScenegraphRenderer subject;
-	private Scenegraph scenegraph;
+	private SceneCreator mockCreator;
+	private SwingSceneRenderer subject;
+	private Scene scenegraph;
 
 	@Before
 	public void setUp() {
-		scenegraph = new Scenegraph();
-		mockCreator = mock(ScenegraphCreator.class);
-		stub(mockCreator.getScenegraph()).toReturn(scenegraph);
-		subject = new SwingScenegraphRenderer(mockCreator);
+		scenegraph = new Scene();
+		mockCreator = mock(SceneCreator.class);
+		stub(mockCreator.getScene()).toReturn(scenegraph);
+		subject = new SwingSceneRenderer(mockCreator);
 	}
 
 	@Test
-	public void testRenderEmptyScenegraph() throws Exception {
+	public void testRenderEmptyScene() throws Exception {
 		assertThat(subject, isApproved());
 	}
 
