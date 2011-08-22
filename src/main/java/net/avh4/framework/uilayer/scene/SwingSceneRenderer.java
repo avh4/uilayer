@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 
 import net.avh4.framework.uilayer.SceneCreator;
-import net.avh4.framework.uilayer.scene.Image;
+import net.avh4.framework.uilayer.scene.SwingImage;
 import net.avh4.framework.uilayer.scene.Scene;
 
 public class SwingSceneRenderer extends JComponent {
@@ -33,7 +33,7 @@ public class SwingSceneRenderer extends JComponent {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, width, height);
 
-		for (final Image object : s) {
+		for (final SwingImage object : s) {
 			g.drawImage(object.getImage(), object.getX(), object.getY(),
 					object.getWidth(), object.getHeight(), null);
 		}

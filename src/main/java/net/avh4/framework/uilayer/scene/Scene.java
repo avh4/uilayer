@@ -4,9 +4,9 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Scene implements Iterable<Image> {
+public class Scene implements Iterable<SwingImage> {
 
-	private final ArrayList<Image> children = new ArrayList<Image>();
+	private final ArrayList<SwingImage> children = new ArrayList<SwingImage>();
 	private final String title;
 
 	public Scene(final String title) {
@@ -23,11 +23,11 @@ public class Scene implements Iterable<Image> {
 
 	public void addImage(final int x, final int y, final int width,
 			final int height, final String imageName) {
-		children.add(new Image(x, y, width, height, imageName));
+		children.add(new SwingImage(x, y, width, height, imageName));
 	}
 
 	@Override
-	public Iterator<Image> iterator() {
+	public Iterator<SwingImage> iterator() {
 		return children.iterator();
 	}
 

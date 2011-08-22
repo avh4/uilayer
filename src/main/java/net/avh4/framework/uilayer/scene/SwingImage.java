@@ -6,7 +6,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-class Image {
+class SwingImage {
 
 	private final int x;
 	private final int y;
@@ -37,7 +37,7 @@ class Image {
 	 *            The image specified must exist on the classpath in the default
 	 *            package.
 	 */
-	public Image(final int x, final int y, final int width, final int height,
+	public SwingImage(final int x, final int y, final int width, final int height,
 			final String imageName) {
 		this.x = x;
 		this.y = y;
