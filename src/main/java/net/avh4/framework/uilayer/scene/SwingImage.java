@@ -1,5 +1,6 @@
 package net.avh4.framework.uilayer.scene;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -7,29 +8,8 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-class SwingImage {
+class SwingImage extends SwingSceneObject {
 
-	private final int x;
-	private final int y;
-
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	private final int width;
-	private final int height;
 	private final BufferedImage image;
 	private static final HashMap<String, BufferedImage> cache = new HashMap<String, BufferedImage>();
 
@@ -40,10 +20,7 @@ class SwingImage {
 	 */
 	public SwingImage(final int x, final int y, final int width,
 			final int height, final String imageName) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		super(x, y, width, height);
 		image = loadImage(imageName);
 	}
 
@@ -70,6 +47,11 @@ class SwingImage {
 
 	public java.awt.Image getImage() {
 		return image;
+	}
+
+	@Override
+	public void draw(final Graphics g) {
+		g.drawImage(getImage(), x, y, width, height, null);
 	}
 
 }

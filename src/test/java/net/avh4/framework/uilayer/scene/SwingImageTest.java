@@ -10,7 +10,7 @@ public class SwingImageTest {
 	public void shouldNotAllowInvalidImageName() {
 		try {
 			@SuppressWarnings("unused")
-			final SwingImage subject = new SwingImage(0, 0, 10, 10,
+			final SwingSceneObject subject = new SwingImage(0, 0, 10, 10,
 					"fileDoesNotExist.png");
 			fail("Expected IllegalArgumentException");
 		} catch (final IllegalArgumentException e) {

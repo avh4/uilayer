@@ -54,4 +54,11 @@ public class SwingSceneRendererTest {
 		assertThat(subject, isApproved());
 	}
 
+	@Test
+	public void testRenderPlaceholders() throws Exception {
+		scenegraph.addPlaceholder("Background", 0, 0, 800, 600);
+		scenegraph.addPlaceholder("Body", 20, 20, 100, 560);
+		assertThat(subject, isApproved());
+	}
+
 }

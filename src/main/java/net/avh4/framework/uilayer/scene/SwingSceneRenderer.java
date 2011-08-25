@@ -43,9 +43,8 @@ public class SwingSceneRenderer extends JComponent {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, width, height);
 
-		for (final SwingImage object : s) {
-			g.drawImage(object.getImage(), object.getX(), object.getY(),
-					object.getWidth(), object.getHeight(), null);
+		for (final SwingSceneObject object : s) {
+			object.draw(g);
 		}
 	}
 }
