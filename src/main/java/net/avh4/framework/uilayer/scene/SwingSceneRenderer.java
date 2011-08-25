@@ -7,8 +7,6 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 
 import net.avh4.framework.uilayer.SceneCreator;
-import net.avh4.framework.uilayer.scene.SwingImage;
-import net.avh4.framework.uilayer.scene.Scene;
 
 public class SwingSceneRenderer extends JComponent {
 
@@ -21,12 +19,24 @@ public class SwingSceneRenderer extends JComponent {
 
 	@Override
 	public Dimension getPreferredSize() {
-		return creator.getScene().getBounds().getSize();
+		final Scene scene = creator.getScene();
+		if (scene == null) {
+			return new Dimension(100, 100);
+		} else {
+			return scene.getBounds().getSize();
+		}
 	}
 
 	@Override
 	protected void paintComponent(final Graphics g) {
 		final Scene s = creator.getScene();
+		if (s == null) {
+			g.setColor(Color.GRAY);
+			g.fillRect(0, 0, getWidth(), getHeight());
+			g.setColor(Color.BLACK);
+			g.drawString("(No scene)", 0, 20);
+			return;
+		}
 		final int height = s.getBounds().height;
 		final int width = s.getBounds().width;
 

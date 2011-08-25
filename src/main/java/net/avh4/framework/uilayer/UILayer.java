@@ -4,6 +4,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
+import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
 
 public class UILayer {
@@ -14,7 +15,9 @@ public class UILayer {
 
 	public static void main(final SceneCreator game,
 			final MouseListener mouseListener) {
-		final JFrame window = new JFrame(game.getScene().getTitle());
+		final Scene scene = game.getScene();
+		final String title = scene != null ? scene.getTitle() : "(No scene)";
+		final JFrame window = new JFrame(title);
 		final SwingSceneRenderer component = new SwingSceneRenderer(game);
 		window.add(component);
 		window.pack();
