@@ -40,4 +40,10 @@ public class Scene implements Iterable<SwingSceneObject> {
 		children.add(new SwingPlaceholder(name, x, y, width, height));
 	}
 
+	public void addText(final String text, final int x, final int y,
+			final int width, final String customFontResource, final int fontSize) {
+		children.add(new SwingText(text, x, y, width, customFontResource,
+				fontSize));
+	}
+
 }
