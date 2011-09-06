@@ -1,11 +1,10 @@
 package net.avh4.framework.uilayer;
 
-import java.awt.event.MouseListener;
-
 import javax.swing.JFrame;
 
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
+import net.avh4.framework.uilayer.swing.input.SwingInputHandler;
 
 public class UILayer {
 
@@ -14,7 +13,7 @@ public class UILayer {
 	}
 
 	public static void main(final SceneCreator game,
-			final MouseListener mouseListener) {
+			final ClickReceiver receiver) {
 		final Scene scene = game.getScene();
 		final String title = scene != null ? scene.getTitle() : "(No scene)";
 		final JFrame window = new JFrame(title);
@@ -24,8 +23,9 @@ public class UILayer {
 		window.setLocationRelativeTo(null);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		if (mouseListener != null) {
-			component.addMouseListener(mouseListener);
+		if (receiver != null) {
+			component.addMouseListener(new SwingInputHandler(receiver,
+					component));
 		}
 
 		window.setVisible(true);
