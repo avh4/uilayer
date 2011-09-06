@@ -31,9 +31,8 @@ public class SceneTest {
 	@Test
 	public void testCanAddPlaceholder() {
 		subject.addPlaceholder("Item 1", 0, 0, 800, 600);
-		assertThat(subject, hasItem(Matchers.placeholder("Item 1", 0, 0, 800, 600)));
-
-		// Pass if the call succeeds
+		assertThat(subject,
+				hasItem(Matchers.placeholder("Item 1", 0, 0, 800, 600)));
 	}
 
 }
