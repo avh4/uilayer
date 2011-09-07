@@ -1,4 +1,7 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
+
+import net.avh4.framework.uilayer.swing.scene.SwingPlaceholder;
+import net.avh4.framework.uilayer.swing.scene.SwingSceneObject;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

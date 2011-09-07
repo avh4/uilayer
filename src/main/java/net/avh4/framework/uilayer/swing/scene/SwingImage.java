@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -9,7 +9,9 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-class SwingImage extends SwingSceneObject {
+import net.avh4.framework.uilayer.scene.SceneImage;
+
+class SwingImage extends SwingSceneObject implements SceneImage {
 
 	private final Image image;
 	private static final HashMap<String, BufferedImage> cache = new HashMap<String, BufferedImage>();
@@ -58,6 +60,12 @@ class SwingImage extends SwingSceneObject {
 	@Override
 	public void draw(final Graphics g) {
 		g.drawImage(getImage(), x, y, width, height, null);
+	}
+
+	@Override
+	public void setPosition(final int x, final int y) {
+		this.x = x;
+		this.y = y;
 	}
 
 }

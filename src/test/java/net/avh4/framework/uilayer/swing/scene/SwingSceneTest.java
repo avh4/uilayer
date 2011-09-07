@@ -1,30 +1,32 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.hasItem;
 
+import net.avh4.framework.uilayer.swing.scene.SwingScene;
+
 import org.junit.Before;
 import org.junit.Test;
 
-public class SceneTest {
+public class SwingSceneTest {
 
-	private Scene subject;
+	private SwingScene subject;
 
 	@Before
 	public void setUp() {
-		subject = new Scene();
+		subject = new SwingScene();
 	}
 
 	@Test
 	public void testDefaultTitle() {
-		final Scene subject = new Scene();
+		final SwingScene subject = new SwingScene();
 		assertThat(subject.getTitle(), is("Untitled Scene"));
 	}
 
 	@Test
 	public void testTitle() {
-		final Scene subject = new Scene("My Title");
+		final SwingScene subject = new SwingScene("My Title");
 		assertThat(subject.getTitle(), is("My Title"));
 	}
 

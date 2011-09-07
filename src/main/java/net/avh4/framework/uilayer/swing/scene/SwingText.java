@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import java.awt.Color;
 import java.awt.Font;

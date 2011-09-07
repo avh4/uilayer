@@ -1,7 +1,9 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import net.avh4.framework.uilayer.swing.scene.SwingPlaceholder;
 
 import org.junit.Test;
 

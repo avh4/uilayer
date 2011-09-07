@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import static net.avh4.util.imagecomparison.Matchers.isApproved;
 import static org.junit.Assert.assertThat;
@@ -12,6 +12,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.scene.SceneImage;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,11 +21,11 @@ public class SwingSceneRendererTest {
 
 	private SceneCreator mockCreator;
 	private SwingSceneRenderer subject;
-	private Scene scene;
+	private SwingScene scene;
 
 	@Before
 	public void setUp() {
-		scene = new Scene();
+		scene = new SwingScene();
 		mockCreator = mock(SceneCreator.class);
 		stub(mockCreator.getScene()).toReturn(scene);
 		subject = new SwingSceneRenderer(mockCreator);
@@ -61,6 +62,13 @@ public class SwingSceneRendererTest {
 		scene.addImage(100, 100, 150, 150, "tile1.png");
 		scene.addImage(150, 150, 75, 75, "tile2.png");
 		scene.addImage(100, 300, 16, 16, "tile1.png");
+		assertThat(subject, isApproved());
+	}
+
+	@Test
+	public void testRenderRepositionsedImage() throws Exception {
+		final SceneImage image = scene.addImage(100, 100, 50, 50, "tile1.png");
+		image.setPosition(0, 0);
 		assertThat(subject, isApproved());
 	}
 

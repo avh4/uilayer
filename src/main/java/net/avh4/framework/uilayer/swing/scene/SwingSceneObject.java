@@ -1,11 +1,11 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import java.awt.Graphics;
 
 public abstract class SwingSceneObject {
 
-	protected final int x;
-	protected final int y;
+	protected int x;
+	protected int y;
 	protected final int width;
 	protected final int height;
 

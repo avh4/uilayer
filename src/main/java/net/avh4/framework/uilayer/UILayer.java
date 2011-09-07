@@ -3,8 +3,8 @@ package net.avh4.framework.uilayer;
 import javax.swing.JFrame;
 
 import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
 import net.avh4.framework.uilayer.swing.input.SwingInputHandler;
+import net.avh4.framework.uilayer.swing.scene.SwingSceneRenderer;
 
 public class UILayer {
 

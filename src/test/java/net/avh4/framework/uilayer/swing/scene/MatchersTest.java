@@ -1,9 +1,12 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 import java.awt.Graphics;
+
+import net.avh4.framework.uilayer.swing.scene.SwingPlaceholder;
+import net.avh4.framework.uilayer.swing.scene.SwingSceneObject;
 
 import org.hamcrest.Matcher;
 import org.junit.Test;

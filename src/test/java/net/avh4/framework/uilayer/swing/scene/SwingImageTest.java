@@ -1,6 +1,9 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import static org.junit.Assert.fail;
+
+import net.avh4.framework.uilayer.swing.scene.SwingImage;
+import net.avh4.framework.uilayer.swing.scene.SwingSceneObject;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing.scene;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 
 import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.scene.Scene;
 
 public class SwingSceneRenderer extends JComponent {
 
@@ -29,7 +30,7 @@ public class SwingSceneRenderer extends JComponent {
 
 	@Override
 	protected void paintComponent(final Graphics g) {
-		final Scene s = creator.getScene();
+		final SwingScene s = (SwingScene) creator.getScene();
 		if (s == null) {
 			g.setColor(Color.GRAY);
 			g.fillRect(0, 0, getWidth(), getHeight());
