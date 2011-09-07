@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
-import net.avh4.framework.uilayer.scene.Scene;
+import net.avh4.framework.uilayer.swing.scene.SwingScene;
 
 public class DemoGame implements UI {
 
@@ -13,15 +13,15 @@ public class DemoGame implements UI {
 		UILayer.main(game);
 	}
 
-	private Scene s;
+	private SwingScene s;
 
 	public DemoGame() {
-		s = new Scene("UILayer Demo Game");
+		s = new SwingScene("UILayer Demo Game");
 		s.addImage(0, 0, 800, 600, "background.jpg");
 	}
 
 	@Override
-	public Scene getScene() {
+	public SwingScene getScene() {
 		return s;
 	}
 
@@ -34,7 +34,7 @@ public class DemoGame implements UI {
 	public void key(final int keyCode) {
 		// throw new RuntimeException("Code: " + keyCode);
 		if (keyCode == KeyEvent.VK_SPACE) {
-			s = new Scene("UILayer Demo Game");
+			s = new SwingScene("UILayer Demo Game");
 			s.addImage(0, 0, 800, 600, "background.jpg");
 		}
 	}
