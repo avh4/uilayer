@@ -72,6 +72,20 @@ public class SwingSceneRendererTest {
 		assertThat(subject, isApproved());
 	}
 
+	@Test
+	public void testRenderClippedImage() throws Exception {
+		scene.addImage(100, 100, 50, 50, "tile1.png", 0, 0, 25, 25);
+		assertThat(subject, isApproved());
+	}
+
+	@Test
+	public void testRenderReclippedClippedImage() throws Exception {
+		final SceneImage image = scene.addImage(100, 100, 50, 50, "tile1.png",
+				0, 0, 25, 25);
+		image.setClipPosition(25, 25);
+		assertThat(subject, isApproved());
+	}
+
 	/**
 	 * If the SceneCreator returns null, we must render something and not throw
 	 * an exception.

@@ -33,9 +33,28 @@ public class SwingScene implements Iterable<SwingSceneObject>, Scene {
 		return image;
 	}
 
+	public SceneImage addImage(final int x, final int y, final int width,
+			final int height, final String imageName, final int clipX,
+			final int clipY, final int clipWidth, final int clipHeight) {
+		final SwingImage image = new SwingImage(x, y, width, height, imageName,
+				clipX, clipY, clipWidth, clipHeight);
+		children.add(image);
+		return image;
+	}
+
 	public void addImage(final int x, final int y, final int width,
 			final int height, final Image image) {
 		children.add(new SwingImage(x, y, width, height, image));
+	}
+
+	public SceneImage addImage(final int x, final int y, final int width,
+			final int height, final Image image, final int clipX,
+			final int clipY, final int clipWidth, final int clipHeight) {
+		final SwingImage image2 = new SwingImage(x, y, width, height, image,
+				clipX, clipY, clipWidth, clipHeight);
+		children.add(image2);
+		return image2;
+
 	}
 
 	@Override

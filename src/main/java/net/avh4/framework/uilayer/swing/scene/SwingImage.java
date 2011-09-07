@@ -15,6 +15,10 @@ class SwingImage extends SwingSceneObject implements SceneImage {
 
 	private final Image image;
 	private static final HashMap<String, BufferedImage> cache = new HashMap<String, BufferedImage>();
+	private int clipX;
+	private int clipY;
+	private final int clipWidth;
+	private final int clipHeight;
 
 	/**
 	 * @param imageName
@@ -23,13 +27,49 @@ class SwingImage extends SwingSceneObject implements SceneImage {
 	 */
 	public SwingImage(final int x, final int y, final int width,
 			final int height, final String imageName) {
-		this(x, y, width, height, loadImage(imageName));
+		super(x, y, width, height);
+		image = loadImage(imageName);
+		clipX = 0;
+		clipY = 0;
+		clipWidth = image.getWidth(null);
+		clipHeight = image.getHeight(null);
+	}
+
+	/**
+	 * @param imageName
+	 *            The image specified must exist on the classpath in the default
+	 *            package.
+	 */
+	public SwingImage(final int x, final int y, final int width,
+			final int height, final String imageName, final int clipX,
+			final int clipY, final int clipWidth, final int clipHeight) {
+		super(x, y, width, height);
+		image = loadImage(imageName);
+		this.clipX = clipX;
+		this.clipY = clipY;
+		this.clipWidth = clipWidth;
+		this.clipHeight = clipHeight;
 	}
 
 	public SwingImage(final int x, final int y, final int width,
 			final int height, final Image image) {
 		super(x, y, width, height);
 		this.image = image;
+		clipX = 0;
+		clipY = 0;
+		clipWidth = image.getWidth(null);
+		clipHeight = image.getHeight(null);
+	}
+
+	public SwingImage(final int x, final int y, final int width,
+			final int height, final Image image, final int clipX,
+			final int clipY, final int clipWidth, final int clipHeight) {
+		super(x, y, width, height);
+		this.image = image;
+		this.clipX = clipX;
+		this.clipY = clipY;
+		this.clipWidth = clipWidth;
+		this.clipHeight = clipHeight;
 	}
 
 	private static BufferedImage loadImage(final String imageName) {
@@ -59,13 +99,20 @@ class SwingImage extends SwingSceneObject implements SceneImage {
 
 	@Override
 	public void draw(final Graphics g) {
-		g.drawImage(getImage(), x, y, width, height, null);
+		g.drawImage(getImage(), x, y, x + width, y + height, clipX, clipY,
+				clipX + clipWidth, clipY + clipHeight, null);
 	}
 
 	@Override
 	public void setPosition(final int x, final int y) {
 		this.x = x;
 		this.y = y;
+	}
+
+	@Override
+	public void setClipPosition(final int clipX, final int clipY) {
+		this.clipX = clipX;
+		this.clipY = clipY;
 	}
 
 }
