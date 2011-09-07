@@ -1,6 +1,7 @@
 package net.avh4.framework.uilayer.scene;
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,6 +25,11 @@ public class Scene implements Iterable<SwingSceneObject> {
 	public void addImage(final int x, final int y, final int width,
 			final int height, final String imageName) {
 		children.add(new SwingImage(x, y, width, height, imageName));
+	}
+
+	public void addImage(final int x, final int y, final int width,
+			final int height, final Image image) {
+		children.add(new SwingImage(x, y, width, height, image));
 	}
 
 	@Override

@@ -5,6 +5,12 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.stub;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+
 import net.avh4.framework.uilayer.SceneCreator;
 
 import org.junit.Before;
@@ -30,8 +36,23 @@ public class SwingSceneRendererTest {
 	}
 
 	@Test
-	public void testRenderImage() throws Exception {
+	public void testRenderResourceImage() throws Exception {
 		scenegraph.addImage(100, 100, 50, 50, "tile1.png");
+		assertThat(subject, isApproved());
+	}
+
+	@Test
+	public void testRenderProvidedImage() throws Exception {
+		final Image image = new BufferedImage(50, 50,
+				BufferedImage.TYPE_INT_ARGB);
+		final Graphics g = image.getGraphics();
+		g.setColor(Color.BLUE);
+		g.fillRect(0, 0, 50, 50);
+		g.setColor(Color.PINK);
+		g.fillRect(10, 10, 50, 50);
+		g.dispose();
+
+		scenegraph.addImage(100, 100, 50, 50, image);
 		assertThat(subject, isApproved());
 	}
 

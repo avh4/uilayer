@@ -16,7 +16,6 @@ public class SwingImageTest {
 		} catch (final IllegalArgumentException e) {
 			// Pass
 		}
-
 	}
 
 }
