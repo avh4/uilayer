@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.avh4.framework</groupId>
   <artifactId>uilayer</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
 
   <name>uilayer</name>
@@ -47,7 +46,7 @@
     <dependency>
     	<groupId>net.avh4.util</groupId>
     	<artifactId>imagecomparison</artifactId>
-    	<version>0.0.2-SNAPSHOT</version>
+    	<version>0.0.2</version>
     </dependency>
   </dependencies>
 </project>
