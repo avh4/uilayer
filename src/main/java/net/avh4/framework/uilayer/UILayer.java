@@ -1,37 +1,42 @@
 package net.avh4.framework.uilayer;
 
-import javax.swing.JFrame;
-
 import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.swing.input.SwingInputHandler;
-import net.avh4.framework.uilayer.swing.scene.SwingSceneRenderer;
 
 public class UILayer {
+
+	public static final UILayerService service = loadService();
+	private static final String SWING_SERVICE = "net.avh4.framework.uilayer.swing.SwingUILayerService";
 
 	public static void main(final UI game) {
 		UILayer.main(game, game, game);
 	}
 
+	private static UILayerService loadService() {
+		try {
+			final Class<?> clazz = UILayer.class.getClassLoader().loadClass(
+					SWING_SERVICE);
+			return (UILayerService) clazz.newInstance();
+		} catch (final ClassNotFoundException e) {
+			throw new RuntimeException(
+					String.format(
+							"Could not find %s on the classpath.  If you are using maven, your project must include uilayer-swing as a runtime dependency.",
+							SWING_SERVICE), e);
+		} catch (final InstantiationException e) {
+			throw new RuntimeException(String.format(
+					"Could not instantiate %s", SWING_SERVICE), e);
+		} catch (final IllegalAccessException e) {
+			throw new RuntimeException(String.format(
+					"Could not instantiate %s", SWING_SERVICE), e);
+		}
+	}
+
+	public static Scene newScene(final String title) {
+		return service.newScene(title);
+	}
+
 	public static void main(final SceneCreator game,
 			final ClickReceiver receiver, final KeyReceiver keyReceiver) {
-		final Scene scene = game.getScene();
-		final String title = scene != null ? scene.getTitle() : "(No scene)";
-		final JFrame window = new JFrame(title);
-		final SwingSceneRenderer component = new SwingSceneRenderer(game);
-		window.add(component);
-		window.pack();
-		window.setLocationRelativeTo(null);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		final SwingInputHandler inputHandler = new SwingInputHandler(receiver,
-				keyReceiver, component);
-		component.addMouseListener(inputHandler);
-		component.addKeyListener(inputHandler);
-
-		component.requestFocusInWindow(); // Required to get keyboard focus for
-											// the KeyListener to work
-
-		window.setVisible(true);
+		service.main(game, receiver, keyReceiver);
 	}
 
 }
