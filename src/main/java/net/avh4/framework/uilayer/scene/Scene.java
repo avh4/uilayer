@@ -1,25 +1,24 @@
 package net.avh4.framework.uilayer.scene;
 
-import java.awt.Dimension;
-
 public interface Scene {
 
 	String getTitle();
 
-	Dimension getBounds();
+	int getWidth();
 
-	public abstract void addText(final String text, final int x, final int y,
-			final int width, final String customFontResource, final int fontSize);
+	int getHeight();
 
-	public abstract void addPlaceholder(final String name, final int x,
-			final int y, final int width, final int height);
+	void addText(final String text, final int x, final int y, final int width,
+			final String customFontResource, final int fontSize);
 
-	public abstract SceneImage addImage(final int x, final int y,
-			final int width, final int height, final String imageName,
-			final int clipX, final int clipY, final int clipWidth,
-			final int clipHeight);
+	void addPlaceholder(final String name, final int x, final int y,
+			final int width, final int height);
 
-	public abstract SceneImage addImage(final int x, final int y,
-			final int width, final int height, final String imageName);
+	SceneImage addImage(final int x, final int y, final int width,
+			final int height, final String imageName, final int clipX,
+			final int clipY, final int clipWidth, final int clipHeight);
+
+	SceneImage addImage(final int x, final int y, final int width,
+			final int height, final String imageName);
 
 }
