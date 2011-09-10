@@ -1,19 +1,22 @@
-package net.avh4.framework.uilayer;
+package net.avh4.framework.uilayer.swing;
 
 import javax.swing.JFrame;
 
+import net.avh4.framework.uilayer.ClickReceiver;
+import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.swing.input.SwingInputHandler;
+import net.avh4.framework.uilayer.swing.scene.SwingScene;
 import net.avh4.framework.uilayer.swing.scene.SwingSceneRenderer;
 
-public class UILayer {
+public class SwingUILayerService implements UILayerService {
 
-	public static void main(final UI game) {
-		UILayer.main(game, game, game);
-	}
+	@Override
+	public void main(final SceneCreator game, final ClickReceiver receiver,
+			final KeyReceiver keyReceiver) {
 
-	public static void main(final SceneCreator game,
-			final ClickReceiver receiver, final KeyReceiver keyReceiver) {
 		final Scene scene = game.getScene();
 		final String title = scene != null ? scene.getTitle() : "(No scene)";
 		final JFrame window = new JFrame(title);
@@ -32,6 +35,11 @@ public class UILayer {
 											// the KeyListener to work
 
 		window.setVisible(true);
+	}
+
+	@Override
+	public Scene newScene(final String title) {
+		return new SwingScene(title);
 	}
 
 }
