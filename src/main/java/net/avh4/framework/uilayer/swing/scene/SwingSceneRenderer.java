@@ -24,7 +24,7 @@ public class SwingSceneRenderer extends JComponent {
 		if (scene == null) {
 			return new Dimension(100, 100);
 		} else {
-			return scene.getBounds().getSize();
+			return new Dimension(scene.getWidth(), scene.getHeight());
 		}
 	}
 
@@ -38,8 +38,8 @@ public class SwingSceneRenderer extends JComponent {
 			g.drawString("(No scene)", 0, 20);
 			return;
 		}
-		final int height = s.getBounds().height;
-		final int width = s.getBounds().width;
+		final int height = s.getHeight();
+		final int width = s.getWidth();
 
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, width, height);

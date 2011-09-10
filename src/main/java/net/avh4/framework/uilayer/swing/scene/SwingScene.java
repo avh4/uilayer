@@ -1,6 +1,5 @@
 package net.avh4.framework.uilayer.swing.scene;
 
-import java.awt.Dimension;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,10 +21,16 @@ public class SwingScene implements Iterable<SwingSceneObject>, Scene {
 	}
 
 	@Override
-	public Dimension getBounds() {
-		return new Dimension(800, 600);
+	public int getWidth() {
+		return 800;
 	}
 
+	@Override
+	public int getHeight() {
+		return 600;
+	}
+
+	@Override
 	public SceneImage addImage(final int x, final int y, final int width,
 			final int height, final String imageName) {
 		final SwingImage image = new SwingImage(x, y, width, height, imageName);
@@ -33,6 +38,7 @@ public class SwingScene implements Iterable<SwingSceneObject>, Scene {
 		return image;
 	}
 
+	@Override
 	public SceneImage addImage(final int x, final int y, final int width,
 			final int height, final String imageName, final int clipX,
 			final int clipY, final int clipWidth, final int clipHeight) {
@@ -67,11 +73,13 @@ public class SwingScene implements Iterable<SwingSceneObject>, Scene {
 		return title;
 	}
 
+	@Override
 	public void addPlaceholder(final String name, final int x, final int y,
 			final int width, final int height) {
 		children.add(new SwingPlaceholder(name, x, y, width, height));
 	}
 
+	@Override
 	public void addText(final String text, final int x, final int y,
 			final int width, final String customFontResource, final int fontSize) {
 		children.add(new SwingText(text, x, y, width, customFontResource,
