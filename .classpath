@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/uilayer-android"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="/Users/avh4/.m2/repository/net/avh4/framework/uilayer/0.0.2-SNAPSHOT/uilayer-0.0.2-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/avh4/.m2/repository/org/hamcrest/hamcrest-core/1.2.1/hamcrest-core-1.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
