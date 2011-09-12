@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>uilayer-androidTest</name>
+	<name>uilayer-android-tests</name>
 	<comment></comment>
 	<projects>
 		<project>uilayer-android</project>
