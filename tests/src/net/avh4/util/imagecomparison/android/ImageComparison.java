@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 
 public class ImageComparison {
@@ -53,8 +54,8 @@ public class ImageComparison {
 			is = context.getAssets().open(imageName);
 			return BitmapFactory.decodeStream(is);
 		} catch (final IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Couldn't open image: " + imageName, e);
+			Log.d("ImageComparison", "Couldn't open image: " + imageName, e);
+			return null;
 		}
 	}
 
