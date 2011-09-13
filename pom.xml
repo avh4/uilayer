@@ -5,6 +5,10 @@
   <version>0.0.2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
+  <scm>
+    <developerConnection>scm:git:file://localhost/Users/avh4/Dropbox/Private/git/uilayer.git</developerConnection>
+  </scm>
+
   <modules>
     <module>uilayer-core</module>
     <module>uilayer-swing</module>
