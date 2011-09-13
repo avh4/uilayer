@@ -3,7 +3,7 @@
 
   <groupId>net.avh4.framework</groupId>
   <artifactId>uilayer-examples</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>jar</packaging>
 
   <name>uilayer-examples</name>
@@ -23,12 +23,12 @@
     <dependency>
     	<groupId>net.avh4.framework</groupId>
     	<artifactId>uilayer-core</artifactId>
-    	<version>0.0.2-SNAPSHOT</version>
+    	<version>0.0.2</version>
     </dependency>
     <dependency>
     	<groupId>net.avh4.framework</groupId>
     	<artifactId>uilayer-swing</artifactId>
-    	<version>0.0.2-SNAPSHOT</version>
+    	<version>0.0.2</version>
     	<scope>runtime</scope>
     </dependency>
   </dependencies>
