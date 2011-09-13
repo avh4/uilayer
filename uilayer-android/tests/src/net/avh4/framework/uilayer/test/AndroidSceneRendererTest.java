@@ -13,6 +13,7 @@ import android.test.ActivityInstrumentationTestCase2;
 public class AndroidSceneRendererTest extends
 		ActivityInstrumentationTestCase2<UILayerActivity> {
 
+	private static final int STATUS_BAR_HEIGHT = 50;
 	private UI mUi;
 	private Scene mScene;
 
@@ -43,6 +44,12 @@ public class AndroidSceneRendererTest extends
 
 	public void testRenderNullScene() {
 		mScene = null;
+		assertThat(getActivity(), isApproved());
+	}
+
+	public void testRenderPlaceholders() throws Exception {
+		mScene.addPlaceholder("Background", 0, 0, 640, 960 - STATUS_BAR_HEIGHT);
+		mScene.addPlaceholder("Body", 20, 20, 100, 960 - 40 - STATUS_BAR_HEIGHT);
 		assertThat(getActivity(), isApproved());
 	}
 

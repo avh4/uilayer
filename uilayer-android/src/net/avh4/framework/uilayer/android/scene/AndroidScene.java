@@ -1,14 +1,23 @@
 package net.avh4.framework.uilayer.android.scene;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
 
-public class AndroidScene implements Scene {
+public class AndroidScene implements Scene, Iterable<AndroidSceneObject> {
 
+	private final ArrayList<AndroidSceneObject> children = new ArrayList<AndroidSceneObject>();
 	private final String title;
 
 	public AndroidScene(final String title) {
 		this.title = title;
+	}
+
+	@Override
+	public Iterator<AndroidSceneObject> iterator() {
+		return children.iterator();
 	}
 
 	@Override
@@ -26,8 +35,7 @@ public class AndroidScene implements Scene {
 	@Override
 	public void addPlaceholder(final String name, final int x, final int y,
 			final int width, final int height) {
-		// TODO Auto-generated method stub
-
+		children.add(new AndroidPlaceholder(name, x, y, width, height));
 	}
 
 	@Override

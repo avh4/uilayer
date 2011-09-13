@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.android;
 
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.android.scene.AndroidScene;
+import net.avh4.framework.uilayer.android.scene.AndroidSceneObject;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -37,6 +38,11 @@ public class UILayerView extends View {
 
 		paint.setColor(Color.BLACK);
 		canvas.drawRect(0, 0, width, height, paint);
+
+		for (final AndroidSceneObject object : s) {
+			object.draw(canvas);
+		}
+
 	}
 
 }
