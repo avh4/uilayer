@@ -1,9 +1,10 @@
 package net.avh4.framework.uilayer.android.scene;
 
+import net.avh4.framework.uilayer.scene.SceneObject;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public class AndroidPlaceholder extends AndroidSceneObject {
+public class AndroidPlaceholder extends SceneObject<Canvas> {
 
 	private static final int MARGIN = 5;
 	private final String name;

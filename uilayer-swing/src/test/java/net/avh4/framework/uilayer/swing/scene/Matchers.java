@@ -1,7 +1,8 @@
 package net.avh4.framework.uilayer.swing.scene;
 
-import net.avh4.framework.uilayer.swing.scene.SwingPlaceholder;
-import net.avh4.framework.uilayer.swing.scene.SwingSceneObject;
+import java.awt.Graphics;
+
+import net.avh4.framework.uilayer.scene.SceneObject;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -9,9 +10,9 @@ import org.hamcrest.TypeSafeMatcher;
 
 public class Matchers {
 
-	static Matcher<SwingSceneObject> placeholder(final String name, final int x,
-			final int y, final int width, final int height) {
-		return new TypeSafeMatcher<SwingSceneObject>() {
+	static Matcher<SceneObject<Graphics>> placeholder(final String name,
+			final int x, final int y, final int width, final int height) {
+		return new TypeSafeMatcher<SceneObject<Graphics>>() {
 
 			@Override
 			public void describeTo(final Description arg0) {
@@ -19,8 +20,9 @@ public class Matchers {
 			}
 
 			@Override
-			public boolean matchesSafely(final SwingSceneObject item) {
-				return item.equals(new SwingPlaceholder(name, x, y, width, height));
+			public boolean matchesSafely(final SceneObject<Graphics> item) {
+				return item.equals(new SwingPlaceholder(name, x, y, width,
+						height));
 			}
 		};
 	}

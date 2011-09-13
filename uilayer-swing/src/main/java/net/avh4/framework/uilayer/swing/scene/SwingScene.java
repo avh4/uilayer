@@ -1,15 +1,17 @@
 package net.avh4.framework.uilayer.swing.scene;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
+import net.avh4.framework.uilayer.scene.SceneObject;
 
-public class SwingScene implements Iterable<SwingSceneObject>, Scene {
+public class SwingScene implements Iterable<SceneObject<Graphics>>, Scene {
 
-	private final ArrayList<SwingSceneObject> children = new ArrayList<SwingSceneObject>();
+	private final ArrayList<SceneObject<Graphics>> children = new ArrayList<SceneObject<Graphics>>();
 	private final String title;
 
 	public SwingScene(final String title) {
@@ -64,7 +66,7 @@ public class SwingScene implements Iterable<SwingSceneObject>, Scene {
 	}
 
 	@Override
-	public Iterator<SwingSceneObject> iterator() {
+	public Iterator<SceneObject<Graphics>> iterator() {
 		return children.iterator();
 	}
 

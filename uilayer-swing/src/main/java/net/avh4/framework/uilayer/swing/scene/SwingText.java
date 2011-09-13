@@ -9,7 +9,9 @@ import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class SwingText extends SwingSceneObject {
+import net.avh4.framework.uilayer.scene.SceneObject;
+
+public class SwingText extends SceneObject<Graphics> {
 
 	private final String text;
 	private final Font font;

@@ -5,10 +5,12 @@ import java.util.Iterator;
 
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
+import net.avh4.framework.uilayer.scene.SceneObject;
+import android.graphics.Canvas;
 
-public class AndroidScene implements Scene, Iterable<AndroidSceneObject> {
+public class AndroidScene implements Scene, Iterable<SceneObject<Canvas>> {
 
-	private final ArrayList<AndroidSceneObject> children = new ArrayList<AndroidSceneObject>();
+	private final ArrayList<SceneObject<Canvas>> children = new ArrayList<SceneObject<Canvas>>();
 	private final String title;
 
 	public AndroidScene(final String title) {
@@ -16,7 +18,7 @@ public class AndroidScene implements Scene, Iterable<AndroidSceneObject> {
 	}
 
 	@Override
-	public Iterator<AndroidSceneObject> iterator() {
+	public Iterator<SceneObject<Canvas>> iterator() {
 		return children.iterator();
 	}
 

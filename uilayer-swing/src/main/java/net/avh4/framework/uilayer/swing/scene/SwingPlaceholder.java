@@ -3,9 +3,10 @@ package net.avh4.framework.uilayer.swing.scene;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import net.avh4.framework.uilayer.scene.SceneObject;
 import net.avh4.util.Util;
 
-public class SwingPlaceholder extends SwingSceneObject {
+public class SwingPlaceholder extends SceneObject<Graphics> {
 
 	private static final int MARGIN = 5;
 	private final String name;

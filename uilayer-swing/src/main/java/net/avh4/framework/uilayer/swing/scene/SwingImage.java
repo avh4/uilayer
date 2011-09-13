@@ -10,8 +10,9 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 
 import net.avh4.framework.uilayer.scene.SceneImage;
+import net.avh4.framework.uilayer.scene.SceneObject;
 
-class SwingImage extends SwingSceneObject implements SceneImage {
+class SwingImage extends SceneObject<Graphics> implements SceneImage {
 
 	private final Image image;
 	private static final HashMap<String, BufferedImage> cache = new HashMap<String, BufferedImage>();
