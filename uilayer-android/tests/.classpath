@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/uilayer-android"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="/Users/avh4/.m2/repository/org/hamcrest/hamcrest-core/1.2.1/hamcrest-core-1.2.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
