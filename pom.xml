@@ -1,0 +1,13 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.avh4.framework</groupId>
+  <artifactId>uilayer</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>uilayer-core</module>
+    <module>uilayer-swing</module>
+    <module>uilayer-examples</module>
+  </modules>
+</project>
