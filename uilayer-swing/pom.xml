@@ -46,7 +46,7 @@
     </dependency>
     <dependency>
     	<groupId>net.avh4.framework</groupId>
-    	<artifactId>uilayer</artifactId>
+    	<artifactId>uilayer-core</artifactId>
     	<version>0.0.2-SNAPSHOT</version>
     </dependency>
   </dependencies>
