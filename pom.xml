@@ -1,13 +1,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
   <groupId>net.avh4.framework</groupId>
   <artifactId>uilayer</artifactId>
   <version>0.0.3-SNAPSHOT</version>
   <packaging>pom</packaging>
 
+  <name>uilayer</name>
+  <description></description>
+  <url>https://github.com/avh4/uilayer</url>
+  <licenses>
+    <license>
+      <name>The GNU General Public License v3.0</name>
+      <url>http://www.gnu.org/copyleft/gpl.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
   <scm>
+    <connection>scm:git:https://github.com/avh4/uilayer.git</connection>
     <developerConnection>scm:git:file://localhost/Users/avh4/Dropbox/Private/git/uilayer.git</developerConnection>
+    <url>https://github.com/avh4/uilayer</url>
   </scm>
+
+  <developers>
+    <developer>
+      <id>avh4</id>
+      <name>Aaron VonderHaar</name>
+      <email>gruen0aermel@gmail.com</email>
+    </developer>
+  </developers>
 
   <modules>
     <module>uilayer-core</module>
