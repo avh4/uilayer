@@ -5,31 +5,22 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import net.avh4.framework.uilayer.SceneBase;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.SceneObject;
 
-public class SwingScene implements Iterable<SceneObject<Graphics>>, Scene {
+public class SwingScene extends SceneBase implements
+		Iterable<SceneObject<Graphics>>, Scene {
 
 	private final ArrayList<SceneObject<Graphics>> children = new ArrayList<SceneObject<Graphics>>();
-	private final String title;
 
 	public SwingScene(final String title) {
-		this.title = title;
+		super(title);
 	}
 
 	public SwingScene() {
 		this("Untitled Scene");
-	}
-
-	@Override
-	public int getWidth() {
-		return 800;
-	}
-
-	@Override
-	public int getHeight() {
-		return 600;
 	}
 
 	@Override
@@ -68,11 +59,6 @@ public class SwingScene implements Iterable<SceneObject<Graphics>>, Scene {
 	@Override
 	public Iterator<SceneObject<Graphics>> iterator() {
 		return children.iterator();
-	}
-
-	@Override
-	public String getTitle() {
-		return title;
 	}
 
 	@Override

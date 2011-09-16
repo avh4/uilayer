@@ -3,7 +3,6 @@ package net.avh4.framework.uilayer.swing.scene;
 import static net.avh4.util.imagecomparison.Matchers.isApproved;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.stub;
 
 import java.awt.Color;
@@ -29,11 +28,6 @@ public class SwingSceneRendererTest {
 		mockCreator = mock(SceneCreator.class);
 		stub(mockCreator.getScene()).toReturn(scene);
 		subject = new SwingSceneRenderer(mockCreator);
-	}
-
-	@Test
-	public void testRenderEmptyScene() throws Exception {
-		assertThat(subject, isApproved());
 	}
 
 	@Test
@@ -83,17 +77,6 @@ public class SwingSceneRendererTest {
 		final SceneImage image = scene.addImage(100, 100, 50, 50, "tile1.png",
 				0, 0, 25, 25);
 		image.setClipPosition(25, 25);
-		assertThat(subject, isApproved());
-	}
-
-	/**
-	 * If the SceneCreator returns null, we must render something and not throw
-	 * an exception.
-	 */
-	@Test
-	public void testRenderNullScene() throws Exception {
-		reset(mockCreator);
-		stub(mockCreator.getScene()).toReturn(null);
 		assertThat(subject, isApproved());
 	}
 

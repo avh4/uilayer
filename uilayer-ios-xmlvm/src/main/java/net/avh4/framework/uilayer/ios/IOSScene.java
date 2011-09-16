@@ -3,39 +3,25 @@ package net.avh4.framework.uilayer.ios;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import net.avh4.framework.uilayer.SceneBase;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.SceneObject;
 
 import org.xmlvm.iphone.CGRect;
 
-public class IOSScene implements Scene, Iterable<SceneObject<CGRect>> {
+public class IOSScene extends SceneBase implements Scene,
+		Iterable<SceneObject<CGRect>> {
 
 	private final ArrayList<SceneObject<CGRect>> children = new ArrayList<SceneObject<CGRect>>();
-	private final String title;
 
 	public IOSScene(final String title) {
-		this.title = title;
+		super(title);
 	}
 
 	@Override
 	public Iterator<SceneObject<CGRect>> iterator() {
 		return children.iterator();
-	}
-
-	@Override
-	public String getTitle() {
-		return title;
-	}
-
-	@Override
-	public int getWidth() {
-		return 640;
-	}
-
-	@Override
-	public int getHeight() {
-		return 960;
 	}
 
 	@Override

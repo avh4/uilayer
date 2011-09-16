@@ -21,4 +21,6 @@ public interface Scene {
 	SceneImage addImage(final int x, final int y, final int width,
 			final int height, final String imageName);
 
+	void setSize(int width, int height);
+
 }

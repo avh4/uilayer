@@ -14,7 +14,7 @@ import net.avh4.framework.uilayer.swing.scene.SwingSceneRenderer;
 public class SwingUILayerService implements UILayerService {
 
 	@Override
-	public void main(final SceneCreator game, final ClickReceiver receiver,
+	public void run(final SceneCreator game, final ClickReceiver receiver,
 			final KeyReceiver keyReceiver) {
 
 		final Scene scene = game.getScene();
