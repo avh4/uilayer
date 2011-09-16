@@ -9,11 +9,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
-public class UILayerView extends View {
+public class AndroidSceneRenderer extends View {
 
 	private final UI mUi;
 
-	public UILayerView(final Context context, final UI ui) {
+	public AndroidSceneRenderer(final Context context, final UI ui) {
 		super(context);
 		if (ui == null) {
 			throw new RuntimeException("UI must not be null");

@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
-import net.avh4.framework.uilayer.android.UILayerActivity;
+import net.avh4.framework.uilayer.android.AndroidSceneRendererActivity;
 import net.avh4.framework.uilayer.scene.Scene;
 
 import org.hamcrest.Matcher;
@@ -11,14 +11,14 @@ import org.hamcrest.Matcher;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class AndroidSceneRendererTest extends
-		ActivityInstrumentationTestCase2<UILayerActivity> {
+		ActivityInstrumentationTestCase2<AndroidSceneRendererActivity> {
 
 	private static final int STATUS_BAR_HEIGHT = 50;
 	private UI mUi;
 	private Scene mScene;
 
 	public AndroidSceneRendererTest() {
-		super(UILayerActivity.class);
+		super(AndroidSceneRendererActivity.class);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class AndroidSceneRendererTest extends
 		assertThat(getActivity(), isApproved());
 	}
 
-	private Matcher<? super UILayerActivity> isApproved() {
+	private Matcher<? super AndroidSceneRendererActivity> isApproved() {
 		return net.avh4.util.imagecomparison.android.Matchers
 				.isApproved(getInstrumentation().getContext());
 	}

@@ -64,5 +64,10 @@
       <version>0.0.2</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>net.avh4.framework</groupId>
+    	<artifactId>uilayer-core</artifactId>
+    	<version>0.0.4-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>

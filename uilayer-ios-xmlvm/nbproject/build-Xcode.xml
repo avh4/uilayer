@@ -55,6 +55,8 @@
 		<echo message="Creating Xcode project with the ${xmlvm.backend.canonical} backend."/>
 		<java jar="${xmlvm.sdk.jar}" fork="true" failonerror="true">
 			<jvmarg value="-Xmx512m"/>
+			<arg value="--in=${file.reference.uilayer-core-0.0.4-SNAPSHOT.jar}"/>
+			<!-- classes must come after uilayer-core, since we are replacing net.avh4.framework.uilayer.UILayer with an ios-xmlvm-specific implementation -->
 			<arg value="--in=${out.dir}/classes"/>
 			<arg value="--out=${out.dir}/.xcode"/>
 			<arg value="--target=${xmlvm.backend.target}"/>

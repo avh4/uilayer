@@ -6,7 +6,12 @@ public class UILayer {
 
 	private static final String SWING_SERVICE = "net.avh4.framework.uilayer.swing.SwingUILayerService";
 	private static final String ANDROID_SERVICE = "net.avh4.framework.uilayer.android.AndroidUILayerService";
+	@SuppressWarnings("unused")
+	private static final String IOS_SERVICE = "net.avh4.framework.uilayer.ios.IOSUILayerService";
 
+	// IOS_SERVICE is not added here because xmlvm does not implement
+	// ClassLoader for iOS. Therefore we must replace this entire class in
+	// uilayer-ios-xmlvm and not rely on dynamic loading.
 	private static final String[] KNOWN_SERVICES = new String[] {
 			SWING_SERVICE, ANDROID_SERVICE };
 
@@ -52,7 +57,7 @@ public class UILayer {
 
 	public static void main(final SceneCreator game,
 			final ClickReceiver receiver, final KeyReceiver keyReceiver) {
-		service.main(game, receiver, keyReceiver);
+		service.run(game, receiver, keyReceiver);
 	}
 
 }

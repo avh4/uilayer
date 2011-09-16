@@ -7,15 +7,15 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
 
-public class UILayerActivity extends Activity {
+public class AndroidSceneRendererActivity extends Activity {
 
 	private UI mUi;
 
-	public UILayerActivity() {
+	public AndroidSceneRendererActivity() {
 		mUi = null;
 	}
 
-	public UILayerActivity(final UI ui) {
+	public AndroidSceneRendererActivity(final UI ui) {
 		mUi = ui;
 	}
 
@@ -33,10 +33,10 @@ public class UILayerActivity extends Activity {
 			@Override
 			public void run() {
 				if (mUi != null) {
-					setContentView(new UILayerView(UILayerActivity.this, mUi));
+					setContentView(new AndroidSceneRenderer(AndroidSceneRendererActivity.this, mUi));
 				} else {
 					final ImageView placeholder = new ImageView(
-							UILayerActivity.this);
+							AndroidSceneRendererActivity.this);
 					placeholder.setImageResource(R.drawable.icon);
 					setContentView(placeholder);
 				}

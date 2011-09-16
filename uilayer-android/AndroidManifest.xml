@@ -15,7 +15,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".android.UILayerActivity">
+        <activity android:name=".android.AndroidSceneRendererActivity">
         </activity>
     </application>
 </manifest>
