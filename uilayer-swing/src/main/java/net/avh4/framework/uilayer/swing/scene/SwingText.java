@@ -10,10 +10,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import net.avh4.framework.uilayer.scene.SceneObject;
+import net.avh4.framework.uilayer.scene.SceneText;
 
-public class SwingText extends SceneObject<Graphics> {
+public class SwingText extends SceneObject<Graphics> implements SceneText {
 
-	private final String text;
+	private String text;
 	private final Font font;
 
 	public SwingText(final String text, final int x, final int y,
@@ -77,6 +78,11 @@ public class SwingText extends SceneObject<Graphics> {
 			// Move over to the right for next word.
 			curX += wordWidth;
 		}
+	}
+
+	@Override
+	public void setText(final String string) {
+		text = string;
 	}
 
 }

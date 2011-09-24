@@ -9,6 +9,7 @@ import net.avh4.framework.uilayer.SceneBase;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.SceneObject;
+import net.avh4.framework.uilayer.scene.SceneText;
 
 public class SwingScene extends SceneBase implements
 		Iterable<SceneObject<Graphics>>, Scene {
@@ -68,10 +69,12 @@ public class SwingScene extends SceneBase implements
 	}
 
 	@Override
-	public void addText(final String text, final int x, final int y,
+	public SceneText addText(final String text, final int x, final int y,
 			final int width, final String customFontResource, final int fontSize) {
-		children.add(new SwingText(text, x, y, width, customFontResource,
-				fontSize));
+		final SwingText obj = new SwingText(text, x, y, width,
+				customFontResource, fontSize);
+		children.add(obj);
+		return obj;
 	}
 
 }

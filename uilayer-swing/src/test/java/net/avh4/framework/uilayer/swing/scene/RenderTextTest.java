@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.swing.scene;
 
 import static net.avh4.util.imagecomparison.Matchers.isApproved;
 import static org.junit.Assert.assertThat;
+import net.avh4.framework.uilayer.scene.SceneText;
 
 import org.junit.Test;
 
@@ -14,6 +15,15 @@ public class RenderTextTest extends RenderTestBase {
 		scene.addText(longString, 50, 50, 200, "Tuffy.ttf", 36);
 		scene.addPlaceholder("Text box: size 12", 450, 50, 200, 1000);
 		scene.addText(longString, 450, 50, 200, "Tuffy.ttf", 12);
+		assertThat(subject, isApproved());
+	}
+
+	@Test
+	public void testUpdateText() throws Exception {
+		final SceneText text = scene.addText("Wrong", 10, 10, 100, "Tuffy.ttf",
+				36);
+		text.setText("Correct");
+
 		assertThat(subject, isApproved());
 	}
 
