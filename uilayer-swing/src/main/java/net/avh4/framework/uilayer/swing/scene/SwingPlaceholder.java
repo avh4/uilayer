@@ -1,6 +1,7 @@
 package net.avh4.framework.uilayer.swing.scene;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import net.avh4.framework.uilayer.scene.SceneObject;
@@ -12,6 +13,7 @@ public class SwingPlaceholder extends SceneObject<Graphics> {
 	private final String name;
 	private final Color color;
 	private final Color textColor;
+	private static final Font FONT = new Font(null, Font.PLAIN, 12);
 
 	public SwingPlaceholder(final String name, final int x, final int y,
 			final int width, final int height) {
@@ -38,6 +40,7 @@ public class SwingPlaceholder extends SceneObject<Graphics> {
 	public void draw(final Graphics g) {
 		g.setColor(color);
 		g.fillRect(x, y, width, height);
+		g.setFont(FONT);
 		g.setColor(textColor);
 		g.drawString(name, x + MARGIN, y + height - MARGIN);
 	}

@@ -14,4 +14,11 @@ public class RenderPlaceholdersTest extends RenderTestBase {
 		assertThat(subject, isApproved());
 	}
 
+	@Test
+	public void testCorrectFontWithTextInTheScene() throws Exception {
+		scene.addText("Text", 0, 0, 100, "Tuffy.ttf", 50);
+		scene.addPlaceholder("Box", 200, 200, 100, 100);
+		assertThat(subject, isApproved());
+	}
+
 }
