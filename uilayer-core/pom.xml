@@ -33,20 +33,40 @@
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.1</version>
+      <artifactId>junit-dep</artifactId>
+      <version>4.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
     	<groupId>org.mockito</groupId>
-    	<artifactId>mockito-all</artifactId>
+    	<artifactId>mockito-core</artifactId>
     	<version>1.8.5</version>
     	<scope>test</scope>
     </dependency>
     <dependency>
     	<groupId>net.avh4.util</groupId>
     	<artifactId>imagecomparison</artifactId>
-    	<version>0.0.3</version>
+    	<version>0.0.4-SNAPSHOT</version>
     </dependency>
   </dependencies>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-core</artifactId>
+        <version>1.2.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-library</artifactId>
+        <version>1.2.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-integration</artifactId>
+        <version>1.2.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
