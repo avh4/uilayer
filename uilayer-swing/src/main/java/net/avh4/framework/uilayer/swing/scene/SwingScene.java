@@ -78,4 +78,10 @@ public class SwingScene extends SceneBase implements
 		return obj;
 	}
 
+	@Override
+	public void addRect(final int x, final int y, final int width,
+			final int height, final int color) {
+		children.add(new SwingRect(x, y, width, height, color));
+	}
+
 }

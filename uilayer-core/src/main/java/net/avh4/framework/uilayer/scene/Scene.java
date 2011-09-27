@@ -24,4 +24,6 @@ public interface Scene {
 
 	void setSize(int width, int height);
 
+	void addRect(int x, int y, int width, int height, int color);
+
 }
