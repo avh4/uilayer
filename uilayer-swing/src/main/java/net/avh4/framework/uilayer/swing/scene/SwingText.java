@@ -16,12 +16,15 @@ public class SwingText extends SceneObject<Graphics> implements SceneText {
 
 	private String text;
 	private final Font font;
+	private final Color color;
 
 	public SwingText(final String text, final int x, final int y,
-			final int width, final String customFontResource, final int fontSize) {
+			final int width, final String customFontResource,
+			final int fontSize, final int color) {
 		super(x, y, width, 200);
 		font = loadFont(customFontResource, fontSize);
 		this.text = text;
+		this.color = new Color(color);
 	}
 
 	private static Font loadFont(final String customFontResource,
@@ -49,7 +52,7 @@ public class SwingText extends SceneObject<Graphics> implements SceneText {
 
 	@Override
 	public void draw(final Graphics g) {
-		g.setColor(Color.WHITE);
+		g.setColor(color);
 		g.setFont(font);
 
 		// From

@@ -70,9 +70,10 @@ public class SwingScene extends SceneBase implements
 
 	@Override
 	public SceneText addText(final String text, final int x, final int y,
-			final int width, final String customFontResource, final int fontSize) {
+			final int width, final String customFontResource,
+			final int fontSize, final int color) {
 		final SwingText obj = new SwingText(text, x, y, width,
-				customFontResource, fontSize);
+				customFontResource, fontSize, color);
 		children.add(obj);
 		return obj;
 	}

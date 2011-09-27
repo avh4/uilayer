@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.swing.scene;
 
 import static net.avh4.util.imagecomparison.Matchers.isApproved;
 import static org.junit.Assert.assertThat;
+import net.avh4.framework.uilayer.Color;
 
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ public class RenderPlaceholdersTest extends RenderTestBase {
 
 	@Test
 	public void testCorrectFontWithTextInTheScene() throws Exception {
-		scene.addText("Text", 0, 0, 100, "Tuffy.ttf", 50);
+		scene.addText("Text", 0, 0, 100, "Tuffy.ttf", 50, Color.WHITE);
 		scene.addPlaceholder("Box", 200, 200, 100, 100);
 		assertThat(subject, isApproved());
 	}
