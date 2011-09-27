@@ -8,8 +8,8 @@ public interface Scene {
 
 	int getHeight();
 
-	void addText(final String text, final int x, final int y, final int width,
-			final String customFontResource, final int fontSize);
+	SceneText addText(final String text, final int x, final int y,
+			final int width, final String customFontResource, final int fontSize);
 
 	void addPlaceholder(final String name, final int x, final int y,
 			final int width, final int height);
