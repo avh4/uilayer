@@ -33,7 +33,13 @@ public class RenderTextTest extends RenderTestBase {
 		scene.addText("Blue", 10, 10, 100, "Tuffy.ttf", 36, Color.BLUE);
 
 		assertThat(subject, isApproved());
+	}
 
+	@Test
+	public void testIncludedFontPfennig() throws Exception {
+		scene.addText("Pfennig", 0, 0, 300, Font.PFENNIG, 32, Color.YELLOW);
+
+		assertThat(subject, isApproved());
 	}
 
 }

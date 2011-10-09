@@ -29,6 +29,9 @@ public class SwingText extends SceneObject<Graphics> implements SceneText {
 
 	private static Font loadFont(final String customFontResource,
 			final int fontSize) {
+		if (customFontResource == null) {
+			throw new RuntimeException("No font specified.  Try Font.PFENNIG.");
+		}
 		final InputStream is = ClassLoader
 				.getSystemResourceAsStream(customFontResource);
 		if (is == null) {
