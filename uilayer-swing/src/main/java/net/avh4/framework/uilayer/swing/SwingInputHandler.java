@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer.swing.input;
+package net.avh4.framework.uilayer.swing;
 
 import java.awt.Component;
 import java.awt.event.KeyEvent;

@@ -1,10 +1,8 @@
 package net.avh4.framework.uilayer.swing.scene;
 
 import static org.junit.Assert.fail;
-
-import java.awt.Graphics;
-
-import net.avh4.framework.uilayer.scene.SceneObject;
+import net.avh4.framework.uilayer.scene.SceneElement;
+import net.avh4.framework.uilayer.scene.SceneImage;
 
 import org.junit.Test;
 
@@ -14,7 +12,7 @@ public class SwingImageTest {
 	public void shouldNotAllowInvalidImageName() {
 		try {
 			@SuppressWarnings("unused")
-			final SceneObject<Graphics> subject = new SwingImage(0, 0, 10, 10,
+			final SceneElement subject = new SceneImage(0, 0, 10, 10,
 					"fileDoesNotExist.png");
 			fail("Expected IllegalArgumentException");
 		} catch (final IllegalArgumentException e) {

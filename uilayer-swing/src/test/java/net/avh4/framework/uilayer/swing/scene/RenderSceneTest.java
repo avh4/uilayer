@@ -7,11 +7,12 @@ import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.stub;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.scene.Scene;
+import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class SceneTest {
+public class RenderSceneTest {
 
 	private SceneCreator mockCreator;
 	private SwingSceneRenderer subject;
@@ -19,7 +20,7 @@ public class SceneTest {
 
 	@Before
 	public void setUp() {
-		scene = new SwingScene();
+		scene = new Scene();
 		mockCreator = mock(SceneCreator.class);
 		stub(mockCreator.getScene()).toReturn(scene);
 		subject = new SwingSceneRenderer(mockCreator);

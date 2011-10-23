@@ -1,6 +1,5 @@
 package net.avh4.framework.uilayer;
 
-import net.avh4.framework.uilayer.scene.Scene;
 
 public class UILayer {
 
@@ -51,13 +50,16 @@ public class UILayer {
 		}
 	}
 
-	public static Scene newScene(final String title) {
-		return service.newScene(title);
-	}
-
 	public static void main(final SceneCreator game,
 			final ClickReceiver receiver, final KeyReceiver keyReceiver) {
 		service.run(game, receiver, keyReceiver);
 	}
 
+	public static int getImageWidth(final String image) {
+		return service.getImageWidth(image);
+	}
+
+	public static int getImageHeight(final String image) {
+		return service.getImageHeight(image);
+	}
 }

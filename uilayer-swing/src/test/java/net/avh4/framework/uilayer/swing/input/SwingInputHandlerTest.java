@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import net.avh4.framework.uilayer.ClickReceiver;
 import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.swing.SwingInputHandler;
 
 import org.junit.Before;
 import org.junit.Test;

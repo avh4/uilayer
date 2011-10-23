@@ -1,29 +1,50 @@
 package net.avh4.framework.uilayer.scene;
 
-public interface Scene {
+import java.util.ArrayList;
+import java.util.Iterator;
 
-	String getTitle();
+public class Scene implements Iterable<SceneElement> {
 
-	int getWidth();
+	private final ArrayList<SceneElement> children = new ArrayList<SceneElement>();
+	protected final String title;
+	private int width = 800;
+	private int height = 600;
 
-	int getHeight();
+	public Scene(final String title) {
+		this.title = title;
+	}
 
-	SceneText addText(final String text, final int x, final int y,
-			final int width, final String customFontResource,
-			final int fontSize, final int color);
+	public Scene() {
+		this("untitled scene");
+	}
 
-	void addPlaceholder(final String name, final int x, final int y,
-			final int width, final int height);
+	public int getWidth() {
+		return width;
+	}
 
-	SceneImage addImage(final int x, final int y, final int width,
-			final int height, final String imageName, final int clipX,
-			final int clipY, final int clipWidth, final int clipHeight);
+	public int getHeight() {
+		return height;
+	}
 
-	SceneImage addImage(final int x, final int y, final int width,
-			final int height, final String imageName);
+	public String getTitle() {
+		return title;
+	}
 
-	void setSize(int width, int height);
+	public void setSize(final int width, final int height) {
+		this.width = width;
+		this.height = height;
+	}
 
-	void addRect(int x, int y, int width, int height, int color);
+	/**
+	 * The provided element will be returned for convenience.
+	 */
+	public <T extends SceneElement> T add(final T element) {
+		children.add(element);
+		return element;
+	}
 
+	@Override
+	public Iterator<SceneElement> iterator() {
+		return children.iterator();
+	}
 }
