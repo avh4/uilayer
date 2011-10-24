@@ -2,7 +2,13 @@ package net.avh4.framework.uilayer.swing.scene;
 
 import static net.avh4.util.imagecomparison.Matchers.isApproved;
 import static org.junit.Assert.assertThat;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
 import net.avh4.framework.uilayer.scene.SceneImage;
+import net.avh4.framework.uilayer.swing.SwingUILayerService;
 
 import org.junit.Test;
 
@@ -14,20 +20,21 @@ public class RenderImagesTest extends RenderTestBase {
 		assertThat(subject, isApproved());
 	}
 
-	// @Test
-	// public void testRenderProvidedImage() throws Exception {
-	// final Image image = new BufferedImage(50, 50,
-	// BufferedImage.TYPE_INT_ARGB);
-	// final Graphics g = image.getGraphics();
-	// g.setColor(Color.BLUE);
-	// g.fillRect(0, 0, 50, 50);
-	// g.setColor(Color.PINK);
-	// g.fillRect(10, 10, 50, 50);
-	// g.dispose();
-	//
-	// scene.addImage(100, 100, 50, 50, image);
-	// assertThat(subject, isApproved());
-	// }
+	@Test
+	public void testRenderProvidedImage() throws Exception {
+		final BufferedImage image = new BufferedImage(50, 50,
+				BufferedImage.TYPE_INT_ARGB);
+		final Graphics g = image.getGraphics();
+		g.setColor(Color.BLUE);
+		g.fillRect(0, 0, 50, 50);
+		g.setColor(Color.PINK);
+		g.fillRect(10, 10, 50, 50);
+		g.dispose();
+
+		SwingUILayerService.cacheImage("key", image);
+		scene.add(new SceneImage(100, 100, 50, 50, "key"));
+		assertThat(subject, isApproved());
+	}
 
 	@Test
 	public void testRenderMultipleImages() throws Exception {

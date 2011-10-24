@@ -114,4 +114,8 @@ public class SwingUILayerService implements UILayerService {
 		}
 	}
 
+	public static void cacheImage(final String key, final BufferedImage image) {
+		imageCache.put(key, image);
+	}
+
 }
