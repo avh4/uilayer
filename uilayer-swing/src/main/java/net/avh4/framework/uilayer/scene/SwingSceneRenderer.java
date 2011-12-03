@@ -61,6 +61,8 @@ public class SwingSceneRenderer extends JComponent {
 			drawImage(g, (SceneImage) e);
 		} else if (e instanceof SceneRect) {
 			drawRect(g, (SceneRect) e);
+		} else if (e instanceof SceneOval) {
+			drawOval(g, (SceneOval) e);
 		} else {
 			throw new RuntimeException("Don't know how to render "
 					+ e.getClass().getSimpleName());
@@ -70,6 +72,11 @@ public class SwingSceneRenderer extends JComponent {
 	private void drawRect(final Graphics g, final SceneRect e) {
 		g.setColor(loadColor(e.color));
 		g.fillRect(e.x, e.y, e.width, e.height);
+	}
+
+	private void drawOval(final Graphics g, final SceneOval e) {
+		g.setColor(loadColor(e.color));
+		g.fillOval(e.x, e.y, e.width, e.height);
 	}
 
 	private void drawImage(final Graphics g, final SceneImage e) {
