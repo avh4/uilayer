@@ -23,7 +23,7 @@
 
   <scm>
     <connection>scm:git:https://github.com/avh4/uilayer.git</connection>
-    <developerConnection>scm:git:file://localhost/Users/avh4/Dropbox/Private/git/uilayer.git</developerConnection>
+    <developerConnection>scm:git:git@github.com:avh4/uilayer.git</developerConnection>
     <url>https://github.com/avh4/uilayer</url>
   </scm>
 
