@@ -30,4 +30,10 @@ public class ColorTest {
 
 		assertThat(Color.getValue(0xff83f234), is(0xf2));
 	}
+
+	@Test
+	public void testDarken() {
+		assertThat(Color.darken(0.1, 0xff0a0a0a), is(0xff090909));
+		assertThat(Color.darken(0.1, 0xff646464), is(0xff5a5a5a));
+	}
 }

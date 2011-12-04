@@ -26,4 +26,11 @@ public class Color {
 				Math.max(getGreen(color), getBlue(color)));
 	}
 
+	public static int darken(final double factor, final int color) {
+		return (0xff000000 & color)
+				| ((int) ((0x00ff0000 & color) * (1 - factor)) & 0x00ff0000)
+				| ((int) ((0x0000ff00 & color) * (1 - factor)) & 0x0000ff00)
+				| ((int) ((0x000000ff & color) * (1 - factor)) & 0x000000ff);
+	}
+
 }
