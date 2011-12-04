@@ -7,7 +7,7 @@
   </parent>
   <groupId>net.avh4.framework</groupId>
   <artifactId>uilayer</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <packaging>pom</packaging>
 
   <name>uilayer</name>
