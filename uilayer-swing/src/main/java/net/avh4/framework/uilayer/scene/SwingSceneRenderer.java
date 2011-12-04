@@ -65,10 +65,17 @@ public class SwingSceneRenderer extends JComponent {
 			drawOval(g, (SceneOval) e);
 		} else if (e instanceof SceneLabel) {
 			drawLabel(g, (SceneLabel) e);
+		} else if (e instanceof SceneLine) {
+			drawLine(g, (SceneLine) e);
 		} else {
 			throw new RuntimeException("Don't know how to render "
 					+ e.getClass().getSimpleName());
 		}
+	}
+
+	private void drawLine(final Graphics g, final SceneLine e) {
+		g.setColor(loadColor(e.color));
+		g.drawLine(e.x1, e.y1, e.x2, e.y2);
 	}
 
 	private void drawRect(final Graphics g, final SceneRect e) {
