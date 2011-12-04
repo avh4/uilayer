@@ -63,6 +63,8 @@ public class SwingSceneRenderer extends JComponent {
 			drawRect(g, (SceneRect) e);
 		} else if (e instanceof SceneOval) {
 			drawOval(g, (SceneOval) e);
+		} else if (e instanceof SceneLabel) {
+			drawLabel(g, (SceneLabel) e);
 		} else {
 			throw new RuntimeException("Don't know how to render "
 					+ e.getClass().getSimpleName());
@@ -125,6 +127,19 @@ public class SwingSceneRenderer extends JComponent {
 			// Move over to the right for next word.
 			curX += wordWidth;
 		}
+	}
+
+	private void drawLabel(final Graphics g, final SceneLabel e) {
+		g.setColor(loadColor(e.color));
+		g.setFont(SwingUILayerService.loadFont(e.font, e.fontSize));
+
+		final FontMetrics fm = g.getFontMetrics();
+		final int labelWidth = fm.stringWidth(e.text);
+
+		final int x = e.x - labelWidth / 2;
+		final int y = e.y + fm.getHeight();
+
+		g.drawString(e.text, x, y);
 	}
 
 	private static Color loadColor(final int color) {
