@@ -1,0 +1,57 @@
+package net.avh4.framework.uilayer.scene;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class SceneElementTest {
+
+	private SceneElement subject;
+
+	private static class TestElement extends SceneElement {
+
+		public TestElement(final String name, final int x, final int y,
+				final int width, final int height) {
+			super(name, x, y, width, height);
+		}
+
+	}
+
+	@Before
+	public void setUp() {
+		subject = new TestElement("name", 10, 20, 100, 200);
+	}
+
+	@Test
+	public void testChangeDimensions() {
+		final int NEW_WIDTH = 199;
+		final int NEW_HEIGHT = 299;
+		assertThat(subject.getWidth(), not(NEW_WIDTH));
+		assertThat(subject.getHeight(), not(NEW_HEIGHT));
+
+		subject.setWidth(NEW_WIDTH);
+		subject.setHeight(NEW_HEIGHT);
+
+		assertThat(subject.getWidth(), is(NEW_WIDTH));
+		assertThat(subject.getHeight(), is(NEW_HEIGHT));
+	}
+
+	@Test
+	public void testChangePosition() {
+		final int NEW_X = 19;
+		final int NEW_Y = 29;
+		assertThat(subject.getX(), not(NEW_X));
+		assertThat(subject.getY(), not(NEW_Y));
+
+		subject.setX(NEW_X);
+		subject.setY(NEW_Y);
+
+		assertThat(subject.getX(), is(NEW_X));
+		assertThat(subject.getY(), is(NEW_Y));
+
+	}
+
+}

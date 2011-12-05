@@ -4,8 +4,8 @@ public abstract class SceneElement {
 
 	protected int x;
 	protected int y;
-	protected final int width;
-	protected final int height;
+	protected int width;
+	protected int height;
 	protected final String name;
 
 	public SceneElement(final String name, final int x, final int y,
@@ -35,6 +35,22 @@ public abstract class SceneElement {
 
 	public int getY() {
 		return y;
+	}
+
+	public void setWidth(final int width) {
+		this.width = width;
+	}
+
+	public void setHeight(final int height) {
+		this.height = height;
+	}
+
+	public void setX(final int x) {
+		this.x = x;
+	}
+
+	public void setY(final int y) {
+		this.y = y;
 	}
 
 }
