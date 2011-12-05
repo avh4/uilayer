@@ -53,7 +53,9 @@ public class SwingSceneRenderer extends JComponent {
 	}
 
 	private void draw(final Graphics g, final SceneElement e) {
-		if (e instanceof SceneText) {
+		if (e instanceof CompositeSceneElement) {
+			drawComposite(g, (CompositeSceneElement) e);
+		} else if (e instanceof SceneText) {
 			drawText(g, (SceneText) e);
 		} else if (e instanceof ScenePlaceholder) {
 			drawPlaceholder(g, (ScenePlaceholder) e);
@@ -71,6 +73,14 @@ public class SwingSceneRenderer extends JComponent {
 			throw new RuntimeException("Don't know how to render "
 					+ e.getClass().getSimpleName());
 		}
+	}
+
+	private void drawComposite(final Graphics g, final CompositeSceneElement e) {
+		g.translate(e.x, e.y);
+		for (final SceneElement object : e.getSceneElements()) {
+			draw(g, object);
+		}
+		g.translate(-e.x, -e.y);
 	}
 
 	private void drawLine(final Graphics g, final SceneLine e) {
