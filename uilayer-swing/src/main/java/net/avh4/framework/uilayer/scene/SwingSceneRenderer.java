@@ -21,6 +21,18 @@ public class SwingSceneRenderer extends JComponent {
 		this.creator = creator;
 	}
 
+	public SwingSceneRenderer(final SceneElement e) {
+		final Scene scene = new Scene(e.getName());
+		scene.setSize(e.width, e.height);
+		scene.add(e);
+		creator = new SceneCreator() {
+			@Override
+			public Scene getScene() {
+				return scene;
+			}
+		};
+	}
+
 	@Override
 	public Dimension getPreferredSize() {
 		final Scene scene = creator.getScene();
