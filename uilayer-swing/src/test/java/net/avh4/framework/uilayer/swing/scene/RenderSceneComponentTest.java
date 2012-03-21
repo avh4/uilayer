@@ -49,7 +49,7 @@ public class RenderSceneComponentTest extends RenderTestBase {
 	public void testTranslationIsResetAfterDrawingComponent() throws Exception {
 		scene.add(new SceneRect(10, 10, 10, 10, Color.YELLOW));
 		scene.add(new TestComponent(300, 400, 100, 100));
-		scene.add(new SceneRect(780, 580, 10, 10, Color.RED));
+		scene.add(new SceneRect(20, 20, 10, 10, Color.RED));
 		assertRenderingIsApproved();
 	}
 }

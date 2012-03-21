@@ -1,11 +1,8 @@
 package net.avh4.framework.uilayer.swing.scene;
 
-import static net.avh4.util.imagecomparison.Matchers.isApproved;
-import static org.junit.Assert.assertThat;
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.framework.uilayer.scene.SceneText;
-
 import org.junit.Test;
 
 public class RenderTextTest extends RenderTestBase {
@@ -17,29 +14,26 @@ public class RenderTextTest extends RenderTestBase {
 		scene.add(new SceneText(longString, 50, 50, 200, "Tuffy.ttf", 36, Color.WHITE));
 		scene.add(new ScenePlaceholder("Text box: size 12", 450, 50, 200, 1000));
 		scene.add(new SceneText(longString, 450, 50, 200, "Tuffy.ttf", 12, Color.WHITE));
-		assertThat(subject, isApproved());
+        assertRenderingIsApproved();
 	}
 
 	@Test
 	public void testUpdateText() throws Exception {
-		final SceneText text = scene.add(new SceneText("Wrong", 10, 10, 100, "Tuffy.ttf", 36, Color.WHITE));;
+		final SceneText text = scene.add(new SceneText("Wrong", 10, 10, 100, "Tuffy.ttf", 36, Color.WHITE));
 		text.setText("Correct");
-
-		assertThat(subject, isApproved());
+        assertRenderingIsApproved();
 	}
 
 	@Test
 	public void testColoredText() throws Exception {
 		scene.add(new SceneText("Blue", 10, 10, 100, "Tuffy.ttf", 36, Color.BLUE));
-
-		assertThat(subject, isApproved());
+        assertRenderingIsApproved();
 	}
 
 	@Test
 	public void testIncludedFontPfennig() throws Exception {
 		scene.add(new SceneText("Pfennig", 0, 0, 300, Font.PFENNIG, 32, Color.YELLOW));
-
-		assertThat(subject, isApproved());
+        assertRenderingIsApproved();
 	}
 
 }
