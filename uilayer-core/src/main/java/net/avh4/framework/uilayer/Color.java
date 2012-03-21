@@ -2,11 +2,15 @@ package net.avh4.framework.uilayer;
 
 public class Color {
 
-	public static final int WHITE = 0xffffff;
+	public static final int WHITE = 0xffffffff;
 	public static final int BLUE = 0xff0000ff;
 	public static final int BLACK = 0xff000000;
 	public static final int RED = 0xffff0000;
 	public static final int YELLOW = 0xffffff00;
+
+    public static int getAlpha(final int color) {
+        return 0xff & (color >> 24);
+    }
 
 	public static int getRed(final int color) {
 		return 0xff & (color >> 16);
@@ -32,5 +36,4 @@ public class Color {
 				| ((int) ((0x0000ff00 & color) * (1 - factor)) & 0x0000ff00)
 				| ((int) ((0x000000ff & color) * (1 - factor)) & 0x000000ff);
 	}
-
 }

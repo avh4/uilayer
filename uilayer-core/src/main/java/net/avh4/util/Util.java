@@ -1,9 +1,9 @@
 package net.avh4.util;
 
+import net.avh4.framework.uilayer.Color;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import net.avh4.framework.uilayer.Color;
 
 public class Util {
 
@@ -24,7 +24,11 @@ public class Util {
 		}
 		digest.reset();
 		final byte[] hash = digest.digest(string.getBytes());
-		return hash[0] + (hash[1] << 8) + (hash[2] << 16);
+		return
+                (0x000000ff & hash[0])
+                        | (0x0000ff00 & (hash[1] << 8))
+                        | (0x00ff0000 & (hash[2] << 16))
+                        | (0xff000000);
 	}
 
 	/**

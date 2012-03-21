@@ -1,9 +1,9 @@
 package net.avh4.framework.uilayer;
 
+import org.junit.Test;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.junit.Test;
 
 public class ColorTest {
 
@@ -21,6 +21,11 @@ public class ColorTest {
 	public void testGetBlue() {
 		assertThat(Color.getBlue(0xff3f7493), is(0x93));
 	}
+
+    @Test
+    public void testGetAlpha() throws Exception {
+        assertThat(Color.getAlpha(0x73020340), is(0x73));
+    }
 
 	@Test
 	public void testGetValue() {
