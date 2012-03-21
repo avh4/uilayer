@@ -1,23 +1,26 @@
 package net.avh4.framework.uilayer.android;
 
-import net.avh4.framework.uilayer.R;
-import net.avh4.framework.uilayer.UI;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
+import net.avh4.framework.uilayer.R;
+import net.avh4.framework.uilayer.UI;
+import net.avh4.framework.uilayer.scene.AndroidSceneRenderer;
 
 public class AndroidSceneRendererActivity extends Activity {
 
 	private UI mUi;
 
 	public AndroidSceneRendererActivity() {
-		mUi = null;
-	}
+        super();
+        mUi = null;
+    }
 
 	public AndroidSceneRendererActivity(final UI ui) {
-		mUi = ui;
-	}
+        super();
+        mUi = ui;
+    }
 
 	/** Called when the activity is first created. */
 	@Override

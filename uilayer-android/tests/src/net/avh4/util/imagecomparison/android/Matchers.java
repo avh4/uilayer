@@ -25,7 +25,13 @@ public class Matchers {
 				.getCallingTestMethodStackTraceElement();
 		final String methodName = trace.getMethodName();
 		final String className = StackUtils.getClass(trace).getSimpleName();
-		return looksLike(context,
-				String.format("%s.%s.png", className, methodName));
+        return looksLike(context,
+				String.format("%s__%s.png",
+                        toResourceName(className),
+                        toResourceName(methodName)));
 	}
+
+    private static String toResourceName(String methodName) {
+        return methodName.replaceAll("[A-Z]", "_$0").replaceFirst("^_", "").toLowerCase();
+    }
 }
