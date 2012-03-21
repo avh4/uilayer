@@ -38,6 +38,8 @@
   <modules>
     <module>uilayer-core</module>
     <module>uilayer-swing</module>
+    <module>uilayer-android</module>
+    <module>uilayer-android/tests</module>
     <module>uilayer-examples</module>
   </modules>
 
