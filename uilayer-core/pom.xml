@@ -48,6 +48,7 @@
             <groupId>net.avh4.util</groupId>
             <artifactId>imagecomparison</artifactId>
             <version>0.0.5</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
