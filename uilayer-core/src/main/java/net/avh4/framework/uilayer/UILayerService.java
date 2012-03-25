@@ -3,10 +3,13 @@ package net.avh4.framework.uilayer;
 
 public interface UILayerService {
 
-	void run(SceneCreator game, ClickReceiver receiver, KeyReceiver keyReceiver);
+    void run(SceneCreator game, ClickReceiver receiver, KeyReceiver keyReceiver);
 
-	int getImageWidth(String image);
+    int getImageWidth(String image);
 
-	int getImageHeight(String image);
+    int getImageHeight(String image);
 
+    int getFontHeight(Font font);
+
+    int measureText(Font font, String text);
 }

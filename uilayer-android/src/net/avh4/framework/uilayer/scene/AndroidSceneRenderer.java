@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.view.View;
+import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.UI;
 
 import static android.graphics.Paint.FontMetrics;
@@ -68,7 +70,7 @@ public class AndroidSceneRenderer extends View {
 
     private void drawComposite(Canvas canvas, CompositeSceneElement e) {
         canvas.translate(e.x, e.y);
-        for (final SceneElement object: e.getSceneElements()) {
+        for (final SceneElement object : e.getSceneElements()) {
             draw(canvas, object);
         }
         canvas.translate(-e.x, -e.y);
@@ -76,7 +78,7 @@ public class AndroidSceneRenderer extends View {
 
     private void drawLabel(final Canvas canvas, final SceneLabel e) {
         final Paint paint = loadColor(e.color);
-        loadFont(paint, e.font, e.fontSize);
+        loadFont(paint, e.font);
 
         final FontMetrics fontMetrics = paint.getFontMetrics();
         final float labelWidth = paint.measureText(e.text);
@@ -87,9 +89,9 @@ public class AndroidSceneRenderer extends View {
         canvas.drawText(e.text, x, y, paint);
     }
 
-    private void loadFont(Paint paint, String font, int fontSize) {
-        // TODO: load typeface
-        paint.setTextSize(fontSize);
+    private void loadFont(Paint paint, Font font) {
+        paint.setTypeface(Typeface.createFromAsset(getContext().getAssets(), font.getResourceName()));
+        paint.setTextSize(font.getSize());
     }
 
     private void drawLine(Canvas canvas, SceneLine e) {
@@ -109,29 +111,30 @@ public class AndroidSceneRenderer extends View {
 
     private void drawText(Canvas canvas, SceneText e) {
         final Paint paint = loadColor(e.color);
-        loadFont(paint, e.font, e.fontSize);
+        loadFont(paint, e.font);
 
-        final float lineHeight = -paint.getFontMetrics().top;
-        
+        final FontMetrics fontMetrics = paint.getFontMetrics();
+        final float lineHeight = -fontMetrics.ascent + fontMetrics.descent + fontMetrics.leading;
+
         float curX = e.x;
-        float curY = e.y + lineHeight;
-        
+        float curY = e.y + (-fontMetrics.ascent);
+
         final String[] words = e.text.split(" ");
-        
+
         for (final String word : words) {
             // Find out the width of the word.
-            final float wordWidth = paint.measureText(word + " ");
-            
+            final float wordWidth = paint.measureText(word);
+
             // If text exceeds the width, then move to next line.
             if (curX + wordWidth >= e.x + e.width) {
                 curY += lineHeight;
                 curX = e.x;
             }
-            
+
             canvas.drawText(word, curX, curY, paint);
 
             // Move over to the right for next word.
-            curX += wordWidth;
+            curX += paint.measureText(word + " ");
         }
     }
 
@@ -148,6 +151,4 @@ public class AndroidSceneRenderer extends View {
         paint.setColor(color);
         return paint;
     }
-
-
 }
