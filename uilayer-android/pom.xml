@@ -8,7 +8,7 @@
 
   <groupId>net.avh4.framework</groupId>
   <artifactId>uilayer-android</artifactId>
-  <version>1.0.6</version>
+  <version>1.0.7-SNAPSHOT</version>
   <packaging>apklib</packaging>
 
   <name>uilayer-android</name>
@@ -38,7 +38,7 @@
     <dependency>
       <groupId>net.avh4.framework</groupId>
       <artifactId>uilayer-core</artifactId>
-      <version>1.0.6</version>
+      <version>1.0.7-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
