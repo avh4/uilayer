@@ -35,6 +35,8 @@
       <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/combined-assets" />
       <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/combined-resources" />
       <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/extracted-dependencies" />
+      <excludeFolder url="file://$MODULE_DIR$/target/idea-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/idea-test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/javadoc-bundle-options" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
       <excludeFolder url="file://$MODULE_DIR$/target/surefire" />
@@ -43,6 +45,7 @@
       <excludeFolder url="file://$MODULE_DIR$/target/unpacked-embedded-jars" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.easymock:easymock:2.5.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.android:android:2.3.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-logging:commons-logging:1.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpclient:4.0.1" level="project" />
@@ -62,6 +65,7 @@
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: commons-io:commons-io:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-library:1.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.easymock:easymock:2.5.2" level="project" />
     <orderEntry type="jdk" jdkName="Android 2.3.3 Platform" jdkType="Android SDK" />
   </component>
 </module>
