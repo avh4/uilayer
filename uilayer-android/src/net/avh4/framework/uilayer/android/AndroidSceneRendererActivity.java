@@ -29,6 +29,11 @@ public class AndroidSceneRendererActivity extends Activity {
         ((AndroidUILayerService) UILayer.service).init(pico.getComponent(Context.class));
     }
 
+    public AndroidSceneRendererActivity(Class<? extends UI> uiClass) {
+        this();
+        pico.addComponent(uiClass);
+    }
+
     /**
      * Called when the activity is first created.
      */

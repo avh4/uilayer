@@ -36,6 +36,10 @@ public class AndroidSceneRendererActivityTest extends ActivityInstrumentationTes
 
         TouchUtils.clickView(this, activity.getWindow().getDecorView());
 
-        EasyMock.verify(ui);
+        try {
+            EasyMock.verify(ui);
+        } catch (AssertionError e) {
+            throw new RuntimeException("Verification of touch events failed.  Is the device's screen unlocked?", e);
+        }
     }
 }
