@@ -1,28 +1,32 @@
 package net.avh4.framework.uilayer.android;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.ImageView;
+import net.avh4.framework.data.android.AndroidDataStore;
 import net.avh4.framework.uilayer.R;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.scene.AndroidSceneRenderer;
+import org.picocontainer.DefaultPicoContainer;
+import org.picocontainer.MutablePicoContainer;
 
 public class AndroidSceneRendererActivity extends Activity {
 
     private UI ui;
     private AndroidSceneRenderer uiView;
+    protected final MutablePicoContainer pico;
 
     public AndroidSceneRendererActivity() {
-        this(null);
-    }
-
-    public AndroidSceneRendererActivity(final UI ui) {
         super();
-        ((AndroidUILayerService) UILayer.service).init(this);
-        this.ui = ui;
+        pico = new DefaultPicoContainer();
+        pico.addComponent(this);
+        pico.addComponent(AndroidDataStore.class);
+
+        ((AndroidUILayerService) UILayer.service).init(pico.getComponent(Context.class));
     }
 
     /**
@@ -32,7 +36,7 @@ public class AndroidSceneRendererActivity extends Activity {
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setUI(ui);
+        setUI(pico.getComponent(UI.class));
     }
 
     @Override

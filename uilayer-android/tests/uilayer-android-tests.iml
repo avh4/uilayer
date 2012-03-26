@@ -59,13 +59,13 @@
     <orderEntry type="module" module-name="uilayer-android" />
     <orderEntry type="module" module-name="uilayer-core" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: org.picocontainer:picocontainer:2.14.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.avh4.util:imagecomparison:0.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit-dep:4.8.2" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: commons-io:commons-io:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-library:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.easymock:easymock:2.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.picocontainer:picocontainer:2.14.1" level="project" />
     <orderEntry type="jdk" jdkName="Android 2.3.3 Platform" jdkType="Android SDK" />
   </component>
 </module>
