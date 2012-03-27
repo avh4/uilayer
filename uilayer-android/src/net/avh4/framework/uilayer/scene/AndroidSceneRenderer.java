@@ -127,8 +127,11 @@ public class AndroidSceneRenderer extends View {
 
             // If text exceeds the width, then move to next line.
             if (curX + wordWidth >= e.x + e.width) {
-                curY += lineHeight;
                 curX = e.x;
+                curY += lineHeight;
+                if (curY >= getHeight() + lineHeight) {
+                    return;
+                }
             }
 
             canvas.drawText(word, curX, curY, paint);
