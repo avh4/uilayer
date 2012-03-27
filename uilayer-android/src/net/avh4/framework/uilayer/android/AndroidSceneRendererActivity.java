@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.ImageView;
 import net.avh4.framework.data.android.AndroidDataStore;
+import net.avh4.framework.data.android.AndroidExternalStorage;
 import net.avh4.framework.uilayer.R;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
@@ -25,6 +26,7 @@ public class AndroidSceneRendererActivity extends Activity {
         pico = new DefaultPicoContainer();
         pico.addComponent(this);
         pico.addComponent(AndroidDataStore.class);
+        pico.addComponent(AndroidExternalStorage.class);
 
         ((AndroidUILayerService) UILayer.service).init(pico.getComponent(Context.class));
     }

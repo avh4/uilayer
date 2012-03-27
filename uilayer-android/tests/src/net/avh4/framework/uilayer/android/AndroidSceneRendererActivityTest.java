@@ -2,6 +2,8 @@ package net.avh4.framework.uilayer.android;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
+import net.avh4.framework.data.DataStore;
+import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
 import org.easymock.EasyMock;
@@ -41,5 +43,10 @@ public class AndroidSceneRendererActivityTest extends ActivityInstrumentationTes
         } catch (AssertionError e) {
             throw new RuntimeException("Verification of touch events failed.  Is the device's screen unlocked?", e);
         }
+    }
+
+    public void testDependencyInjectionWiring() {
+        assertNotNull(activity.pico.getComponent(DataStore.class));
+        assertNotNull(activity.pico.getComponent(ExternalStorage.class));
     }
 }
