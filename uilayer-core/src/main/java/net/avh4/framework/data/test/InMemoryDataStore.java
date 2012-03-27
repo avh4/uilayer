@@ -1,4 +1,6 @@
-package net.avh4.framework.data;
+package net.avh4.framework.data.test;
+
+import net.avh4.framework.data.DataStore;
 
 import java.util.HashMap;
 
@@ -8,7 +10,7 @@ import java.util.HashMap;
  */
 public class InMemoryDataStore implements DataStore {
     HashMap<String, String> map = new HashMap<String, String>();
-    
+
     @Override
     public void put(String key, String value) {
         map.put(key, value);
