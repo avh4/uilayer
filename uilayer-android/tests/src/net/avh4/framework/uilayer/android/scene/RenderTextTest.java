@@ -37,4 +37,9 @@ public class RenderTextTest extends RenderTestBase {
         scene.add(new SceneText(text, 100, 100, 300, font, Color.YELLOW));
         assertRenderingIsApproved();
     }
+
+    public void testNewlinesInText() throws Exception {
+        scene.add(new SceneText("Line /\nLine", 0, 0, 500, Font.PFENNIG, Color.YELLOW));
+        assertRenderingIsApproved();
+    }
 }

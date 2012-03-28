@@ -119,7 +119,7 @@ public class AndroidSceneRenderer extends View {
         float curX = e.x;
         float curY = e.y + (-fontMetrics.ascent);
 
-        final String[] words = e.text.split(" ");
+        final String[] words = e.text.replaceAll("\n", " ").split(" ");
 
         for (final String word : words) {
             // Find out the width of the word.
