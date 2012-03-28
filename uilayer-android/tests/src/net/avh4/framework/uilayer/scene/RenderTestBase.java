@@ -1,9 +1,8 @@
-package net.avh4.framework.uilayer.android.scene;
+package net.avh4.framework.uilayer.scene;
 
 import android.test.ActivityInstrumentationTestCase2;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.android.AndroidSceneRendererActivity;
-import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.util.imagecomparison.android.Matchers;
 import org.hamcrest.Matcher;
 

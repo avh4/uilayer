@@ -1,6 +1,7 @@
-package net.avh4.framework.uilayer.android.scene;
+package net.avh4.framework.uilayer.scene.testsuite;
 
 import net.avh4.framework.uilayer.Color;
+import net.avh4.framework.uilayer.scene.RenderTestBase;
 import net.avh4.framework.uilayer.scene.SceneLine;
 
 public class RenderLineTest extends RenderTestBase {

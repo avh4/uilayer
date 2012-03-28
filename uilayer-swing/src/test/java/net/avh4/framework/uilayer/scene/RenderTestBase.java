@@ -1,29 +1,32 @@
-package net.avh4.framework.uilayer.swing.scene;
+package net.avh4.framework.uilayer.scene;
+
+import junit.framework.TestCase;
+import net.avh4.framework.uilayer.SceneCreator;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+
+import java.io.IOException;
 
 import static net.avh4.util.imagecomparison.Matchers.isApproved;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.stub;
 
-import java.io.IOException;
-
-import net.avh4.framework.uilayer.SceneCreator;
-import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
-
-import org.junit.Before;
-
-public abstract class RenderTestBase {
+public abstract class RenderTestBase extends TestCase {
 
 	private SceneCreator mockCreator;
 	protected SwingSceneRenderer subject;
 	protected Scene scene;
 
-	@Before
 	public void setUp() {
 		scene = new Scene();
 		mockCreator = mock(SceneCreator.class);
-		stub(mockCreator.getScene()).toReturn(scene);
+		stub(mockCreator.getScene()).toAnswer(new Answer<Scene>() {
+            @Override
+            public Scene answer(InvocationOnMock invocation) throws Throwable {
+                return scene;
+            }
+        });
 		subject = new SwingSceneRenderer(mockCreator);
 	}
 

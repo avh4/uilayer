@@ -1,7 +1,8 @@
-package net.avh4.framework.uilayer.android.scene;
+package net.avh4.framework.uilayer.scene.testsuite;
 
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.framework.uilayer.scene.RenderTestBase;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.framework.uilayer.scene.SceneRect;
 import net.avh4.framework.uilayer.scene.SceneText;
