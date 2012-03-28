@@ -57,6 +57,12 @@
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.avh4.framework</groupId>
+            <artifactId>uilayer-testsuite</artifactId>
+            <version>1.0.7-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

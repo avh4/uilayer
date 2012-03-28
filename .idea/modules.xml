@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/uilayer-core/uilayer-core.iml" filepath="$PROJECT_DIR$/uilayer-core/uilayer-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-examples/uilayer-examples.iml" filepath="$PROJECT_DIR$/uilayer-examples/uilayer-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-swing/uilayer-swing.iml" filepath="$PROJECT_DIR$/uilayer-swing/uilayer-swing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uilayer-testsuite/uilayer-testsuite.iml" filepath="$PROJECT_DIR$/uilayer-testsuite/uilayer-testsuite.iml" />
     </modules>
   </component>
 </project>

@@ -1,10 +1,7 @@
-package net.avh4.framework.uilayer.android.scene;
+package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.scene.ScenePlaceholder;
-import net.avh4.framework.uilayer.scene.SceneRect;
-import net.avh4.framework.uilayer.scene.SceneText;
 
 public class RenderTextTest extends RenderTestBase {
 

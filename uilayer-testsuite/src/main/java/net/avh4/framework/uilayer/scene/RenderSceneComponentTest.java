@@ -1,17 +1,16 @@
-package net.avh4.framework.uilayer.swing.scene;
+package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.scene.CompositeSceneElement;
+import net.avh4.framework.uilayer.scene.RenderTestBase;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneElement;
 import net.avh4.framework.uilayer.scene.SceneOval;
 import net.avh4.framework.uilayer.scene.SceneRect;
 
-import org.junit.Test;
-
 public class RenderSceneComponentTest extends RenderTestBase {
 
-	/**
+    /**
 	 * This component draws a white square with a red boarder and blue circle.
 	 */
 	private static class TestComponent extends CompositeSceneElement {
@@ -33,19 +32,16 @@ public class RenderSceneComponentTest extends RenderTestBase {
 		}
 	}
 
-	@Test
 	public void testComponent() throws Exception {
 		scene.add(new TestComponent(0, 0, 100, 100));
 		assertRenderingIsApproved();
 	}
 
-	@Test
 	public void testTranslatedComponent() throws Exception {
 		scene.add(new TestComponent(300, 400, 100, 100));
 		assertRenderingIsApproved();
 	}
 
-	@Test
 	public void testTranslationIsResetAfterDrawingComponent() throws Exception {
 		scene.add(new SceneRect(10, 10, 10, 10, Color.YELLOW));
 		scene.add(new TestComponent(300, 400, 100, 100));
