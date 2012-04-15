@@ -31,7 +31,7 @@ public class FontTest {
 
     @Test
     public void getHeight() throws Exception {
-        assertThat(subject.getHeight(), is(20));
+        assertThat(subject.getLineHeight(), is(20));
     }
 
     @Test

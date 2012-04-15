@@ -22,7 +22,7 @@ public class Font {
         return service.measureText(this, text);
     }
 
-    public int getHeight() {
+    public int getLineHeight() {
         return service.getFontHeight(this);
     }
 

@@ -33,7 +33,7 @@ public class RenderTextTest extends RenderTestBase {
         final String text = "Pfennig";
         final Font font = Font.PFENNIG.size(32);
         final int width = font.measureText(text);
-        final int height = font.getHeight();
+        final int height = font.getLineHeight();
         scene.add(new SceneRect(100, 100, width, height, Color.GREY));
         scene.add(new SceneText(text, 100, 100, 300, font, Color.YELLOW));
         assertRenderingIsApproved();
