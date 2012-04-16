@@ -33,7 +33,7 @@ public class AndroidSceneRendererActivityTest extends ActivityInstrumentationTes
     }
 
     public void testDispatchClick() {
-        ui.click(360, 592);
+        ui.click(360, 542);
         EasyMock.replay(ui);
 
         TouchUtils.clickView(this, activity.getWindow().getDecorView());

@@ -48,10 +48,10 @@ public class Scene implements Iterable<SceneElement> {
         return children.iterator();
     }
 
-    public SceneElement findSceneElement(String what) {
+    public <T extends SceneElement> T findSceneElement(String what) {
         for (SceneElement child : children) {
             if (child.getName().equals(what)) {
-                return child;
+                return (T) child;
             }
         }
         return null;
