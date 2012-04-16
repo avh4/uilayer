@@ -2,7 +2,8 @@ package net.avh4.framework.uilayer;
 
 public class Font {
 
-    static UILayerService service = UILayer.service;
+    /** This should only be set directly for testing */
+    public static UILayerService service = UILayer.service;
 
 	public static final Font PFENNIG = new Font("Pfennig.ttf");
 
