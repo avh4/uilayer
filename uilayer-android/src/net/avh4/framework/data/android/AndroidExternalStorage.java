@@ -8,10 +8,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 public class AndroidExternalStorage implements ExternalStorage {
+
+    private final File dir;
+
+    public AndroidExternalStorage() {
+        dir = Environment.getExternalStorageDirectory();
+    }
+
     public String getString(String filename) {
-        final File dir = Environment.getExternalStorageDirectory();
         final File file = new File(dir, filename);
 
         try {
@@ -23,5 +31,10 @@ public class AndroidExternalStorage implements ExternalStorage {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<String> getFiles() {
+        return Arrays.asList(dir.list());
     }
 }
