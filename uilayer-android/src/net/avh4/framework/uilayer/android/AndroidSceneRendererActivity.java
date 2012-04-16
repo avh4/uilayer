@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.android;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
@@ -20,6 +21,7 @@ public class AndroidSceneRendererActivity extends Activity {
     private UI ui;
     private AndroidSceneRenderer uiView;
     protected final MutablePicoContainer pico;
+    private int statusBarHeight;
 
     public AndroidSceneRendererActivity() {
         super();
@@ -49,7 +51,7 @@ public class AndroidSceneRendererActivity extends Activity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            ui.click((int) event.getX(), (int) event.getY());
+            ui.click((int) event.getX(), (int) event.getY() - getStatusBarHeight());
             uiView.invalidate();
         }
         return true;
@@ -60,7 +62,8 @@ public class AndroidSceneRendererActivity extends Activity {
         runOnUiThread(new Runnable() {
             public void run() {
                 if (AndroidSceneRendererActivity.this.ui != null) {
-                    uiView = new AndroidSceneRenderer(AndroidSceneRendererActivity.this, AndroidSceneRendererActivity.this.ui);
+                    uiView = new AndroidSceneRenderer(AndroidSceneRendererActivity.this,
+                            AndroidSceneRendererActivity.this.ui);
                     setContentView(uiView);
                 } else {
                     final ImageView placeholder = new ImageView(
@@ -72,4 +75,13 @@ public class AndroidSceneRendererActivity extends Activity {
         });
     }
 
+    private int getStatusBarHeight() {
+        final Rect rect= new Rect();
+        getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+        final int statusBarHeight= rect.top;
+        if (statusBarHeight == 0) {
+            throw new RuntimeException("Too early to call getStatusBarHeight(). The Window has not been laid out yet.");
+        }
+        return statusBarHeight;
+    }
 }
