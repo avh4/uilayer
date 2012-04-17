@@ -21,6 +21,9 @@ public class ClasspathResourcesExternalStorage implements ExternalStorage {
     }
 
     public String getString(String filename) {
+        if (!allowedFiles.contains(filename)) {
+            return null;
+        }
         final String resourcePath = root + "/" + filename;
         final InputStream is = ClassLoader.getSystemResourceAsStream(resourcePath);
         if (is == null) {

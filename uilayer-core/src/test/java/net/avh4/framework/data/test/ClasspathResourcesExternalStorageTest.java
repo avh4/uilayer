@@ -10,6 +10,8 @@ import java.util.Arrays;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 
 public class ClasspathResourcesExternalStorageTest {
 
@@ -17,7 +19,7 @@ public class ClasspathResourcesExternalStorageTest {
 
     @Before
     public void setUp() throws Exception {
-        subject = new ClasspathResourcesExternalStorage("doesnt_matter");
+        subject = new ClasspathResourcesExternalStorage("ClasspathResourcesExternalStorageTest");
     }
 
     @Test
@@ -34,6 +36,18 @@ public class ClasspathResourcesExternalStorageTest {
                 "Treasure Island.txt",
                 "The Demo Book.txt"
         )));
+    }
+
+    @Test
+    public void getString_forFileThatIsNotAllowed_shouldReturnNull() throws Exception {
+        assertThat(subject.getString("Romeo and Juliet.txt"), nullValue());
+    }
+
+    @Test
+    public void getString_forAllowedFile_shouldFilesContents() throws Exception {
+        subject.allowFile("Romeo and Juliet.txt");
+
+        assertThat(subject.getString("Romeo and Juliet.txt"), startsWith("Romeo and Juliet\n\nACT I\n"));
     }
 
     private Matcher<Iterable<?>> isEmpty() {

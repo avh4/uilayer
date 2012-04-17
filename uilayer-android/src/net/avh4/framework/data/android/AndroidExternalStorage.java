@@ -27,9 +27,9 @@ public class AndroidExternalStorage implements ExternalStorage {
             final String string = IOUtils.toString(fis);
             return string;
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            return null;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return null;
         }
     }
 
