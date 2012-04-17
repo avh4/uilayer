@@ -61,6 +61,8 @@ public class SwingSceneRenderer extends JComponent {
     private void draw(final Graphics g, final SceneElement e) {
         if (e instanceof CompositeSceneElement) {
             drawComposite(g, (CompositeSceneElement) e);
+        } else if (e instanceof SceneCenteredText) {
+            drawCenteredText(g, (SceneCenteredText) e);
         } else if (e instanceof SceneText) {
             drawText(g, (SceneText) e);
         } else if (e instanceof ScenePlaceholder) {
@@ -87,6 +89,18 @@ public class SwingSceneRenderer extends JComponent {
             draw(g, object);
         }
         g.translate(-e.x, -e.y);
+    }
+
+    private void drawCenteredText(Graphics g, SceneCenteredText e) {
+        g.setColor(loadColor(e.color));
+        g.setFont(SwingUILayerService.loadFont(e.font));
+
+        final FontMetrics fm = g.getFontMetrics();
+        final int ascent = fm.getAscent();
+        final int x = e.x + (e.width - fm.stringWidth(e.text)) / 2;
+        final int y = e.y + ascent + (e.height - ascent - fm.getDescent()) / 2;
+
+        g.drawString(e.text, x, y);
     }
 
     private void drawLine(final Graphics g, final SceneLine e) {

@@ -50,6 +50,8 @@ public class AndroidSceneRenderer extends View {
     private void draw(Canvas canvas, SceneElement e) {
         if (e instanceof CompositeSceneElement) {
             drawComposite(canvas, (CompositeSceneElement) e);
+        } else if (e instanceof SceneCenteredText) {
+            drawCenteredText(canvas, (SceneCenteredText) e);
         } else if (e instanceof ScenePlaceholder) {
             drawPlaceholder(canvas, (ScenePlaceholder) e);
         } else if (e instanceof SceneLabel) {
@@ -63,8 +65,8 @@ public class AndroidSceneRenderer extends View {
         } else if (e instanceof SceneText) {
             drawText(canvas, (SceneText) e);
         } else {
-            final Paint paint = loadColor(0xffffffff);
-            canvas.drawRect(e.x, e.y, 10, 10, paint);
+            throw new RuntimeException("Don't know how to render "
+                    + e.getClass().getSimpleName());
         }
     }
 
@@ -74,6 +76,18 @@ public class AndroidSceneRenderer extends View {
             draw(canvas, object);
         }
         canvas.translate(-e.x, -e.y);
+    }
+
+    private void drawCenteredText(Canvas canvas, SceneCenteredText e) {
+        final Paint paint = loadColor(e.color);
+        loadFont(paint, e.font);
+
+        final FontMetrics fm = paint.getFontMetrics();
+        final float ascent = -fm.ascent;
+        final float x = e.x + (e.width - paint.measureText(e.text)) / 2;
+        final float y = e.y + ascent + (e.height - ascent - fm.descent) / 2;
+
+        canvas.drawText(e.text, x, y, paint);
     }
 
     private void drawLabel(final Canvas canvas, final SceneLabel e) {
@@ -113,11 +127,11 @@ public class AndroidSceneRenderer extends View {
         final Paint paint = loadColor(e.color);
         loadFont(paint, e.font);
 
-        final FontMetrics fontMetrics = paint.getFontMetrics();
-        final float lineHeight = -fontMetrics.ascent + fontMetrics.descent + fontMetrics.leading;
+        final FontMetrics fm = paint.getFontMetrics();
+        final float lineHeight = -fm.ascent + fm.descent + fm.leading;
 
         float curX = e.x;
-        float curY = e.y + (-fontMetrics.ascent);
+        float curY = e.y + (-fm.ascent);
 
         final String[] words = e.text.replaceAll("\n", " ").split(" ");
 
