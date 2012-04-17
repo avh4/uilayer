@@ -20,4 +20,8 @@ public class InMemoryDataStore implements DataStore {
     public String get(String key) {
         return map.get(key);
     }
+
+    public void clear() {
+        map.clear();
+    }
 }
