@@ -13,5 +13,4 @@ public class RenderLabelTest extends RenderTestBase {
                 Color.YELLOW));
         assertRenderingIsApproved();
     }
-
 }

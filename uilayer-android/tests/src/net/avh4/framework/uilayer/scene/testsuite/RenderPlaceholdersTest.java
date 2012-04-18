@@ -18,5 +18,4 @@ public class RenderPlaceholdersTest extends RenderTestBase {
         scene.add(new ScenePlaceholder("Box", 200, 200, 100, 100));
         assertRenderingIsApproved();
     }
-
 }
