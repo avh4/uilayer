@@ -7,8 +7,9 @@ public abstract class SceneElement {
 	protected int width;
 	protected int height;
 	protected final String name;
+    protected boolean visible = true;
 
-	public SceneElement(final String name, final int x, final int y,
+    public SceneElement(final String name, final int x, final int y,
 			final int width, final int height) {
 		this.x = x;
 		this.y = y;
@@ -62,5 +63,13 @@ public abstract class SceneElement {
                 ", width=" + width +
                 ", height=" + height +
                 '}';
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
+    public boolean isVisible() {
+        return visible;
     }
 }

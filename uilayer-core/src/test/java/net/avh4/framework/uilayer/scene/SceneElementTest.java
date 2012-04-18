@@ -1,11 +1,11 @@
 package net.avh4.framework.uilayer.scene;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.junit.Before;
-import org.junit.Test;
 
 public class SceneElementTest {
 
@@ -51,7 +51,16 @@ public class SceneElementTest {
 
 		assertThat(subject.getX(), is(NEW_X));
 		assertThat(subject.getY(), is(NEW_Y));
-
 	}
 
+    @Test
+    public void testIsVisible() throws Exception {
+        assertThat(subject.isVisible(), is(true));
+    }
+
+    @Test
+    public void testSetVisible() throws Exception {
+        subject.setVisible(false);
+        assertThat(subject.isVisible(), is(false));
+    }
 }

@@ -19,4 +19,10 @@ public class RenderPlaceholdersTest extends RenderTestBase {
         assertRenderingIsApproved();
     }
 
+    public void testHiddenElement() throws Exception {
+        final ScenePlaceholder hidden = new ScenePlaceholder("Hidden", 100, 100, 200, 200);
+        hidden.setVisible(false);
+        scene.add(hidden);
+        assertRenderingIsApproved();
+    }
 }

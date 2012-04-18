@@ -59,7 +59,9 @@ public class SwingSceneRenderer extends JComponent {
     }
 
     private void draw(final Graphics g, final SceneElement e) {
-        if (e instanceof CompositeSceneElement) {
+        if (!e.isVisible()) {
+            return;
+        } else if (e instanceof CompositeSceneElement) {
             drawComposite(g, (CompositeSceneElement) e);
         } else if (e instanceof SceneCenteredText) {
             drawCenteredText(g, (SceneCenteredText) e);
