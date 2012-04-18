@@ -87,9 +87,9 @@ public class SceneRenderer {
     }
 
     private void drawCenteredText(SceneCenteredText e) {
-        final int ascent = fm.getAscent(e.font);
-        final int x = e.x + (e.width - fm.stringWidth(e.font, e.text)) / 2;
-        final int y = e.y + ascent + (e.height - ascent - fm.getDescent(e.font)) / 2;
+        final float ascent = fm.getAscent(e.font);
+        final float x = e.x + (e.width - fm.stringWidth(e.font, e.text)) / 2;
+        final float y = e.y + ascent + (e.height - ascent - fm.getDescent(e.font)) / 2;
 
         g.drawText(e.text, x, y, e.font, e.color);
     }
@@ -120,21 +120,24 @@ public class SceneRenderer {
     private void drawText(final SceneText e) {
         // From
         // http://stackoverflow.com/questions/400566/full-justification-with-a-java-graphics-drawstring-replacement
-        final int lineHeight = fm.getLineHeight(e.font);
+        final float lineHeight = fm.getLineHeight(e.font);
 
         int curX = e.x;
-        int curY = e.y + fm.getAscent(e.font);
+        float curY = e.y + fm.getAscent(e.font);
 
-        final String[] words = e.text.split(" ");
+        final String[] words = e.text.replaceAll("\n", " ").split(" ");
 
         for (final String word : words) {
             // Find out the width of the word.
-            final int wordWidth = fm.stringWidth(e.font, word);
+            final float wordWidth = fm.stringWidth(e.font, word);
 
             // If text exceeds the width, then move to next line.
             if (curX + wordWidth >= e.x + e.width) {
                 curY += lineHeight;
                 curX = e.x;
+                if (curY >= getHeight() + lineHeight) {
+                    return;
+                }
             }
 
             g.drawText(word, curX, curY, e.font, e.color);
@@ -145,10 +148,10 @@ public class SceneRenderer {
     }
 
     private void drawLabel(final SceneLabel e) {
-        final int labelWidth = fm.stringWidth(e.font, e.text);
+        final float labelWidth = fm.stringWidth(e.font, e.text);
 
-        final int x = e.x - labelWidth / 2;
-        final int y = e.y + fm.getLineHeight(e.font);
+        final float x = e.x - labelWidth / 2;
+        final float y = e.y + fm.getLineHeight(e.font);
 
         g.drawText(e.text, x, y, e.font, e.color);
     }

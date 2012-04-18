@@ -15,10 +15,10 @@ public class SwingGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void drawText(String text, int leftX, int baselineY, Font font, int argbColor) {
+    public void drawText(String text, float leftX, float baselineY, Font font, int argbColor) {
         g.setColor(loadColor(argbColor));
         g.setFont(SwingUILayerService.loadFont(font));
-        g.drawString(text, leftX, baselineY);
+        g.drawString(text, (int) leftX, (int) baselineY);
     }
 
     @Override
@@ -27,9 +27,9 @@ public class SwingGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void drawLine(int leftX, int topY, int rightX, int bottomY, int argbColor) {
+    public void drawLine(int startX, int startY, int stopX, int stopY, int argbColor) {
         g.setColor(loadColor(argbColor));
-        g.drawLine(leftX, topY, rightX, bottomY);
+        g.drawLine(startX, startY, stopX, stopY);
     }
 
     @Override

@@ -9,22 +9,22 @@ public class SwingFontMetricsService implements FontMetricsService {
     private Graphics g;
 
     @Override
-    public int getAscent(Font font) {
+    public float getAscent(Font font) {
         return getFontMetrics(font).getAscent();
     }
 
     @Override
-    public int stringWidth(Font font, String text) {
+    public float stringWidth(Font font, String text) {
         return getFontMetrics(font).stringWidth(text);
     }
 
     @Override
-    public int getDescent(Font font) {
+    public float getDescent(Font font) {
         return getFontMetrics(font).getDescent();
     }
 
     @Override
-    public int getLineHeight(Font font) {
+    public float getLineHeight(Font font) {
         return getFontMetrics(font).getHeight();
     }
 

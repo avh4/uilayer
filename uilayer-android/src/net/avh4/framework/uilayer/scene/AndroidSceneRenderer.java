@@ -2,170 +2,29 @@ package net.avh4.framework.uilayer.scene;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Typeface;
 import android.view.View;
-import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.UI;
-
-import static android.graphics.Paint.FontMetrics;
+import net.avh4.framework.uilayer.SceneCreator;
 
 public class AndroidSceneRenderer extends View {
+    private final AndroidGraphicsOperations graphicsOperations;
+    private final SceneRenderer renderer;
 
-    private final UI mUi;
-
-    public AndroidSceneRenderer(final Context context, final UI ui) {
+    public AndroidSceneRenderer(final Context context, final SceneCreator creator) {
         super(context);
-        if (ui == null) {
-            throw new RuntimeException("UI must not be null");
+        if (creator == null) {
+            throw new RuntimeException("SceneCreator must not be null");
         }
-        mUi = ui;
+        final AndroidFontMetricsService fm = new AndroidFontMetricsService(context);
+        graphicsOperations = new AndroidGraphicsOperations(context);
+        renderer = new SceneRenderer(creator, graphicsOperations, fm);
     }
 
     @Override
     protected void onDraw(final Canvas canvas) {
-        final Scene s = mUi.getScene();
-        final Paint paint = new Paint();
-
-        if (s == null) {
-            paint.setColor(Color.GRAY);
-            canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
-            paint.setColor(Color.BLACK);
-            canvas.drawText("(No scene)", 0, 20, paint);
-            return;
+        synchronized (graphicsOperations) {
+            graphicsOperations.setCanvas(canvas);
+            renderer.render();
+            graphicsOperations.setCanvas(null);
         }
-        final int height = s.getHeight();
-        final int width = s.getWidth();
-
-        paint.setColor(Color.BLACK);
-        canvas.drawRect(0, 0, width, height, paint);
-
-        for (final SceneElement object : s) {
-            draw(canvas, object);
-        }
-    }
-
-    private void draw(Canvas canvas, SceneElement e) {
-        if (e instanceof CompositeSceneElement) {
-            drawComposite(canvas, (CompositeSceneElement) e);
-        } else if (e instanceof SceneCenteredText) {
-            drawCenteredText(canvas, (SceneCenteredText) e);
-        } else if (e instanceof ScenePlaceholder) {
-            drawPlaceholder(canvas, (ScenePlaceholder) e);
-        } else if (e instanceof SceneLabel) {
-            drawLabel(canvas, (SceneLabel) e);
-        } else if (e instanceof SceneLine) {
-            drawLine(canvas, (SceneLine) e);
-        } else if (e instanceof SceneOval) {
-            drawOval(canvas, (SceneOval) e);
-        } else if (e instanceof SceneRect) {
-            drawRect(canvas, (SceneRect) e);
-        } else if (e instanceof SceneText) {
-            drawText(canvas, (SceneText) e);
-        } else {
-            throw new RuntimeException("Don't know how to render "
-                    + e.getClass().getSimpleName());
-        }
-    }
-
-    private void drawComposite(Canvas canvas, CompositeSceneElement e) {
-        canvas.translate(e.x, e.y);
-        for (final SceneElement object : e.getSceneElements()) {
-            draw(canvas, object);
-        }
-        canvas.translate(-e.x, -e.y);
-    }
-
-    private void drawCenteredText(Canvas canvas, SceneCenteredText e) {
-        final Paint paint = loadColor(e.color);
-        loadFont(paint, e.font);
-
-        final FontMetrics fm = paint.getFontMetrics();
-        final float ascent = -fm.ascent;
-        final float x = e.x + (e.width - paint.measureText(e.text)) / 2;
-        final float y = e.y + ascent + (e.height - ascent - fm.descent) / 2;
-
-        canvas.drawText(e.text, x, y, paint);
-    }
-
-    private void drawLabel(final Canvas canvas, final SceneLabel e) {
-        final Paint paint = loadColor(e.color);
-        loadFont(paint, e.font);
-
-        final FontMetrics fontMetrics = paint.getFontMetrics();
-        final float labelWidth = paint.measureText(e.text);
-
-        final float x = e.x - labelWidth / 2;
-        final float y = e.y + Math.abs(fontMetrics.top);
-
-        canvas.drawText(e.text, x, y, paint);
-    }
-
-    private void loadFont(Paint paint, Font font) {
-        paint.setTypeface(Typeface.createFromAsset(getContext().getAssets(), font.getResourceName()));
-        paint.setTextSize(font.getSize());
-    }
-
-    private void drawLine(Canvas canvas, SceneLine e) {
-        final Paint color = loadColor(e.color);
-        canvas.drawLine(e.x1, e.y1, e.x2, e.y2, color);
-    }
-
-    private void drawRect(Canvas canvas, SceneRect e) {
-        final Paint color = loadColor(e.color);
-        canvas.drawRect(e.x, e.y, e.x + e.width, e.y + e.height, color);
-    }
-
-    private void drawOval(Canvas canvas, SceneOval e) {
-        final Paint color = loadColor(e.color);
-        canvas.drawOval(new RectF(e.x, e.y, e.x + e.width, e.y + e.height), color);
-    }
-
-    private void drawText(Canvas canvas, SceneText e) {
-        final Paint paint = loadColor(e.color);
-        loadFont(paint, e.font);
-
-        final FontMetrics fm = paint.getFontMetrics();
-        final float lineHeight = -fm.ascent + fm.descent + fm.leading;
-
-        float curX = e.x;
-        float curY = e.y + (-fm.ascent);
-
-        final String[] words = e.text.replaceAll("\n", " ").split(" ");
-
-        for (final String word : words) {
-            // Find out the width of the word.
-            final float wordWidth = paint.measureText(word);
-
-            // If text exceeds the width, then move to next line.
-            if (curX + wordWidth >= e.x + e.width) {
-                curX = e.x;
-                curY += lineHeight;
-                if (curY >= getHeight() + lineHeight) {
-                    return;
-                }
-            }
-
-            canvas.drawText(word, curX, curY, paint);
-
-            // Move over to the right for next word.
-            curX += paint.measureText(word + " ");
-        }
-    }
-
-    public void drawPlaceholder(final Canvas canvas, final ScenePlaceholder e) {
-        final int MARGIN = 5;
-        final Paint color = loadColor(e.color);
-        final Paint textColor = loadColor(e.textColor);
-        canvas.drawRect(e.x, e.y, e.x + e.width, e.y + e.height, color);
-        canvas.drawText(e.name, e.x + MARGIN, e.y + e.height - MARGIN, textColor);
-    }
-
-    private Paint loadColor(int color) {
-        final Paint paint = new Paint();
-        paint.setColor(color);
-        return paint;
     }
 }

@@ -5,11 +5,11 @@ import net.avh4.framework.uilayer.Font;
 public interface GraphicsOperations {
     void drawRect(int leftX, int topY, int width, int height, int argbColor);
 
-    void drawText(String text, int leftX, int baselineY, Font font, int argbColor);
+    void drawText(String text, float leftX, float baselineY, Font font, int argbColor);
 
     void translate(int deltaX, int deltaY);
 
-    void drawLine(int leftX, int topY, int rightX, int bottomY, int argbColor);
+    void drawLine(int startX, int startY, int stopX, int stopY, int argbColor);
 
     void drawOval(int leftX, int topY, int width, int height, int argbColor);
 

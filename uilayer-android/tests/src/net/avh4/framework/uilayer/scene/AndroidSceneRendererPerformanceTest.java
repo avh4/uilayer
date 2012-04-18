@@ -18,7 +18,7 @@ public class AndroidSceneRendererPerformanceTest extends InstrumentationTestCase
     protected void setUp() throws Exception {
         super.setUp();
         scene = new Scene();
-        UI ui = EasyMock.createMock(UI.class);
+        final UI ui = EasyMock.createMock(UI.class);
         EasyMock.expect(ui.getScene()).andStubReturn(scene);
         EasyMock.replay(ui);
         subject = new AndroidSceneRenderer(getInstrumentation().getTargetContext(), ui);
@@ -26,7 +26,7 @@ public class AndroidSceneRendererPerformanceTest extends InstrumentationTestCase
 
     public void testSceneTextPerformance() throws Exception {
         final String stringOfAThousandWords = makeStringOfAThousandWords();
-        scene.add(new SceneText(stringOfAThousandWords, 0, 0, 720, Font.PFENNIG, Color.WHITE));
+        scene.add(new SceneText(stringOfAThousandWords, 0, 0, 720, Font.PFENNIG.size(42), Color.WHITE));
 
         assertThat(measureRenderingTimeUnits(), lessThan(100 * TIME_TO_DRAW_TEXT));
     }

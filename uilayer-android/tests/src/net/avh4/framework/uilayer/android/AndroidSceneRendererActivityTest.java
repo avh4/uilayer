@@ -21,8 +21,8 @@ public class AndroidSceneRendererActivityTest extends ActivityInstrumentationTes
     public void setUp() throws Exception {
         super.setUp();
 
-        ui = EasyMock.createMock(UI.class);
-        EasyMock.expect(ui.getScene()).andStubReturn(null);
+        ui = EasyMock.createNiceMock(UI.class);
+        EasyMock.replay(ui);
 
         activity = getActivity();
         activity.setUI(ui);
@@ -33,6 +33,7 @@ public class AndroidSceneRendererActivityTest extends ActivityInstrumentationTes
     }
 
     public void testDispatchClick() {
+        EasyMock.reset(ui);
         ui.click(360, 542);
         EasyMock.replay(ui);
 
