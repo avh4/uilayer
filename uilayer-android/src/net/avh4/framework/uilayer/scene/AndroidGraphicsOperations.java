@@ -4,12 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.Typeface;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.framework.uilayer.android.TypefaceCache;
 
 public class AndroidGraphicsOperations implements GraphicsOperations {
     private final Context context;
     private Canvas canvas;
+    private static final TypefaceCache typefaceCache = new TypefaceCache();
 
     public AndroidGraphicsOperations(Context context) {
         this.context = context;
@@ -52,7 +53,7 @@ public class AndroidGraphicsOperations implements GraphicsOperations {
     }
 
     public static void loadFont(Context context, Paint paint, Font font) {
-        paint.setTypeface(Typeface.createFromAsset(context.getAssets(), font.getResourceName()));
+        paint.setTypeface(typefaceCache.get(context, font.getResourceName()));
         paint.setTextSize(font.getSize());
     }
 
