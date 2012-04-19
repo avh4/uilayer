@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class Scene implements Iterable<SceneElement> {
 
     private final ArrayList<SceneElement> children = new ArrayList<SceneElement>();
-    protected final String title;
+    protected String title;
     private int width = 800;
     private int height = 600;
 
@@ -55,5 +55,9 @@ public class Scene implements Iterable<SceneElement> {
             }
         }
         return null;
+    }
+
+    public void setTitle(String newTitle) {
+        title = newTitle;
     }
 }

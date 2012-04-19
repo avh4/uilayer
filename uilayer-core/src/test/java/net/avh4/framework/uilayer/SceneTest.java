@@ -33,6 +33,13 @@ public class SceneTest {
 		assertThat(subject.getTitle(), is("My Title"));
 	}
 
+    @Test
+    public void testSetTitle() throws Exception {
+        final Scene subject = new Scene("Original Title");
+        subject.setTitle("New Title");
+        assertThat(subject.getTitle(), is("New Title"));
+    }
+
 	@Test
 	public void testCanAddPlaceholder() {
 		subject.add(new ScenePlaceholder("Item 1", 0, 0, 800, 600));
