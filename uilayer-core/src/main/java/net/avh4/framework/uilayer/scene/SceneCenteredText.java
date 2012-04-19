@@ -8,7 +8,7 @@ public class SceneCenteredText extends SceneElement {
     protected final int color;
 
     public SceneCenteredText(String text, int x, int y, int width, int height, Font font, int color) {
-        super(null, x, y, width, height);
+        super(text, x, y, width, height);
         this.text = text;
         this.font = font;
         this.color = color;
