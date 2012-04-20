@@ -52,7 +52,7 @@ public class SceneRenderer {
     }
 
     private void draw(final SceneElement e) {
-        if (!e.isVisible()) {
+        if (e.isHidden()) {
             return;
         } else if (e instanceof CompositeSceneElement) {
             drawComposite((CompositeSceneElement) e);

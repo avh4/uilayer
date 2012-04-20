@@ -54,13 +54,13 @@ public class SceneElementTest {
 	}
 
     @Test
-    public void testIsVisible() throws Exception {
-        assertThat(subject.isVisible(), is(true));
+    public void testIsHidden() throws Exception {
+        assertThat(subject.isHidden(), is(false));
     }
 
     @Test
-    public void testSetVisible() throws Exception {
-        subject.setVisible(false);
-        assertThat(subject.isVisible(), is(false));
+    public void testSetHidden() throws Exception {
+        subject.setHidden(true);
+        assertThat(subject.isHidden(), is(true));
     }
 }
