@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Maven: dexmaker:dexmaker:20120305">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/uilayer-android/tests/libs/dexmaker20120305.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

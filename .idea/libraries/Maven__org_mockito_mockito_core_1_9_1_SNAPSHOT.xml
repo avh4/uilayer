@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Maven: org.mockito:mockito-core:1.9.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/uilayer-android/tests/libs/mockito-core-1.9.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
