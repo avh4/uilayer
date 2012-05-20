@@ -57,7 +57,11 @@ public class Scene implements Iterable<SceneElement> {
         return null;
     }
 
-    public void setTitle(String newTitle) {
+	public <T> T findSceneElement(Class<T> elementType, String what) {
+		return (T) findSceneElement(what);
+	}
+
+	public void setTitle(String newTitle) {
         title = newTitle;
     }
 }

@@ -68,4 +68,15 @@ public class SceneTest {
 
         assertThat(subject.findSceneElement("Needle"), sameInstance((SceneElement) element));
     }
+
+	@Test
+	public void findSceneElement_shouldReturnRequestedType() throws Exception {
+		final ScenePlaceholder element = new ScenePlaceholder("Needle", 0, 0, 0,
+				0);
+		subject.add(element);
+
+		final ScenePlaceholder actual = subject
+				.findSceneElement(ScenePlaceholder.class, "Needle");
+		assertThat(actual, sameInstance(element));
+	}
 }
