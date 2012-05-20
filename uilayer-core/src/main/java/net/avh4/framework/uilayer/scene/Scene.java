@@ -57,7 +57,8 @@ public class Scene implements Iterable<SceneElement> {
         return null;
     }
 
-	public <T> T findSceneElement(Class<T> elementType, String what) {
+	public <T extends SceneElement> T findSceneElement(Class<T> elementType,
+			String what) {
 		return (T) findSceneElement(what);
 	}
 
