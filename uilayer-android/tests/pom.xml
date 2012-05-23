@@ -8,7 +8,7 @@
 
     <groupId>net.avh4.framework</groupId>
     <artifactId>uilayer-android-tests</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8-SNAPSHOT</version>
     <packaging>apk</packaging>
 
     <name>uilayer-android-tests</name>
@@ -56,7 +56,7 @@
         <dependency>
             <groupId>net.avh4.framework</groupId>
             <artifactId>uilayer-android</artifactId>
-            <version>1.0.7</version>
+            <version>1.0.8-SNAPSHOT</version>
             <type>apklib</type>
         </dependency>
         <dependency>
