@@ -1,21 +1,26 @@
 package net.avh4.framework.uilayer.swing;
 
-import net.avh4.framework.uilayer.ClickReceiver;
-import net.avh4.framework.uilayer.KeyReceiver;
-import net.avh4.framework.uilayer.SceneCreator;
-import net.avh4.framework.uilayer.UILayerService;
-import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+
+import net.avh4.framework.uilayer.ClickReceiver;
+import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.UILayerService;
+import net.avh4.framework.uilayer.scene.Scene;
+import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
 
 public class SwingUILayerService implements UILayerService {
 
@@ -141,5 +146,9 @@ public class SwingUILayerService implements UILayerService {
     public static void cacheImage(final String key, final BufferedImage image) {
         imageCache.put(key, image);
     }
+
+	public static void clearImageCache() {
+		imageCache.clear();
+	}
 
 }
