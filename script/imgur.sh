@@ -10,6 +10,8 @@
 #  - new API key
 #  - Print out the entire response payload, just in case
 #  - Print out the Imgur page URL instead of the image direct link URL
+# 2012-06-17 Aaron VonderHaar <gruen0aermel@gmail.com>
+#  - Print out curl command to get the image with its original file name
 
 # Required: curl
 #
@@ -73,7 +75,7 @@ which curl >/dev/null 2>/dev/null || {
 # upload the image
 response=$(curl -F "key=$apikey" -H "Expect: " -F "image=@$1" \
 	http://imgur.com/api/upload.xml 2>/dev/null)
-echo "Imgur response: $response"
+echo "Imgur response: $response" >&2
 # the "Expect: " header is to get around a problem when using this through the
 # Squid proxy. Not sure if it's a Squid bug or what.
 if [ $? -ne 0 ]; then
@@ -87,9 +89,11 @@ fi
 
 # parse the response and output our stuff
 url=$(echo $response | sed 's/.*<imgur_page>//;s/<\/imgur_page>.*//')
+imageurl=$(echo $response | sed 's/.*<original_image>//;s/<\/original_image>.*//')
 deleteurl=$(echo $response | sed 's/.*<delete_page>//;s/<\/delete_page>.*//')
-echo "Imgur URL: $url"
+echo "Imgur URL: $url" >&2
 echo "Delete page: $deleteurl" >&2
+echo "curl -o $1 $imageurl"
 
 # put the URL on the clipboard if we have xsel or xclip
 # if [ $DISPLAY ]; then
