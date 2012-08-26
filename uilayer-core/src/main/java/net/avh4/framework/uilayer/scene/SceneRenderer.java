@@ -4,18 +4,28 @@ import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.SceneCreator;
 
-public class SceneRenderer {
+public class SceneRenderer implements GraphicsOperationsRenderer {
 
     private final SceneCreator creator;
-    private final GraphicsOperations g;
-    private final FontMetricsService fm;
 
-    public SceneRenderer(final SceneCreator creator, GraphicsOperations g, FontMetricsService fm) {
+    public SceneRenderer(final SceneCreator creator) {
         this.creator = creator;
-        this.g = g;
-        this.fm = fm;
     }
 
+    public SceneRenderer(final Scene scene) {
+        this(new SceneCreator() {
+            @Override
+            public Scene getScene() {
+                return scene;
+            }
+        });
+    }
+
+    public SceneRenderer(final SceneElement e) {
+        this(new Scene(e));
+    }
+
+    @Override
     public int getWidth() {
         final Scene scene = creator.getScene();
         if (scene == null) {
@@ -25,6 +35,7 @@ public class SceneRenderer {
         }
     }
 
+    @Override
     public int getHeight() {
         final Scene scene = creator.getScene();
         if (scene == null) {
@@ -34,7 +45,8 @@ public class SceneRenderer {
         }
     }
 
-    public void render() {
+    @Override
+    public void render(GraphicsOperations g, FontMetricsService fm) {
         final Scene s = creator.getScene();
         if (s == null) {
             g.drawRect(0, 0, getWidth(), getHeight(), Color.GRAY);

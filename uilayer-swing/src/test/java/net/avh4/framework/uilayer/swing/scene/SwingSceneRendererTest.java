@@ -2,7 +2,10 @@ package net.avh4.framework.uilayer.swing.scene;
 
 import net.avh4.framework.uilayer.scene.SceneElement;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.framework.uilayer.scene.SceneRenderer;
+import net.avh4.framework.uilayer.scene.SwingGraphicsOperations;
 import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
+import org.junit.Before;
 import org.junit.Test;
 
 import static net.avh4.util.imagecomparison.Matchers.isApproved;
@@ -10,10 +13,17 @@ import static org.junit.Assert.assertThat;
 
 public class SwingSceneRendererTest {
 
+    private SwingGraphicsOperations graphicsOperations;
+
+    @Before
+    public void setup() throws Exception {
+        graphicsOperations = new SwingGraphicsOperations();
+    }
+
     @Test
     public void testRenderingASingleSceneElement() throws Exception {
         final SceneElement e = new ScenePlaceholder("Element", 0, 0, 100, 100);
-        final SwingSceneRenderer subject = new SwingSceneRenderer(e);
+        final SwingSceneRenderer subject = new SwingSceneRenderer(graphicsOperations, new SceneRenderer(e));
         assertThat(subject, isApproved());
     }
 }

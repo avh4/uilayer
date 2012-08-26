@@ -14,24 +14,25 @@ import static org.mockito.Mockito.stub;
 
 public abstract class RenderTestBase extends TestCase {
 
-	private SceneCreator mockCreator;
-	protected SwingSceneRenderer subject;
-	protected Scene scene;
+    private SceneCreator mockCreator;
+    protected SwingSceneRenderer subject;
+    protected Scene scene;
 
-	public void setUp() {
-		scene = new Scene();
-		mockCreator = mock(SceneCreator.class);
-		stub(mockCreator.getScene()).toAnswer(new Answer<Scene>() {
+    @Override
+    public void setUp() {
+        scene = new Scene();
+        mockCreator = mock(SceneCreator.class);
+        stub(mockCreator.getScene()).toAnswer(new Answer<Scene>() {
             @Override
             public Scene answer(InvocationOnMock invocation) throws Throwable {
                 return scene;
             }
         });
-		subject = new SwingSceneRenderer(mockCreator);
-	}
+        SwingGraphicsOperations graphicsOperations = new SwingGraphicsOperations();
+        subject = new SwingSceneRenderer(graphicsOperations, new SceneRenderer(mockCreator));
+    }
 
-	protected void assertRenderingIsApproved() throws IOException {
-		assertThat(subject, isApproved());
-	}
-
+    protected void assertRenderingIsApproved() throws IOException {
+        assertThat(subject, isApproved());
+    }
 }

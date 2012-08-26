@@ -1,26 +1,23 @@
 package net.avh4.framework.uilayer.swing;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsEnvironment;
+import net.avh4.framework.uilayer.ClickReceiver;
+import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.UILayerService;
+import net.avh4.framework.uilayer.scene.Scene;
+import net.avh4.framework.uilayer.scene.SceneRenderer;
+import net.avh4.framework.uilayer.scene.SwingGraphicsOperations;
+import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-
-import net.avh4.framework.uilayer.ClickReceiver;
-import net.avh4.framework.uilayer.KeyReceiver;
-import net.avh4.framework.uilayer.SceneCreator;
-import net.avh4.framework.uilayer.UILayerService;
-import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
 
 public class SwingUILayerService implements UILayerService {
 
@@ -34,7 +31,8 @@ public class SwingUILayerService implements UILayerService {
         final Scene scene = game.getScene();
         final String title = scene != null ? scene.getTitle() : "(No scene)";
         final JFrame window = new JFrame(title);
-        final SwingSceneRenderer component = new SwingSceneRenderer(game);
+        final SwingGraphicsOperations graphicsOperations = new SwingGraphicsOperations();
+        final SwingSceneRenderer component = new SwingSceneRenderer(graphicsOperations, new SceneRenderer(game));
         window.add(component);
         window.pack();
         window.setLocationRelativeTo(null);
@@ -147,8 +145,7 @@ public class SwingUILayerService implements UILayerService {
         imageCache.put(key, image);
     }
 
-	public static void clearImageCache() {
-		imageCache.clear();
-	}
-
+    public static void clearImageCache() {
+        imageCache.clear();
+    }
 }

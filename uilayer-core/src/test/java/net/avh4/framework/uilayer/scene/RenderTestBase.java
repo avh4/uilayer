@@ -22,6 +22,7 @@ public class RenderTestBase {
 
     @Before
     public void setUp() {
+        g = new TestGraphicsOperations();
         scene = new Scene();
         mockCreator = mock(SceneCreator.class);
         stub(mockCreator.getScene()).toAnswer(new Answer<Scene>() {
@@ -30,12 +31,11 @@ public class RenderTestBase {
                 return scene;
             }
         });
-        g = new TestGraphicsOperations();
-        renderer = new SceneRenderer(mockCreator, g, fm);
+        renderer = new SceneRenderer(mockCreator);
     }
 
     protected void assertRenderingIs(String s) throws IOException {
-        renderer.render();
+        renderer.render(g, fm);
         assertThat(g.getRendering(), equalTo(s));
     }
 }

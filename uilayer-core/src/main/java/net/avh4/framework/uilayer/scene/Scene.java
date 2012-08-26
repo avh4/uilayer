@@ -18,6 +18,12 @@ public class Scene implements Iterable<SceneElement> {
         this("untitled scene");
     }
 
+    public Scene(SceneElement e) {
+        this(e.getName());
+        this.setSize(e.width, e.height);
+        this.add(e);
+    }
+
     public int getWidth() {
         return width;
     }
@@ -57,12 +63,12 @@ public class Scene implements Iterable<SceneElement> {
         return null;
     }
 
-	public <T extends SceneElement> T findSceneElement(Class<T> elementType,
-			String what) {
-		return (T) findSceneElement(what);
-	}
+    public <T extends SceneElement> T findSceneElement(Class<T> elementType,
+                                                       String what) {
+        return (T) findSceneElement(what);
+    }
 
-	public void setTitle(String newTitle) {
+    public void setTitle(String newTitle) {
         title = newTitle;
     }
 }
