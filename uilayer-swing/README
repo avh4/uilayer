@@ -1,0 +1,9 @@
+IF YOU ARE GETTING TEST FAILURES:  Many of the uilayer-swing tests are testing
+pixel-perfect rendering of visual components.  Some versions of the JDK differ
+in how aliasing is performed when doing text rendering.  If you are seeing
+tests fail, make sure you are using OpenJDK-1.7u, available from
+http://code.google.com/p/openjdk-osx-build/  (version
+OpenJDK-OSX-1.7-universal-u-jdk-u8-b04-20120823.dmg is known to work).  This is
+known to work on OS X 10.6 (Snow Leopard), 10.7 (Lion), and 10.8 (Mountain
+Lion).  This is also compatible with the OpenJDK-1.7 version used on Travis-CI
+build machines as of 2012.
