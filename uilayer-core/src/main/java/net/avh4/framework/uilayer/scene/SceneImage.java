@@ -51,4 +51,9 @@ public class SceneImage extends SceneElement {
         this.clipY = clipY;
     }
 
+    @Override
+    public void draw(GraphicsOperations g, FontMetricsService fm) {
+        g.drawImage(image, x, y, x + width, y + height, clipX,
+                clipY, clipX + clipWidth, clipY + clipHeight);
+    }
 }

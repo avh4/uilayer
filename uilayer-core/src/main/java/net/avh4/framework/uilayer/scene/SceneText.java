@@ -32,4 +32,36 @@ public class SceneText extends SceneElement {
     public String getText() {
         return text;
     }
+
+    @Override
+    public void draw(GraphicsOperations g, FontMetricsService fm) {
+        int MAX_HEIGHT = 2000;
+        // From
+        // http://stackoverflow.com/questions/400566/full-justification-with-a-java-graphics-drawstring-replacement
+        final float lineHeight = fm.getLineHeight(font);
+
+        int curX = x;
+        float curY = y + fm.getAscent(font);
+
+        final String[] words = text.replaceAll("\n", " ").split(" ");
+
+        for (final String word : words) {
+            // Find out the width of the word.
+            final float wordWidth = fm.stringWidth(font, word);
+
+            // If text exceeds the width, then move to next line.
+            if (curX + wordWidth >= x + width) {
+                curY += lineHeight;
+                curX = x;
+                if (curY >= MAX_HEIGHT + lineHeight) {
+                    return;
+                }
+            }
+
+            g.drawText(word, curX, curY, font, color);
+
+            // Move over to the right for next word.
+            curX += fm.stringWidth(font, word + " ");
+        }
+    }
 }

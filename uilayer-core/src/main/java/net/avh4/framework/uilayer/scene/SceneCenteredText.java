@@ -21,4 +21,13 @@ public class SceneCenteredText extends SceneElement {
     public String getText() {
         return text;
     }
+
+    @Override
+    public void draw(GraphicsOperations g, FontMetricsService fm) {
+        final float ascent = fm.getAscent(font);
+        final float x = this.x + (width - fm.stringWidth(font, text)) / 2;
+        final float y = this.y + ascent + (height - ascent - fm.getDescent(font)) / 2;
+
+        g.drawText(text, x, y, font, color);
+    }
 }

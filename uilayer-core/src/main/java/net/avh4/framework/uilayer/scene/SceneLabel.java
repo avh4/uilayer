@@ -21,4 +21,13 @@ public class SceneLabel extends SceneElement {
         this(text, x, y, new Font(customFontResource).size(fontSize), color);
     }
 
+    @Override
+    public void draw(GraphicsOperations g, FontMetricsService fm) {
+        final float labelWidth = fm.stringWidth(font, text);
+
+        final float x = this.x - labelWidth / 2;
+        final float y = this.y + fm.getLineHeight(font);
+
+        g.drawText(text, x, y, font, color);
+    }
 }
