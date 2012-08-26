@@ -7,6 +7,7 @@ import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneElement;
 import net.avh4.framework.uilayer.scene.SceneOval;
 import net.avh4.framework.uilayer.scene.SceneRect;
+import org.junit.Test;
 
 public class RenderSceneComponentTest extends RenderTestBase {
 
@@ -32,16 +33,19 @@ public class RenderSceneComponentTest extends RenderTestBase {
         }
     }
 
+    @Test
     public void testComponent() throws Exception {
         scene.add(new TestComponent(0, 0, 100, 100));
         assertRenderingIsApproved();
     }
 
+    @Test
     public void testTranslatedComponent() throws Exception {
         scene.add(new TestComponent(300, 400, 100, 100));
         assertRenderingIsApproved();
     }
 
+    @Test
     public void testTranslationIsResetAfterDrawingComponent() throws Exception {
         scene.add(new SceneRect(10, 10, 10, 10, Color.YELLOW));
         scene.add(new TestComponent(300, 400, 100, 100));

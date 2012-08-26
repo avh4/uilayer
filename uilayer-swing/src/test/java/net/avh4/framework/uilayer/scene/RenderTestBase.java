@@ -1,7 +1,7 @@
 package net.avh4.framework.uilayer.scene;
 
-import junit.framework.TestCase;
 import net.avh4.framework.uilayer.SceneCreator;
+import org.junit.Before;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -12,13 +12,13 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.stub;
 
-public abstract class RenderTestBase extends TestCase {
+public abstract class RenderTestBase {
 
     private SceneCreator mockCreator;
     protected SwingSceneRenderer subject;
     protected Scene scene;
 
-    @Override
+    @Before
     public void setUp() {
         scene = new Scene();
         mockCreator = mock(SceneCreator.class);
