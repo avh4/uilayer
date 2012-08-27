@@ -1,7 +1,6 @@
 package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.scene.SwingGraphicsOperationsTest;
-import net.avh4.framework.uilayer.scene.testsuite.RenderPlaceholdersTest;
 import net.avh4.framework.uilayer.scene.testsuite.RenderSceneComponentTest;
 import net.avh4.framework.uilayer.scene.testsuite.RenderSceneTest;
 import net.avh4.framework.uilayer.swing.input.SwingInputHandlerTest;
@@ -12,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({RenderPlaceholdersTest.class, RenderSceneComponentTest.class,
+@Suite.SuiteClasses({RenderSceneComponentTest.class,
         RenderSceneTest.class, SwingGraphicsOperationsTest.class,
         SwingInputHandlerTest.class, RenderImagesTest.class, SwingImageTest.class, SwingSceneRendererTest.class,
         SwingUILayerServiceTest.class})
