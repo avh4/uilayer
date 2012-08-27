@@ -1,5 +1,7 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.SceneCreator;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,6 +11,14 @@ public class SwingSceneRenderer extends JComponent {
     private final SwingFontMetricsService fm = new SwingFontMetricsService();
     private final SwingGraphicsOperations graphicsOperations;
     private final GraphicsOperationsRenderer renderer;
+
+    public SwingSceneRenderer(SceneCreator creator) {
+        this(new SwingGraphicsOperations(), new SceneRenderer(creator));
+    }
+
+    public SwingSceneRenderer(SceneElement element) {
+        this(new SwingGraphicsOperations(), new SceneRenderer(element));
+    }
 
     public SwingSceneRenderer(SwingGraphicsOperations g, GraphicsOperationsRenderer sceneRenderer) {
         this.graphicsOperations = g;
