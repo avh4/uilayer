@@ -1,3 +1,0 @@
-To skip the Android projects, use the skip-android maven profile:
-
-    mvn -P skip-android <target>
