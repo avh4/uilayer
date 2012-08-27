@@ -35,13 +35,29 @@
     </developer>
   </developers>
 
-  <modules>
-    <module>uilayer-core</module>
-    <module>uilayer-swing</module>
-    <module>uilayer-android</module>
-    <module>uilayer-android/tests</module>
-    <module>uilayer-examples</module>
-  </modules>
+  <profiles>
+    <profile>
+      <id>all</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>uilayer-core</module>
+        <module>uilayer-swing</module>
+        <module>uilayer-android</module>
+        <module>uilayer-android/tests</module>
+        <module>uilayer-examples</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>skip-android</id>
+      <modules>
+        <module>uilayer-core</module>
+        <module>uilayer-swing</module>
+        <module>uilayer-examples</module>
+      </modules>
+    </profile>
+  </profiles>
 
   <build>
     <pluginManagement>
