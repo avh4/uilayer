@@ -18,6 +18,11 @@ public class TestGraphicsOperations implements GraphicsOperations {
 
     @Override
     public void drawText(String text, float leftX, float baselineY, Font font, int argbColor) {
+        sb.append("Text: \"").append(text).append("\" ");
+        sb.append(leftX).append(", ");
+        sb.append(baselineY).append(" ");
+        sb.append(font).append(" ");
+        sb.append("0x").append(Integer.toHexString(argbColor)).append("\n");
     }
 
     @Override

@@ -2,10 +2,12 @@ package net.avh4.framework.uilayer;
 
 public class Font {
 
-    /** This should only be set directly for testing */
+    /**
+     * This should only be set directly for testing
+     */
     public static UILayerService service = UILayer.service;
 
-	public static final Font PFENNIG = new Font("Pfennig.ttf");
+    public static final Font PFENNIG = new Font("Pfennig.ttf");
 
     private final String resourceName;
     private final int size;
@@ -57,5 +59,13 @@ public class Font {
         int result = resourceName != null ? resourceName.hashCode() : 0;
         result = 31 * result + size;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Font{" +
+                "'" + resourceName + '\'' +
+                " (" + size +
+                ")}";
     }
 }

@@ -1,8 +1,10 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.test.TestGraphicsOperations;
 import org.junit.Before;
+import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -23,6 +25,12 @@ public class RenderTestBase {
     @Before
     public void setUp() {
         g = new TestGraphicsOperations();
+        fm = Mockito.mock(FontMetricsService.class);
+        Mockito.stub(fm.getAscent(Font.PFENNIG.size(64))).toReturn(68.0f);
+        Mockito.stub(fm.getDescent(Font.PFENNIG.size(64))).toReturn(17.0f);
+        Mockito.stub(fm.stringWidth(Font.PFENNIG.size(64), "CENTER")).toReturn(231.0f);
+        Mockito.stub(fm.stringWidth(Font.PFENNIG.size(64), "A")).toReturn(41.0f);
+        Mockito.stub(fm.stringWidth(Font.PFENNIG.size(64), "a")).toReturn(30.0f);
         scene = new Scene();
         mockCreator = mock(SceneCreator.class);
         stub(mockCreator.getScene()).toAnswer(new Answer<Scene>() {
