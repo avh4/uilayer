@@ -1,15 +1,10 @@
-package net.avh4.framework.uilayer.scene.testsuite;
+package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
-import net.avh4.framework.uilayer.scene.CompositeSceneElement;
-import net.avh4.framework.uilayer.scene.RenderTestBase;
-import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.scene.SceneElement;
-import net.avh4.framework.uilayer.scene.SceneOval;
-import net.avh4.framework.uilayer.scene.SceneRect;
 import org.junit.Test;
 
-public class RenderSceneComponentTest extends RenderTestBase {
+public class CompositeSceneElementTest extends RenderTestBase {
+    private TestComponent subject;
 
     /**
      * This component draws a white square with a red boarder and blue circle.
@@ -35,21 +30,23 @@ public class RenderSceneComponentTest extends RenderTestBase {
 
     @Test
     public void testComponent() throws Exception {
-        scene.add(new TestComponent(0, 0, 100, 100));
-        assertRenderingIsApproved();
+        subject = new TestComponent(0, 0, 100, 100);
+        assertRenderingOf(subject, "" +
+                "==== TRANSLATE to 0, 0 ====\n" +
+                "Rectangle: 0, 0, 100, 100, 0xffff0000\n" +
+                "Rectangle: 5, 5, 90, 90, 0xffffffff\n" +
+                "Oval: 20, 20, 60, 60, 0xff0000ff\n" +
+                "==== TRANSLATE to 0, 0 ====\n");
     }
 
     @Test
     public void testTranslatedComponent() throws Exception {
-        scene.add(new TestComponent(300, 400, 100, 100));
-        assertRenderingIsApproved();
-    }
-
-    @Test
-    public void testTranslationIsResetAfterDrawingComponent() throws Exception {
-        scene.add(new SceneRect(10, 10, 10, 10, Color.YELLOW));
-        scene.add(new TestComponent(300, 400, 100, 100));
-        scene.add(new SceneRect(20, 20, 10, 10, Color.RED));
-        assertRenderingIsApproved();
+        subject = new TestComponent(300, 400, 100, 100);
+        assertRenderingOf(subject, "" +
+                "==== TRANSLATE to 300, 400 ====\n" +
+                "Rectangle: 0, 0, 100, 100, 0xffff0000\n" +
+                "Rectangle: 5, 5, 90, 90, 0xffffffff\n" +
+                "Oval: 20, 20, 60, 60, 0xff0000ff\n" +
+                "==== TRANSLATE to 0, 0 ====\n");
     }
 }

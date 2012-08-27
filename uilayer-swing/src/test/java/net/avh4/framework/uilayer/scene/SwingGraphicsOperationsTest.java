@@ -25,7 +25,7 @@ public class SwingGraphicsOperationsTest {
     @Before
     public void setUp() {
         g = new SwingGraphicsOperations();
-        SceneRenderer mockRenderer = Mockito.mock(SceneRenderer.class);
+        final SceneRenderer mockRenderer = Mockito.mock(SceneRenderer.class);
         Mockito.stub(mockRenderer.getWidth()).toReturn(800);
         Mockito.stub(mockRenderer.getHeight()).toReturn(600);
         Mockito.doAnswer(new Answer<Void>() {
@@ -175,6 +175,23 @@ public class SwingGraphicsOperationsTest {
             public void run() {
                 g.drawRect(100, 100, font.measureText(text), font.getLineHeight(), Color.GREY);
                 g.drawText(text, 100, 134, font, Color.YELLOW);
+            }
+        };
+        assertRenderingIsApproved();
+    }
+
+    @Test
+    public void testTranslation() throws Exception {
+        graphicsOperations = new Runnable() {
+            @Override
+            public void run() {
+                g.drawRect(10, 10, 10, 10, Color.YELLOW);
+                g.translate(300, 400);
+                g.drawRect(0, 0, 100, 100, Color.RED);
+                g.drawRect(5, 5, 90, 90, Color.WHITE);
+                g.drawOval(20, 20, 60, 60, Color.BLUE);
+                g.translate(-300, -400);
+                g.drawRect(20, 20, 10, 10, Color.RED);
             }
         };
         assertRenderingIsApproved();

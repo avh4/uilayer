@@ -5,6 +5,8 @@ import net.avh4.framework.uilayer.scene.GraphicsOperations;
 
 public class TestGraphicsOperations implements GraphicsOperations {
     private StringBuffer sb = new StringBuffer();
+    private int translateX = 0;
+    private int translateY = 0;
 
     @Override
     public void drawRect(int leftX, int topY, int width, int height, int argbColor) {
@@ -27,6 +29,12 @@ public class TestGraphicsOperations implements GraphicsOperations {
 
     @Override
     public void translate(int deltaX, int deltaY) {
+        translateX += deltaX;
+        translateY += deltaY;
+        sb.append("==== TRANSLATE to ");
+        sb.append(translateX).append(", ");
+        sb.append(translateY);
+        sb.append(" ====\n");
     }
 
     @Override
