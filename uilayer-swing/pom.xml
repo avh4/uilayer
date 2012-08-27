@@ -65,7 +65,12 @@
         <dependency>
             <groupId>net.avh4.util</groupId>
             <artifactId>imagecomparison</artifactId>
-            <version>0.0.5</version>
+            <version>0.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.avh4.util</groupId>
+            <artifactId>imagecomparison-swing</artifactId>
+            <version>0.1.2</version>
         </dependency>
         <dependency>
             <groupId>net.avh4.framework</groupId>

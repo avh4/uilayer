@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import static net.avh4.util.imagecomparison.Matchers.isApproved;
+import static net.avh4.util.imagecomparison.ImageComparisonMatchers.isApproved;
 import static org.junit.Assert.assertThat;
 
 public class SwingSceneRendererTest {

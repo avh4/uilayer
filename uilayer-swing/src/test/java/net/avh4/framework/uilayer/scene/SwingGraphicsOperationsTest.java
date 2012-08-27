@@ -12,7 +12,7 @@ import org.mockito.stubbing.Answer;
 
 import java.io.IOException;
 
-import static net.avh4.util.imagecomparison.Matchers.isApproved;
+import static net.avh4.util.imagecomparison.ImageComparisonMatchers.isApproved;
 import static org.junit.Assert.assertThat;
 
 @SuppressWarnings({"LawOfDemeter", "NestedMethodCall", "ChainedMethodCall"})
