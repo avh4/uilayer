@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.util.Util;
 
-public class ScenePlaceholder extends SceneElement {
+public class ScenePlaceholder extends SceneElementBase {
 
     protected final int color;
     protected final int textColor;

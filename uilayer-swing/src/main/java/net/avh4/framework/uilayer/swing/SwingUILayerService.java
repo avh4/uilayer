@@ -141,10 +141,12 @@ public class SwingUILayerService implements UILayerService {
         }
     }
 
+    @Deprecated
     public static void cacheImage(final String key, final BufferedImage image) {
         imageCache.put(key, image);
     }
 
+    @Deprecated
     public static void clearImageCache() {
         imageCache.clear();
     }

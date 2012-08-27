@@ -21,7 +21,7 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
         });
     }
 
-    public SceneRenderer(final SceneElement e) {
+    public SceneRenderer(final SceneElementBase e) {
         this(new Scene(e));
     }
 
@@ -64,7 +64,7 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
     }
 
     static void draw(final SceneElement e, GraphicsOperations g, FontMetricsService fm) {
-        if (e.isHidden()) {
+        if (e instanceof SceneElementBase && ((SceneElementBase) e).isHidden()) {
             return;
         } else {
             e.draw(g, fm);

@@ -1,6 +1,6 @@
 package net.avh4.framework.uilayer.scene;
 
-public class SceneRect extends SceneElement {
+public class SceneRect extends SceneElementBase {
 
     protected final int color;
 

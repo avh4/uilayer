@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.UILayerService;
 
-public class SceneImage extends SceneElement {
+public class SceneImage extends SceneElementBase {
     static UILayerService service = UILayer.service;
 
     protected final String image;

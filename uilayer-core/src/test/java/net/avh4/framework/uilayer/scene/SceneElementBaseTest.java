@@ -7,11 +7,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SceneElementTest {
+public class SceneElementBaseTest {
 
-    private SceneElement subject;
+    private SceneElementBase subject;
 
-    private static class TestElement extends SceneElement {
+    private static class TestElement extends SceneElementBase {
 
         public TestElement(final String name, final int x, final int y,
                            final int width, final int height) {

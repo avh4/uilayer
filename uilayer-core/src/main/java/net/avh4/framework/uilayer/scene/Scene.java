@@ -18,7 +18,7 @@ public class Scene implements Iterable<SceneElement> {
         this("untitled scene");
     }
 
-    public Scene(SceneElement e) {
+    public Scene(SceneElementBase e) {
         this(e.getName());
         this.setSize(e.width, e.height);
         this.add(e);
@@ -56,15 +56,15 @@ public class Scene implements Iterable<SceneElement> {
 
     public <T extends SceneElement> T findSceneElement(String what) {
         for (SceneElement child : children) {
-            if (child.getName().equals(what)) {
+            if (!(child instanceof SceneElementBase)) continue;
+            if (((SceneElementBase) child).getName().equals(what)) {
                 return (T) child;
             }
         }
         return null;
     }
 
-    public <T extends SceneElement> T findSceneElement(Class<T> elementType,
-                                                       String what) {
+    public <T extends SceneElement> T findSceneElement(@SuppressWarnings("UnusedParameters") Class<T> elementType, String what) {
         return (T) findSceneElement(what);
     }
 

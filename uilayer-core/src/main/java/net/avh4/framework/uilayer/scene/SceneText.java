@@ -2,7 +2,7 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Font;
 
-public class SceneText extends SceneElement {
+public class SceneText extends SceneElementBase {
 
     protected String text;
     protected final Font font;

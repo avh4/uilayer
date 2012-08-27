@@ -1,6 +1,6 @@
 package net.avh4.framework.uilayer.scene;
 
-public class SceneOval extends SceneElement {
+public class SceneOval extends SceneElementBase {
 
     protected final int color;
 

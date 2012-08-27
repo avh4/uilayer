@@ -1,6 +1,6 @@
 package net.avh4.framework.uilayer.scene;
 
-public abstract class CompositeSceneElement extends SceneElement {
+public abstract class CompositeSceneElement extends SceneElementBase {
 
     public CompositeSceneElement(final String name, final int x, final int y,
                                  final int width, final int height) {

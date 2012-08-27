@@ -3,6 +3,7 @@ package net.avh4.framework.uilayer;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.SceneElement;
+import net.avh4.framework.uilayer.scene.SceneElementBase;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import org.hamcrest.Matcher;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class MatchersTest {
         assertThat(new ScenePlaceholder("Item", 20, 30, 41, 50), not(matches));
         assertThat(new ScenePlaceholder("Item", 20, 30, 40, 51), not(matches));
         // A custom subclass of SceneElement
-        assertThat(new SceneElement("Item", 20, 30, 40, 50) {
+        assertThat(new SceneElementBase("Item", 20, 30, 40, 50) {
             @Override
             public void draw(GraphicsOperations g, FontMetricsService fm) {
             }

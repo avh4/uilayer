@@ -1,6 +1,6 @@
 package net.avh4.framework.uilayer.swing.scene;
 
-import net.avh4.framework.uilayer.scene.SceneElement;
+import net.avh4.framework.uilayer.scene.SceneElementBase;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
 import net.avh4.framework.uilayer.scene.SwingGraphicsOperations;
@@ -25,7 +25,7 @@ public class SwingSceneRendererTest {
     @Test
     @Category(FontRendering.class)
     public void testRenderingASingleSceneElement() throws Exception {
-        final SceneElement e = new ScenePlaceholder("Element", 0, 0, 100, 100);
+        final SceneElementBase e = new ScenePlaceholder("Element", 0, 0, 100, 100);
         final SwingSceneRenderer subject = new SwingSceneRenderer(graphicsOperations, new SceneRenderer(e));
         assertThat(subject, isApproved());
     }
