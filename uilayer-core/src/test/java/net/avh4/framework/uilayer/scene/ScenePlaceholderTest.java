@@ -45,12 +45,4 @@ public class ScenePlaceholderTest extends RenderTestBase {
                 "Rectangle: 20, 20, 100, 560, 0xff1b10ac\n" +
                 "Text: \"Body\" 25.0, 575.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
     }
-
-    @Test
-    public void testHiddenElement() throws Exception {
-        final ScenePlaceholder hidden = new ScenePlaceholder("Hidden", 100, 100, 200, 200);
-        hidden.setHidden(true);
-        scene.add(hidden);
-        assertRenderingIs("Rectangle: 0, 0, 800, 600, 0xff000000\n");
-    }
 }
