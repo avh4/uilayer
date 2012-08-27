@@ -151,4 +151,17 @@ public class SwingGraphicsOperationsTest {
         };
         assertRenderingIsApproved();
     }
+
+    @Test
+    @Category(FontRendering.class)
+    public void testRenderLabel() throws Exception {
+        graphicsOperations = new Runnable() {
+            @Override
+            public void run() {
+                g.drawRect(400, 300, 1, 1, Color.RED);
+                g.drawText("Red Point", 376.5f, 317.0f, new Font("Tuffy.ttf", 12), Color.YELLOW);
+            }
+        };
+        assertRenderingIsApproved();
+    }
 }

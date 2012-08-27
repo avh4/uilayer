@@ -31,6 +31,8 @@ public class RenderTestBase {
         Mockito.stub(fm.stringWidth(Font.PFENNIG.size(64), "CENTER")).toReturn(231.0f);
         Mockito.stub(fm.stringWidth(Font.PFENNIG.size(64), "A")).toReturn(41.0f);
         Mockito.stub(fm.stringWidth(Font.PFENNIG.size(64), "a")).toReturn(30.0f);
+        Mockito.stub(fm.stringWidth(new Font("Tuffy.ttf", 12), "Red Point")).toReturn(47.0f);
+        Mockito.stub(fm.getLineHeight(new Font("Tuffy.ttf", 12))).toReturn(17.0f);
         scene = new Scene();
         mockCreator = mock(SceneCreator.class);
         stub(mockCreator.getScene()).toAnswer(new Answer<Scene>() {
