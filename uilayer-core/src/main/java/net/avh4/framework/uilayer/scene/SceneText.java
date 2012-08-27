@@ -50,7 +50,7 @@ public class SceneText extends SceneElement {
             final float wordWidth = fm.stringWidth(font, word);
 
             // If text exceeds the width, then move to next line.
-            if (curX + wordWidth >= x + width) {
+            if (curX + wordWidth > x + width) {
                 curY += lineHeight;
                 curX = x;
                 if (curY >= MAX_HEIGHT + lineHeight) {

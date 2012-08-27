@@ -164,4 +164,19 @@ public class SwingGraphicsOperationsTest {
         };
         assertRenderingIsApproved();
     }
+
+    @Test
+    @Category(FontRendering.class)
+    public void testIncludedFontPfennig() throws Exception {
+        final Font font = Font.PFENNIG.size(32);
+        final String text = "Pfennig";
+        graphicsOperations = new Runnable() {
+            @Override
+            public void run() {
+                g.drawRect(100, 100, font.measureText(text), font.getLineHeight(), Color.GREY);
+                g.drawText(text, 100, 134, font, Color.YELLOW);
+            }
+        };
+        assertRenderingIsApproved();
+    }
 }

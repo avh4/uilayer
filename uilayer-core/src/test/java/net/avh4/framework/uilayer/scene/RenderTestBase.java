@@ -19,11 +19,11 @@ public class RenderTestBase {
     private SceneCreator mockCreator;
     private SceneRenderer renderer;
     protected Scene scene;
-    private TestGraphicsOperations g;
-    private FontMetricsService fm;
+    protected TestGraphicsOperations g;
+    protected FontMetricsService fm;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         g = new TestGraphicsOperations();
         fm = Mockito.mock(FontMetricsService.class);
         Mockito.stub(fm.getAscent(Font.PFENNIG.size(64))).toReturn(68.0f);
@@ -46,6 +46,11 @@ public class RenderTestBase {
 
     protected void assertRenderingIs(String s) throws IOException {
         renderer.render(g, fm);
+        assertThat(g.getRendering(), equalTo(s));
+    }
+
+    protected void assertRenderingOf(SceneElement subject, String s) throws IOException {
+        subject.draw(g, fm);
         assertThat(g.getRendering(), equalTo(s));
     }
 }
