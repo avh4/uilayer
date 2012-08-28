@@ -18,9 +18,13 @@ public class Scene implements Iterable<SceneElement> {
         this("untitled scene");
     }
 
-    public Scene(SceneElementBase e) {
-        this(e.getName());
-        this.setSize(e.width, e.height);
+    public Scene(SceneElement e) {
+        this(e.toString());
+        if (e instanceof SceneElementBase) {
+            SceneElementBase eb = (SceneElementBase) e;
+            this.setTitle(eb.getName());
+            this.setSize(eb.width, eb.height);
+        }
         this.add(e);
     }
 

@@ -16,7 +16,7 @@ public class SwingSceneRenderer extends JComponent {
         this(new SwingGraphicsOperations(), new SceneRenderer(creator));
     }
 
-    public SwingSceneRenderer(SceneElementBase element) {
+    public SwingSceneRenderer(SceneElement element) {
         this(new SwingGraphicsOperations(), new SceneRenderer(element));
     }
 

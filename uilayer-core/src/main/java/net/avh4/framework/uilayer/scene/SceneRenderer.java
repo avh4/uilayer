@@ -21,7 +21,7 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
         });
     }
 
-    public SceneRenderer(final SceneElementBase e) {
+    public SceneRenderer(final SceneElement e) {
         this(new Scene(e));
     }
 
