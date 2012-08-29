@@ -18,22 +18,27 @@ public abstract class SceneElementBase implements SceneElement {
         this.name = name;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getWidth() {
         return width;
     }
 
+    @Override
     public int getX() {
         return x;
     }
 
+    @Override
     public int getHeight() {
         return height;
     }
 
+    @Override
     public int getY() {
         return y;
     }

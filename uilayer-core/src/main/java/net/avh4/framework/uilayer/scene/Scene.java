@@ -20,11 +20,8 @@ public class Scene implements Iterable<SceneElement> {
 
     public Scene(SceneElement e) {
         this(e.toString());
-        if (e instanceof SceneElementBase) {
-            SceneElementBase eb = (SceneElementBase) e;
-            this.setTitle(eb.getName());
-            this.setSize(eb.width, eb.height);
-        }
+        this.setTitle(e.getName());
+        this.setSize(e.getWidth(), e.getHeight());
         this.add(e);
     }
 
@@ -60,8 +57,7 @@ public class Scene implements Iterable<SceneElement> {
 
     public <T extends SceneElement> T findSceneElement(String what) {
         for (SceneElement child : children) {
-            if (!(child instanceof SceneElementBase)) continue;
-            if (((SceneElementBase) child).getName().equals(what)) {
+            if (child.getName().equals(what)) {
                 return (T) child;
             }
         }
