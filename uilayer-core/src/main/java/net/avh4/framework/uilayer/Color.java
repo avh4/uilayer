@@ -10,6 +10,7 @@ public class Color {
     public static final int RED = 0xffff0000;
     public static final int WHITE = 0xffffffff;
     public static final int YELLOW = 0xffffff00;
+    public static final int DARK_GRAY = 0xff404040;
 
     public static int getAlpha(final int color) {
         return 0xff & (color >> 24);
