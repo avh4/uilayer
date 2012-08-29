@@ -10,13 +10,18 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.hasItem;
 
+@SuppressWarnings("NestedMethodCall")
 public class SceneTest {
 
     private Scene subject;
+    private Scene subjectWithElement;
+    private Scene subjectWithOffsetElement;
 
     @Before
     public void setUp() {
         subject = new Scene();
+        subjectWithElement = new Scene(new ScenePlaceholder("", 0, 0, 50, 60));
+        subjectWithOffsetElement = new Scene(new ScenePlaceholder("", 5, 5, 50, 60));
     }
 
     @Test
@@ -75,5 +80,17 @@ public class SceneTest {
         final ScenePlaceholder actual = subject
                 .findSceneElement(ScenePlaceholder.class, "Needle");
         assertThat(actual, sameInstance(element));
+    }
+
+    @Test
+    public void sceneWithElement_shouldHaveDimensions() throws Exception {
+        assertThat(subjectWithElement.getWidth(), is(50));
+        assertThat(subjectWithElement.getHeight(), is(60));
+    }
+
+    @Test
+    public void sceneWithElement_shouldIncludeCoordinateOffsetInDimensions() throws Exception {
+        assertThat(subjectWithOffsetElement.getWidth(), is(55));
+        assertThat(subjectWithOffsetElement.getHeight(), is(65));
     }
 }

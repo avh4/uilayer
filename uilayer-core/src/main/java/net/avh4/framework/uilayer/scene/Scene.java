@@ -20,8 +20,11 @@ public class Scene implements Iterable<SceneElement> {
 
     public Scene(SceneElement e) {
         this(e.toString());
-        this.setTitle(e.getName());
-        this.setSize(e.getWidth(), e.getHeight());
+        this.setTitle(title);
+        String title = e.getName();
+        int height = e.getHeight() + e.getY();
+        int width = e.getWidth() + e.getX();
+        this.setSize(width, height);
         this.add(e);
     }
 
