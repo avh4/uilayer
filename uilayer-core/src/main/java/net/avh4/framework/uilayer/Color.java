@@ -39,4 +39,11 @@ public class Color {
                 | ((int) ((0x0000ff00 & color) * (1 - factor)) & 0x0000ff00)
                 | ((int) ((0x000000ff & color) * (1 - factor)) & 0x000000ff);
     }
+
+    public static int fromRGB(int r, int g, int b) {
+        return 0xff000000
+                | (r & 0xff) << 16
+                | (g & 0xff) << 8
+                | (b & 0xff);
+    }
 }
