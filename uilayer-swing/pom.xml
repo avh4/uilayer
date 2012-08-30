@@ -16,7 +16,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <imagecomparison.version>0.1.3-SNAPSHOT</imagecomparison.version>
+        <imagecomparison.version>0.2.0</imagecomparison.version>
     </properties>
 
     <profiles>
