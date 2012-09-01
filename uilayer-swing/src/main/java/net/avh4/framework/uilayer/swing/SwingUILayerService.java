@@ -38,7 +38,7 @@ public class SwingUILayerService implements UILayerService {
         window.add(component);
         window.pack();
         window.setLocationRelativeTo(null);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         final SwingInputHandler inputHandler = new SwingInputHandler(receiver,
                 keyReceiver, component);
@@ -114,8 +114,8 @@ public class SwingUILayerService implements UILayerService {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                final String response = (String) JOptionPane.showInputDialog(null, null, title, 0, null,
-                        choices.toArray(), null);
+                final String response = (String) JOptionPane.showInputDialog(null, null, title,
+                        JOptionPane.QUESTION_MESSAGE, null, choices.toArray(), null);
                 listener.response(response);
             }
         });
