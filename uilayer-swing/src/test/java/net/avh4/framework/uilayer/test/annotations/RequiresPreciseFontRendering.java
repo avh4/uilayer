@@ -20,8 +20,9 @@ public @interface RequiresPreciseFontRendering {
         private static MethodRule reportJdkVersion = new ReportJdkVersion();
 
         static {
-            knownIncompatibilities.add("1.7.0-u8-b04:1.6.0_33");
             knownIncompatibilities.add("1.7.0-u8-b04:1.6.0_26");
+            knownIncompatibilities.add("1.7.0-u8-b04:1.6.0_33");
+            knownIncompatibilities.add("1.7.0-u8-b04:1.7.0_06");
         }
 
         @Override
