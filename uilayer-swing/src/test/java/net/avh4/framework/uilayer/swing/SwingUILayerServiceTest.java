@@ -47,6 +47,11 @@ public class SwingUILayerServiceTest {
     }
 
     @Test
+    public void testGetPixel() throws Exception {
+        assertThat(service.getPixel("tile1.png", 11, 12), is(0xaa0023ae));
+    }
+
+    @Test
     public void testGetFontHeight() throws Exception {
         assertThat(service.getFontHeight(Font.PFENNIG.size(16)), is(22));
     }

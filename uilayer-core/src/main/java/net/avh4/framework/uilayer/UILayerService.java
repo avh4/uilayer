@@ -11,6 +11,8 @@ public interface UILayerService {
 
     int getImageHeight(String image);
 
+    int getPixel(String image, int x, int y);
+
     int getFontHeight(Font font);
 
     int measureText(Font font, String text);

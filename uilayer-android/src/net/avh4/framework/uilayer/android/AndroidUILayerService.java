@@ -8,6 +8,9 @@ import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.KeyReceiver;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
+import org.apache.commons.lang.NotImplementedException;
+
+import java.util.List;
 
 public class AndroidUILayerService implements UILayerService {
 
@@ -31,6 +34,11 @@ public class AndroidUILayerService implements UILayerService {
         return 0;
     }
 
+    @Override
+    public int getPixel(String image, int x, int y) {
+        throw new NotImplementedException(); // TODO
+    }
+
     public int getFontHeight(Font font) {
         final Paint paint = new Paint();
         paint.setTypeface(Typeface.createFromAsset(context.getAssets(), font.getResourceName()));
@@ -44,5 +52,10 @@ public class AndroidUILayerService implements UILayerService {
         paint.setTypeface(Typeface.createFromAsset(context.getAssets(), font.getResourceName()));
         paint.setTextSize(font.getSize());
         return (int) Math.ceil(paint.measureText(text));
+    }
+
+    @Override
+    public void showChoices(String title, List<String> choices) {
+        throw new NotImplementedException(); // TODO
     }
 }

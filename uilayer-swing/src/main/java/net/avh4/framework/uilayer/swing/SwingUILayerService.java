@@ -84,6 +84,11 @@ public class SwingUILayerService implements UILayerService {
     }
 
     @Override
+    public int getPixel(String image, int x, int y) {
+        return loadImage(image).getRGB(x, y);
+    }
+
+    @Override
     public int getFontHeight(net.avh4.framework.uilayer.Font font) {
         final Font awtFont = loadFont(font);
 

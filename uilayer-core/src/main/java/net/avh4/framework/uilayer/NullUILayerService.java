@@ -28,6 +28,11 @@ class NullUILayerService implements UILayerService {
     }
 
     @Override
+    public int getPixel(String image, int x, int y) {
+        throw exception;
+    }
+
+    @Override
     public int getFontHeight(Font font) {
         throw exception;
     }
