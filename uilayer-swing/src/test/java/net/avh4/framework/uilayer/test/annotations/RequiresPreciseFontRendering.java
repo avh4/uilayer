@@ -64,6 +64,9 @@ public @interface RequiresPreciseFontRendering {
                         StringBuilder sb = new StringBuilder("Reporting JVM info for failed font rendering test:")
                                 .append("\n    java.vendor: ").append(System.getProperty("java.vendor"))
                                 .append("\n    java.version: ").append(System.getProperty("java.version"))
+                                .append("\n    java.specification.version: ").append(System.getProperty("java.specification.version"))
+                                .append("\n    java.vm.version: ").append(System.getProperty("java.vm.version"))
+                                .append("\n    java.runtime.version: ").append(System.getProperty("java.runtime.version"))
                                 .append("\n    os.name: ").append(System.getProperty("os.name"))
                                 .append("\n    os.arch: ").append(System.getProperty("os.arch"))
                                 .append("\n    os.version: ").append(System.getProperty("os.version"));
