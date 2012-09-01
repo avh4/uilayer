@@ -7,8 +7,6 @@ import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
-import net.avh4.framework.uilayer.scene.SwingGraphicsOperations;
-import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

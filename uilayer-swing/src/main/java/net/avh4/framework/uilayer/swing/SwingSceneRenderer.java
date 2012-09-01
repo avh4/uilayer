@@ -1,6 +1,10 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.scene.GraphicsOperationsRenderer;
+import net.avh4.framework.uilayer.scene.Scene;
+import net.avh4.framework.uilayer.scene.SceneElement;
+import net.avh4.framework.uilayer.scene.SceneRenderer;
 
 import javax.swing.*;
 import java.awt.*;

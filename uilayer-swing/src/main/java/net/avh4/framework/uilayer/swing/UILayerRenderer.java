@@ -3,7 +3,6 @@ package net.avh4.framework.uilayer.swing;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneElement;
-import net.avh4.framework.uilayer.scene.SwingSceneRenderer;
 import net.avh4.util.imagecomparison.Renderer;
 import net.avh4.util.imagecomparison.SwingRenderer;
 

@@ -1,7 +1,7 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.swing.SwingUILayerService;
+import net.avh4.framework.uilayer.scene.FontMetricsService;
 
 import java.awt.*;
 

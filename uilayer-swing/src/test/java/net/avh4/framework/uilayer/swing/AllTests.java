@@ -1,6 +1,5 @@
 package net.avh4.framework.uilayer.swing;
 
-import net.avh4.framework.uilayer.scene.SwingGraphicsOperationsTest;
 import net.avh4.framework.uilayer.swing.input.SwingInputHandlerTest;
 import net.avh4.framework.uilayer.swing.scene.SwingImageTest;
 import net.avh4.framework.uilayer.swing.scene.SwingSceneRendererTest;
