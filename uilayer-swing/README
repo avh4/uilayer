@@ -15,7 +15,10 @@ skip-font-rendering maven profile:
 
 ## Disabling antialiasing
 
-Set the Java systerm property uilayer.swing.antialiasing=false to disable antialiasing.  This is useful when tests are run on multiple machines, since Java implementations across different platforms are likely to antialias slightly differently.
+Set the Java system property uilayer.swing.antialiasing=false to disable
+antialiasing.  This is useful when tests are run on multiple machines, since
+Java implementations across different platforms are likely to antialias
+slightly differently.
 
 When running tests, pass this as a JVM argument:
 

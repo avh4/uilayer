@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class SwingGraphicsOperations implements GraphicsOperations {
     public static final String PROPERTY_KEY_USE_ANTIALIASING = "uilayer.swing.antialiasing";
-    public static final boolean USE_ANTIALIASING = System.getProperty(PROPERTY_KEY_USE_ANTIALIASING, "true").equals("true");
+    public static boolean USE_ANTIALIASING = System.getProperty(PROPERTY_KEY_USE_ANTIALIASING, "true").equals("true");
 
     private Graphics g;
 

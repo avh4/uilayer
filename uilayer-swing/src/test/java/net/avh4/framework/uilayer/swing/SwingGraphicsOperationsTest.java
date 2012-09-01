@@ -27,10 +27,7 @@ public class SwingGraphicsOperationsTest {
 
     @BeforeClass
     public static void ensureAntialiasingIsOff() {
-        if (SwingGraphicsOperations.USE_ANTIALIASING) {
-            throw new RuntimeException("Set the system property uilayer.swing.antialiasing=false");
-        }
-        ;
+        SwingGraphicsOperations.USE_ANTIALIASING = false;
     }
 
     @Before
