@@ -3,6 +3,7 @@ package net.avh4.framework.uilayer.swing;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.ResponseListener;
 import net.avh4.framework.uilayer.UILayerService;
+import net.avh4.framework.uilayer.test.annotations.SkipIfHeadless;
 import net.avh4.test.junit.Nested;
 import org.fest.swing.core.BasicRobot;
 import org.fest.swing.core.Robot;
@@ -12,7 +13,9 @@ import org.fest.swing.fixture.JOptionPaneFixture;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.MethodRule;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -21,8 +24,8 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsNull.notNullValue;
 
 
 @SuppressWarnings({"NestedMethodCall", "ChainedMethodCall"})
@@ -67,6 +70,9 @@ public class SwingUILayerServiceTest {
 
     @SuppressWarnings("UnusedDeclaration")
     public class ShowChoices {
+        @Rule
+        public MethodRule skipIfHeadless = new SkipIfHeadless.Rule();
+
         private JOptionPaneFixture dialog;
         private Robot robot;
         @Mock
@@ -86,16 +92,19 @@ public class SwingUILayerServiceTest {
         }
 
         @Test
+        @SkipIfHeadless
         public void shouldShowADialog() throws Exception {
             assertThat(dialog, notNullValue());
         }
 
         @Test
+        @SkipIfHeadless
         public void shouldShowTitle() throws Exception {
             dialog.requireTitle("Title");
         }
 
         @Test
+        @SkipIfHeadless
         public void shouldShowChoices() throws Exception {
             dialog.comboBox().requireItemCount(3);
             assertThat(dialog.comboBox().valueAt(0), is("Item 1"));
@@ -104,6 +113,7 @@ public class SwingUILayerServiceTest {
         }
 
         @Test
+        @SkipIfHeadless
         public void shouldCallListenerWhenAChoiceIsMade() throws Exception {
             dialog.comboBox().selectItem("Item 2");
             dialog.okButton().click();
