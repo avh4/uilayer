@@ -156,14 +156,4 @@ public class SwingUILayerService implements UILayerService {
                     "Couldn't open custom font: %s", customFontResource), e);
         }
     }
-
-    @Deprecated
-    public static void cacheImage(final String key, final BufferedImage image) {
-        imageCache.put(key, image);
-    }
-
-    @Deprecated
-    public static void clearImageCache() {
-        imageCache.clear();
-    }
 }
