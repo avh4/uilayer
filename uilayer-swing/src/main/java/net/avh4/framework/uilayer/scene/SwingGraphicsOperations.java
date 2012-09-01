@@ -60,6 +60,6 @@ public class SwingGraphicsOperations implements GraphicsOperations {
     }
 
     private static Color loadColor(final int color) {
-        return new Color(color);
+        return new Color(color, true);
     }
 }

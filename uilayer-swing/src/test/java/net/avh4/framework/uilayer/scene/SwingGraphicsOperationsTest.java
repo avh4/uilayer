@@ -4,6 +4,7 @@ import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.test.categories.FontRendering;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
@@ -21,6 +22,14 @@ public class SwingGraphicsOperationsTest {
     private SwingSceneRenderer subject;
     protected SwingGraphicsOperations g;
     protected Runnable graphicsOperations;
+
+    @BeforeClass
+    public static void ensureAntialiasingIsOff() {
+        if (SwingGraphicsOperations.USE_ANTIALIASING) {
+            throw new RuntimeException("Set the system property uilayer.swing.antialiasing=false");
+        }
+        ;
+    }
 
     @Before
     public void setUp() {
@@ -192,6 +201,20 @@ public class SwingGraphicsOperationsTest {
                 g.drawOval(20, 20, 60, 60, Color.BLUE);
                 g.translate(-300, -400);
                 g.drawRect(20, 20, 10, 10, Color.RED);
+            }
+        };
+        assertRenderingIsApproved();
+    }
+
+    @Test
+    public void testDrawingTransparentColor() throws Exception {
+        graphicsOperations = new Runnable() {
+            @Override
+            public void run() {
+                g.drawRect(0, 0, 256 * 2, 40, Color.YELLOW);
+                for (int i = 0; i < 256; i++) {
+                    g.drawRect(i * 2, 10, 2, 80, Color.alpha(Color.RED, i));
+                }
             }
         };
         assertRenderingIsApproved();
