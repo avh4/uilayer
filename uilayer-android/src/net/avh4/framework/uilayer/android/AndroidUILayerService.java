@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import net.avh4.framework.uilayer.ClickReceiver;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.ResponseListener;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
 import org.apache.commons.lang.NotImplementedException;
@@ -55,7 +56,7 @@ public class AndroidUILayerService implements UILayerService {
     }
 
     @Override
-    public void showChoices(String title, List<String> choices) {
+    public void showChoices(String title, List<String> choices, ResponseListener listener) {
         throw new NotImplementedException(); // TODO
     }
 }

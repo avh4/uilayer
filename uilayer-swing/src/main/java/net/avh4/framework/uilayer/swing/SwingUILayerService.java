@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.ClickReceiver;
 import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.ResponseListener;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.scene.Scene;
@@ -109,11 +110,13 @@ public class SwingUILayerService implements UILayerService {
     }
 
     @Override
-    public void showChoices(final String title, final List<String> choices) {
+    public void showChoices(final String title, final List<String> choices, final ResponseListener listener) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JOptionPane.showInputDialog(null, null, title, 0, null, choices.toArray(), null);
+                final String response = (String) JOptionPane.showInputDialog(null, null, title, 0, null,
+                        choices.toArray(), null);
+                listener.response(response);
             }
         });
     }

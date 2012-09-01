@@ -17,5 +17,5 @@ public interface UILayerService {
 
     int measureText(Font font, String text);
 
-    void showChoices(String title, List<String> choices);
+    void showChoices(String title, List<String> choices, ResponseListener listener);
 }

@@ -43,7 +43,7 @@ class NullUILayerService implements UILayerService {
     }
 
     @Override
-    public void showChoices(String title, List<String> choices) {
+    public void showChoices(String title, List<String> choices, ResponseListener listener) {
         throw exception;
     }
 }
