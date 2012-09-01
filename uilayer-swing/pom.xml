@@ -19,24 +19,6 @@
         <imagecomparison.version>0.2.0</imagecomparison.version>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>skip-font-rendering</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <includes>
-                                <include>**/AllTestsExceptFontRendering.java</include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <build>
         <plugins>
             <plugin>

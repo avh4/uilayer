@@ -4,11 +4,12 @@ import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
-import net.avh4.framework.uilayer.test.categories.FontRendering;
+import net.avh4.framework.uilayer.test.annotations.RequiresPreciseFontRendering;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.rules.MethodRule;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -24,6 +25,9 @@ public class SwingGraphicsOperationsTest {
     private SwingSceneRenderer subject;
     protected SwingGraphicsOperations g;
     protected Runnable graphicsOperations;
+
+    @Rule
+    public MethodRule r = new RequiresPreciseFontRendering.Rule();
 
     @BeforeClass
     public static void ensureAntialiasingIsOff() {
@@ -133,7 +137,7 @@ public class SwingGraphicsOperationsTest {
     }
 
     @Test
-    @Category(FontRendering.class)
+    @RequiresPreciseFontRendering("1.7.0-u8-b04")
     public void testRenderCenteredText() throws Exception {
         graphicsOperations = new Runnable() {
             @Override
@@ -146,7 +150,7 @@ public class SwingGraphicsOperationsTest {
     }
 
     @Test
-    @Category(FontRendering.class)
+    @RequiresPreciseFontRendering("1.7.0-u8-b04")
     public void testBaselinesShouldBeAligned() throws Exception {
         graphicsOperations = new Runnable() {
             @Override
@@ -161,7 +165,7 @@ public class SwingGraphicsOperationsTest {
     }
 
     @Test
-    @Category(FontRendering.class)
+    @RequiresPreciseFontRendering("1.7.0-u8-b04")
     public void testRenderLabel() throws Exception {
         graphicsOperations = new Runnable() {
             @Override
@@ -174,7 +178,7 @@ public class SwingGraphicsOperationsTest {
     }
 
     @Test
-    @Category(FontRendering.class)
+    @RequiresPreciseFontRendering("1.7.0-u8-b04")
     public void testIncludedFontPfennig() throws Exception {
         final Font font = Font.PFENNIG.size(32);
         final String text = "Pfennig";

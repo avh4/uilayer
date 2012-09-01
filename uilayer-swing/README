@@ -5,13 +5,12 @@ tests fail, make sure you are using OpenJDK-1.7u, available from
 http://code.google.com/p/openjdk-osx-build/  (version
 OpenJDK-OSX-1.7-universal-u-jdk-u8-b04-20120823.dmg is known to work).  This is
 known to work on OS X 10.6 (Snow Leopard), 10.7 (Lion), and 10.8 (Mountain
-Lion).  This is also compatible with the OpenJDK-1.7 version used on Travis-CI
-build machines as of 2012.
+Lion).
 
-If you must run only the tests that don't involve font rendering, use the
-skip-font-rendering maven profile:
-
-    mvn -P skip-font-rendering <target>
+If you get such failures, you should also see a report of the JVM version.  Use
+the java.version value in the report to add the incompatibility to the list in
+RequiresPreciseFontRendering.Rule.  This will cause the font rendering tests to
+be skipped on that JVM version.
 
 ## Disabling antialiasing
 
