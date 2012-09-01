@@ -49,4 +49,9 @@ public class ColorTest {
         assertThat(Color.fromRGB(0xfe, 0xfd, 0xfc), is(0xfffefdfc));
         assertThat(Color.fromRGB(0x40, 0xd4, 0x09), is(0xff40d409));
     }
+
+    @Test
+    public void testAlpha() throws Exception {
+        assertThat(Color.alpha(0xff112233, 0x73), is(0x73112233));
+    }
 }

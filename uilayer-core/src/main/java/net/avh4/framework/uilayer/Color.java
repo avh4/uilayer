@@ -30,8 +30,7 @@ public class Color {
 
     public static int getValue(final int color) {
         // http://www.cs.rit.edu/~ncs/color/t_convert.html
-        return Math.max(getRed(color),
-                Math.max(getGreen(color), getBlue(color)));
+        return Math.max(getRed(color), Math.max(getGreen(color), getBlue(color)));
     }
 
     public static int darken(final double factor, final int color) {
@@ -46,5 +45,10 @@ public class Color {
                 | (r & 0xff) << 16
                 | (g & 0xff) << 8
                 | (b & 0xff);
+    }
+
+    public static int alpha(int color, int a) {
+        return 0x00ffffff & color
+                | (a & 0xff) << 24;
     }
 }
