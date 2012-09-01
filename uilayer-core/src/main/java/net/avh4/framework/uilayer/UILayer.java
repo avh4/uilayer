@@ -1,8 +1,6 @@
 package net.avh4.framework.uilayer;
 
 
-import org.apache.commons.lang.StringUtils;
-
 public class UILayer {
 
     private static final String SWING_SERVICE = "net.avh4.framework.uilayer.swing.SwingUILayerService";
@@ -13,8 +11,9 @@ public class UILayer {
     // IOS_SERVICE is not added here because xmlvm does not implement
     // ClassLoader for iOS. Therefore we must replace this entire class in
     // uilayer-ios-xmlvm and not rely on dynamic loading.
-    private static final String[] KNOWN_SERVICES = new String[]{
-            SWING_SERVICE, ANDROID_SERVICE};
+    static final String[] KNOWN_SERVICES = new String[]{
+            SWING_SERVICE, ANDROID_SERVICE
+    };
 
     public static final UILayerService service = loadService();
 
@@ -30,45 +29,12 @@ public class UILayer {
             }
         }
 
-        return new UILayerService() {
-            public RuntimeException exception = new RuntimeException(
-                    String.format(
-                            "Could not find a known UILayerService on the classpath.\n" +
-                                    "If you are using maven, your project must include uilayer-swing as " +
-                                    "a runtime dependency.\n\nChecked for: \n>>%s\n",
-                            StringUtils.join(KNOWN_SERVICES, "\n>>")));
-
-            @Override
-            public void run(SceneCreator game, ClickReceiver receiver, KeyReceiver keyReceiver) {
-                throw exception;
-            }
-
-            @Override
-            public int getImageWidth(String image) {
-                throw exception;
-            }
-
-            @Override
-            public int getImageHeight(String image) {
-                throw exception;
-            }
-
-            @Override
-            public int getFontHeight(Font font) {
-                throw exception;
-            }
-
-            @Override
-            public int measureText(Font font, String text) {
-                throw exception;
-            }
-        };
+        return new NullUILayerService();
     }
 
     private static UILayerService loadService(final String serviceName) {
         try {
-            final Class<?> clazz = UILayer.class.getClassLoader().loadClass(
-                    serviceName);
+            final Class<?> clazz = UILayer.class.getClassLoader().loadClass(serviceName);
             return (UILayerService) clazz.newInstance();
         } catch (final ClassNotFoundException e) {
             return null;
@@ -81,8 +47,7 @@ public class UILayer {
         }
     }
 
-    public static void main(final SceneCreator game,
-                            final ClickReceiver receiver, final KeyReceiver keyReceiver) {
+    public static void main(final SceneCreator game, final ClickReceiver receiver, final KeyReceiver keyReceiver) {
         service.run(game, receiver, keyReceiver);
     }
 }

@@ -28,6 +28,12 @@
     <orderEntry type="module" module-name="uilayer-core" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: org.picocontainer:picocontainer:2.14.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.easytesting:fest-swing:1.2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.easytesting:fest-assert:1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.easytesting:fest-util:1.1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.easytesting:fest-reflect:1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.avh4.test:junit-nested:0.0.5" level="project" />
   </component>
 </module>
 

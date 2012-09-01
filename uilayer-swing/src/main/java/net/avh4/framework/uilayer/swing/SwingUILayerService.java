@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 
 public class SwingUILayerService implements UILayerService {
 
@@ -100,6 +101,16 @@ public class SwingUILayerService implements UILayerService {
         final FontMetrics metrics = g2.getFontMetrics(awtFont);
         final Rectangle2D bounds = metrics.getStringBounds(text, g2);
         return (int) bounds.getWidth();
+    }
+
+    @Override
+    public void showChoices(final String title, final List<String> choices) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JOptionPane.showInputDialog(null, null, title, 0, null, choices.toArray(), null);
+            }
+        });
     }
 
     public static Font loadFont(final net.avh4.framework.uilayer.Font font) {
