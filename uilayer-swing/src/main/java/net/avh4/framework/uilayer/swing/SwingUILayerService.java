@@ -108,13 +108,14 @@ public class SwingUILayerService implements UILayerService {
     }
 
     @Override
-    public void showChoices(final String title, final List<String> choices, final ResponseListener listener) {
+    public <T> void showChoices(final String title, final List<T> choices, final ResponseListener<T> listener) {
         SwingUtilities.invokeLater(new Runnable() {
+            @SuppressWarnings("unchecked")
             @Override
             public void run() {
-                final String response = (String) JOptionPane.showInputDialog(null, null, title,
+                final Object response = JOptionPane.showInputDialog(null, null, title,
                         JOptionPane.QUESTION_MESSAGE, null, choices.toArray(), null);
-                listener.response(response);
+                listener.response((T) response);
             }
         });
     }
