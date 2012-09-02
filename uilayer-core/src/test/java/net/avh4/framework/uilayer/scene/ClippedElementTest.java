@@ -15,6 +15,7 @@ import static org.hamcrest.core.Is.is;
 public class ClippedElementTest extends RenderTestBase {
 
     private ClippedElementDelegate delegate;
+    private ClippedElementDelegate delegate2;
     private ClippedElement subjectAtOrigin;
     private ClippedElement subjectAtXY;
     private ClippedElement subjectSmallerThanMap;
@@ -23,19 +24,25 @@ public class ClippedElementTest extends RenderTestBase {
     @Before
     public void setup() throws Exception {
         g = Mockito.mock(GraphicsOperations.class);
-        delegate = Mockito.mock(ClippedElementDelegate.class);
+        delegate = makeMockDelegate("Delegate");
+        delegate2 = makeMockDelegate("Delegate 2");
+        subjectAtOrigin = new ClippedElement(delegate, 0, 0, 320, 640);
+        subjectAtXY = new ClippedElement(delegate, 25, 50, 320, 640);
+        subjectSmallerThanMap = new ClippedElement(delegate, 0, 0, 160, 96);
+    }
+
+    private ClippedElementDelegate makeMockDelegate(final String name) {
+        ClippedElementDelegate delegate = Mockito.mock(ClippedElementDelegate.class, name);
         Mockito.doAnswer(new Answer() {
             @Override
             public Object answer(InvocationOnMock invocation) throws Throwable {
                 GraphicsOperations g = (GraphicsOperations) invocation.getArguments()[0];
-                g.drawText("Delegate", 0, 0, Font.PFENNIG, Color.BLACK);
+                g.drawText(name, 0, 0, Font.PFENNIG, Color.BLACK);
                 return null;
             }
         }).when(delegate).draw(Mockito.any(GraphicsOperations.class), Mockito.any(FontMetricsService.class),
                 Mockito.anyInt(), Mockito.anyInt(), Mockito.anyInt(), Mockito.anyInt());
-        subjectAtOrigin = new ClippedElement(delegate, 0, 0, 320, 640);
-        subjectAtXY = new ClippedElement(delegate, 25, 50, 320, 640);
-        subjectSmallerThanMap = new ClippedElement(delegate, 0, 0, 160, 96);
+        return delegate;
     }
 
     @Test
@@ -85,5 +92,13 @@ public class ClippedElementTest extends RenderTestBase {
         subjectSmallerThanMap.setClipPosition(15, 30);
         subjectSmallerThanMap.draw(g, null);
         Mockito.verify(delegate).draw(g, null, 15, 30, 160, 96);
+    }
+
+    @Test
+    public void setDelegate_shouldChangeTheDelegate() throws Exception {
+        subjectAtOrigin.setDelegate(delegate2);
+        assertRenderingOf(subjectAtOrigin, "==== TRANSLATE to 0, 0 ====\n" +
+                "Text: \"Delegate 2\" 0.0, 0.0 Font{'Pfennig.ttf' (12)} 0xff000000\n" +
+                "==== TRANSLATE to 0, 0 ====\n");
     }
 }

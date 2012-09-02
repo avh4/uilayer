@@ -1,7 +1,7 @@
 package net.avh4.framework.uilayer.scene;
 
 public class ClippedElement extends SceneElementBase {
-    private final ClippedElementDelegate delegate;
+    protected ClippedElementDelegate delegate;
     private int clipX;
     private int clipY;
 
@@ -20,5 +20,9 @@ public class ClippedElement extends SceneElementBase {
     public void setClipPosition(int leftX, int topY) {
         this.clipX = leftX;
         this.clipY = topY;
+    }
+
+    public void setDelegate(ClippedElementDelegate delegate) {
+        this.delegate = delegate;
     }
 }
