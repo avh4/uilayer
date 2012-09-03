@@ -1,21 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
+        <groupId>net.avh4.framework</groupId>
+        <artifactId>uilayer</artifactId>
+        <version>1.0.10-SNAPSHOT</version>
+        <relativePath>../..</relativePath>
     </parent>
 
-    <groupId>net.avh4.framework</groupId>
     <artifactId>uilayer-android-tests</artifactId>
-    <version>1.0.9-SNAPSHOT</version>
     <packaging>apk</packaging>
 
     <name>uilayer-android-tests</name>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <build>
         <sourceDirectory>src</sourceDirectory>
@@ -40,6 +36,7 @@
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>com.google.android</groupId>
@@ -56,24 +53,21 @@
         <dependency>
             <groupId>net.avh4.framework</groupId>
             <artifactId>uilayer-android</artifactId>
-            <version>1.0.9-SNAPSHOT</version>
+            <version>${uilayer.version}</version>
             <type>apklib</type>
         </dependency>
         <dependency>
             <groupId>net.avh4.util</groupId>
             <artifactId>imagecomparison</artifactId>
-            <version>0.0.5</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
-            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
-            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.easymock</groupId>

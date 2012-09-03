@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: net.avh4.framework:uilayer-android:apklib:1.0.9-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/avh4/framework/uilayer-android/1.0.9-SNAPSHOT/uilayer-android-1.0.9-SNAPSHOT.apklib!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/uilayer-android/pom-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/avh4/framework/uilayer-android/1.0.9-SNAPSHOT/uilayer-android-1.0.9-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/uilayer-android/pom-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/avh4/framework/uilayer-android/1.0.9-SNAPSHOT/uilayer-android-1.0.9-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
