@@ -16,8 +16,8 @@ public @interface RequiresPreciseFontRendering {
     String value() default "";
 
     class Rule implements MethodRule {
-        private static Set<String> knownIncompatibilities = new HashSet<String>();
-        private static MethodRule reportJdkVersion = new ReportJdkVersion();
+        private static final Set<String> knownIncompatibilities = new HashSet<String>();
+        private static final MethodRule reportJdkVersion = new ReportJdkVersion();
 
         static {
             knownIncompatibilities.add("1.7.0-u8-b04:1.6.0_26");
@@ -28,12 +28,12 @@ public @interface RequiresPreciseFontRendering {
 
         @Override
         public Statement apply(Statement base, FrameworkMethod method, Object target) {
-            RequiresPreciseFontRendering annotation = method.getAnnotation(RequiresPreciseFontRendering.class);
+            final RequiresPreciseFontRendering annotation = method.getAnnotation(RequiresPreciseFontRendering.class);
             if (annotation == null) {
                 return base;
             }
-            String requestedVersion = annotation.value();
-            String currentVersion = System.getProperty("java.version");
+            final String requestedVersion = annotation.value();
+            final String currentVersion = System.getProperty("java.version");
             if (!isCompatible(requestedVersion, currentVersion)) {
                 throw new AssumptionViolatedException("Requires font rendering to be identical to JDK " +
                         requestedVersion + " -- the current JDK (" + currentVersion + ") " +
@@ -43,7 +43,7 @@ public @interface RequiresPreciseFontRendering {
         }
 
         private boolean isCompatible(String requestedVersion, String currentVersion) {
-            String key = requestedVersion + ":" + currentVersion;
+            final String key = requestedVersion + ":" + currentVersion;
             if (knownIncompatibilities.contains(key)) {
                 return false;
             } else {
@@ -62,16 +62,16 @@ public @interface RequiresPreciseFontRendering {
                         base.evaluate();
                     } catch (Throwable e) {
                         @SuppressWarnings("ChainedMethodCall")
-                        StringBuilder sb = new StringBuilder("Reporting JVM info for failed font rendering test:")
-                                .append("\n    java.vendor: ").append(System.getProperty("java.vendor"))
-                                .append("\n    java.version: ").append(System.getProperty("java.version"))
-                                .append("\n    java.specification.version: ").append(System.getProperty("java.specification.version"))
-                                .append("\n    java.vm.version: ").append(System.getProperty("java.vm.version"))
-                                .append("\n    java.runtime.version: ").append(System.getProperty("java.runtime.version"))
-                                .append("\n    os.name: ").append(System.getProperty("os.name"))
-                                .append("\n    os.arch: ").append(System.getProperty("os.arch"))
-                                .append("\n    os.version: ").append(System.getProperty("os.version"));
-                        System.err.println(sb.toString());
+                        final String report = "Reporting JVM info for failed font rendering test:"
+                                + "\n    java.vendor: " + System.getProperty("java.vendor")
+                                + "\n    java.version: " + System.getProperty("java.version")
+                                + "\n    java.specification.version: " + System.getProperty("java.specification.version")
+                                + "\n    java.vm.version: " + System.getProperty("java.vm.version")
+                                + "\n    java.runtime.version: " + System.getProperty("java.runtime.version")
+                                + "\n    os.name: " + System.getProperty("os.name")
+                                + "\n    os.arch: " + System.getProperty("os.arch")
+                                + "\n    os.version: " + System.getProperty("os.version");
+                        System.err.println(report);
                         throw e;
                     }
                 }
