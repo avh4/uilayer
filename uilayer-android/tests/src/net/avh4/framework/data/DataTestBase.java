@@ -28,10 +28,10 @@ public class DataTestBase extends InstrumentationTestCase {
             IOUtils.write(content, fos);
             fos.close();
         } catch (FileNotFoundException e) {
+            System.out.println("If running in an emulator, make sure the AVD has an SD card");
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
 }
