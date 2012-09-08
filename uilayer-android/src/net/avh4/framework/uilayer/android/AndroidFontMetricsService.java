@@ -1,8 +1,9 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.android;
 
 import android.content.Context;
 import android.graphics.Paint;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.framework.uilayer.scene.FontMetricsService;
 
 import static android.graphics.Paint.FontMetrics;
 

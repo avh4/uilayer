@@ -1,11 +1,11 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.android;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.android.TypefaceCache;
+import net.avh4.framework.uilayer.scene.GraphicsOperations;
 
 public class AndroidGraphicsOperations implements GraphicsOperations {
     private final Context context;

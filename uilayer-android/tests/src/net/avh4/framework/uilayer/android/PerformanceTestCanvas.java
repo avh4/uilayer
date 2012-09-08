@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.android;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

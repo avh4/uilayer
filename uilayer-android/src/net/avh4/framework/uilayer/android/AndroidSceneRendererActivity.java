@@ -1,13 +1,5 @@
 package net.avh4.framework.uilayer.android;
 
-import net.avh4.framework.data.android.AndroidDataStore;
-import net.avh4.framework.data.android.AndroidExternalStorage;
-import net.avh4.framework.uilayer.R;
-import net.avh4.framework.uilayer.UI;
-import net.avh4.framework.uilayer.UILayer;
-import net.avh4.framework.uilayer.scene.AndroidSceneRenderer;
-import org.picocontainer.DefaultPicoContainer;
-import org.picocontainer.MutablePicoContainer;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
@@ -16,6 +8,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import net.avh4.framework.data.android.AndroidDataStore;
+import net.avh4.framework.data.android.AndroidExternalStorage;
+import net.avh4.framework.uilayer.R;
+import net.avh4.framework.uilayer.UI;
+import net.avh4.framework.uilayer.UILayer;
+import org.picocontainer.DefaultPicoContainer;
+import org.picocontainer.MutablePicoContainer;
 
 public class AndroidSceneRendererActivity extends Activity {
 
@@ -59,24 +58,37 @@ public class AndroidSceneRendererActivity extends Activity {
 		return true;
 	}
 
-	public void setUI(final UI ui) {
-		this.ui = ui;
-		runOnUiThread(new Runnable() {
-			public void run() {
-				if (AndroidSceneRendererActivity.this.ui != null) {
-					uiView = new AndroidSceneRenderer(
-							AndroidSceneRendererActivity.this,
-							AndroidSceneRendererActivity.this.ui);
-					setContentView(uiView);
-				} else {
-					final ImageView placeholder = new ImageView(
-							AndroidSceneRendererActivity.this);
-					placeholder.setImageResource(R.drawable.icon);
-					setContentView(placeholder);
-				}
-			}
-		});
+    public void setUI(final UI ui) {
+        this.ui = ui;
+        if (this.ui != null) {
+            setRenderer(new AndroidSceneRenderer(
+                    AndroidSceneRendererActivity.this,
+                    AndroidSceneRendererActivity.this.ui));
+        } else {
+            removeRenderer();
+        }
 	}
+
+    private void removeRenderer() {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                final ImageView placeholder = new ImageView(
+                        AndroidSceneRendererActivity.this);
+                placeholder.setImageResource(R.drawable.icon);
+                setContentView(placeholder);
+            }
+        });
+    }
+
+    public void setRenderer(final AndroidSceneRenderer renderer) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                uiView = renderer;
+                setContentView(uiView);
+            }
+        });
+    }
 
 	private int getStatusBarHeight() {
 		final Rect rect = new Rect();

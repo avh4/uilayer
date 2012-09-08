@@ -1,12 +1,13 @@
-package net.avh4.framework.uilayer.scene;
+package net.avh4.framework.uilayer.android;
 
 import android.test.InstrumentationTestCase;
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.UI;
+import net.avh4.framework.uilayer.scene.Scene;
+import net.avh4.framework.uilayer.scene.SceneText;
 import org.easymock.EasyMock;
 
-import static net.avh4.framework.uilayer.scene.PerformanceTestCanvas.TIME_TO_DRAW_TEXT;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.lessThan;
 
@@ -28,7 +29,7 @@ public class AndroidSceneRendererPerformanceTest extends InstrumentationTestCase
         final String stringOfAThousandWords = makeStringOfAThousandWords();
         scene.add(new SceneText(stringOfAThousandWords, 0, 0, 720, Font.PFENNIG.size(42), Color.WHITE));
 
-        assertThat(measureRenderingTimeUnits(), lessThan(100 * TIME_TO_DRAW_TEXT));
+        assertThat(measureRenderingTimeUnits(), lessThan(100 * PerformanceTestCanvas.TIME_TO_DRAW_TEXT));
     }
 
     private int measureRenderingTimeUnits() {
