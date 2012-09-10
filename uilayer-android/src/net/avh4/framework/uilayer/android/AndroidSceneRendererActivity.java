@@ -18,56 +18,56 @@ import org.picocontainer.MutablePicoContainer;
 
 public class AndroidSceneRendererActivity extends Activity {
 
-	private UI ui;
-	private AndroidSceneRenderer uiView;
-	protected final MutablePicoContainer pico;
+    private UI ui;
+    private AndroidSceneRenderer uiView;
+    protected final MutablePicoContainer pico;
 
-	public AndroidSceneRendererActivity() {
-		super();
-		pico = new DefaultPicoContainer();
-		pico.addComponent(this);
-		pico.addComponent(AndroidDataStore.class);
-		pico.addComponent(AndroidExternalStorage.class);
-		pico.addComponent(new AndroidUILayerExecutor(this));
+    public AndroidSceneRendererActivity() {
+        super();
+        pico = new DefaultPicoContainer();
+        pico.addComponent(this);
+        pico.addComponent(AndroidDataStore.class);
+        pico.addComponent(AndroidExternalStorage.class);
+        pico.addComponent(new AndroidUILayerExecutor(this));
 
-		((AndroidUILayerService) UILayer.service)
-				.init(pico.getComponent(Context.class));
-	}
+        ((AndroidUILayerService) UILayer.service)
+                .init(pico.getComponent(Context.class));
+    }
 
-	@SuppressWarnings("UnusedDeclaration")
-	public AndroidSceneRendererActivity(Class<? extends UI> uiClass) {
-		this();
-		pico.addComponent(uiClass);
-	}
+    @SuppressWarnings("UnusedDeclaration")
+    public AndroidSceneRendererActivity(Class<? extends UI> uiClass) {
+        this();
+        pico.addComponent(uiClass);
+    }
 
-	/** Called when the activity is first created. */
-	@Override
-	public void onCreate(final Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setUI(pico.getComponent(UI.class));
-	}
+    /**
+     * Called when the activity is first created.
+     */
+    @Override
+    public void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setUI(pico.getComponent(UI.class));
+    }
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		if (event.getAction() == MotionEvent.ACTION_UP) {
-			ui.click((int) event.getX(),
-					(int) event.getY() - getStatusBarHeight());
-			uiView.invalidate();
-		}
-		return true;
-	}
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            ui.click((int) event.getX(),
+                    (int) event.getY() - getStatusBarHeight());
+            uiView.invalidate();
+        }
+        return true;
+    }
 
     public void setUI(final UI ui) {
         this.ui = ui;
-        if (this.ui != null) {
-            setRenderer(new AndroidSceneRenderer(
-                    AndroidSceneRendererActivity.this,
-                    AndroidSceneRendererActivity.this.ui));
+        if (ui != null) {
+            setRenderer(new AndroidSceneRenderer(this, ui));
         } else {
             removeRenderer();
         }
-	}
+    }
 
     private void removeRenderer() {
         runOnUiThread(new Runnable() {
@@ -90,18 +90,18 @@ public class AndroidSceneRendererActivity extends Activity {
         });
     }
 
-	private int getStatusBarHeight() {
-		final Rect rect = new Rect();
-		getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
-		final int statusBarHeight = rect.top;
-		if (statusBarHeight == 0) {
-			throw new RuntimeException(
-					"Too early to call getStatusBarHeight(). The Window has not been laid out yet.");
-		}
-		return statusBarHeight;
-	}
+    private int getStatusBarHeight() {
+        final Rect rect = new Rect();
+        getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+        final int statusBarHeight = rect.top;
+        if (statusBarHeight == 0) {
+            throw new RuntimeException(
+                    "Too early to call getStatusBarHeight(). The Window has not been laid out yet.");
+        }
+        return statusBarHeight;
+    }
 
-	View getUiView() {
-		return uiView;
-	}
+    View getUiView() {
+        return uiView;
+    }
 }
