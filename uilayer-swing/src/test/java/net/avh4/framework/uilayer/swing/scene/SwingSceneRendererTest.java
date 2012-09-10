@@ -7,6 +7,7 @@ import net.avh4.framework.uilayer.swing.SwingGraphicsOperations;
 import net.avh4.framework.uilayer.swing.SwingSceneRenderer;
 import net.avh4.framework.uilayer.test.annotations.RequiresPreciseFontRendering;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.MethodRule;
@@ -20,6 +21,11 @@ public class SwingSceneRendererTest {
 
     @Rule
     public MethodRule r = new RequiresPreciseFontRendering.Rule();
+
+    @BeforeClass
+    public static void ensureAntialiasingIsOff() {
+        SwingGraphicsOperations.USE_ANTIALIASING = false;
+    }
 
     @Before
     public void setup() throws Exception {
