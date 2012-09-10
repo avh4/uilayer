@@ -1,15 +1,12 @@
 package net.avh4.framework.uilayer.android;
 
-import android.app.Activity;
 import android.os.Bundle;
+import net.avh4.demo.uilayer.DemoGame;
 
-public class MyActivity extends Activity {
-    /**
-     * Called when the activity is first created.
-     */
+public class DemoGameActivity extends AndroidSceneRendererActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setUI(new DemoGame());
     }
 }

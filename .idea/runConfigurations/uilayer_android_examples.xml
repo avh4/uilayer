@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="uilayer-android-examples" type="AndroidRunConfigurationType" factoryName="Android Application">
     <module name="uilayer-android-examples" />
-    <option name="ACTIVITY_CLASS" value="net.avh4.framework.uilayer.android.MyActivity" />
+    <option name="ACTIVITY_CLASS" value="net.avh4.framework.uilayer.android.DemoGameActivity" />
     <option name="MODE" value="specific_activity" />
     <option name="DEPLOY" value="true" />
     <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
