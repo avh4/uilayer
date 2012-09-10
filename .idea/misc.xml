@@ -21,6 +21,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="android" url="file://$PROJECT_DIR$/uilayer-android" />
+    <file type="android" url="file://$PROJECT_DIR$/uilayer-android-examples" />
   </component>
   <component name="IdProvider" IDEtalkID="A883E954088055665C1743A4B3785000" />
   <component name="JavadocGenerationManager">
