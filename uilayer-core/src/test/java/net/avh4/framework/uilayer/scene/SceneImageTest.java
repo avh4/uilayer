@@ -92,4 +92,29 @@ public class SceneImageTest extends RenderTestBase {
         image.draw(g, fm);
         assertRendering(containsString("%%% DRAW IMAGE 10 11 20 22 50 55 %%%\n"));
     }
+
+    @Test
+    public void withNoImage_shouldRenderAPlaceholder() throws Exception {
+        new SceneImage(0, 0, 100, 200).draw(g, fm);
+        assertRenderingIs("" +
+                "Rectangle: 0, 0, 100, 200, 0xffb7abfb\n" +
+                "Text: \"Missing Image\" 5.0, 195.0 Font{'Pfennig.ttf' (12)} 0xff000000\n");
+    }
+
+    @Test
+    public void setImage_shouldSetTheImageAndResetClipSize() throws Exception {
+        SceneImage image = new SceneImage(10, 11, 100, 200);
+        image.setImage(this.image);
+        image.draw(g, fm);
+        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 100 200 %%%\n"));
+    }
+
+    @Test
+    public void setImage_shouldResetClipPosition() throws Exception {
+        SceneImage image = new SceneImage(10, 11, 100, 200);
+        image.setClipPosition(70, 77);
+        image.setImage(this.image);
+        image.draw(g, fm);
+        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 100 200 %%%\n"));
+    }
 }
