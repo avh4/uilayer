@@ -31,10 +31,10 @@ public class TestGraphicsOperations implements GraphicsOperations {
     public void translate(int deltaX, int deltaY) {
         translateX += deltaX;
         translateY += deltaY;
-        sb.append("==== TRANSLATE to ");
+        sb.append("=== TRANSLATE to ");
         sb.append(translateX).append(", ");
         sb.append(translateY);
-        sb.append(" ====\n");
+        sb.append(" ===\n");
     }
 
     @Override
@@ -77,5 +77,9 @@ public class TestGraphicsOperations implements GraphicsOperations {
 
     public void reset() {
         sb = new StringBuffer();
+    }
+
+    public void drawMockOperation(String mockOperationDescription) {
+        sb.append(mockOperationDescription).append("\n");
     }
 }

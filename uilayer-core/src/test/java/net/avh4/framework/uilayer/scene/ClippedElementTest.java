@@ -57,9 +57,9 @@ public class ClippedElementTest extends RenderTestBase {
 
     @Test
     public void shouldDrawTheTiles() throws Exception {
-        assertRenderingOf(subjectAtOrigin, "==== TRANSLATE to 0, 0 ====\n" +
+        assertRenderingOf(subjectAtOrigin, "=== TRANSLATE to 0, 0 ===\n" +
                 "Text: \"Delegate\" 0.0, 0.0 Font{'Pfennig.ttf' (12)} 0xff000000\n" +
-                "==== TRANSLATE to 0, 0 ====\n");
+                "=== TRANSLATE to 0, 0 ===\n");
     }
 
     @Test
@@ -70,9 +70,9 @@ public class ClippedElementTest extends RenderTestBase {
 
     @Test
     public void shouldDrawAtTheCorrectCoordinates() throws Exception {
-        assertRenderingOf(subjectAtXY, "==== TRANSLATE to 25, 50 ====\n" +
+        assertRenderingOf(subjectAtXY, "=== TRANSLATE to 25, 50 ===\n" +
                 "Text: \"Delegate\" 0.0, 0.0 Font{'Pfennig.ttf' (12)} 0xff000000\n" +
-                "==== TRANSLATE to 0, 0 ====\n");
+                "=== TRANSLATE to 0, 0 ===\n");
     }
 
     @Test
@@ -97,8 +97,8 @@ public class ClippedElementTest extends RenderTestBase {
     @Test
     public void setDelegate_shouldChangeTheDelegate() throws Exception {
         subjectAtOrigin.setDelegate(delegate2);
-        assertRenderingOf(subjectAtOrigin, "==== TRANSLATE to 0, 0 ====\n" +
+        assertRenderingOf(subjectAtOrigin, "=== TRANSLATE to 0, 0 ===\n" +
                 "Text: \"Delegate 2\" 0.0, 0.0 Font{'Pfennig.ttf' (12)} 0xff000000\n" +
-                "==== TRANSLATE to 0, 0 ====\n");
+                "=== TRANSLATE to 0, 0 ===\n");
     }
 }

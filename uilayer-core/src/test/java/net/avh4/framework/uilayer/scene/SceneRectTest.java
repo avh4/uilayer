@@ -9,7 +9,7 @@ public class SceneRectTest extends RenderTestBase {
     public void testRenderRect() throws Exception {
         scene.add(new SceneRect(50, 50, 200, 500, Color.RED));
         scene.add(new SceneRect(450, 50, 200, 300, Color.YELLOW));
-        assertRenderingIs("Rectangle: 0, 0, 800, 600, 0xff000000\n" +
+        assertRenderingOfSceneIs("Rectangle: 0, 0, 800, 600, 0xff000000\n" +
                 "Rectangle: 50, 50, 200, 500, 0xffff0000\n" +
                 "Rectangle: 450, 50, 200, 300, 0xffffff00\n");
     }

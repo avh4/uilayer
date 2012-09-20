@@ -10,9 +10,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 @SuppressWarnings("NestedMethodCall")
-public class UILayerRendererTest {
+public class SwingUILayerRendererTest {
 
-    private UILayerRenderer subject;
+    private SwingUILayerRenderer subject;
     private Object sceneCreator;
     private Object sceneElement;
     private Object scene;
@@ -27,7 +27,7 @@ public class UILayerRendererTest {
                 return null;
             }
         };
-        subject = new UILayerRenderer();
+        subject = new SwingUILayerRenderer();
     }
 
     @Test

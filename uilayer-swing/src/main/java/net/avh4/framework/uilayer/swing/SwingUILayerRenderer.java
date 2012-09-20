@@ -1,5 +1,6 @@
 package net.avh4.framework.uilayer.swing;
 
+import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneElement;
@@ -9,20 +10,28 @@ import net.avh4.util.imagecomparison.SwingRenderer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class UILayerRenderer implements Renderer {
+public class SwingUILayerRenderer implements Renderer {
     public static final SwingRenderer SWING_RENDERER = new SwingRenderer();
 
     @Override
     public BufferedImage getImage(final Object obj) {
+        Component comp = createComponent(obj);
+        if (comp == null) {
+            return null;
+        } else {
+            return SWING_RENDERER.getImage(comp);
+        }
+    }
+
+    private Component createComponent(Object obj) {
         if (obj instanceof SceneCreator) {
-            final Component comp = new SwingSceneRenderer((SceneCreator) obj);
-            return SWING_RENDERER.getImage(comp);
+            return new SwingSceneRenderer((SceneCreator) obj);
         } else if (obj instanceof Scene) {
-            final Component comp = new SwingSceneRenderer((Scene) obj);
-            return SWING_RENDERER.getImage(comp);
+            return new SwingSceneRenderer((Scene) obj);
         } else if (obj instanceof SceneElement) {
-            final Component comp = new SwingSceneRenderer((SceneElement) obj);
-            return SWING_RENDERER.getImage(comp);
+            return new SwingSceneRenderer((SceneElement) obj);
+        } else if (obj instanceof Image) {
+            return new SwingSceneRenderer((Image) obj);
         } else {
             return null;
         }

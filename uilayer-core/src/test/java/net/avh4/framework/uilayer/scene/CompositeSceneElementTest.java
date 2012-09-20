@@ -32,21 +32,21 @@ public class CompositeSceneElementTest extends RenderTestBase {
     public void testComponent() throws Exception {
         subject = new TestComponent(0, 0, 100, 100);
         assertRenderingOf(subject, "" +
-                "==== TRANSLATE to 0, 0 ====\n" +
+                "=== TRANSLATE to 0, 0 ===\n" +
                 "Rectangle: 0, 0, 100, 100, 0xffff0000\n" +
                 "Rectangle: 5, 5, 90, 90, 0xffffffff\n" +
                 "Oval: 20, 20, 60, 60, 0xff0000ff\n" +
-                "==== TRANSLATE to 0, 0 ====\n");
+                "=== TRANSLATE to 0, 0 ===\n");
     }
 
     @Test
     public void testTranslatedComponent() throws Exception {
         subject = new TestComponent(300, 400, 100, 100);
         assertRenderingOf(subject, "" +
-                "==== TRANSLATE to 300, 400 ====\n" +
+                "=== TRANSLATE to 300, 400 ===\n" +
                 "Rectangle: 0, 0, 100, 100, 0xffff0000\n" +
                 "Rectangle: 5, 5, 90, 90, 0xffffffff\n" +
                 "Oval: 20, 20, 60, 60, 0xff0000ff\n" +
-                "==== TRANSLATE to 0, 0 ====\n");
+                "=== TRANSLATE to 0, 0 ===\n");
     }
 }
