@@ -4,8 +4,8 @@
     <option name="ACTIVITY_CLASS" value="net.avh4.framework.uilayer.android.DemoGameActivity" />
     <option name="MODE" value="specific_activity" />
     <option name="DEPLOY" value="true" />
-    <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
-    <option name="PREFERRED_AVD" value="" />
+    <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+    <option name="PREFERRED_AVD" value="Android-4.1-WXGA720" />
     <option name="COMMAND_LINE" value="" />
     <option name="WIPE_USER_DATA" value="false" />
     <option name="DISABLE_BOOT_ANIMATION" value="false" />
