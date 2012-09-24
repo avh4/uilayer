@@ -64,4 +64,18 @@ public class SceneText extends SceneElementBase {
             curX += fm.stringWidth(font, word + " ");
         }
     }
+
+    @Override
+    public String toString() {
+        return "SceneText{" +
+                "name='" + name + '\'' +
+                ", x=" + x +
+                ", y=" + y +
+                ", width=" + width +
+                ", height=" + height +
+                ", text='" + text + '\'' +
+                ", font=" + font +
+                ", color=" + color +
+                '}';
+    }
 }

@@ -2,6 +2,8 @@ package net.avh4.framework.uilayer;
 
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneElement;
+import net.avh4.framework.uilayer.scene.SceneLine;
+import net.avh4.framework.uilayer.scene.SceneOval;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import org.junit.Before;
 import org.junit.Test;
@@ -80,6 +82,14 @@ public class SceneTest {
         final ScenePlaceholder actual = subject
                 .findSceneElement(ScenePlaceholder.class, "Needle");
         assertThat(actual, sameInstance(element));
+    }
+
+    @Test
+    public void findSceneElement_withoutName() {
+        subject.add(new SceneLine(Color.BLACK, 0, 0, 0, 0));
+        SceneElement needle = subject.add(new SceneOval(Color.BLACK, 1, 1, 1, 1));
+
+        assertThat(subject.findSceneElement(SceneOval.class), sameInstance(needle));
     }
 
     @Test

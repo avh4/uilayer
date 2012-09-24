@@ -71,7 +71,31 @@ public class Scene implements Iterable<SceneElement> {
         return (T) findSceneElement(what);
     }
 
+    public <T extends SceneElement> T findSceneElement(Class<T> elementType) {
+        for (SceneElement child : children) {
+            if (elementType.isInstance(child)) {
+                return (T) child;
+            }
+        }
+        return null;
+    }
+
     public void setTitle(String newTitle) {
         title = newTitle;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder().append("Scene{")
+                .append("title='").append(title).append('\'')
+                .append(", width=").append(width)
+                .append(", height=").append(height);
+        sb
+                .append(", children=").append(children);
+        for (SceneElement child : children) {
+            sb.append("\n    ").append(child).append(", ");
+        }
+        sb.append('}');
+        return sb.toString();
     }
 }
