@@ -1,6 +1,8 @@
 package net.avh4.framework.uilayer;
 
 
+import net.avh4.framework.data.ExternalStorage;
+
 public class UILayer {
 
     private static final String SWING_SERVICE = "net.avh4.framework.uilayer.swing.SwingUILayerService";
@@ -49,5 +51,9 @@ public class UILayer {
 
     public static void main(final SceneCreator game, final ClickReceiver receiver, final KeyReceiver keyReceiver) {
         service.run(game, receiver, keyReceiver);
+    }
+
+    public static ExternalStorage getExternalStorage() {
+        return service.getExternalStorage();
     }
 }

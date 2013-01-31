@@ -1,5 +1,6 @@
 package net.avh4.framework.uilayer;
 
+import net.avh4.framework.data.ExternalStorage;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
@@ -44,6 +45,11 @@ class NullUILayerService implements UILayerService {
 
     @Override
     public <T> void showChoices(String title, List<T> choices, ResponseListener<T> listener) {
+        throw exception;
+    }
+
+    @Override
+    public ExternalStorage getExternalStorage() {
         throw exception;
     }
 }

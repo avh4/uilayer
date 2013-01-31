@@ -1,15 +1,14 @@
 package net.avh4.framework.uilayer.swing;
 
-import net.avh4.framework.uilayer.ClickReceiver;
-import net.avh4.framework.uilayer.KeyReceiver;
-import net.avh4.framework.uilayer.ResponseListener;
-import net.avh4.framework.uilayer.SceneCreator;
-import net.avh4.framework.uilayer.UILayerService;
+import net.avh4.framework.data.ExternalStorage;
+import net.avh4.framework.data.swing.SwingExternalStorage;
+import net.avh4.framework.uilayer.*;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.Font;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -23,6 +22,7 @@ public class SwingUILayerService implements UILayerService {
 
     private static final HashMap<String, BufferedImage> imageCache = new HashMap<String, BufferedImage>();
     private static final HashMap<String, Font> fontCache = new HashMap<String, Font>();
+    private final SwingExternalStorage swingExternalStorage = new SwingExternalStorage();
 
     @Override
     public void run(final SceneCreator game, final ClickReceiver receiver,
@@ -118,6 +118,11 @@ public class SwingUILayerService implements UILayerService {
                 listener.response((T) response);
             }
         });
+    }
+
+    @Override
+    public ExternalStorage getExternalStorage() {
+        return swingExternalStorage;
     }
 
     public static Font loadFont(final net.avh4.framework.uilayer.Font font) {

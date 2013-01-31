@@ -1,6 +1,8 @@
 package net.avh4.framework.uilayer;
 
 
+import net.avh4.framework.data.ExternalStorage;
+
 import java.util.List;
 
 public interface UILayerService {
@@ -18,4 +20,6 @@ public interface UILayerService {
     int measureText(Font font, String text);
 
     <T> void showChoices(String title, List<T> choices, ResponseListener<T> listener);
+
+    ExternalStorage getExternalStorage();
 }
