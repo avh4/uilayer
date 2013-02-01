@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -15,12 +16,13 @@ import java.util.List;
 public class ClasspathResourcesExternalStorage implements ExternalStorage {
     private final String root;
     private final ArrayList<String> allowedFiles = new ArrayList<String>();
+    private HashMap<String, String> writtenFiles = new HashMap<String, String>();
 
     public ClasspathResourcesExternalStorage(String root) {
         this.root = root;
     }
 
-    public String getString(String filename) {
+    public String getStringFromClasspath(String filename) {
         if (!allowedFiles.contains(filename)) {
             return null;
         }
@@ -30,8 +32,7 @@ public class ClasspathResourcesExternalStorage implements ExternalStorage {
             throw new RuntimeException("Resource " + resourcePath + " does not exist");
         }
         try {
-            final String content = readString(is);
-            return content;
+            return readString(is);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -58,5 +59,18 @@ public class ClasspathResourcesExternalStorage implements ExternalStorage {
 
     public void allowFile(String filename) {
         allowedFiles.add(filename);
+    }
+
+    @Override
+    public String getString(String filename) {
+        if (writtenFiles.containsKey(filename)) {
+            return writtenFiles.get(filename);
+        }
+        return getStringFromClasspath(filename);
+    }
+
+    @Override
+    public void writeFile(String filename, String data) {
+        writtenFiles.put(filename, data);
     }
 }

@@ -44,10 +44,15 @@ public class ClasspathResourcesExternalStorageTest {
     }
 
     @Test
-    public void getString_forAllowedFile_shouldFilesContents() throws Exception {
+    public void getString_forAllowedFile_shouldReturnFilesContents() throws Exception {
         subject.allowFile("Romeo and Juliet.txt");
-
         assertThat(subject.getString("Romeo and Juliet.txt"), startsWith("Romeo and Juliet\n\nACT I\n"));
+    }
+
+    @Test
+    public void getString_forAWrittenFile_shouldReturnTheWrittenContents() throws Exception {
+        subject.writeFile("disallowed file.txt", "NEW CONTENTS");
+        assertThat(subject.getString("disallowed file.txt"), is("NEW CONTENTS"));
     }
 
     private Matcher<Iterable<?>> isEmpty() {
