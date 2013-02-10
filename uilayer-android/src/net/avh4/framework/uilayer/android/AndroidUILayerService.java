@@ -3,6 +3,8 @@ package net.avh4.framework.uilayer.android;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import net.avh4.framework.data.ExternalStorage;
+import net.avh4.framework.data.android.AndroidExternalStorage;
 import net.avh4.framework.uilayer.ClickReceiver;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.KeyReceiver;
@@ -16,6 +18,7 @@ import java.util.List;
 public class AndroidUILayerService implements UILayerService {
 
     Context context;
+    private final ExternalStorage externalStorage = new AndroidExternalStorage();
 
     public void run(SceneCreator game, ClickReceiver receiver, KeyReceiver keyReceiver) {
         throw new RuntimeException(
@@ -58,5 +61,10 @@ public class AndroidUILayerService implements UILayerService {
     @Override
     public <T> void showChoices(String title, List<T> choices, ResponseListener<T> listener) {
         throw new NotImplementedException(); // TODO
+    }
+
+    @Override
+    public ExternalStorage getExternalStorage() {
+        return externalStorage;
     }
 }
