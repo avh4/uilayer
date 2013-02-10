@@ -51,4 +51,33 @@ public class Color {
         return 0x00ffffff & color
                 | (a & 0xff) << 24;
     }
+
+    private static float hue2rgb(float p, float q, float t) {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1 / 6f) return p + (q - p) * 6 * t;
+        if (t < 1 / 2f) return q;
+        if (t < 2 / 3f) return p + (q - p) * (2 / 3f - t) * 6;
+        return p;
+    }
+
+
+    public static int fromHSL(float hueDegrees, float s, float l) {
+        final float h = hueDegrees / 360f;
+        final float r;
+        final float g;
+        final float b;
+
+        if (s == 0) {
+            r = g = b = l;
+        } else {
+            final float q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+            final float p = 2 * l - q;
+            r = hue2rgb(p, q, h + 1 / 3f);
+            g = hue2rgb(p, q, h);
+            b = hue2rgb(p, q, h - 1 / 3f);
+        }
+
+        return fromRGB(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
+    }
 }

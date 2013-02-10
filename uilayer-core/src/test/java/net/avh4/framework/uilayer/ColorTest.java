@@ -54,4 +54,13 @@ public class ColorTest {
     public void testAlpha() throws Exception {
         assertThat(Color.alpha(0xff112233, 0x73), is(0x73112233));
     }
+
+    @Test
+    public void testFromHSL() throws Exception {
+        assertThat(Color.fromHSL(0, 0, 0), is(Color.fromRGB(0x00, 0x00, 0x00)));
+        assertThat(Color.fromHSL(0, 0, .5f), is(Color.fromRGB(0x80, 0x80, 0x80)));
+        assertThat(Color.fromHSL(0, 1f, .5f), is(Color.fromRGB(0xff, 0x00, 0x00)));
+        assertThat(Color.fromHSL(180, 1f, .5f), is(Color.fromRGB(0x00, 0xff, 0xff)));
+        assertThat(Color.fromHSL(180, .5f, .5f), is(Color.fromRGB(0x40, 0xbf, 0xbf)));
+    }
 }
