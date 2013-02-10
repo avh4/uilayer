@@ -70,9 +70,10 @@
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-library:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.easymock:easymock:2.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.mockito:mockito-core:1.9.1-SNAPSHOT-20120306" level="project" />
+    <orderEntry type="library" name="Maven: org.mockito:mockito-core:1.9.5" level="project" />
     <orderEntry type="library" name="Maven: org.objenesis:objenesis:1.2" level="project" />
-    <orderEntry type="library" name="Maven: dexmaker:dexmaker:20120305" level="project" />
+    <orderEntry type="library" name="Maven: com.google.dexmaker:dexmaker:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.dexmaker:dexmaker-mockito:1.0" level="project" />
     <orderEntry type="jdk" jdkName="Android 2.3.3 Platform" jdkType="Android SDK" />
   </component>
 </module>

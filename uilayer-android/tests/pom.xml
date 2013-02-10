@@ -82,11 +82,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>1.9.1-SNAPSHOT-20120306</version>
-            <scope>system</scope>
-            <systemPath>
-                ${project.basedir}/libs/mockito-core-1.9.1-SNAPSHOT-20120306.jar
-            </systemPath>
+            <version>1.9.5</version>
         </dependency>
         <dependency>
             <groupId>org.objenesis</groupId>
@@ -94,12 +90,18 @@
             <version>1.2</version>
         </dependency>
         <dependency>
-            <groupId>dexmaker</groupId>
+            <groupId>com.google.dexmaker</groupId>
             <artifactId>dexmaker</artifactId>
-            <version>20120305</version>
+            <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/dexmaker20120305.jar
-            </systemPath>
+            <systemPath>${project.basedir}/libs/dexmaker-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.google.dexmaker</groupId>
+            <artifactId>dexmaker-mockito</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/dexmaker-mockito-1.0.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
