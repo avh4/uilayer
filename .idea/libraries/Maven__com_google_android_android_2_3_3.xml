@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/Downloads/android-src-2.3.3_r1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/android/android/2.3.3/android-2.3.3-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
