@@ -38,6 +38,7 @@
         <module name="uilayer-android-examples" />
         <module name="uilayer-android-tests" />
         <module name="uilayer-core" />
+        <module name="uilayer-designer" />
         <module name="uilayer-examples" />
         <module name="uilayer-swing" />
       </profile>
@@ -48,6 +49,7 @@
       <module name="uilayer-android-examples" target="1.6" />
       <module name="uilayer-android-tests" target="1.6" />
       <module name="uilayer-core" target="1.6" />
+      <module name="uilayer-designer" target="1.7" />
       <module name="uilayer-examples" target="1.6" />
       <module name="uilayer-swing" target="1.6" />
     </bytecodeTargetLevel>

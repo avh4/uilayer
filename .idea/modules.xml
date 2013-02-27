@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/uilayer-android-examples/uilayer-android-examples.iml" filepath="$PROJECT_DIR$/uilayer-android-examples/uilayer-android-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-android/tests/uilayer-android-tests.iml" filepath="$PROJECT_DIR$/uilayer-android/tests/uilayer-android-tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-core/uilayer-core.iml" filepath="$PROJECT_DIR$/uilayer-core/uilayer-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uilayer-designer/uilayer-designer.iml" filepath="$PROJECT_DIR$/uilayer-designer/uilayer-designer.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-examples/uilayer-examples.iml" filepath="$PROJECT_DIR$/uilayer-examples/uilayer-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-swing/uilayer-swing.iml" filepath="$PROJECT_DIR$/uilayer-swing/uilayer-swing.iml" />
     </modules>

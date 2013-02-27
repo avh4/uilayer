@@ -1,0 +1,11 @@
+import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.scene.Scene;
+
+public class MyScene implements SceneCreator {
+
+    @Override
+    public Scene getScene() {
+        Scene scene = new Scene();
+        return scene;
+    }
+}
