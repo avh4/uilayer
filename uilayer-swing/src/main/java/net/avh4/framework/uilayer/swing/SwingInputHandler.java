@@ -71,12 +71,13 @@ public class SwingInputHandler implements MouseListener, KeyListener {
         if (keyReceiver == null) {
             return;
         }
-        keyReceiver.key(e.getKeyCode());
+        boolean shift = e.isShiftDown();
+        int keyCode = e.getKeyCode();
+        keyReceiver.key(keyCode, shift);
         repaint();
     }
 
     @Override
     public void keyReleased(final KeyEvent e) {
     }
-
 }

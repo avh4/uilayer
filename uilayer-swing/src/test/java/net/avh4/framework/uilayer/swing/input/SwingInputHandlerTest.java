@@ -75,6 +75,15 @@ public class SwingInputHandlerTest {
                 KeyEvent.VK_DOWN, '\0');
         subject.keyPressed(e);
 
-        verify(keyReceiver).key(KeyEvent.VK_DOWN);
+        verify(keyReceiver).key(KeyEvent.VK_DOWN, false);
+    }
+
+    @Test
+    public void testDispatchShiftModifier() {
+        final KeyEvent e = new KeyEvent(dummyEventSource, 0, 0, KeyEvent.SHIFT_DOWN_MASK,
+                KeyEvent.VK_DOWN, '\0');
+        subject.keyPressed(e);
+
+        verify(keyReceiver).key(KeyEvent.VK_DOWN, true);
     }
 }

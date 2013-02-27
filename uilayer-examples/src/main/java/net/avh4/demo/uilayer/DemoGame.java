@@ -33,7 +33,7 @@ public class DemoGame implements UI {
     }
 
     @Override
-    public void key(final int keyCode) {
+    public void key(final int keyCode, boolean shift) {
         if (keyCode == KeyEvent.VK_SPACE) {
             s = new Scene("UILayer Demo Game");
             s.add(new SceneImage(0, 0, 800, 600, "background.jpg"));

@@ -21,7 +21,7 @@ public class LightswitchGame implements UI {
     }
 
     @Override
-    public void key(int keyCode) {
+    public void key(int keyCode, boolean shift) {
     }
 
     @Override

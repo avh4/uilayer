@@ -88,7 +88,7 @@ public class Designer implements UI {
     }
 
     @Override
-    public void key(int keyCode) {
+    public void key(int keyCode, boolean shift) {
         // TODO: not tested
         if (keyCode == KeyEvent.VK_S) {
             this.chooseMenuItem("Save");
