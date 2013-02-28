@@ -67,6 +67,8 @@ public class KeyReceiverHelper {
                 return KeyEvent.VK_Z;
             case ' ':
                 return KeyEvent.VK_SPACE;
+            case '-':
+                return KeyEvent.VK_MINUS;
         }
         return KeyEvent.VK_UNDEFINED;
     }

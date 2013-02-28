@@ -68,4 +68,10 @@ public class KeyReceiverHelperTest {
         verify(receiver).key(KeyEvent.VK_Y, false);
         verify(receiver).key(KeyEvent.VK_Z, false);
     }
+
+    @Test
+    public void symbols() {
+        KeyReceiverHelper.type(receiver, "-");
+        verify(receiver).key(KeyEvent.VK_MINUS, false);
+    }
 }

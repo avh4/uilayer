@@ -14,9 +14,6 @@ public class EditText implements KeyReceiver {
     public void key(int key, boolean shift) {
         String originalValue = currentValue;
         switch (key) {
-            case KeyEvent.VK_SPACE:
-                currentValue += " ";
-                break;
             case KeyEvent.VK_BACK_SPACE:
                 if (currentValue.length() > 0) {
                     currentValue = currentValue.substring(0, currentValue.length() - 1);
@@ -109,6 +106,12 @@ public class EditText implements KeyReceiver {
                 break;
             case KeyEvent.VK_Z:
                 c = 'z';
+                break;
+            case KeyEvent.VK_SPACE:
+                c = ' ';
+                break;
+            case KeyEvent.VK_MINUS:
+                c = '-';
                 break;
         }
 

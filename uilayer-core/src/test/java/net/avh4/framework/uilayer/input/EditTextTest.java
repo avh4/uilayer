@@ -78,6 +78,12 @@ public class EditTextTest {
     }
 
     @Test
+    public void symbols() {
+        subject.key(KeyEvent.VK_MINUS, false);
+        verify(receiver).update("-");
+    }
+
+    @Test
     public void backspace_shouldDeleteLastCharacter() {
         subject.key(KeyEvent.VK_A, false);
         reset(receiver);
