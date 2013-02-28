@@ -17,6 +17,11 @@ public class EditText implements KeyReceiver {
             case KeyEvent.VK_SPACE:
                 currentValue += " ";
                 break;
+            case KeyEvent.VK_BACK_SPACE:
+                if (currentValue.length() > 0) {
+                    currentValue = currentValue.substring(0, currentValue.length() - 1);
+                }
+                break;
             default:
                 currentValue += getKeyText(key, shift);
         }

@@ -7,8 +7,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.awt.event.KeyEvent;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.*;
 
 public class EditTextTest {
     private EditText subject;
@@ -76,5 +75,19 @@ public class EditTextTest {
         subject.key(KeyEvent.VK_Y, false);
         subject.key(KeyEvent.VK_Z, false);
         verify(receiver).update("abcdefghijklmnopqrstuvwxyz");
+    }
+
+    @Test
+    public void backspace_shouldDeleteLastCharacter() {
+        subject.key(KeyEvent.VK_A, false);
+        reset(receiver);
+        subject.key(KeyEvent.VK_BACK_SPACE, false);
+        verify(receiver).update("");
+    }
+
+    @Test
+    public void backspace_withNoText() {
+        subject.key(KeyEvent.VK_BACK_SPACE, false);
+        verifyZeroInteractions(receiver);
     }
 }
