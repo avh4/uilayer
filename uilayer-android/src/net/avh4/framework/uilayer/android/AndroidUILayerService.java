@@ -5,12 +5,12 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.data.android.AndroidExternalStorage;
-import net.avh4.framework.uilayer.ClickReceiver;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.KeyReceiver;
 import net.avh4.framework.uilayer.ResponseListener;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
+import net.avh4.framework.uilayer.input.ClickReceiver;
+import net.avh4.framework.uilayer.input.KeyReceiver;
 import org.apache.commons.lang.NotImplementedException;
 
 import java.util.List;

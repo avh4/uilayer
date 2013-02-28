@@ -1,7 +1,7 @@
 package net.avh4.framework.uilayer.swing.input;
 
-import net.avh4.framework.uilayer.ClickReceiver;
-import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.input.ClickReceiver;
+import net.avh4.framework.uilayer.input.KeyReceiver;
 import net.avh4.framework.uilayer.swing.SwingInputHandler;
 import org.fest.swing.edt.FailOnThreadViolationRepaintManager;
 import org.fest.swing.edt.GuiActionRunner;

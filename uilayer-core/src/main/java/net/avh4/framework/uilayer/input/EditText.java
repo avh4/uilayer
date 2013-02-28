@@ -1,7 +1,5 @@
 package net.avh4.framework.uilayer.input;
 
-import net.avh4.framework.uilayer.KeyReceiver;
-
 import java.awt.event.KeyEvent;
 
 public class EditText implements KeyReceiver {

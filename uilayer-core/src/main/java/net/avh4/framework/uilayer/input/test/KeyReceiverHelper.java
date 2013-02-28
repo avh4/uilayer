@@ -1,6 +1,6 @@
 package net.avh4.framework.uilayer.input.test;
 
-import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.input.KeyReceiver;
 
 import java.awt.event.KeyEvent;
 

@@ -1,4 +1,4 @@
-package net.avh4.framework.uilayer;
+package net.avh4.framework.uilayer.input;
 
 public interface KeyReceiver {
 

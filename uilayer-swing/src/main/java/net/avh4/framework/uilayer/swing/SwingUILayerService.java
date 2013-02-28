@@ -2,13 +2,16 @@ package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.data.swing.SwingExternalStorage;
-import net.avh4.framework.uilayer.*;
+import net.avh4.framework.uilayer.ResponseListener;
+import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.UILayerService;
+import net.avh4.framework.uilayer.input.ClickReceiver;
+import net.avh4.framework.uilayer.input.KeyReceiver;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.Font;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;

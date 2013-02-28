@@ -1,7 +1,7 @@
 package net.avh4.framework.uilayer.swing;
 
-import net.avh4.framework.uilayer.ClickReceiver;
-import net.avh4.framework.uilayer.KeyReceiver;
+import net.avh4.framework.uilayer.input.ClickReceiver;
+import net.avh4.framework.uilayer.input.KeyReceiver;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

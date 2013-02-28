@@ -11,6 +11,7 @@
       <directory url="file://$PROJECT_DIR$/uilayer-android/tests/target/generated-sources/aidl" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/uilayer-android/tests/gen-external-apklibs/net.avh4.framework_uilayer-android_1.0.9-SNAPSHOT/gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/uilayer-android-examples/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/uilayer-android-examples/gen-external-apklibs/net.avh4.framework_uilayer-android_1.1.0-SNAPSHOT/gen" includeSubdirectories="true" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
