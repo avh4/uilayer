@@ -58,19 +58,23 @@ public class Scene implements Iterable<SceneElement> {
         return children.iterator();
     }
 
+    @SuppressWarnings("unchecked")
     public <T extends SceneElement> T findSceneElement(String what) {
         for (SceneElement child : children) {
-            if (child.getName().equals(what)) {
+            String name = child.getName();
+            if (name != null && name.equals(what)) {
                 return (T) child;
             }
         }
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     public <T extends SceneElement> T findSceneElement(@SuppressWarnings("UnusedParameters") Class<T> elementType, String what) {
         return (T) findSceneElement(what);
     }
 
+    @SuppressWarnings("unchecked")
     public <T extends SceneElement> T findSceneElement(Class<T> elementType) {
         for (SceneElement child : children) {
             if (elementType.isInstance(child)) {

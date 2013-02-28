@@ -1,7 +1,10 @@
 package net.avh4.framework.uilayer;
 
+import net.avh4.framework.uilayer.scene.FontMetricsService;
+import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneElement;
+import net.avh4.framework.uilayer.scene.SceneElementBase;
 import net.avh4.framework.uilayer.scene.SceneLine;
 import net.avh4.framework.uilayer.scene.SceneOval;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
@@ -90,6 +93,16 @@ public class SceneTest {
         SceneElement needle = subject.add(new SceneOval(Color.BLACK, 1, 1, 1, 1));
 
         assertThat(subject.findSceneElement(SceneOval.class), sameInstance(needle));
+    }
+
+    @Test
+    public void findSceneElement_whenSceneHasElementWithNullName() {
+        subject.add(new SceneElementBase(null, 0, 0, 0, 0) {
+            @Override
+            public void draw(GraphicsOperations g, FontMetricsService fm) {
+            }
+        });
+        assertThat(subject.findSceneElement("Missing"), nullValue());
     }
 
     @Test
