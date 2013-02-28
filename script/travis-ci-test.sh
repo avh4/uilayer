@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mvn -P skip-font-rendering test
+mvn -P skip-android test
 EXIT="$?"
 
 script/publish_approval_images.sh
