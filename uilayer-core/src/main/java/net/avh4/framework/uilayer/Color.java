@@ -52,7 +52,7 @@ public class Color {
                 | (a & 0xff) << 24;
     }
 
-    private static float hue2rgb(float p, float q, float t) {
+    private static double hue2rgb(double p, double q, double t) {
         if (t < 0) t += 1;
         if (t > 1) t -= 1;
         if (t < 1 / 6f) return p + (q - p) * 6 * t;
@@ -62,22 +62,22 @@ public class Color {
     }
 
 
-    public static int fromHSL(float hueDegrees, float s, float l) {
-        final float h = hueDegrees / 360f;
-        final float r;
-        final float g;
-        final float b;
+    public static int fromHSL(double hueDegrees, double s, double l) {
+        final double h = hueDegrees / 360f;
+        final double r;
+        final double g;
+        final double b;
 
         if (s == 0) {
             r = g = b = l;
         } else {
-            final float q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-            final float p = 2 * l - q;
+            final double q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+            final double p = 2 * l - q;
             r = hue2rgb(p, q, h + 1 / 3f);
             g = hue2rgb(p, q, h);
             b = hue2rgb(p, q, h - 1 / 3f);
         }
 
-        return fromRGB(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
+        return fromRGB((int) Math.round(r * 255), (int) Math.round(g * 255), (int) Math.round(b * 255));
     }
 }
