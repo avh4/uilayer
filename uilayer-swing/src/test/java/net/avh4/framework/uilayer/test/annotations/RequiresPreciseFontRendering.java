@@ -24,6 +24,7 @@ public @interface RequiresPreciseFontRendering {
             knownIncompatibilities.add("1.7.0-u8-b04:1.6.0_33");
             knownIncompatibilities.add("1.7.0-u8-b04:1.7.0_06");
             knownIncompatibilities.add("1.7.0-u8-b04:1.7.0_07");
+            knownIncompatibilities.add("1.7.0-u8-b04:1.7.0_13");
         }
 
         @Override
