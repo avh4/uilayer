@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 import java.awt.event.KeyEvent;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class EditTextTest {
     private EditText subject;
@@ -43,8 +44,7 @@ public class EditTextTest {
     @Test
     public void shift_shouldBeSilent() {
         subject.key(KeyEvent.VK_SHIFT, false);
-        subject.key(KeyEvent.VK_A, true);
-        verify(receiver).update("A");
+        verifyZeroInteractions(receiver);
     }
 
     @Test

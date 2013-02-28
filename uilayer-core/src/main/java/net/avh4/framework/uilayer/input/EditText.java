@@ -12,6 +12,7 @@ public class EditText implements KeyReceiver {
 
     @Override
     public void key(int key, boolean shift) {
+        String originalValue = currentValue;
         switch (key) {
             case KeyEvent.VK_SPACE:
                 currentValue += " ";
@@ -19,6 +20,7 @@ public class EditText implements KeyReceiver {
             default:
                 currentValue += getKeyText(key, shift);
         }
+        if (currentValue.equals(originalValue)) return;
         receiver.update(currentValue);
     }
 
