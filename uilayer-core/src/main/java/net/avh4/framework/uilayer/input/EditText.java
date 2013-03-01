@@ -107,6 +107,36 @@ public class EditText implements KeyReceiver {
             case KeyEvent.VK_Z:
                 c = 'z';
                 break;
+            case KeyEvent.VK_1:
+                c = '1';
+                break;
+            case KeyEvent.VK_2:
+                c = '2';
+                break;
+            case KeyEvent.VK_3:
+                c = '3';
+                break;
+            case KeyEvent.VK_4:
+                c = '4';
+                break;
+            case KeyEvent.VK_5:
+                c = '5';
+                break;
+            case KeyEvent.VK_6:
+                c = '6';
+                break;
+            case KeyEvent.VK_7:
+                c = '7';
+                break;
+            case KeyEvent.VK_8:
+                c = '8';
+                break;
+            case KeyEvent.VK_9:
+                c = '9';
+                break;
+            case KeyEvent.VK_0:
+                c = '0';
+                break;
             case KeyEvent.VK_SPACE:
                 c = ' ';
                 break;

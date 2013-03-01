@@ -78,6 +78,21 @@ public class EditTextTest {
     }
 
     @Test
+    public void numbers() {
+        subject.key(KeyEvent.VK_1, false);
+        subject.key(KeyEvent.VK_2, false);
+        subject.key(KeyEvent.VK_3, false);
+        subject.key(KeyEvent.VK_4, false);
+        subject.key(KeyEvent.VK_5, false);
+        subject.key(KeyEvent.VK_6, false);
+        subject.key(KeyEvent.VK_7, false);
+        subject.key(KeyEvent.VK_8, false);
+        subject.key(KeyEvent.VK_9, false);
+        subject.key(KeyEvent.VK_0, false);
+        verify(receiver).update("1234567890");
+    }
+
+    @Test
     public void symbols() {
         subject.key(KeyEvent.VK_MINUS, false);
         verify(receiver).update("-");

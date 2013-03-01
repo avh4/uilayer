@@ -70,6 +70,21 @@ public class KeyReceiverHelperTest {
     }
 
     @Test
+    public void numbers() {
+        KeyReceiverHelper.type(receiver, "1234567890");
+        verify(receiver).key(KeyEvent.VK_1, false);
+        verify(receiver).key(KeyEvent.VK_2, false);
+        verify(receiver).key(KeyEvent.VK_3, false);
+        verify(receiver).key(KeyEvent.VK_4, false);
+        verify(receiver).key(KeyEvent.VK_5, false);
+        verify(receiver).key(KeyEvent.VK_6, false);
+        verify(receiver).key(KeyEvent.VK_7, false);
+        verify(receiver).key(KeyEvent.VK_8, false);
+        verify(receiver).key(KeyEvent.VK_9, false);
+        verify(receiver).key(KeyEvent.VK_0, false);
+    }
+
+    @Test
     public void symbols() {
         KeyReceiverHelper.type(receiver, "-");
         verify(receiver).key(KeyEvent.VK_MINUS, false);
