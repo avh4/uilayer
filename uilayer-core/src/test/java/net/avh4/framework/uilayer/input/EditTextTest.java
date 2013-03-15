@@ -95,7 +95,8 @@ public class EditTextTest {
     @Test
     public void symbols() {
         subject.key(KeyEvent.VK_MINUS, false);
-        verify(receiver).update("-");
+        subject.key(KeyEvent.VK_PERIOD, false);
+        verify(receiver).update("-.");
     }
 
     @Test

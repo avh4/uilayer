@@ -143,6 +143,9 @@ public class EditText implements KeyReceiver {
             case KeyEvent.VK_MINUS:
                 c = '-';
                 break;
+            case KeyEvent.VK_PERIOD:
+                c = '.';
+                break;
         }
 
         if (c == 0x00) {

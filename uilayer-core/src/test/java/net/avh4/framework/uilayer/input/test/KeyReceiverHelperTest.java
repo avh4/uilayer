@@ -86,7 +86,8 @@ public class KeyReceiverHelperTest {
 
     @Test
     public void symbols() {
-        KeyReceiverHelper.type(receiver, "-");
+        KeyReceiverHelper.type(receiver, "-.");
         verify(receiver).key(KeyEvent.VK_MINUS, false);
+        verify(receiver).key(KeyEvent.VK_PERIOD, false);
     }
 }
