@@ -6,6 +6,7 @@ import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
 
+import java.io.File;
 import java.util.List;
 
 public interface UILayerService {
@@ -25,4 +26,6 @@ public interface UILayerService {
     <T> Promise<T> showChoices(String title, List<T> choices);
 
     ExternalStorage getExternalStorage();
+
+    Promise<File> showFileChooser(String title);
 }

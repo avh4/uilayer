@@ -16,6 +16,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -27,6 +28,7 @@ public class SwingUILayerService implements UILayerService {
     private static final HashMap<String, BufferedImage> imageCache = new HashMap<String, BufferedImage>();
     private static final HashMap<String, Font> fontCache = new HashMap<String, Font>();
     private final SwingExternalStorage swingExternalStorage = new SwingExternalStorage();
+    private SwingSceneRenderer component;
 
     @Override
     public void run(final SceneCreator game, final ClickReceiver receiver,
@@ -36,7 +38,7 @@ public class SwingUILayerService implements UILayerService {
         final String title = scene != null ? scene.getTitle() : "(No scene)";
         final JFrame window = new JFrame(title);
         final SwingGraphicsOperations graphicsOperations = new SwingGraphicsOperations();
-        final SwingSceneRenderer component = new SwingSceneRenderer(graphicsOperations, new SceneRenderer(game));
+        component = new SwingSceneRenderer(graphicsOperations, new SceneRenderer(game));
         window.add(component);
         window.pack();
         window.setLocationRelativeTo(null);
@@ -121,6 +123,24 @@ public class SwingUILayerService implements UILayerService {
                         JOptionPane.QUESTION_MESSAGE, null, choices.toArray(), null);
                 //noinspection unchecked
                 deferred.resolve((T) response);
+                component.repaint();
+            }
+        });
+        return deferred;
+    }
+
+    @Override
+    public Promise<File> showFileChooser(final String title) {
+        final Deferred<File> deferred = new Deferred<File>();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JFileChooser chooser = new JFileChooser();
+                chooser.setDialogTitle(title);
+                chooser.showDialog(component, "Choose");
+                File file = chooser.getSelectedFile();
+                deferred.resolve(file);
+                component.repaint();
             }
         });
         return deferred;
