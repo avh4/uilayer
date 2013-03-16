@@ -1,5 +1,6 @@
 package net.avh4.framework.uilayer;
 
+import net.avh4.framework.async.Promise;
 import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
@@ -46,7 +47,7 @@ class NullUILayerService implements UILayerService {
     }
 
     @Override
-    public <T> void showChoices(String title, List<T> choices, ResponseListener<T> listener) {
+    public <T> Promise<T> showChoices(String title, List<T> choices) {
         throw exception;
     }
 

@@ -3,10 +3,10 @@ package net.avh4.framework.uilayer.android;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import net.avh4.framework.async.Promise;
 import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.data.android.AndroidExternalStorage;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.ResponseListener;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.input.ClickReceiver;
@@ -59,7 +59,7 @@ public class AndroidUILayerService implements UILayerService {
     }
 
     @Override
-    public <T> void showChoices(String title, List<T> choices, ResponseListener<T> listener) {
+    public <T> Promise<T> showChoices(String title, List<T> choices) {
         throw new NotImplementedException(); // TODO
     }
 

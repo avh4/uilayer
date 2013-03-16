@@ -1,7 +1,7 @@
 package net.avh4.framework.uilayer.swing;
 
+import net.avh4.framework.async.Promise;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.ResponseListener;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.test.annotations.SkipIfHeadless;
 import net.avh4.test.junit.Nested;
@@ -17,8 +17,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.MethodRule;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
@@ -75,14 +73,13 @@ public class SwingUILayerServiceTest {
 
         private JOptionPaneFixture dialog;
         private Robot robot;
-        @Mock
-        private ResponseListener listener;
+        private Promise<String> response;
 
         @Before
         public void setup() throws Exception {
             MockitoAnnotations.initMocks(this);
             robot = BasicRobot.robotWithCurrentAwtHierarchy();
-            service.showChoices("Title", Arrays.asList("Item 1", "Item 2", "Item 3"), listener);
+            response = service.showChoices("Title", Arrays.asList("Item 1", "Item 2", "Item 3"));
             dialog = JOptionPaneFinder.findOptionPane().using(robot);
         }
 
@@ -117,7 +114,7 @@ public class SwingUILayerServiceTest {
         public void shouldCallListenerWhenAChoiceIsMade() throws Exception {
             dialog.comboBox().selectItem("Item 2");
             dialog.okButton().click();
-            Mockito.verify(listener).response("Item 2");
+            assertThat(response.waitForValue(), is("Item 2"));
         }
     }
 }

@@ -1,8 +1,9 @@
 package net.avh4.framework.uilayer.swing;
 
+import net.avh4.framework.async.Deferred;
+import net.avh4.framework.async.Promise;
 import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.data.swing.SwingExternalStorage;
-import net.avh4.framework.uilayer.ResponseListener;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.input.ClickReceiver;
@@ -111,16 +112,18 @@ public class SwingUILayerService implements UILayerService {
     }
 
     @Override
-    public <T> void showChoices(final String title, final List<T> choices, final ResponseListener<T> listener) {
+    public <T> Promise<T> showChoices(final String title, final List<T> choices) {
+        final Deferred<T> deferred = new Deferred<T>();
         SwingUtilities.invokeLater(new Runnable() {
-            @SuppressWarnings("unchecked")
             @Override
             public void run() {
                 final Object response = JOptionPane.showInputDialog(null, null, title,
                         JOptionPane.QUESTION_MESSAGE, null, choices.toArray(), null);
-                listener.response((T) response);
+                //noinspection unchecked
+                deferred.resolve((T) response);
             }
         });
+        return deferred;
     }
 
     @Override
