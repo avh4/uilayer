@@ -41,7 +41,7 @@ public class ClasspathResourcesExternalStorageTest {
 
     @Test
     public void getString_forFileThatIsNotAllowed_shouldReturnNull() throws Exception {
-        assertThat(subject.getFile("Romeo and Juliet.txt").getContents(), nullValue());
+        assertThat(subject.getFile("Romeo and Juliet.txt"), nullValue());
     }
 
     @Test
