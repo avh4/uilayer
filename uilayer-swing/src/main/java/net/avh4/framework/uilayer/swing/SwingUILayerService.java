@@ -3,7 +3,9 @@ package net.avh4.framework.uilayer.swing;
 import net.avh4.framework.async.Deferred;
 import net.avh4.framework.async.Promise;
 import net.avh4.framework.data.ExternalStorage;
+import net.avh4.framework.data.File;
 import net.avh4.framework.data.swing.SwingExternalStorage;
+import net.avh4.framework.data.swing.SwingFile;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.input.ClickReceiver;
@@ -16,7 +18,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -130,16 +131,16 @@ public class SwingUILayerService implements UILayerService {
     }
 
     @Override
-    public Promise<String> showFileChooser(final String title) {
-        final Deferred<String> deferred = new Deferred<String>();
+    public Promise<File> showFileChooser(final String title) {
+        final Deferred<File> deferred = new Deferred<File>();
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 JFileChooser chooser = new JFileChooser();
                 chooser.setDialogTitle(title);
                 chooser.showDialog(component, "Choose");
-                File file = chooser.getSelectedFile();
-                deferred.resolve(file.getPath());
+                java.io.File file = chooser.getSelectedFile();
+                deferred.resolve(new SwingFile(null, file.getPath()));
                 component.repaint();
             }
         });

@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import net.avh4.framework.async.Promise;
 import net.avh4.framework.data.ExternalStorage;
+import net.avh4.framework.data.File;
 import net.avh4.framework.data.android.AndroidExternalStorage;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.SceneCreator;
@@ -64,7 +65,7 @@ public class AndroidUILayerService implements UILayerService {
     }
 
     @Override
-    public Promise<String> showFileChooser(String title) {
+    public Promise<File> showFileChooser(String title) {
         throw new NotImplementedException(); // TODO
     }
 

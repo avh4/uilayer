@@ -3,6 +3,7 @@ package net.avh4.framework.uilayer;
 
 import net.avh4.framework.async.Promise;
 import net.avh4.framework.data.ExternalStorage;
+import net.avh4.framework.data.File;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
 
@@ -26,5 +27,5 @@ public interface UILayerService {
 
     ExternalStorage getExternalStorage();
 
-    Promise<String> showFileChooser(String title);
+    Promise<File> showFileChooser(String title);
 }

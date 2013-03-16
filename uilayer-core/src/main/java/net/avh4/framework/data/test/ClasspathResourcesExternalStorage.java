@@ -80,6 +80,11 @@ public class ClasspathResourcesExternalStorage implements ExternalStorage {
         }
 
         @Override
+        public String getName() {
+            return filename;
+        }
+
+        @Override
         public String getContents() {
             if (writtenContents != null) {
                 return writtenContents;

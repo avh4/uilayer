@@ -41,6 +41,11 @@ public class AndroidExternalStorage implements ExternalStorage {
         }
 
         @Override
+        public String getName() {
+            return filename;
+        }
+
+        @Override
         public String getContents() {
             try {
                 final FileInputStream fis = new FileInputStream(file);

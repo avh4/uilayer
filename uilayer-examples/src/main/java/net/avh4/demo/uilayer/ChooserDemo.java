@@ -3,6 +3,7 @@ package net.avh4.demo.uilayer;
 import com.google.common.collect.ImmutableList;
 import net.avh4.framework.async.Function;
 import net.avh4.framework.async.Promise;
+import net.avh4.framework.data.File;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.UILayerService;
@@ -15,7 +16,7 @@ public class ChooserDemo implements UI {
 
     private final UILayerService service;
     private String chosenString;
-    private String chosenFile;
+    private File chosenFile;
 
     public static void main(String[] args) {
         UILayer.main(new ChooserDemo(UILayer.service));
@@ -47,10 +48,10 @@ public class ChooserDemo implements UI {
     }
 
     private void chooseFile() {
-        Promise<String> choice = service.showFileChooser("Choose from among our fine files");
-        choice.whenDone(new Function<String, Void>() {
+        Promise<File> choice = service.showFileChooser("Choose from among our fine files");
+        choice.whenDone(new Function<File, Void>() {
             @Override
-            public Void apply(String file) {
+            public Void apply(File file) {
                 chosenFile = file;
                 return null;
             }
@@ -76,7 +77,7 @@ public class ChooserDemo implements UI {
             scene.add(new ScenePlaceholder(chosenString, 5, 305, 390, 290));
         }
         if (chosenFile != null) {
-            scene.add(new ScenePlaceholder(chosenFile, 405, 305, 390, 290));
+            scene.add(new ScenePlaceholder(chosenFile.getName(), 405, 305, 390, 290));
         }
         return scene;
     }
