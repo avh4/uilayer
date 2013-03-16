@@ -13,6 +13,10 @@ public class ClasspathResourcesFile implements File {
     private final String root;
     private String writtenContents = null;
 
+    public ClasspathResourcesFile(String filename) {
+        this(".", filename);
+    }
+
     public ClasspathResourcesFile(String root, String filename) {
         this.root = root;
         this.filename = filename;
