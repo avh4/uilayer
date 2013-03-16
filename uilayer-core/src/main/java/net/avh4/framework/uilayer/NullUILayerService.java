@@ -6,7 +6,6 @@ import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
 import org.apache.commons.lang.StringUtils;
 
-import java.io.File;
 import java.util.List;
 
 class NullUILayerService implements UILayerService {
@@ -58,7 +57,7 @@ class NullUILayerService implements UILayerService {
     }
 
     @Override
-    public Promise<File> showFileChooser(String title) {
+    public Promise<String> showFileChooser(String title) {
         throw exception;
     }
 }

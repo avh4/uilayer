@@ -10,13 +10,12 @@ import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 
 import java.awt.event.KeyEvent;
-import java.io.File;
 
 public class ChooserDemo implements UI {
 
     private final UILayerService service;
     private String chosenString;
-    private File chosenFile;
+    private String chosenFile;
 
     public static void main(String[] args) {
         UILayer.main(new ChooserDemo(UILayer.service));
@@ -48,10 +47,10 @@ public class ChooserDemo implements UI {
     }
 
     private void chooseFile() {
-        Promise<File> choice = service.showFileChooser("Choose from among our fine files");
-        choice.whenDone(new Function<File, Void>() {
+        Promise<String> choice = service.showFileChooser("Choose from among our fine files");
+        choice.whenDone(new Function<String, Void>() {
             @Override
-            public Void apply(File file) {
+            public Void apply(String file) {
                 chosenFile = file;
                 return null;
             }
@@ -77,7 +76,7 @@ public class ChooserDemo implements UI {
             scene.add(new ScenePlaceholder(chosenString, 5, 305, 390, 290));
         }
         if (chosenFile != null) {
-            scene.add(new ScenePlaceholder(chosenFile.getName(), 405, 305, 390, 290));
+            scene.add(new ScenePlaceholder(chosenFile, 405, 305, 390, 290));
         }
         return scene;
     }

@@ -4,7 +4,11 @@ import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.data.ExternalStorageException;
 import org.apache.commons.io.IOUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,6 +26,7 @@ public class SwingExternalStorage implements ExternalStorage {
             final FileInputStream fis = new FileInputStream(file);
             return IOUtils.toString(fis);
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
             return null;
         } catch (IOException e) {
             return null;

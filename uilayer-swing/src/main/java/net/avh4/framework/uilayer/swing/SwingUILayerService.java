@@ -130,8 +130,8 @@ public class SwingUILayerService implements UILayerService {
     }
 
     @Override
-    public Promise<File> showFileChooser(final String title) {
-        final Deferred<File> deferred = new Deferred<File>();
+    public Promise<String> showFileChooser(final String title) {
+        final Deferred<String> deferred = new Deferred<String>();
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -139,7 +139,7 @@ public class SwingUILayerService implements UILayerService {
                 chooser.setDialogTitle(title);
                 chooser.showDialog(component, "Choose");
                 File file = chooser.getSelectedFile();
-                deferred.resolve(file);
+                deferred.resolve(file.getPath());
                 component.repaint();
             }
         });
