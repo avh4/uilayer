@@ -1,5 +1,6 @@
 package net.avh4.framework.data.test;
 
+import net.avh4.framework.data.File;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -40,19 +41,21 @@ public class ClasspathResourcesExternalStorageTest {
 
     @Test
     public void getString_forFileThatIsNotAllowed_shouldReturnNull() throws Exception {
-        assertThat(subject.getString("Romeo and Juliet.txt"), nullValue());
+        assertThat(subject.getFile("Romeo and Juliet.txt").getContents(), nullValue());
     }
 
     @Test
     public void getString_forAllowedFile_shouldReturnFilesContents() throws Exception {
         subject.allowFile("Romeo and Juliet.txt");
-        assertThat(subject.getString("Romeo and Juliet.txt"), startsWith("Romeo and Juliet\n\nACT I\n"));
+        assertThat(subject.getFile("Romeo and Juliet.txt").getContents(),
+                startsWith("Romeo and Juliet\n\nACT I\n"));
     }
 
     @Test
     public void getString_forAWrittenFile_shouldReturnTheWrittenContents() throws Exception {
-        subject.writeFile("disallowed file.txt", "NEW CONTENTS");
-        assertThat(subject.getString("disallowed file.txt"), is("NEW CONTENTS"));
+        File file = subject.getFile("disallowed file.txt");
+        file.writeContents("NEW CONTENTS");
+        assertThat(file.getContents(), is("NEW CONTENTS"));
     }
 
     private Matcher<Iterable<?>> isEmpty() {

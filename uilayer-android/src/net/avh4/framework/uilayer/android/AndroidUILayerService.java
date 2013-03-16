@@ -64,6 +64,11 @@ public class AndroidUILayerService implements UILayerService {
     }
 
     @Override
+    public Promise<String> showFileChooser(String title) {
+        throw new NotImplementedException(); // TODO
+    }
+
+    @Override
     public ExternalStorage getExternalStorage() {
         return externalStorage;
     }

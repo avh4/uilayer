@@ -1,6 +1,8 @@
 package net.avh4.framework.data.test;
 
 import net.avh4.framework.data.ExternalStorage;
+import net.avh4.framework.data.ExternalStorageException;
+import net.avh4.framework.data.File;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +18,7 @@ import java.util.List;
 public class ClasspathResourcesExternalStorage implements ExternalStorage {
     private final String root;
     private final ArrayList<String> allowedFiles = new ArrayList<String>();
-    private HashMap<String, String> writtenFiles = new HashMap<String, String>();
+    private final HashMap<String, File> files = new HashMap<String, File>();
 
     public ClasspathResourcesExternalStorage(String root) {
         this.root = root;
@@ -62,15 +64,32 @@ public class ClasspathResourcesExternalStorage implements ExternalStorage {
     }
 
     @Override
-    public String getString(String filename) {
-        if (writtenFiles.containsKey(filename)) {
-            return writtenFiles.get(filename);
+    public File getFile(String filename) {
+        if (!files.containsKey(filename)) {
+            files.put(filename, new FileImpl(filename));
         }
-        return getStringFromClasspath(filename);
+        return files.get(filename);
     }
 
-    @Override
-    public void writeFile(String filename, String data) {
-        writtenFiles.put(filename, data);
+    private class FileImpl implements File {
+        private final String filename;
+        private String writtenContents = null;
+
+        public FileImpl(String filename) {
+            this.filename = filename;
+        }
+
+        @Override
+        public String getContents() {
+            if (writtenContents != null) {
+                return writtenContents;
+            }
+            return getStringFromClasspath(filename);
+        }
+
+        @Override
+        public void writeContents(String data) throws ExternalStorageException {
+            writtenContents = data;
+        }
     }
 }

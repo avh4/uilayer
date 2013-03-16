@@ -4,9 +4,7 @@ import java.util.List;
 
 public interface ExternalStorage {
 
-    String getString(String filename);
+    File getFile(String filename);
 
     List<String> getFiles();
-
-    void writeFile(String filename, String data) throws ExternalStorageException;
 }

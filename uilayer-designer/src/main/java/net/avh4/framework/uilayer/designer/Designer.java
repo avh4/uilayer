@@ -68,7 +68,7 @@ public class Designer implements UI {
                 "    }\n" +
                 "}");
         try {
-            externalStorage.writeFile(filename, output.toString());
+            externalStorage.getFile(filename).writeContents(output.toString());
         } catch (ExternalStorageException e) {
             e.printStackTrace();
         }

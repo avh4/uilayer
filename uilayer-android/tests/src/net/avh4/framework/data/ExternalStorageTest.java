@@ -18,7 +18,7 @@ public class ExternalStorageTest extends DataTestBase {
     public void testShouldReadStringFromFile() {
         super.createTestFile("hello-world.txt", "Hello, World!\n");
 
-        final String string = subject.getString("hello-world.txt");
+        final String string = subject.getFile("hello-world.txt").getContents();
 
         assertThat(string, is("Hello, World!\n"));
     }

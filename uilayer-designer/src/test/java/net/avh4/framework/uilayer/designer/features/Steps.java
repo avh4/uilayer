@@ -41,12 +41,14 @@ public class Steps {
 
     @Then("^I have java code that represents the mockup I designed$")
     public void I_have_java_code_that_represents_the_mockup_I_designed() throws Throwable {
-        assertThat(externalStorage.getString("MyScene.java")).isEqualTo(example("SceneWithTwoPlaceholders.java-txt"));
+        assertThat(externalStorage.getFile("MyScene.java").getContents())
+                .isEqualTo(example("SceneWithTwoPlaceholders.java-txt"));
     }
 
     @Then("^I have java code that represents an empty scene$")
     public void I_have_java_code_that_represents_an_empty_scene() throws Throwable {
-        assertThat(externalStorage.getString("MyScene.java")).isEqualTo(example("EmptyScene.java-txt"));
+        assertThat(externalStorage.getFile("MyScene.java").getContents())
+                .isEqualTo(example("EmptyScene.java-txt"));
     }
 
     private String example(String exampleName) throws IOException {
