@@ -16,15 +16,11 @@ public @interface RequiresPreciseFontRendering {
     String value() default "";
 
     class Rule implements MethodRule {
-        private static final Set<String> knownIncompatibilities = new HashSet<String>();
+        private static final Set<String> knownCompatibilities = new HashSet<String>();
         private static final MethodRule reportJdkVersion = new ReportJdkVersion();
 
         static {
-            knownIncompatibilities.add("1.7.0-u8-b04:1.6.0_26");
-            knownIncompatibilities.add("1.7.0-u8-b04:1.6.0_33");
-            knownIncompatibilities.add("1.7.0-u8-b04:1.7.0_06");
-            knownIncompatibilities.add("1.7.0-u8-b04:1.7.0_07");
-            knownIncompatibilities.add("1.7.0-u8-b04:1.7.0_13");
+            knownCompatibilities.add("1.7.0-u8-b04:1.7.0-u8-b04");
         }
 
         @Override
@@ -38,17 +34,17 @@ public @interface RequiresPreciseFontRendering {
             if (!isCompatible(requestedVersion, currentVersion)) {
                 throw new AssumptionViolatedException("Requires font rendering to be identical to JDK " +
                         requestedVersion + " -- the current JDK (" + currentVersion + ") " +
-                        "is known to not be compatible");
+                        "is not known to be compatible");
             }
             return reportJdkVersion.apply(base, method, target);
         }
 
         private boolean isCompatible(String requestedVersion, String currentVersion) {
             final String key = requestedVersion + ":" + currentVersion;
-            if (knownIncompatibilities.contains(key)) {
-                return false;
-            } else {
+            if (knownCompatibilities.contains(key)) {
                 return true;
+            } else {
+                return false;
             }
         }
     }
