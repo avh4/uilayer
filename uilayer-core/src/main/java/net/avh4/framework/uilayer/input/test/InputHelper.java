@@ -4,6 +4,7 @@ import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UIUtil;
 import net.avh4.framework.uilayer.mvc.Controller;
 import net.avh4.framework.uilayer.mvc.MvcUi;
+import net.avh4.framework.uilayer.mvc.View;
 
 public class InputHelper {
     private final UI ui;
@@ -12,8 +13,12 @@ public class InputHelper {
         this.ui = ui;
     }
 
-    public <M> InputHelper(M model, Controller<M> controller) {
-        this.ui = new MvcUi<M>(model, null, controller);
+    public <M> InputHelper(M model, View<M> view, Controller<M> controller) {
+        this.ui = new MvcUi<M>(model, view, controller);
+    }
+
+    public <M, VC extends View<M> & Controller<M>> InputHelper(M model, VC viewController) {
+        this(model, viewController, viewController);
     }
 
     public void clickOnBottom(String goalName) {

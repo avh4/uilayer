@@ -14,6 +14,10 @@ public class MvcUi<M> implements UI {
         this.view = view;
     }
 
+    public <VC extends View<M> & Controller<M>> MvcUi(M model, VC viewController) {
+        this(model, viewController, viewController);
+    }
+
     @Override
     public void click(int x, int y) {
         controller.click(model, x, y);
