@@ -67,6 +67,6 @@ public class UILayer {
     }
 
     public static <M> void main(final M model, final View<M> view, final Controller<M> controller) {
-        main(new MvcUi<M>(controller, model, view));
+        main(new MvcUi<M>(model, view, controller));
     }
 }

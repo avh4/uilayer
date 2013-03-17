@@ -4,11 +4,11 @@ import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.scene.Scene;
 
 public class MvcUi<M> implements UI {
-    private final Controller<M> controller;
     private final M model;
     private final View<M> view;
+    private final Controller<M> controller;
 
-    public MvcUi(Controller<M> controller, M model, View<M> view) {
+    public MvcUi(M model, View<M> view, Controller<M> controller) {
         this.controller = controller;
         this.model = model;
         this.view = view;
