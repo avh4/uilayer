@@ -4,6 +4,9 @@ package net.avh4.framework.uilayer;
 import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
+import net.avh4.framework.uilayer.mvc.Controller;
+import net.avh4.framework.uilayer.mvc.MvcUi;
+import net.avh4.framework.uilayer.mvc.View;
 
 public class UILayer {
 
@@ -57,5 +60,13 @@ public class UILayer {
 
     public static ExternalStorage getExternalStorage() {
         return service.getExternalStorage();
+    }
+
+    public static <M, VC extends View<M> & Controller<M>> void main(M model, VC viewController) {
+        main(model, viewController, viewController);
+    }
+
+    public static <M> void main(final M model, final View<M> view, final Controller<M> controller) {
+        main(new MvcUi<M>(controller, model, view));
     }
 }
