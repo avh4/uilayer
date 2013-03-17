@@ -2,15 +2,16 @@ package net.avh4.framework.uilayer.input;
 
 import java.awt.event.KeyEvent;
 
-public class EditText<M> {
-    private final EditTextReceiver<M> receiver;
+public class EditText implements KeyReceiver {
+    private final EditTextReceiver receiver;
     private String currentValue = "";
 
-    public EditText(EditTextReceiver<M> receiver) {
+    public EditText(EditTextReceiver receiver) {
         this.receiver = receiver;
     }
 
-    public void key(M model, int key, boolean shift) {
+    @Override
+    public void key(int key, boolean shift) {
         String originalValue = currentValue;
         switch (key) {
             case KeyEvent.VK_BACK_SPACE:
@@ -22,7 +23,7 @@ public class EditText<M> {
                 currentValue += getKeyText(key, shift);
         }
         if (currentValue.equals(originalValue)) return;
-        receiver.update(model, currentValue);
+        receiver.update(currentValue);
     }
 
     private String getKeyText(int key, boolean shift) {
