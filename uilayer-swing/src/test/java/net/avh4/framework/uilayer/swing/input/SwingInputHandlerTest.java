@@ -14,8 +14,9 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Matchers.anyBoolean;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.*;
 
 public class SwingInputHandlerTest {
 
@@ -85,5 +86,14 @@ public class SwingInputHandlerTest {
         subject.keyPressed(e);
 
         verify(keyReceiver).key(KeyEvent.VK_DOWN, true);
+    }
+
+    @Test
+    public void testIgnoreCommandKeys() {
+        final KeyEvent e = new KeyEvent(dummyEventSource, 0, 0, KeyEvent.META_DOWN_MASK,
+                KeyEvent.VK_DOWN, '\0');
+        subject.keyPressed(e);
+
+        verify(keyReceiver, never()).key(anyInt(), anyBoolean());
     }
 }

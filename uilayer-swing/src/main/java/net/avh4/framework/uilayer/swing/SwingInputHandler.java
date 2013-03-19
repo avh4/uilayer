@@ -68,9 +68,8 @@ public class SwingInputHandler implements MouseListener, KeyListener {
 
     @Override
     public void keyPressed(final KeyEvent e) {
-        if (keyReceiver == null) {
-            return;
-        }
+        if (keyReceiver == null) return;
+        if (e.isMetaDown()) return;
         boolean shift = e.isShiftDown();
         int keyCode = e.getKeyCode();
         keyReceiver.key(keyCode, shift);
