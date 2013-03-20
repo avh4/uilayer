@@ -37,7 +37,6 @@ public class ScenePlaceholder extends SceneElementBase implements Element {
     @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
-        throw new RuntimeException("X");
     }
 
     @Override

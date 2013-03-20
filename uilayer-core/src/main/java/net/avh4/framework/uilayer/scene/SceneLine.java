@@ -1,6 +1,9 @@
 package net.avh4.framework.uilayer.scene;
 
-public class SceneLine extends SceneElementBase {
+import net.avh4.framework.uilayer.Element;
+import net.avh4.math.Rect;
+
+public class SceneLine extends SceneElementBase implements Element {
 
     protected final int color;
     protected final int x1;
@@ -19,8 +22,13 @@ public class SceneLine extends SceneElementBase {
         this.y2 = y2;
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         g.drawLine(x1, y1, x2, y2, color);
     }
 }
