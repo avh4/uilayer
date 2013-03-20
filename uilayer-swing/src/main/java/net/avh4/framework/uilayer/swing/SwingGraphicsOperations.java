@@ -12,9 +12,9 @@ public class SwingGraphicsOperations implements GraphicsOperations {
     private Graphics g;
 
     @Override
-    public void drawRect(int leftX, int topY, int width, int height, int argbColor) {
+    public void drawRect(double leftX, double topY, double width, double height, int argbColor) {
         g.setColor(loadColor(argbColor));
-        g.fillRect(leftX, topY, width, height);
+        g.fillRect((int) leftX, (int) topY, (int) width, (int) height);
     }
 
     @Override

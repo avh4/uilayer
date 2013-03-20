@@ -17,7 +17,7 @@ public class AndroidGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void drawRect(int leftX, int topY, int width, int height, int argbColor) {
+    public void drawRect(double leftX, double topY, double width, double height, int argbColor) {
         canvas.drawRect(leftX, topY, leftX + width, topY + height, loadColor(argbColor));
     }
 

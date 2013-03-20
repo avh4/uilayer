@@ -1,9 +1,11 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.math.Rect;
 
 public class SceneRenderer implements GraphicsOperationsRenderer {
 
@@ -50,7 +52,12 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
         if (e instanceof SceneElementBase && ((SceneElementBase) e).isHidden()) {
             return;
         } else {
-            e.draw(g, fm);
+            if (e instanceof Element) {
+                Rect bounds = new Rect(e.getX(), e.getY(), e.getWidth(), e.getHeight());
+                ((Element) e).draw(bounds, g, fm);
+            } else {
+                e.draw(g, fm);
+            }
         }
     }
 }

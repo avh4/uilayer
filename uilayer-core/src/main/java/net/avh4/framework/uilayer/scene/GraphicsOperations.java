@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Font;
 
 public interface GraphicsOperations {
-    void drawRect(int leftX, int topY, int width, int height, int argbColor);
+    void drawRect(double leftX, double topY, double width, double height, int argbColor);
 
     void drawText(String text, float leftX, float baselineY, Font font, int argbColor);
 

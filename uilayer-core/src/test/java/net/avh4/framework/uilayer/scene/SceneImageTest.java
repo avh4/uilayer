@@ -97,7 +97,7 @@ public class SceneImageTest extends RenderTestBase {
     public void withNoImage_shouldRenderAPlaceholder() throws Exception {
         new SceneImage(0, 0, 100, 200).draw(g, fm);
         assertRenderingIs("" +
-                "Rectangle: 0, 0, 100, 200, 0xffb7abfb\n" +
+                "Rectangle: 0.0, 0.0, 100.0, 200.0, 0xffb7abfb\n" +
                 "Text: \"Missing Image\" 5.0, 195.0 Font{'Pfennig.ttf' (12)} 0xff000000\n");
     }
 

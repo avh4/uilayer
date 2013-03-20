@@ -1,6 +1,9 @@
 package net.avh4.framework.uilayer.scene;
 
-public class SceneRect extends SceneElementBase {
+import net.avh4.framework.uilayer.Element;
+import net.avh4.math.Rect;
+
+public class SceneRect extends SceneElementBase implements Element {
 
     protected final int color;
 
@@ -12,6 +15,10 @@ public class SceneRect extends SceneElementBase {
 
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
-        g.drawRect(x, y, width, height, color);
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        g.drawRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight(), color);
     }
 }

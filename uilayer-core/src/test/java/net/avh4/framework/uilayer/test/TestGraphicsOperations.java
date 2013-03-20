@@ -9,7 +9,7 @@ public class TestGraphicsOperations implements GraphicsOperations {
     private int translateY = 0;
 
     @Override
-    public void drawRect(int leftX, int topY, int width, int height, int argbColor) {
+    public void drawRect(double leftX, double topY, double width, double height, int argbColor) {
         sb.append("Rectangle: ");
         sb.append(leftX).append(", ");
         sb.append(topY).append(", ");

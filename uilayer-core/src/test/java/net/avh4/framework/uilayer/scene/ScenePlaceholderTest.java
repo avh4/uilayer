@@ -35,14 +35,14 @@ public class ScenePlaceholderTest extends RenderTestBase {
     public void testRenderPlaceholders() throws Exception {
         scene.add(new ScenePlaceholder("Body", 20, 20, 100, 560));
         assertRenderingOf(new ScenePlaceholder("Background", 0, 0, 800, 600), "" +
-                "Rectangle: 0, 0, 800, 600, 0xffd1dea9\n" +
+                "Rectangle: 0.0, 0.0, 800.0, 600.0, 0xffd1dea9\n" +
                 "Text: \"Background\" 5.0, 595.0 Font{'Pfennig.ttf' (12)} 0xff000000\n");
     }
 
     @Test
     public void testRenderPlaceholders2() throws Exception {
         assertRenderingOf(new ScenePlaceholder("Body", 20, 20, 100, 560), "" +
-                "Rectangle: 20, 20, 100, 560, 0xff1b10ac\n" +
+                "Rectangle: 20.0, 20.0, 100.0, 560.0, 0xff1b10ac\n" +
                 "Text: \"Body\" 25.0, 575.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
     }
 }
