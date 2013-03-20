@@ -39,7 +39,7 @@ public class AndroidGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void drawOval(int leftX, int topY, int width, int height, int argbColor) {
+    public void drawOval(double leftX, double topY, double width, double height, int argbColor) {
         canvas.drawOval(new RectF(leftX, topY, leftX + width, topY + height), loadColor(argbColor));
     }
 

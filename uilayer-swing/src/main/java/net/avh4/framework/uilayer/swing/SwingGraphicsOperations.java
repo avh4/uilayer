@@ -4,17 +4,20 @@ import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 public class SwingGraphicsOperations implements GraphicsOperations {
     public static final String PROPERTY_KEY_USE_ANTIALIASING = "uilayer.swing.antialiasing";
     public static boolean USE_ANTIALIASING = System.getProperty(PROPERTY_KEY_USE_ANTIALIASING, "true").equals("true");
 
     private Graphics g;
+    private Graphics2D g2;
 
     @Override
     public void drawRect(double leftX, double topY, double width, double height, int argbColor) {
-        g.setColor(loadColor(argbColor));
-        g.fillRect((int) leftX, (int) topY, (int) width, (int) height);
+        g2.setColor(loadColor(argbColor));
+        g2.fill(new Rectangle2D.Double(leftX, topY, width, height));
     }
 
     @Override
@@ -36,9 +39,9 @@ public class SwingGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void drawOval(int leftX, int topY, int width, int height, int argbColor) {
-        g.setColor(loadColor(argbColor));
-        g.fillOval(leftX, topY, width, height);
+    public void drawOval(double leftX, double topY, double width, double height, int argbColor) {
+        g2.setColor(loadColor(argbColor));
+        g2.fill(new Ellipse2D.Double(leftX, topY, width, height));
     }
 
     @Override
@@ -57,6 +60,7 @@ public class SwingGraphicsOperations implements GraphicsOperations {
             }
         }
         this.g = g;
+        this.g2 = (Graphics2D) g;
     }
 
     private static Color loadColor(final int color) {

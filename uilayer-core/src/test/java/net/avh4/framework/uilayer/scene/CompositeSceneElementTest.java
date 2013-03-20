@@ -35,7 +35,7 @@ public class CompositeSceneElementTest extends RenderTestBase {
                 "=== TRANSLATE to 0, 0 ===\n" +
                 "Rectangle: 0.0, 0.0, 100.0, 100.0, 0xffff0000\n" +
                 "Rectangle: 5.0, 5.0, 90.0, 90.0, 0xffffffff\n" +
-                "Oval: 20, 20, 60, 60, 0xff0000ff\n" +
+                "Oval: 20.0, 20.0, 60.0, 60.0, 0xff0000ff\n" +
                 "=== TRANSLATE to 0, 0 ===\n");
     }
 
@@ -46,7 +46,7 @@ public class CompositeSceneElementTest extends RenderTestBase {
                 "=== TRANSLATE to 300, 400 ===\n" +
                 "Rectangle: 0.0, 0.0, 100.0, 100.0, 0xffff0000\n" +
                 "Rectangle: 5.0, 5.0, 90.0, 90.0, 0xffffffff\n" +
-                "Oval: 20, 20, 60, 60, 0xff0000ff\n" +
+                "Oval: 20.0, 20.0, 60.0, 60.0, 0xff0000ff\n" +
                 "=== TRANSLATE to 0, 0 ===\n");
     }
 }

@@ -1,6 +1,9 @@
 package net.avh4.framework.uilayer.scene;
 
-public class SceneOval extends SceneElementBase {
+import net.avh4.framework.uilayer.Element;
+import net.avh4.math.Rect;
+
+public class SceneOval extends SceneElementBase implements Element {
 
     protected final int color;
 
@@ -10,8 +13,13 @@ public class SceneOval extends SceneElementBase {
         this.color = color;
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
-        g.drawOval(x, y, width, height, color);
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        g.drawOval(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight(), color);
     }
 }

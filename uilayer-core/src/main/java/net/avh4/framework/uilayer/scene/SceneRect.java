@@ -13,6 +13,7 @@ public class SceneRect extends SceneElementBase implements Element {
         this.color = color;
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
     }
