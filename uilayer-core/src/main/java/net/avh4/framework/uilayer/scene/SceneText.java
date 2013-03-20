@@ -1,8 +1,10 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.math.Rect;
 
-public class SceneText extends SceneElementBase {
+public class SceneText extends SceneElementBase implements Element {
 
     protected String text;
     protected final Font font;
@@ -33,15 +35,20 @@ public class SceneText extends SceneElementBase {
         return text;
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         int MAX_HEIGHT = 2000;
         // From
         // http://stackoverflow.com/questions/400566/full-justification-with-a-java-graphics-drawstring-replacement
         final float lineHeight = fm.getLineHeight(font);
 
-        int curX = x;
-        float curY = y + fm.getAscent(font);
+        double curX = bounds.getMinX();
+        double curY = bounds.getMinY() + fm.getAscent(font);
 
         final String[] words = text.replaceAll("\n", " ").split(" ");
 
@@ -50,7 +57,7 @@ public class SceneText extends SceneElementBase {
             final float wordWidth = fm.stringWidth(font, word);
 
             // If text exceeds the width, then move to next line.
-            if (curX + wordWidth > x + width) {
+            if (curX + wordWidth > bounds.getMinX() + bounds.getWidth()) {
                 curY += lineHeight;
                 curX = x;
                 if (curY >= MAX_HEIGHT + lineHeight) {
