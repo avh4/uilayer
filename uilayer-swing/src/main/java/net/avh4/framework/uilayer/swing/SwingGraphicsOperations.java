@@ -21,7 +21,7 @@ public class SwingGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void drawText(String text, float leftX, float baselineY, Font font, int argbColor) {
+    public void drawText(String text, double leftX, double baselineY, Font font, int argbColor) {
         g.setColor(loadColor(argbColor));
         g.setFont(SwingUILayerService.loadFont(font));
         g.drawString(text, (int) leftX, (int) baselineY);

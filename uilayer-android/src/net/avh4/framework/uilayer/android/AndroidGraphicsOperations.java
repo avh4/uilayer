@@ -18,14 +18,15 @@ public class AndroidGraphicsOperations implements GraphicsOperations {
 
     @Override
     public void drawRect(double leftX, double topY, double width, double height, int argbColor) {
-        canvas.drawRect(leftX, topY, leftX + width, topY + height, loadColor(argbColor));
+        canvas.drawRect((float) leftX, (float) topY, (float) (leftX + width), (float) (topY + height),
+                loadColor(argbColor));
     }
 
     @Override
-    public void drawText(String text, float leftX, float baselineY, Font font, int argbColor) {
+    public void drawText(String text, double leftX, double baselineY, Font font, int argbColor) {
         final Paint paint = loadColor(argbColor);
         loadFont(paint, font);
-        canvas.drawText(text, leftX, baselineY, paint);
+        canvas.drawText(text, (float) leftX, (float) baselineY, paint);
     }
 
     @Override
@@ -40,7 +41,8 @@ public class AndroidGraphicsOperations implements GraphicsOperations {
 
     @Override
     public void drawOval(double leftX, double topY, double width, double height, int argbColor) {
-        canvas.drawOval(new RectF(leftX, topY, leftX + width, topY + height), loadColor(argbColor));
+        RectF frame = new RectF((float) leftX, (float) topY, (float) (leftX + width), (float) (topY + height));
+        canvas.drawOval(frame, loadColor(argbColor));
     }
 
     @Override

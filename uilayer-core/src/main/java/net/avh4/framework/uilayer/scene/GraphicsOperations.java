@@ -5,7 +5,7 @@ import net.avh4.framework.uilayer.Font;
 public interface GraphicsOperations {
     void drawRect(double leftX, double topY, double width, double height, int argbColor);
 
-    void drawText(String text, float leftX, float baselineY, Font font, int argbColor);
+    void drawText(String text, double leftX, double baselineY, Font font, int argbColor);
 
     void translate(int deltaX, int deltaY);
 

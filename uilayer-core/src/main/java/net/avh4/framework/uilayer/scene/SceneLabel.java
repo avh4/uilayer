@@ -1,8 +1,10 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.math.Rect;
 
-public class SceneLabel extends SceneElementBase {
+public class SceneLabel extends SceneElementBase implements Element {
 
     protected String text;
     protected final Font font;
@@ -21,12 +23,17 @@ public class SceneLabel extends SceneElementBase {
         this(text, x, y, new Font(customFontResource).size(fontSize), color);
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
-        final float labelWidth = fm.stringWidth(font, text);
+    }
 
-        final float x = this.x - labelWidth / 2;
-        final float y = this.y + fm.getLineHeight(font);
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        final double labelWidth = fm.stringWidth(font, text);
+
+        final double x = bounds.getMinX() - labelWidth / 2;
+        final double y = bounds.getMinY() + fm.getLineHeight(font);
 
         g.drawText(text, x, y, font, color);
     }
