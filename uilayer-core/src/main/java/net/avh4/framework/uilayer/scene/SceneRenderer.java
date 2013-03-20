@@ -31,30 +31,10 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
     }
 
     @Override
-    public int getWidth() {
-        final Scene scene = creator.getScene();
-        if (scene == null) {
-            return 100;
-        } else {
-            return scene.getWidth();
-        }
-    }
-
-    @Override
-    public int getHeight() {
-        final Scene scene = creator.getScene();
-        if (scene == null) {
-            return 100;
-        } else {
-            return scene.getHeight();
-        }
-    }
-
-    @Override
     public void render(int width, int height, GraphicsOperations g, FontMetricsService fm) {
         final Scene s = creator.getScene();
         if (s == null) {
-            g.drawRect(0, 0, getWidth(), getHeight(), Color.GRAY);
+            g.drawRect(0, 0, width, height, Color.GRAY);
             g.drawText("(No scene)", 0, 20, Font.PFENNIG, Color.BLACK);
             return;
         }

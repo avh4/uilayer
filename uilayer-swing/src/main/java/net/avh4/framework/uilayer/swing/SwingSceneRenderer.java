@@ -44,7 +44,7 @@ public class SwingSceneRenderer extends JComponent {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(renderer.getWidth(), renderer.getHeight());
+        return new Dimension(800, 600);
     }
 
     @Override

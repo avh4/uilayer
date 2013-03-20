@@ -29,17 +29,14 @@ public class AndroidGraphicsOperationsTest extends ActivityInstrumentationTestCa
     public void setUp() {
         g = new AndroidGraphicsOperations(getInstrumentation().getContext());
         final SceneRenderer mockRenderer = Mockito.mock(SceneRenderer.class);
-        int width = 800;
-        int height = 600;
-        Mockito.stub(mockRenderer.getWidth()).toReturn(width);
-        Mockito.stub(mockRenderer.getHeight()).toReturn(height);
         Mockito.doAnswer(new Answer<Void>() {
             @Override
             public Void answer(InvocationOnMock invocation) throws Throwable {
                 graphicsOperations.run();
                 return null;
             }
-        }).when(mockRenderer).render(width, height, Mockito.same(g), Mockito.any(FontMetricsService.class));
+        }).when(mockRenderer).render(Mockito.anyInt(), Mockito.anyInt(),
+                Mockito.same(g), Mockito.any(FontMetricsService.class));
 
         subject = new AndroidSceneRenderer(getInstrumentation().getContext(), g, mockRenderer);
         getActivity().setRenderer(subject);
