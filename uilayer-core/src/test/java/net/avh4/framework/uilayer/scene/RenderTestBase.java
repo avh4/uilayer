@@ -54,7 +54,7 @@ public class RenderTestBase {
     }
 
     protected void assertRenderingOfSceneIs(String s) throws IOException {
-        renderer.render(g, fm);
+        renderer.render(scene.getWidth(), scene.getHeight(), g, fm);
         assertRenderingIs(s);
     }
 

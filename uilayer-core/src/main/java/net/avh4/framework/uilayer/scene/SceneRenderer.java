@@ -51,15 +51,13 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
     }
 
     @Override
-    public void render(GraphicsOperations g, FontMetricsService fm) {
+    public void render(int width, int height, GraphicsOperations g, FontMetricsService fm) {
         final Scene s = creator.getScene();
         if (s == null) {
             g.drawRect(0, 0, getWidth(), getHeight(), Color.GRAY);
             g.drawText("(No scene)", 0, 20, Font.PFENNIG, Color.BLACK);
             return;
         }
-        final int height = s.getHeight();
-        final int width = s.getWidth();
 
         g.drawRect(0, 0, width, height, Color.BLACK);
 

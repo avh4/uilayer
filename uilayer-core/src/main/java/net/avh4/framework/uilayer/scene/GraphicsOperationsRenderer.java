@@ -5,5 +5,5 @@ public interface GraphicsOperationsRenderer {
 
     int getHeight();
 
-    void render(GraphicsOperations g, FontMetricsService fm);
+    void render(int width, int height, GraphicsOperations g, FontMetricsService fm);
 }

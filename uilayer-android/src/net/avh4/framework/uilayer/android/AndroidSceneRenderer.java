@@ -10,11 +10,11 @@ import net.avh4.framework.uilayer.scene.SceneElement;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
 
 public class AndroidSceneRenderer extends View {
-	private final AndroidGraphicsOperations graphicsOperations;
-	private final AndroidFontMetricsService fontMetricsService;
-	private final GraphicsOperationsRenderer renderer;
+    private final AndroidGraphicsOperations graphicsOperations;
+    private final AndroidFontMetricsService fontMetricsService;
+    private final GraphicsOperationsRenderer renderer;
 
-	public AndroidSceneRenderer(final Context context, final SceneCreator creator) {
+    public AndroidSceneRenderer(final Context context, final SceneCreator creator) {
         this(context, new AndroidGraphicsOperations(context), new SceneRenderer(creator));
     }
 
@@ -25,6 +25,7 @@ public class AndroidSceneRenderer extends View {
     public AndroidSceneRenderer(final Context context, final SceneElement element) {
         this(context, new AndroidGraphicsOperations(context), new SceneRenderer(element));
     }
+
     public AndroidSceneRenderer(final Context context,
                                 AndroidGraphicsOperations g, GraphicsOperationsRenderer sceneRenderer) {
         super(context);
@@ -33,12 +34,12 @@ public class AndroidSceneRenderer extends View {
         renderer = sceneRenderer;
     }
 
-	@Override
-	protected void onDraw(final Canvas canvas) {
-		synchronized (graphicsOperations) {
-			graphicsOperations.setCanvas(canvas);
-			renderer.render(graphicsOperations, fontMetricsService);
-			graphicsOperations.setCanvas(null);
-		}
-	}
+    @Override
+    protected void onDraw(final Canvas canvas) {
+        synchronized (graphicsOperations) {
+            graphicsOperations.setCanvas(canvas);
+            renderer.render(getWidth(), getHeight(), graphicsOperations, fontMetricsService);
+            graphicsOperations.setCanvas(null);
+        }
+    }
 }

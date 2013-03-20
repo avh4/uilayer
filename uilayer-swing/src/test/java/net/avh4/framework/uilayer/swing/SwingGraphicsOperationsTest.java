@@ -38,15 +38,18 @@ public class SwingGraphicsOperationsTest {
     public void setUp() {
         g = new SwingGraphicsOperations();
         final SceneRenderer mockRenderer = Mockito.mock(SceneRenderer.class);
-        Mockito.stub(mockRenderer.getWidth()).toReturn(800);
-        Mockito.stub(mockRenderer.getHeight()).toReturn(600);
+        int width = 800;
+        int height = 600;
+        Mockito.stub(mockRenderer.getWidth()).toReturn(width);
+        Mockito.stub(mockRenderer.getHeight()).toReturn(height);
         Mockito.doAnswer(new Answer<Void>() {
             @Override
             public Void answer(InvocationOnMock invocation) throws Throwable {
                 graphicsOperations.run();
                 return null;
             }
-        }).when(mockRenderer).render(Mockito.same(g), Mockito.any(FontMetricsService.class));
+        }).when(mockRenderer).render(Mockito.eq(width), Mockito.eq(height),
+                Mockito.same(g), Mockito.any(FontMetricsService.class));
         subject = new SwingSceneRenderer(g, mockRenderer);
     }
 

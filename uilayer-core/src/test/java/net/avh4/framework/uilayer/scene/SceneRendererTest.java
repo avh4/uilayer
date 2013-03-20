@@ -10,14 +10,6 @@ public class SceneRendererTest extends RenderTestBase {
     }
 
     @Test
-    public void testRenderNullScene() throws Exception {
-        scene = null;
-        assertRenderingOfSceneIs("" +
-                "Rectangle: 0, 0, 100, 100, 0xff7f7f7f\n" +
-                "Text: \"(No scene)\" 0.0, 20.0 Font{'Pfennig.ttf' (12)} 0xff000000\n");
-    }
-
-    @Test
     public void testRenderSizedScene() throws Exception {
         scene.setSize(640, 960);
         assertRenderingOfSceneIs("Rectangle: 0, 0, 640, 960, 0xff000000\n");

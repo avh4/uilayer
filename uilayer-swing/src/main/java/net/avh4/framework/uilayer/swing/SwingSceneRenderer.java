@@ -53,7 +53,7 @@ public class SwingSceneRenderer extends JComponent {
             synchronized (fm) {
                 graphicsOperations.setGraphicsContext(g);
                 fm.setGraphicsContext(g);
-                renderer.render(graphicsOperations, fm);
+                renderer.render(getWidth(), getHeight(), graphicsOperations, fm);
                 graphicsOperations.setGraphicsContext(null);
                 fm.setGraphicsContext(null);
             }
