@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.ResourceImage;
+import net.avh4.math.Rect;
 
 public class SceneImage extends SceneElementBase {
     protected Image image;
@@ -69,7 +70,7 @@ public class SceneImage extends SceneElementBase {
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
         if (image == null) {
-            new ScenePlaceholder(name, x, y, width, height).draw(g, fm);
+            new ScenePlaceholder(name, x, y, width, height).draw(new Rect(x, y, width, height), g, fm);
         } else {
             g.translate(x, y);
             // TODO: use a scale transform instead so that the image doesn't need to care about the

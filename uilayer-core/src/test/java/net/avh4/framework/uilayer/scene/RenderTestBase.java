@@ -1,8 +1,10 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.test.TestGraphicsOperations;
+import net.avh4.math.Rect;
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.mockito.Mockito;
@@ -58,8 +60,15 @@ public class RenderTestBase {
         assertRenderingIs(s);
     }
 
-    protected void assertRenderingOf(SceneElement subject, String s) throws IOException {
-        subject.draw(g, fm);
+    protected void assertRenderingOf(Object o, String s) throws IOException {
+        if (o instanceof Element && o instanceof SceneElement) {
+            SceneElement subject = (SceneElement) o;
+            ((Element) subject).draw(new Rect(subject.getX(), subject.getY(), subject.getWidth(), subject.getHeight()), g, fm);
+        } else if (o instanceof Element) {
+            throw new RuntimeException("Not yet implemented -- what bounds should we use to draw?");
+        } else if (o instanceof SceneElement) {
+            ((SceneElement) o).draw(g, fm);
+        }
         assertRenderingIs(s);
     }
 }

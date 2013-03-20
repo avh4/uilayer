@@ -1,9 +1,11 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.math.Rect;
 import net.avh4.util.Util;
 
-public class ScenePlaceholder extends SceneElementBase {
+public class ScenePlaceholder extends SceneElementBase implements Element {
 
     protected final int color;
     protected final int textColor;
@@ -32,10 +34,19 @@ public class ScenePlaceholder extends SceneElementBase {
                 && height == b.height;
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
+        throw new RuntimeException("X");
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final int MARGIN = 5;
-        g.drawRect(x, y, width, height, color);
+        double x = bounds.getMinX();
+        double y = bounds.getMinY();
+        double height = bounds.getHeight();
+        g.drawRect(x, y, bounds.getWidth(), height, color);
         g.drawText(name, x + MARGIN, y + height - MARGIN, Font.PFENNIG, textColor);
     }
 }
