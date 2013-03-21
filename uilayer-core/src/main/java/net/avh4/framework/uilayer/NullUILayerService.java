@@ -18,7 +18,7 @@ class NullUILayerService implements UILayerService {
                     StringUtils.join(UILayer.KNOWN_SERVICES, "\n>>")));
 
     @Override
-    public void run(SceneCreator game, ClickReceiver receiver, KeyReceiver keyReceiver) {
+    public void run(Element game, ClickReceiver receiver, KeyReceiver keyReceiver) {
         throw exception;
     }
 

@@ -1,4 +1,3 @@
-import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 
@@ -7,8 +6,8 @@ public class MyScene implements SceneCreator {
     @Override
     public Scene getScene() {
         Scene scene = new Scene();
-        scene.add(new ScenePlaceholder("", 5, 5, 790, 590));
-        scene.add(new ScenePlaceholder("", 10, 15, 20, 20));
+        scene.add(new ScenePlaceholder(""));
+        scene.add(new ScenePlaceholder(""));
         return scene;
     }
 }

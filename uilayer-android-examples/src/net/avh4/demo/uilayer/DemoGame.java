@@ -28,7 +28,7 @@ public class DemoGame implements UI {
 
     @Override
     public void click(final double x, final double y) {
-        s.add(new ScenePlaceholder("Box", x, y, 50, 50));
+        s.add(new ScenePlaceholder("Box"));
     }
 
     @Override

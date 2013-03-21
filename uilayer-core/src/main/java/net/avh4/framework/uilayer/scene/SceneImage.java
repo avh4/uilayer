@@ -62,7 +62,7 @@ public class SceneImage implements Element {
         double width = bounds.getWidth();
         double height = bounds.getHeight();
         if (image == null) {
-            new ScenePlaceholder("Missing Image", x, y, width, height).draw(new Rect(x, y, width, height), g, fm);
+            new ScenePlaceholder("Missing Image").draw(new Rect(x, y, width, height), g, fm);
         } else {
             g.translate(x, y);
             image.drawImage(g, clipX, clipY, clipWidth, clipHeight, width, height);

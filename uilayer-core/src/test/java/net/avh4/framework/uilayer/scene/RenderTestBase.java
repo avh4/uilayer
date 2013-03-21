@@ -2,26 +2,19 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.test.TestGraphicsOperations;
 import net.avh4.math.Rect;
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.io.IOException;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.stub;
 
 @SuppressWarnings("NestedMethodCall")
 public class RenderTestBase {
-    private SceneRenderer renderer;
-    protected Scene scene;
     protected TestGraphicsOperations g;
     protected FontMetricsService fm;
 
@@ -36,15 +29,6 @@ public class RenderTestBase {
         Mockito.stub(fm.stringWidth(Font.PFENNIG.size(64), "a")).toReturn(30.0f);
         Mockito.stub(fm.stringWidth(new Font("Tuffy.ttf", 12), "Red Point")).toReturn(47.0f);
         Mockito.stub(fm.getLineHeight(new Font("Tuffy.ttf", 12))).toReturn(17.0f);
-        scene = new Scene();
-        SceneCreator sceneCreator = mock(SceneCreator.class);
-        stub(sceneCreator.getScene()).toAnswer(new Answer<Scene>() {
-            @Override
-            public Scene answer(InvocationOnMock invocation) throws Throwable {
-                return scene;
-            }
-        });
-        renderer = new SceneRenderer(sceneCreator);
     }
 
     protected void assertRenderingIs(String s) {
@@ -53,19 +37,6 @@ public class RenderTestBase {
 
     protected void assertRendering(Matcher<String> matcher) {
         assertThat(g.getRendering(), matcher);
-    }
-
-    @Deprecated
-    protected void assertRenderingOfSceneIs(String s) throws IOException {
-        Rect bounds = new Rect(0, 0, scene.getWidth(), scene.getHeight());
-        renderer.draw(bounds, g, fm);
-        assertRenderingIs(s);
-    }
-
-    @Deprecated
-    protected void assertRenderingOf(SceneElement subject, String s) throws IOException {
-        Rect bounds = new Rect(subject.getX(), subject.getY(), subject.getWidth(), subject.getHeight());
-        assertRenderingOf(bounds, subject, s);
     }
 
     protected void assertRenderingOf(Rect bounds, Element subject, String s) throws IOException {

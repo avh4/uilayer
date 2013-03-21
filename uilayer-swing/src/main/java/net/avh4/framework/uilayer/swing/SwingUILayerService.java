@@ -6,12 +6,10 @@ import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.data.File;
 import net.avh4.framework.data.swing.SwingExternalStorage;
 import net.avh4.framework.data.swing.SwingFile;
-import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
-import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.scene.SceneRenderer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -32,14 +30,14 @@ public class SwingUILayerService implements UILayerService {
     private SwingSceneRenderer component;
 
     @Override
-    public void run(final SceneCreator game, final ClickReceiver receiver,
+    public void run(final Element game, final ClickReceiver receiver,
                     final KeyReceiver keyReceiver) {
 
-        final Scene scene = game.getScene();
-        final String title = scene != null ? scene.getTitle() : "(No scene)";
+//        final String title = scene != null ? scene.getTitle() : "(No scene)";
+        final String title = game.toString();
         final JFrame window = new JFrame(title);
         final SwingGraphicsOperations graphicsOperations = new SwingGraphicsOperations();
-        component = new SwingSceneRenderer(graphicsOperations, new SceneRenderer(game));
+        component = new SwingSceneRenderer(graphicsOperations, game);
         window.add(component);
         window.pack();
         window.setLocationRelativeTo(null);

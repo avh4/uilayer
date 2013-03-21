@@ -3,8 +3,11 @@ package net.avh4.demo.uilayer;
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.mvc.ViewController;
+import net.avh4.framework.uilayer.scene.FontMetricsService;
+import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.math.Rect;
 
 public class LightswitchGame implements ViewController<LightswitchGame.Model> {
 
@@ -26,15 +29,19 @@ public class LightswitchGame implements ViewController<LightswitchGame.Model> {
     public void key(Model model, int keyCode, boolean shift) {
     }
 
-    @Override
-    public Scene getScene(Model model) {
+    public Scene getScene(Model model, Rect bounds) {
         final Scene scene = new Scene("Lightswitch");
         if (model.lightsOn) {
-            scene.add(new ScenePlaceholder("Room", 0, 0, 800, 600));
+            scene.add(bounds, new ScenePlaceholder("Room"));
         } else {
-            scene.add(new ScenePlaceholder("Blackness", 0, 0, 800, 600, Color.BLACK));
+            scene.add(bounds, new ScenePlaceholder("Blackness", Color.BLACK));
         }
-        scene.add(new ScenePlaceholder("Switch", 300, 400, 10, 17, Color.WHITE));
+        scene.add(new Rect(300, 400, 10, 17), new ScenePlaceholder("Switch", Color.WHITE));
         return scene;
+    }
+
+    @Override
+    public void draw(Model model, Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        getScene(model, bounds).draw(bounds, g, fm);
     }
 }

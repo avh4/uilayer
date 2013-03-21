@@ -101,8 +101,7 @@ public class Designer implements UI {
         Scene scene = new Scene();
         int i = 0;
         for (Rectangle2D placeholder : placeholders) {
-            scene.add(new ScenePlaceholder("" + i, (int) placeholder.getMinX(), (int) placeholder.getMinY(),
-                    (int) placeholder.getWidth(), (int) placeholder.getHeight()));
+            scene.add(new ScenePlaceholder("" + i));
             i++;
         }
         return scene;

@@ -1,12 +1,15 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.Color;
+import net.avh4.framework.uilayer.Element;
+import net.avh4.math.Rect;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@Deprecated
-public class Scene implements Iterable<SceneElement> {
+public class Scene implements Iterable<Item>, Element {
 
-    private final ArrayList<SceneElement> children = new ArrayList<SceneElement>();
+    private final ArrayList<Item> children = new ArrayList<Item>();
     protected String title;
     private double width = 800;
     private double height = 600;
@@ -19,12 +22,9 @@ public class Scene implements Iterable<SceneElement> {
         this("untitled scene");
     }
 
-    public Scene(SceneElement e) {
+    public Scene(Item e) {
         this(e.toString());
-        String title = e.getName();
         this.setTitle(title);
-        double height = e.getHeight() + e.getY();
-        double width = e.getWidth() + e.getX();
         this.setSize(width, height);
         this.add(e);
     }
@@ -49,30 +49,28 @@ public class Scene implements Iterable<SceneElement> {
     /**
      * The provided element will be returned for convenience.
      */
-    public <T extends SceneElement> T add(final T element) {
-        children.add(element);
-        return element;
+    public Item add(final Item item) {
+        children.add(item);
+        return item;
+    }
+
+    public Item add(Rect bounds, Element element) {
+        return add(new Item(bounds, element));
     }
 
     @Override
-    public Iterator<SceneElement> iterator() {
+    public Iterator<Item> iterator() {
         return children.iterator();
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends SceneElement> T findSceneElement(String what) {
-        for (SceneElement child : children) {
-            String name = child.getName();
-            if (name != null && name.equals(what)) {
-                return (T) child;
+    public Item findSceneElement(Object what) {
+        for (Item child : children) {
+            if (child.element.equals(what)) {
+                return child;
             }
         }
         return null;
-    }
-
-    @SuppressWarnings("unchecked")
-    public <T extends SceneElement> T findSceneElement(@SuppressWarnings("UnusedParameters") Class<T> elementType, String what) {
-        return (T) findSceneElement(what);
     }
 
     public void setTitle(String newTitle) {
@@ -84,13 +82,21 @@ public class Scene implements Iterable<SceneElement> {
         final StringBuilder sb = new StringBuilder().append("Scene{")
                 .append("title='").append(title).append('\'')
                 .append(", width=").append(width)
-                .append(", height=").append(height);
-        sb
+                .append(", height=").append(height)
                 .append(", children=").append(children);
-        for (SceneElement child : children) {
+        for (Item child : children) {
             sb.append("\n    ").append(child).append(", ");
         }
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        g.drawRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight(), Color.BLACK);
+
+        for (final Item item : children) {
+            item.element.draw(item.bounds, g, fm);
+        }
     }
 }

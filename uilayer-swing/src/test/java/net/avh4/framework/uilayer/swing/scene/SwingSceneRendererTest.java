@@ -1,8 +1,7 @@
 package net.avh4.framework.uilayer.swing.scene;
 
-import net.avh4.framework.uilayer.scene.SceneElement;
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
-import net.avh4.framework.uilayer.scene.SceneRenderer;
 import net.avh4.framework.uilayer.swing.SwingGraphicsOperations;
 import net.avh4.framework.uilayer.swing.SwingSceneRenderer;
 import net.avh4.framework.uilayer.test.annotations.RequiresPreciseFontRendering;
@@ -35,8 +34,8 @@ public class SwingSceneRendererTest {
     @Test
     @RequiresPreciseFontRendering("1.7.0-u8-b04")
     public void testRenderingASingleSceneElement() throws Exception {
-        final SceneElement e = new ScenePlaceholder("Element", 0, 0, 100, 100);
-        final SwingSceneRenderer subject = new SwingSceneRenderer(graphicsOperations, new SceneRenderer(e));
+        final Element e = new ScenePlaceholder("Element");
+        final SwingSceneRenderer subject = new SwingSceneRenderer(graphicsOperations, e);
         assertThat(subject, isApproved());
     }
 }

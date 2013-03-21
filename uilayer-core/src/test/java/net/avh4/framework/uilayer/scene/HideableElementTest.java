@@ -13,12 +13,6 @@ public class HideableElementTest {
     private boolean didDraw = false;
 
     private class TestElement extends HideableElement {
-
-        public TestElement(final String name, final int x, final int y,
-                           final int width, final int height) {
-            super(name, x, y, width, height);
-        }
-
         @Override
         public void drawGivenVisible(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
             didDraw = true;
@@ -27,7 +21,7 @@ public class HideableElementTest {
 
     @Before
     public void setUp() {
-        subject = new TestElement("name", 10, 20, 100, 200);
+        subject = new TestElement();
     }
 
     @Test

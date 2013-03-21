@@ -7,8 +7,11 @@ import net.avh4.framework.data.File;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.UILayerService;
+import net.avh4.framework.uilayer.scene.FontMetricsService;
+import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.math.Rect;
 
 import java.awt.event.KeyEvent;
 
@@ -68,17 +71,27 @@ public class ChooserDemo implements UI {
         }
     }
 
-    @Override
-    public Scene getScene() {
+    public Scene getScene(Rect bounds) {
         Scene scene = new Scene("Chooser Demo");
-        scene.add(new ScenePlaceholder("Choose a string (s)", 5, 5, 390, 290));
-        scene.add(new ScenePlaceholder("Choose a file (f)", 405, 5, 390, 290));
+        scene.add(bounds.divide(0, 0, .5, .5).inset(5), new ScenePlaceholder("Choose a string (s)"));
+        scene.add(bounds.divide(.5, 0, 1, .5).inset(5), new ScenePlaceholder("Choose a file (f)"));
         if (chosenString != null) {
-            scene.add(new ScenePlaceholder(chosenString, 5, 305, 390, 290));
+            scene.add(bounds.divide(0, .5, .5, 1).inset(5), new ScenePlaceholder(chosenString));
         }
         if (chosenFile != null) {
-            scene.add(new ScenePlaceholder(chosenFile.getName(), 405, 305, 390, 290));
+            scene.add(bounds.divide(.5, .5, 1, 1).inset(5), new ScenePlaceholder(chosenFile.getName()));
         }
         return scene;
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        getScene(bounds).draw(bounds, g, fm);
+    }
+
+    @Deprecated
+    @Override
+    public Scene getScene() {
+        return null;
     }
 }

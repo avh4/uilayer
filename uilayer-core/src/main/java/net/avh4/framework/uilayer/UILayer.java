@@ -54,7 +54,7 @@ public class UILayer {
         }
     }
 
-    public static void main(final SceneCreator game, final ClickReceiver receiver, final KeyReceiver keyReceiver) {
+    public static void main(final Element game, final ClickReceiver receiver, final KeyReceiver keyReceiver) {
         service.run(game, receiver, keyReceiver);
     }
 

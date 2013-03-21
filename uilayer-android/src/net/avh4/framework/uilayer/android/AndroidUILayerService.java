@@ -8,7 +8,6 @@ import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.data.File;
 import net.avh4.framework.data.android.AndroidExternalStorage;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;

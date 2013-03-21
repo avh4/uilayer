@@ -7,31 +7,35 @@ import net.avh4.util.Util;
 
 public class ScenePlaceholder extends HideableElement implements Element {
 
+    private final String name;
     protected final int color;
     protected final int textColor;
 
-    public ScenePlaceholder(final String name, final double x, final double y,
-                            final double width, final double height) {
-        this(name, x, y, width, height, Util.getHashColor(name));
+    public ScenePlaceholder(final String name) {
+        this(name, Util.getHashColor(name));
     }
 
-    public ScenePlaceholder(String name, double x, double y, double width, double height, int color) {
-        super(name, x, y, width, height);
+    public ScenePlaceholder(String name, int color) {
+        this.name = name;
         this.color = color;
         textColor = Util.getContrastingColor(color);
     }
 
     @Override
-    public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        final ScenePlaceholder b = (ScenePlaceholder) obj;
-        if (b == null) {
-            return false;
-        }
-        return name.equals(b.name) && x == b.x && y == b.y && width == b.width
-                && height == b.height;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ScenePlaceholder that = (ScenePlaceholder) o;
+
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
     }
 
     @Override

@@ -1,9 +1,7 @@
 package net.avh4.framework.uilayer.swing;
 
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Image;
-import net.avh4.framework.uilayer.SceneCreator;
-import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.scene.SceneElement;
 import net.avh4.util.imagecomparison.Renderer;
 import net.avh4.util.imagecomparison.SwingRenderer;
 
@@ -24,12 +22,8 @@ public class SwingUILayerRenderer implements Renderer {
     }
 
     private Component createComponent(Object obj) {
-        if (obj instanceof SceneCreator) {
-            return new SwingSceneRenderer((SceneCreator) obj);
-        } else if (obj instanceof Scene) {
-            return new SwingSceneRenderer((Scene) obj);
-        } else if (obj instanceof SceneElement) {
-            return new SwingSceneRenderer((SceneElement) obj);
+        if (obj instanceof Element) {
+            return new SwingSceneRenderer((Element) obj);
         } else if (obj instanceof Image) {
             return new SwingSceneRenderer((Image) obj);
         } else {

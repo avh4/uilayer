@@ -1,9 +1,9 @@
 package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.Color;
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
-import net.avh4.framework.uilayer.scene.SceneRenderer;
 import net.avh4.framework.uilayer.test.annotations.RequiresPreciseFontRendering;
 import net.avh4.math.Rect;
 import org.junit.Before;
@@ -38,7 +38,7 @@ public class SwingGraphicsOperationsTest {
     @Before
     public void setUp() {
         g = new SwingGraphicsOperations();
-        final SceneRenderer mockRenderer = Mockito.mock(SceneRenderer.class);
+        final Element mockRenderer = Mockito.mock(Element.class);
         Mockito.doAnswer(new Answer<Void>() {
             @Override
             public Void answer(InvocationOnMock invocation) throws Throwable {

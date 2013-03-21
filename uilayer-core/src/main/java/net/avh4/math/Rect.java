@@ -114,4 +114,12 @@ public class Rect {
     public Rect topLeft(double leftX, double topY) {
         return new Rect(0, 0, width, height);
     }
+
+    public double getMidX() {
+        return minX + width / 2;
+    }
+
+    public double getMidY() {
+        return minY + height / 2;
+    }
 }

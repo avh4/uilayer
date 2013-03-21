@@ -4,7 +4,6 @@ import android.test.ActivityInstrumentationTestCase2;
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
-import net.avh4.framework.uilayer.scene.SceneRenderer;
 import net.avh4.util.imagecomparison.android.Matchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;

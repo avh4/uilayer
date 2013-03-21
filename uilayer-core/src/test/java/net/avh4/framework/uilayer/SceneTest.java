@@ -1,10 +1,7 @@
 package net.avh4.framework.uilayer;
 
-import net.avh4.framework.uilayer.scene.FontMetricsService;
-import net.avh4.framework.uilayer.scene.GraphicsOperations;
+import net.avh4.framework.uilayer.scene.Item;
 import net.avh4.framework.uilayer.scene.Scene;
-import net.avh4.framework.uilayer.scene.SceneElement;
-import net.avh4.framework.uilayer.scene.SceneElementBase;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.math.Rect;
 import org.junit.Before;
@@ -24,8 +21,8 @@ public class SceneTest {
     @Before
     public void setUp() {
         subject = new Scene();
-        subjectWithElement = new Scene(new ScenePlaceholder("", 0, 0, 50, 60));
-        subjectWithOffsetElement = new Scene(new ScenePlaceholder("", 5, 5, 50, 60));
+        subjectWithElement = new Scene(new Item(new Rect(0, 0, 50, 60), new ScenePlaceholder("")));
+        subjectWithOffsetElement = new Scene(new Item(new Rect(5, 5, 50, 60), new ScenePlaceholder("")));
     }
 
     @Test
@@ -49,16 +46,16 @@ public class SceneTest {
 
     @Test
     public void testCanAddPlaceholder() {
-        subject.add(new ScenePlaceholder("Item 1", 0, 0, 800, 600));
-        assertThat(subject, hasItem(Matchers.placeholder("Item 1", 0, 0, 800, 600)));
+        subject.add(new Rect(0, 0, 800, 600), new ScenePlaceholder("Item 1"));
+        assertThat(subject, hasItem(new Item(new Rect(0, 0, 800, 600), new ScenePlaceholder("Item 1"))));
     }
 
     @Test
     public void findSceneElement_withOneElement_shouldReturnMatchingElement() throws Exception {
-        final ScenePlaceholder element = new ScenePlaceholder("Needle", 0, 0, 0, 0);
-        subject.add(element);
+        final ScenePlaceholder element = new ScenePlaceholder("Needle");
+        subject.add(new Rect(0, 0, 0, 0), element);
 
-        assertThat(subject.findSceneElement("Needle"), sameInstance((SceneElement) element));
+        assertThat(subject.findSceneElement(element).element, sameInstance((Element) element));
     }
 
     @Test
@@ -68,43 +65,15 @@ public class SceneTest {
 
     @Test
     public void findSceneElement_withTwoElements_shouldReturnMatchingElement() throws Exception {
-        final ScenePlaceholder element = new ScenePlaceholder("Needle", 0, 0, 0, 0);
-        subject.add(new ScenePlaceholder("Red Herring", 0, 0, 0, 0));
-        subject.add(element);
+        final ScenePlaceholder element = new ScenePlaceholder("Needle");
+        subject.add(new Rect(0, 0, 0, 0), new ScenePlaceholder("Red Herring"));
+        subject.add(new Rect(0, 0, 0, 0), element);
 
-        assertThat(subject.findSceneElement("Needle"), sameInstance((SceneElement) element));
-    }
-
-    @Test
-    public void findSceneElement_shouldReturnRequestedType() throws Exception {
-        final ScenePlaceholder element = new ScenePlaceholder("Needle", 0, 0, 0,
-                0);
-        subject.add(element);
-
-        final ScenePlaceholder actual = subject
-                .findSceneElement(ScenePlaceholder.class, "Needle");
-        assertThat(actual, sameInstance(element));
+        assertThat(subject.findSceneElement(element).element, sameInstance((Element) element));
     }
 
     @Test
     public void findSceneElement_whenSceneHasElementWithNullName() {
-        subject.add(new SceneElementBase(null, 0, 0, 0, 0) {
-            @Override
-            public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-            }
-        });
-        assertThat(subject.findSceneElement("Missing"), nullValue());
-    }
-
-    @Test
-    public void sceneWithElement_shouldHaveDimensions() throws Exception {
-        assertThat(subjectWithElement.getWidth(), is(50.));
-        assertThat(subjectWithElement.getHeight(), is(60.));
-    }
-
-    @Test
-    public void sceneWithElement_shouldIncludeCoordinateOffsetInDimensions() throws Exception {
-        assertThat(subjectWithOffsetElement.getWidth(), is(55.));
-        assertThat(subjectWithOffsetElement.getHeight(), is(65.));
+        assertThat(subject.findSceneElement(null), nullValue());
     }
 }

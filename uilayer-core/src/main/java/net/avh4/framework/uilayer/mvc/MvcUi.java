@@ -1,7 +1,10 @@
 package net.avh4.framework.uilayer.mvc;
 
 import net.avh4.framework.uilayer.UI;
+import net.avh4.framework.uilayer.scene.FontMetricsService;
+import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.Scene;
+import net.avh4.math.Rect;
 
 public class MvcUi<M> implements UI {
     private final M model;
@@ -29,7 +32,13 @@ public class MvcUi<M> implements UI {
     }
 
     @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        view.draw(model, bounds, g, fm);
+    }
+
+    @Deprecated
+    @Override
     public Scene getScene() {
-        return view.getScene(model);
+        return null;
     }
 }

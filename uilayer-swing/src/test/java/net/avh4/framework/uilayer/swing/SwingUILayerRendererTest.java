@@ -1,6 +1,5 @@
 package net.avh4.framework.uilayer.swing;
 
-import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import org.junit.Before;
@@ -13,26 +12,14 @@ import static org.hamcrest.core.IsNull.notNullValue;
 public class SwingUILayerRendererTest {
 
     private SwingUILayerRenderer subject;
-    private Object sceneCreator;
     private Object sceneElement;
     private Object scene;
 
     @Before
     public void setup() throws Exception {
         scene = new Scene();
-        sceneElement = new ScenePlaceholder("", 0, 0, 100, 100);
-        sceneCreator = new SceneCreator() {
-            @Override
-            public Scene getScene() {
-                return null;
-            }
-        };
+        sceneElement = new ScenePlaceholder("");
         subject = new SwingUILayerRenderer();
-    }
-
-    @Test
-    public void shouldProvideImagesForSceneCreators() throws Exception {
-        assertThat(subject.getImage(sceneCreator), notNullValue());
     }
 
     @Test

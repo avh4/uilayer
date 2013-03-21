@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface UILayerService {
 
-    void run(SceneCreator game, ClickReceiver receiver, KeyReceiver keyReceiver);
+    void run(Element game, ClickReceiver receiver, KeyReceiver keyReceiver);
 
     int getImageWidth(String image);
 
