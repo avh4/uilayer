@@ -1,6 +1,9 @@
 package net.avh4.framework.uilayer.scene;
 
-public class ClippedElement extends SceneElementBase {
+import net.avh4.framework.uilayer.Element;
+import net.avh4.math.Rect;
+
+public class ClippedElement extends SceneElementBase implements Element {
     protected ClippedElementDelegate delegate;
     private int clipX;
     private int clipY;
@@ -10,10 +13,17 @@ public class ClippedElement extends SceneElementBase {
         this.delegate = delegate;
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        double x = bounds.getMinX();
+        double y = bounds.getMinY();
         g.translate(x, y);
-        delegate.draw(g, fm, clipX, clipY, width, height);
+        delegate.draw(g, fm, clipX, clipY, bounds.getWidth(), bounds.getHeight());
         g.translate(-x, -y);
     }
 

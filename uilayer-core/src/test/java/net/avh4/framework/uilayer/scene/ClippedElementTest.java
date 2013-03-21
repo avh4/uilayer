@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.math.Rect;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -20,6 +21,9 @@ public class ClippedElementTest extends RenderTestBase {
     private ClippedElement subjectAtXY;
     private ClippedElement subjectSmallerThanMap;
     private GraphicsOperations g;
+    private Rect boundsAtOrigin;
+    private Rect boundsAtXY;
+    private Rect boundsSmallerThanMap;
 
     @Before
     public void setup() throws Exception {
@@ -27,8 +31,11 @@ public class ClippedElementTest extends RenderTestBase {
         delegate = makeMockDelegate("Delegate");
         delegate2 = makeMockDelegate("Delegate 2");
         subjectAtOrigin = new ClippedElement(delegate, 0, 0, 320, 640);
+        boundsAtOrigin = new Rect(0, 0, 320, 640);
         subjectAtXY = new ClippedElement(delegate, 25, 50, 320, 640);
+        boundsAtXY = new Rect(25, 50, 320, 640);
         subjectSmallerThanMap = new ClippedElement(delegate, 0, 0, 160, 96);
+        boundsSmallerThanMap = new Rect(0, 0, 160, 96);
     }
 
     private ClippedElementDelegate makeMockDelegate(final String name) {
@@ -83,14 +90,14 @@ public class ClippedElementTest extends RenderTestBase {
 
     @Test
     public void shouldClipMapToDimensions() throws Exception {
-        subjectSmallerThanMap.draw(g, null);
+        subjectSmallerThanMap.draw(boundsSmallerThanMap, g, null);
         Mockito.verify(delegate).draw(g, null, 0, 0, 160, 96);
     }
 
     @Test
     public void shouldClipMapFromCorrectOrigin() throws Exception {
         subjectSmallerThanMap.setClipPosition(15, 30);
-        subjectSmallerThanMap.draw(g, null);
+        subjectSmallerThanMap.draw(boundsSmallerThanMap, g, null);
         Mockito.verify(delegate).draw(g, null, 15, 30, 160, 96);
     }
 
