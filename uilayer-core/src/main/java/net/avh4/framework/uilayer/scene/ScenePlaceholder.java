@@ -5,7 +5,7 @@ import net.avh4.framework.uilayer.Font;
 import net.avh4.math.Rect;
 import net.avh4.util.Util;
 
-public class ScenePlaceholder extends SceneElementBase implements Element {
+public class ScenePlaceholder extends HideableElement implements Element {
 
     protected final int color;
     protected final int textColor;
@@ -40,7 +40,7 @@ public class ScenePlaceholder extends SceneElementBase implements Element {
     }
 
     @Override
-    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+    public void drawGivenVisible(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final int MARGIN = 5;
         double x = bounds.getMinX();
         double y = bounds.getMinY();

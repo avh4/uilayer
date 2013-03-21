@@ -50,10 +50,6 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
     }
 
     static void draw(final Element e, Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        if (e instanceof SceneElementBase && ((SceneElementBase) e).isHidden()) {
-            return;
-        } else {
-            e.draw(bounds, g, fm);
-        }
+        e.draw(bounds, g, fm);
     }
 }

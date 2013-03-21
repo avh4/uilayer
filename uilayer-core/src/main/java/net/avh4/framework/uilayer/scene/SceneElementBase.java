@@ -8,7 +8,6 @@ public abstract class SceneElementBase implements SceneElement {
     protected double width;
     protected double height;
     protected final String name;
-    protected boolean hidden;
 
     public SceneElementBase(final String name, final double x, final double y,
                             final double width, final double height) {
@@ -69,13 +68,5 @@ public abstract class SceneElementBase implements SceneElement {
                 ", width=" + width +
                 ", height=" + height +
                 '}';
-    }
-
-    public void setHidden(boolean hidden) {
-        this.hidden = hidden;
-    }
-
-    public boolean isHidden() {
-        return hidden;
     }
 }

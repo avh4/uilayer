@@ -60,15 +60,4 @@ public class SceneElementBaseTest {
         assertThat(subject.getX(), is(NEW_X));
         assertThat(subject.getY(), is(NEW_Y));
     }
-
-    @Test
-    public void testIsHidden() throws Exception {
-        assertThat(subject.isHidden(), is(false));
-    }
-
-    @Test
-    public void testSetHidden() throws Exception {
-        subject.setHidden(true);
-        assertThat(subject.isHidden(), is(true));
-    }
 }
