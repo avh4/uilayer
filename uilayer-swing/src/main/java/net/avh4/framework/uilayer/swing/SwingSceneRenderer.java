@@ -1,13 +1,13 @@
 package net.avh4.framework.uilayer.swing;
 
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.SceneCreator;
-import net.avh4.framework.uilayer.scene.ElementRenderer;
-import net.avh4.framework.uilayer.scene.GraphicsOperationsRenderer;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneElement;
 import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
+import net.avh4.math.Rect;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,14 +17,14 @@ public class SwingSceneRenderer extends JComponent {
     private static final long serialVersionUID = 1L;
     private final SwingFontMetricsService fm = new SwingFontMetricsService();
     private final SwingGraphicsOperations graphicsOperations;
-    private final GraphicsOperationsRenderer renderer;
+    private final Element renderer;
 
-    public SwingSceneRenderer(SwingGraphicsOperations g, GraphicsOperationsRenderer sceneRenderer) {
+    public SwingSceneRenderer(SwingGraphicsOperations g, Element sceneRenderer) {
         this.graphicsOperations = g;
         renderer = sceneRenderer;
     }
 
-    public SwingSceneRenderer(GraphicsOperationsRenderer sceneRenderer) {
+    public SwingSceneRenderer(Element sceneRenderer) {
         this(new SwingGraphicsOperations(), sceneRenderer);
     }
 
@@ -41,7 +41,7 @@ public class SwingSceneRenderer extends JComponent {
     }
 
     public SwingSceneRenderer(Image image) {
-        this(new ElementRenderer(new SceneImage(image)));
+        this(new SceneImage(image));
     }
 
     @Override
@@ -55,7 +55,8 @@ public class SwingSceneRenderer extends JComponent {
             synchronized (fm) {
                 graphicsOperations.setGraphicsContext(g);
                 fm.setGraphicsContext(g);
-                renderer.render(getWidth(), getHeight(), graphicsOperations, fm);
+                Rect bounds = new Rect(0, 0, getWidth(), getHeight());
+                renderer.draw(bounds, graphicsOperations, fm);
                 graphicsOperations.setGraphicsContext(null);
                 fm.setGraphicsContext(null);
             }

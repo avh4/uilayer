@@ -57,7 +57,8 @@ public class RenderTestBase {
 
     @Deprecated
     protected void assertRenderingOfSceneIs(String s) throws IOException {
-        renderer.render(scene.getWidth(), scene.getHeight(), g, fm);
+        Rect bounds = new Rect(0, 0, scene.getWidth(), scene.getHeight());
+        renderer.draw(bounds, g, fm);
         assertRenderingIs(s);
     }
 

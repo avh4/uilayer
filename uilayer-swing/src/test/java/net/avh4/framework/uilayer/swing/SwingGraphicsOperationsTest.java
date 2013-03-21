@@ -5,6 +5,7 @@ import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
 import net.avh4.framework.uilayer.test.annotations.RequiresPreciseFontRendering;
+import net.avh4.math.Rect;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -44,7 +45,7 @@ public class SwingGraphicsOperationsTest {
                 graphicsOperations.run();
                 return null;
             }
-        }).when(mockRenderer).render(Mockito.anyInt(), Mockito.anyInt(),
+        }).when(mockRenderer).draw(Mockito.any(Rect.class),
                 Mockito.same(g), Mockito.any(FontMetricsService.class));
         subject = new SwingSceneRenderer(g, mockRenderer);
     }
