@@ -24,11 +24,6 @@ public class SceneCenteredText extends SceneElementBase implements Element {
         return text;
     }
 
-    @Deprecated
-    @Override
-    public void draw(GraphicsOperations g, FontMetricsService fm) {
-    }
-
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final float ascent = fm.getAscent(font);

@@ -20,10 +20,6 @@ public class SceneElementBaseTest {
         }
 
         @Override
-        public void draw(GraphicsOperations g, FontMetricsService fm) {
-        }
-
-        @Override
         public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         }
     }

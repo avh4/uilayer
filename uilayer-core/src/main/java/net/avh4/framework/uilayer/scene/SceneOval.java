@@ -13,11 +13,6 @@ public class SceneOval extends SceneElementBase implements Element {
         this.color = color;
     }
 
-    @Deprecated
-    @Override
-    public void draw(GraphicsOperations g, FontMetricsService fm) {
-    }
-
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         g.drawOval(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight(), color);

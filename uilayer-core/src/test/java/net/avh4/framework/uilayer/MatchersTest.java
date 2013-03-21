@@ -27,10 +27,6 @@ public class MatchersTest {
         // A custom subclass of SceneElement
         assertThat(new SceneElementBase("Item", 20, 30, 40, 50) {
             @Override
-            public void draw(GraphicsOperations g, FontMetricsService fm) {
-            }
-
-            @Override
             public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
             }
         }, not(matches));

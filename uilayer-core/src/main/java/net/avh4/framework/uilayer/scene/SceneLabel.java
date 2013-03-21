@@ -23,11 +23,6 @@ public class SceneLabel extends SceneElementBase implements Element {
         this(text, x, y, new Font(customFontResource).size(fontSize), color);
     }
 
-    @Deprecated
-    @Override
-    public void draw(GraphicsOperations g, FontMetricsService fm) {
-    }
-
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final double labelWidth = fm.stringWidth(font, text);

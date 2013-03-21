@@ -100,10 +100,6 @@ public class SceneTest {
     public void findSceneElement_whenSceneHasElementWithNullName() {
         subject.add(new SceneElementBase(null, 0, 0, 0, 0) {
             @Override
-            public void draw(GraphicsOperations g, FontMetricsService fm) {
-            }
-
-            @Override
             public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
             }
         });

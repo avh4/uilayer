@@ -68,11 +68,6 @@ public class SceneImage extends SceneElementBase implements Element {
         this.clipY = clipY;
     }
 
-    @Deprecated
-    @Override
-    public void draw(GraphicsOperations g, FontMetricsService fm) {
-    }
-
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         double x = bounds.getMinX();

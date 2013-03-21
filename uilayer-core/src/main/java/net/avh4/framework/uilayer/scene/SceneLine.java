@@ -22,11 +22,6 @@ public class SceneLine extends SceneElementBase implements Element {
         this.y2 = y2;
     }
 
-    @Deprecated
-    @Override
-    public void draw(GraphicsOperations g, FontMetricsService fm) {
-    }
-
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         g.drawLine(x1, y1, x2, y2, color);

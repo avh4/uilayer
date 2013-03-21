@@ -3,6 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.UILayerService;
+import net.avh4.math.Rect;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -104,7 +105,7 @@ public class SceneTextTest extends RenderTestBase {
             sb.append("Word ");
         }
         subject = new SceneText(sb.toString(), 0, 0, 50, Font.PFENNIG, Color.WHITE);
-        subject.draw(g, fm);
+        subject.draw(new Rect(0, 0, 50, 0), g, fm);
         assertThat(g.getRendering().split("\n").length, lessThan(2000));
     }
 }

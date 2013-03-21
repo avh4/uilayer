@@ -34,11 +34,6 @@ public class ScenePlaceholder extends HideableElement implements Element {
                 && height == b.height;
     }
 
-    @Deprecated
-    @Override
-    public void draw(GraphicsOperations g, FontMetricsService fm) {
-    }
-
     @Override
     public void drawGivenVisible(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final int MARGIN = 5;

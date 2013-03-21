@@ -11,10 +11,6 @@ public abstract class HideableElement extends SceneElementBase implements Elemen
     }
 
     @Override
-    public void draw(GraphicsOperations g, FontMetricsService fm) {
-    }
-
-    @Override
     public final void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         if (!hidden) {
             drawGivenVisible(bounds, g, fm);

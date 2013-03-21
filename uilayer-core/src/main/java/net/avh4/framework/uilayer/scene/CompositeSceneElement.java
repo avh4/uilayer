@@ -12,11 +12,6 @@ public abstract class CompositeSceneElement extends SceneElementBase implements 
 
     public abstract Iterable<SceneElement> getSceneElements();
 
-    @Deprecated
-    @Override
-    public void draw(GraphicsOperations g, FontMetricsService fm) {
-    }
-
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         g.translate(x, y);
