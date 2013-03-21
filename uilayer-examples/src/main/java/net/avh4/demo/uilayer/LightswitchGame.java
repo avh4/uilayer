@@ -18,7 +18,7 @@ public class LightswitchGame implements ViewController<LightswitchGame.Model> {
     }
 
     @Override
-    public void click(Model model, int x, int y) {
+    public void click(Model model, double x, double y) {
         model.lightsOn = !model.lightsOn;
     }
 

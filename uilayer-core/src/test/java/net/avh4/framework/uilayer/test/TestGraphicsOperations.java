@@ -28,7 +28,7 @@ public class TestGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void translate(int deltaX, int deltaY) {
+    public void translate(double deltaX, double deltaY) {
         translateX += deltaX;
         translateY += deltaY;
         sb.append("=== TRANSLATE to ");

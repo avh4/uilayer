@@ -10,8 +10,8 @@ public class UITools {
 
         for (final SceneElement e : s) {
             if (elementName.equals(e.getName())) {
-                final int clickX = e.getWidth() / 2 + e.getX();
-                final int clickY = e.getHeight() / 2 + e.getY();
+                final double clickX = e.getWidth() / 2 + e.getX();
+                final double clickY = e.getHeight() / 2 + e.getY();
                 ui.click(clickX, clickY);
                 return;
             }

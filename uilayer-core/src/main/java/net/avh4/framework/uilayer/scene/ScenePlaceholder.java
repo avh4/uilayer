@@ -10,12 +10,12 @@ public class ScenePlaceholder extends SceneElementBase implements Element {
     protected final int color;
     protected final int textColor;
 
-    public ScenePlaceholder(final String name, final int x, final int y,
-                            final int width, final int height) {
+    public ScenePlaceholder(final String name, final double x, final double y,
+                            final double width, final double height) {
         this(name, x, y, width, height, Util.getHashColor(name));
     }
 
-    public ScenePlaceholder(String name, int x, int y, int width, int height, int color) {
+    public ScenePlaceholder(String name, double x, double y, double width, double height, int color) {
         super(name, x, y, width, height);
         this.color = color;
         textColor = Util.getContrastingColor(color);

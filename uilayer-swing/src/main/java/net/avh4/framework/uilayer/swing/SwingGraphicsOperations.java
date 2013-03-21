@@ -28,8 +28,8 @@ public class SwingGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void translate(int deltaX, int deltaY) {
-        g.translate(deltaX, deltaY);
+    public void translate(double deltaX, double deltaY) {
+        g2.translate(deltaX, deltaY);
     }
 
     @Override
@@ -52,15 +52,21 @@ public class SwingGraphicsOperations implements GraphicsOperations {
     }
 
     public void setGraphicsContext(Graphics g) {
+        if (g == null) {
+            this.g = null;
+            this.g2 = null;
+            return;
+        }
+        this.g = g;
         if (g instanceof Graphics2D) {
-            final Graphics2D g2 = (Graphics2D) g;
+            this.g2 = (Graphics2D) g;
             if (USE_ANTIALIASING) {
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             }
+        } else {
+            new RuntimeException("Wanted a Graphics2D, expect NullPointerExceptions: " + g.toString()).printStackTrace();
         }
-        this.g = g;
-        this.g2 = (Graphics2D) g;
     }
 
     private static Color loadColor(final int color) {

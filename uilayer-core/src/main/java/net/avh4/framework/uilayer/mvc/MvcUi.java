@@ -19,7 +19,7 @@ public class MvcUi<M> implements UI {
     }
 
     @Override
-    public void click(int x, int y) {
+    public void click(double x, double y) {
         controller.click(model, x, y);
     }
 

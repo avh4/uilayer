@@ -30,8 +30,8 @@ public class SceneElementBaseTest {
 
     @Test
     public void testChangeDimensions() {
-        final int NEW_WIDTH = 199;
-        final int NEW_HEIGHT = 299;
+        final double NEW_WIDTH = 199;
+        final double NEW_HEIGHT = 299;
         assertThat(subject.getWidth(), not(NEW_WIDTH));
         assertThat(subject.getHeight(), not(NEW_HEIGHT));
 
@@ -44,8 +44,8 @@ public class SceneElementBaseTest {
 
     @Test
     public void testChangePosition() {
-        final int NEW_X = 19;
-        final int NEW_Y = 29;
+        final double NEW_X = 19;
+        final double NEW_Y = 29;
         assertThat(subject.getX(), not(NEW_X));
         assertThat(subject.getY(), not(NEW_Y));
 

@@ -21,11 +21,11 @@ public class Font {
         this.size = fontSize;
     }
 
-    public int measureText(String text) {
+    public double measureText(String text) {
         return service.measureText(this, text);
     }
 
-    public int getLineHeight() {
+    public double getLineHeight() {
         return service.getFontHeight(this);
     }
 

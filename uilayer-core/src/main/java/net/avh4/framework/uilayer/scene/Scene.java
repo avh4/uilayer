@@ -7,8 +7,8 @@ public class Scene implements Iterable<SceneElement> {
 
     private final ArrayList<SceneElement> children = new ArrayList<SceneElement>();
     protected String title;
-    private int width = 800;
-    private int height = 600;
+    private double width = 800;
+    private double height = 600;
 
     public Scene(final String title) {
         this.title = title;
@@ -22,17 +22,17 @@ public class Scene implements Iterable<SceneElement> {
         this(e.toString());
         String title = e.getName();
         this.setTitle(title);
-        int height = e.getHeight() + e.getY();
-        int width = e.getWidth() + e.getX();
+        double height = e.getHeight() + e.getY();
+        double width = e.getWidth() + e.getX();
         this.setSize(width, height);
         this.add(e);
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -40,7 +40,7 @@ public class Scene implements Iterable<SceneElement> {
         return title;
     }
 
-    public void setSize(final int width, final int height) {
+    public void setSize(final double width, final double height) {
         this.width = width;
         this.height = height;
     }

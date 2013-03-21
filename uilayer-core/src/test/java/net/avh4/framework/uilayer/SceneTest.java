@@ -107,13 +107,13 @@ public class SceneTest {
 
     @Test
     public void sceneWithElement_shouldHaveDimensions() throws Exception {
-        assertThat(subjectWithElement.getWidth(), is(50));
-        assertThat(subjectWithElement.getHeight(), is(60));
+        assertThat(subjectWithElement.getWidth(), is(50.));
+        assertThat(subjectWithElement.getHeight(), is(60.));
     }
 
     @Test
     public void sceneWithElement_shouldIncludeCoordinateOffsetInDimensions() throws Exception {
-        assertThat(subjectWithOffsetElement.getWidth(), is(55));
-        assertThat(subjectWithOffsetElement.getHeight(), is(65));
+        assertThat(subjectWithOffsetElement.getWidth(), is(55.));
+        assertThat(subjectWithOffsetElement.getHeight(), is(65.));
     }
 }

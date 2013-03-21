@@ -7,7 +7,7 @@ public interface GraphicsOperations {
 
     void drawText(String text, double leftX, double baselineY, Font font, int argbColor);
 
-    void translate(int deltaX, int deltaY);
+    void translate(double deltaX, double deltaY);
 
     void drawLine(int startX, int startY, int stopX, int stopY, int argbColor);
 

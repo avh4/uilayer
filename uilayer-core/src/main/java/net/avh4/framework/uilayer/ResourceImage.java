@@ -27,7 +27,7 @@ public class ResourceImage implements Image {
 
     @Override
     public void drawImage(GraphicsOperations g, int clipX, int clipY, int clipWidth, int clipHeight,
-                          int width, int height) {
-        g.drawImage(imageName, 0, 0, width, height, clipX, clipY, clipX + clipWidth, clipY + clipHeight);
+                          double width, double height) {
+        g.drawImage(imageName, 0, 0, (int) width, (int) height, clipX, clipY, clipX + clipWidth, clipY + clipHeight);
     }
 }

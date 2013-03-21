@@ -1,10 +1,11 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.ResourceImage;
 import net.avh4.math.Rect;
 
-public class SceneImage extends SceneElementBase {
+public class SceneImage extends SceneElementBase implements Element {
     protected Image image;
     protected int clipX;
     protected int clipY;
@@ -67,14 +68,21 @@ public class SceneImage extends SceneElementBase {
         this.clipY = clipY;
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        double x = bounds.getMinX();
+        double y = bounds.getMinY();
+        double width = bounds.getWidth();
+        double height = bounds.getHeight();
         if (image == null) {
             new ScenePlaceholder(name, x, y, width, height).draw(new Rect(x, y, width, height), g, fm);
         } else {
             g.translate(x, y);
-            // TODO: use a scale transform instead so that the image doesn't need to care about the
-            // destination width/height ?
             image.drawImage(g, clipX, clipY, clipWidth, clipHeight, width, height);
             g.translate(-x, -y);
         }

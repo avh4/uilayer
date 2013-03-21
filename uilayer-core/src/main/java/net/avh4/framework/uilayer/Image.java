@@ -9,5 +9,5 @@ public interface Image {
 
     int getHeight();
 
-    void drawImage(GraphicsOperations g, int clipX, int clipY, int clipWidth, int clipHeight, int width, int height);
+    void drawImage(GraphicsOperations g, int clipX, int clipY, int clipWidth, int clipHeight, double width, double height);
 }

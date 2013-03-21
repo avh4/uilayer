@@ -1,6 +1,7 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Image;
+import net.avh4.math.Rect;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -55,16 +56,16 @@ public class SceneImageTest extends RenderTestBase {
 
     @Test
     public void shouldDrawImage() throws Exception {
-        new SceneImage(0, 0, 50, 50, image).draw(g, fm);
-        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 50 50 %%%\n"));
+        new SceneImage(0, 0, 50, 50, image).draw(new Rect(0, 0, 50, 50), g, fm);
+        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 50.0 50.0 %%%\n"));
     }
 
     @Test
     public void shouldDrawImageInCorrectPosition() throws Exception {
-        new SceneImage(100, 120, 50, 50, image).draw(g, fm);
+        new SceneImage(100, 120, 50, 50, image).draw(new Rect(100, 120, 50, 50), g, fm);
         assertRenderingIs("" +
                 "=== TRANSLATE to 100, 120 ===\n" +
-                "%%% DRAW IMAGE 0 0 101 101 50 50 %%%\n" +
+                "%%% DRAW IMAGE 0 0 101 101 50.0 50.0 %%%\n" +
                 "=== TRANSLATE to 0, 0 ===\n");
     }
 
@@ -72,30 +73,30 @@ public class SceneImageTest extends RenderTestBase {
     public void testRenderRepositionedImage() throws Exception {
         final SceneImage image = new SceneImage(100, 100, 50, 50, this.image);
         image.setPosition(2, 3);
-        image.draw(g, fm);
+        image.draw(new Rect(2, 3, 50, 50), g, fm);
         assertRenderingIs("" +
                 "=== TRANSLATE to 2, 3 ===\n" +
-                "%%% DRAW IMAGE 0 0 101 101 50 50 %%%\n" +
+                "%%% DRAW IMAGE 0 0 101 101 50.0 50.0 %%%\n" +
                 "=== TRANSLATE to 0, 0 ===\n");
     }
 
     @Test
     public void testRenderClippedImage() throws Exception {
-        new SceneImage(0, 0, 50, 55, image, 0, 1, 20, 22).draw(g, fm);
-        assertRendering(containsString("%%% DRAW IMAGE 0 1 20 22 50 55 %%%\n"));
+        new SceneImage(0, 0, 50, 55, image, 0, 1, 20, 22).draw(new Rect(0, 0, 50, 55), g, fm);
+        assertRendering(containsString("%%% DRAW IMAGE 0 1 20 22 50.0 55.0 %%%\n"));
     }
 
     @Test
     public void testRenderReclippedClippedImage() throws Exception {
         final SceneImage image = new SceneImage(0, 0, 50, 55, this.image, 0, 0, 20, 22);
         image.setClipPosition(10, 11);
-        image.draw(g, fm);
-        assertRendering(containsString("%%% DRAW IMAGE 10 11 20 22 50 55 %%%\n"));
+        image.draw(new Rect(0, 0, 50, 55), g, fm);
+        assertRendering(containsString("%%% DRAW IMAGE 10 11 20 22 50.0 55.0 %%%\n"));
     }
 
     @Test
     public void withNoImage_shouldRenderAPlaceholder() throws Exception {
-        new SceneImage(0, 0, 100, 200).draw(g, fm);
+        new SceneImage(0, 0, 100, 200).draw(new Rect(0, 0, 100, 200), g, fm);
         assertRenderingIs("" +
                 "Rectangle: 0.0, 0.0, 100.0, 200.0, 0xffb7abfb\n" +
                 "Text: \"Missing Image\" 5.0, 195.0 Font{'Pfennig.ttf' (12)} 0xff000000\n");
@@ -105,8 +106,8 @@ public class SceneImageTest extends RenderTestBase {
     public void setImage_shouldSetTheImageAndResetClipSize() throws Exception {
         SceneImage image = new SceneImage(10, 11, 100, 200);
         image.setImage(this.image);
-        image.draw(g, fm);
-        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 100 200 %%%\n"));
+        image.draw(new Rect(10, 11, 100, 200), g, fm);
+        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 100.0 200.0 %%%\n"));
     }
 
     @Test
@@ -114,7 +115,7 @@ public class SceneImageTest extends RenderTestBase {
         SceneImage image = new SceneImage(10, 11, 100, 200);
         image.setClipPosition(70, 77);
         image.setImage(this.image);
-        image.draw(g, fm);
-        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 100 200 %%%\n"));
+        image.draw(new Rect(10, 11, 100, 200), g, fm);
+        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 100.0 200.0 %%%\n"));
     }
 }

@@ -16,7 +16,7 @@ public class FontTest {
     @Before
     public void setUp() throws Exception {
         Font.service = Mockito.mock(UILayerService.class);
-        
+
         subject = new Font("MyFont.ttf");
 
         stub(Font.service.getFontHeight(subject)).toReturn(20);
@@ -31,13 +31,13 @@ public class FontTest {
 
     @Test
     public void getHeight() throws Exception {
-        assertThat(subject.getLineHeight(), is(20));
+        assertThat(subject.getLineHeight(), is(20.));
     }
 
     @Test
     public void measureText() throws Exception {
-        assertThat(subject.measureText("XYZZY"), is(67));
-        assertThat(subject.size(24).measureText("XYZZY"), is(240));
+        assertThat(subject.measureText("XYZZY"), is(67.));
+        assertThat(subject.size(24).measureText("XYZZY"), is(240.));
     }
 
     @Test
@@ -55,5 +55,4 @@ public class FontTest {
     public void size_defaultValue() throws Exception {
         assertThat(subject.getSize(), is(12));
     }
-    
 }

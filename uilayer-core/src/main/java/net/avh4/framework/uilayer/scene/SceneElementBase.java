@@ -2,15 +2,15 @@ package net.avh4.framework.uilayer.scene;
 
 public abstract class SceneElementBase implements SceneElement {
 
-    protected int x;
-    protected int y;
-    protected int width;
-    protected int height;
+    protected double x;
+    protected double y;
+    protected double width;
+    protected double height;
     protected final String name;
     protected boolean hidden;
 
-    public SceneElementBase(final String name, final int x, final int y,
-                            final int width, final int height) {
+    public SceneElementBase(final String name, final double x, final double y,
+                            final double width, final double height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -24,38 +24,38 @@ public abstract class SceneElementBase implements SceneElement {
     }
 
     @Override
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
     @Override
-    public int getX() {
+    public double getX() {
         return x;
     }
 
     @Override
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
     @Override
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setWidth(final int width) {
+    public void setWidth(final double width) {
         this.width = width;
     }
 
-    public void setHeight(final int height) {
+    public void setHeight(final double height) {
         this.height = height;
     }
 
-    public void setX(final int x) {
+    public void setX(final double x) {
         this.x = x;
     }
 
-    public void setY(final int y) {
+    public void setY(final double y) {
         this.y = y;
     }
 

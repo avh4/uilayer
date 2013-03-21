@@ -6,11 +6,11 @@ public interface SceneElement {
 
     String getName();
 
-    int getWidth();
+    double getWidth();
 
-    int getX();
+    double getX();
 
-    int getHeight();
+    double getHeight();
 
-    int getY();
+    double getY();
 }

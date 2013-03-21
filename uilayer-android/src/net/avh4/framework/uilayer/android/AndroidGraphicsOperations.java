@@ -30,8 +30,8 @@ public class AndroidGraphicsOperations implements GraphicsOperations {
     }
 
     @Override
-    public void translate(int deltaX, int deltaY) {
-        canvas.translate(deltaX, deltaY);
+    public void translate(double deltaX, double deltaY) {
+        canvas.translate((float) deltaX, (float) deltaY);
     }
 
     @Override

@@ -27,7 +27,7 @@ public class ChooserDemo implements UI {
     }
 
     @Override
-    public void click(int x, int y) {
+    public void click(double x, double y) {
         if (x < 400) {
             chooseString();
         } else {

@@ -15,8 +15,8 @@ public class Designer implements UI {
 
     private final ExternalStorage externalStorage;
     private final ArrayList<Rectangle2D> placeholders = new ArrayList<>();
-    private int startX;
-    private int startY;
+    private double startX;
+    private double startY;
 
     public static void main(String[] args) {
         ExternalStorage externalStorage = UILayer.getExternalStorage();
@@ -28,12 +28,12 @@ public class Designer implements UI {
         this.externalStorage = externalStorage;
     }
 
-    public void dragStart(int x, int y) {
+    public void dragStart(double x, double y) {
         this.startX = x;
         this.startY = y;
     }
 
-    public void dragEnd(int x, int y) {
+    public void dragEnd(double x, double y) {
         this.placeholders.add(new Rectangle2D.Double(startX, startY, x - startX, y - startY));
     }
 
@@ -77,7 +77,7 @@ public class Designer implements UI {
     private boolean isDragging = false;
 
     @Override
-    public void click(int x, int y) {
+    public void click(double x, double y) {
         // TODO: not tested
         if (!isDragging) {
             this.dragStart(x, y);

@@ -33,7 +33,7 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
     }
 
     @Override
-    public void render(int width, int height, GraphicsOperations g, FontMetricsService fm) {
+    public void render(double width, double height, GraphicsOperations g, FontMetricsService fm) {
         final Scene s = creator.getScene();
         if (s == null) {
             g.drawRect(0, 0, width, height, Color.GRAY);

@@ -47,12 +47,12 @@ public class ClippedElementTest extends RenderTestBase {
 
     @Test
     public void shouldHaveWidthFromTheMapAndTileSize() throws Exception {
-        assertThat(subjectAtOrigin.getWidth(), is(320));
+        assertThat(subjectAtOrigin.getWidth(), is(320.));
     }
 
     @Test
     public void shouldHaveHeightFromTheMapAndTileSize() throws Exception {
-        assertThat(subjectAtOrigin.getHeight(), is(640));
+        assertThat(subjectAtOrigin.getHeight(), is(640.));
     }
 
     @Test
@@ -64,8 +64,8 @@ public class ClippedElementTest extends RenderTestBase {
 
     @Test
     public void shouldHaveCoordinates() throws Exception {
-        assertThat(subjectAtXY.getX(), is(25));
-        assertThat(subjectAtXY.getY(), is(50));
+        assertThat(subjectAtXY.getX(), is(25.));
+        assertThat(subjectAtXY.getY(), is(50.));
     }
 
     @Test
@@ -77,8 +77,8 @@ public class ClippedElementTest extends RenderTestBase {
 
     @Test
     public void shouldHaveDimensions() throws Exception {
-        assertThat(subjectSmallerThanMap.getWidth(), is(160));
-        assertThat(subjectSmallerThanMap.getHeight(), is(96));
+        assertThat(subjectSmallerThanMap.getWidth(), is(160.));
+        assertThat(subjectSmallerThanMap.getHeight(), is(96.));
     }
 
     @Test
