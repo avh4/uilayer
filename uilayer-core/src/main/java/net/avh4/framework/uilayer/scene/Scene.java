@@ -3,6 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+@Deprecated
 public class Scene implements Iterable<SceneElement> {
 
     private final ArrayList<SceneElement> children = new ArrayList<SceneElement>();

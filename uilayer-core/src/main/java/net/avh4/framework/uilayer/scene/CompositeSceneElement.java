@@ -1,6 +1,9 @@
 package net.avh4.framework.uilayer.scene;
 
-public abstract class CompositeSceneElement extends SceneElementBase {
+import net.avh4.framework.uilayer.Element;
+import net.avh4.math.Rect;
+
+public abstract class CompositeSceneElement extends SceneElementBase implements Element {
 
     public CompositeSceneElement(final String name, final int x, final int y,
                                  final int width, final int height) {
@@ -9,8 +12,13 @@ public abstract class CompositeSceneElement extends SceneElementBase {
 
     public abstract Iterable<SceneElement> getSceneElements();
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         g.translate(x, y);
         for (final SceneElement object : getSceneElements()) {
             SceneRenderer.draw(object, g, fm);
