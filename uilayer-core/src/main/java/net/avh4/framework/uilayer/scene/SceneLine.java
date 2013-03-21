@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Element;
 import net.avh4.math.Rect;
 
-public class SceneLine extends SceneElementBase implements Element {
+public class SceneLine implements Element {
 
     protected final int color;
     protected final int x1;
@@ -13,8 +13,6 @@ public class SceneLine extends SceneElementBase implements Element {
 
     public SceneLine(final int color, final int x1, final int y1, final int x2,
                      final int y2) {
-        super(null, Math.min(x1, x2), Math.min(y1, y2), Math.abs(x1 - x2), Math
-                .abs(y1 - y2));
         this.color = color;
         this.x1 = x1;
         this.x2 = x2;
