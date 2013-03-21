@@ -21,7 +21,8 @@ public abstract class CompositeSceneElement extends SceneElementBase implements 
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         g.translate(x, y);
         for (final SceneElement object : getSceneElements()) {
-            SceneRenderer.draw(object, g, fm);
+            Rect childBounds = new Rect(object.getX(), object.getY(), object.getWidth(), object.getHeight());
+            SceneRenderer.draw(object, childBounds, g, fm);
         }
         g.translate(-x, -y);
     }

@@ -44,20 +44,16 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
         g.drawRect(0, 0, width, height, Color.BLACK);
 
         for (final SceneElement object : s) {
-            draw(object, g, fm);
+            Rect bounds = new Rect(object.getX(), object.getY(), object.getWidth(), object.getHeight());
+            draw(object, bounds, g, fm);
         }
     }
 
-    static void draw(final SceneElement e, GraphicsOperations g, FontMetricsService fm) {
+    static void draw(final Element e, Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         if (e instanceof SceneElementBase && ((SceneElementBase) e).isHidden()) {
             return;
         } else {
-            if (e instanceof Element) {
-                Rect bounds = new Rect(e.getX(), e.getY(), e.getWidth(), e.getHeight());
-                ((Element) e).draw(bounds, g, fm);
-            } else {
-                e.draw(g, fm);
-            }
+            e.draw(bounds, g, fm);
         }
     }
 }

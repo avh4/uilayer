@@ -8,6 +8,7 @@ import net.avh4.framework.uilayer.scene.SceneElementBase;
 import net.avh4.framework.uilayer.scene.SceneLine;
 import net.avh4.framework.uilayer.scene.SceneOval;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.math.Rect;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -100,6 +101,10 @@ public class SceneTest {
         subject.add(new SceneElementBase(null, 0, 0, 0, 0) {
             @Override
             public void draw(GraphicsOperations g, FontMetricsService fm) {
+            }
+
+            @Override
+            public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
             }
         });
         assertThat(subject.findSceneElement("Missing"), nullValue());

@@ -1,5 +1,6 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.math.Rect;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,6 +21,10 @@ public class SceneElementBaseTest {
 
         @Override
         public void draw(GraphicsOperations g, FontMetricsService fm) {
+        }
+
+        @Override
+        public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         }
     }
 

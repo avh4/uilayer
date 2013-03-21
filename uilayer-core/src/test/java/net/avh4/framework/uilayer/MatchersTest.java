@@ -5,6 +5,7 @@ import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.SceneElement;
 import net.avh4.framework.uilayer.scene.SceneElementBase;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.math.Rect;
 import org.hamcrest.Matcher;
 import org.junit.Test;
 
@@ -27,6 +28,10 @@ public class MatchersTest {
         assertThat(new SceneElementBase("Item", 20, 30, 40, 50) {
             @Override
             public void draw(GraphicsOperations g, FontMetricsService fm) {
+            }
+
+            @Override
+            public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
             }
         }, not(matches));
     }
