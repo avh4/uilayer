@@ -60,14 +60,14 @@ public class RenderTestBase {
         assertRenderingIs(s);
     }
 
-    protected void assertRenderingOf(Object o, String s) throws IOException {
-        if (o instanceof Element && o instanceof SceneElement) {
-            SceneElement subject = (SceneElement) o;
-            Rect bounds = new Rect(subject.getX(), subject.getY(), subject.getWidth(), subject.getHeight());
-            subject.draw(bounds, g, fm);
-        } else if (o instanceof Element) {
-            throw new RuntimeException("Not yet implemented -- what bounds should we use to draw?");
-        }
+    @Deprecated
+    protected void assertRenderingOf(SceneElement subject, String s) throws IOException {
+        Rect bounds = new Rect(subject.getX(), subject.getY(), subject.getWidth(), subject.getHeight());
+        assertRenderingOf(bounds, subject, s);
+    }
+
+    protected void assertRenderingOf(Rect bounds, Element subject, String s) throws IOException {
+        subject.draw(bounds, g, fm);
         assertRenderingIs(s);
     }
 }

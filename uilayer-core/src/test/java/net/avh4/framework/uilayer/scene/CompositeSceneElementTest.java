@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
 import net.avh4.math.Rect;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -13,12 +14,6 @@ public class CompositeSceneElementTest extends RenderTestBase {
      * This component draws a white square with a red boarder and blue circle.
      */
     private static class TestComponent extends CompositeSceneElement {
-
-        public TestComponent(final int x, final int y, final int width,
-                             final int height) {
-            super(null, x, y, width, height);
-        }
-
         @Override
         public Iterable<Item> getSceneElements(Rect bounds) {
             ArrayList<Item> items = new ArrayList<Item>();
@@ -29,10 +24,16 @@ public class CompositeSceneElementTest extends RenderTestBase {
         }
     }
 
+    @Before
+    public void setUp() throws Exception {
+        super.setUp();
+        subject = new TestComponent();
+    }
+
     @Test
     public void testComponent() throws Exception {
-        subject = new TestComponent(0, 0, 100, 100);
-        assertRenderingOf(subject, "" +
+        assertRenderingOf(new Rect(0, 0, 100, 100),
+                subject, "" +
                 "=== TRANSLATE to 0, 0 ===\n" +
                 "Rectangle: 0.0, 0.0, 100.0, 100.0, 0xffff0000\n" +
                 "Rectangle: 5.0, 5.0, 90.0, 90.0, 0xffffffff\n" +
@@ -42,8 +43,8 @@ public class CompositeSceneElementTest extends RenderTestBase {
 
     @Test
     public void testTranslatedComponent() throws Exception {
-        subject = new TestComponent(300, 400, 100, 100);
-        assertRenderingOf(subject, "" +
+        assertRenderingOf(new Rect(300, 400, 100, 100),
+                subject, "" +
                 "=== TRANSLATE to 300, 400 ===\n" +
                 "Rectangle: 0.0, 0.0, 100.0, 100.0, 0xffff0000\n" +
                 "Rectangle: 5.0, 5.0, 90.0, 90.0, 0xffffffff\n" +

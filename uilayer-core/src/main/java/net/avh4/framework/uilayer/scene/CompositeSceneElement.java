@@ -3,12 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Element;
 import net.avh4.math.Rect;
 
-public abstract class CompositeSceneElement extends SceneElementBase implements Element {
-
-    public CompositeSceneElement(final String name, final int x, final int y,
-                                 final int width, final int height) {
-        super(name, x, y, width, height);
-    }
+public abstract class CompositeSceneElement implements Element {
 
     public abstract Iterable<Item> getSceneElements(Rect bounds);
 
