@@ -106,4 +106,12 @@ public class Rect {
         }
         return new Rect(minX, minY, width, height);
     }
+
+    public Rect inset(double inset) {
+        return inset(inset, inset, inset, inset);
+    }
+
+    public Rect topLeft(double leftX, double topY) {
+        return new Rect(0, 0, width, height);
+    }
 }

@@ -1,7 +1,10 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
+import net.avh4.math.Rect;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 public class CompositeSceneElementTest extends RenderTestBase {
     private TestComponent subject;
@@ -11,20 +14,18 @@ public class CompositeSceneElementTest extends RenderTestBase {
      */
     private static class TestComponent extends CompositeSceneElement {
 
-        private final Scene scene;
-
         public TestComponent(final int x, final int y, final int width,
                              final int height) {
             super(null, x, y, width, height);
-            scene = new Scene();
-            scene.add(new SceneRect(0, 0, 100, 100, Color.RED));
-            scene.add(new SceneRect(5, 5, 90, 90, Color.WHITE));
-            scene.add(new SceneOval(20, 20, 60, 60, Color.BLUE));
         }
 
         @Override
-        public Iterable<SceneElement> getSceneElements() {
-            return scene;
+        public Iterable<Item> getSceneElements(Rect bounds) {
+            ArrayList<Item> items = new ArrayList<Item>();
+            items.add(new Item(bounds, new SceneRect(0, 0, 0, 0, Color.RED)));
+            items.add(new Item(bounds.inset(5), new SceneRect(0, 0, 0, 0, Color.WHITE)));
+            items.add(new Item(bounds.inset(20), new SceneOval(0, 0, 0, 0, Color.BLUE)));
+            return items;
         }
     }
 

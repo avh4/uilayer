@@ -10,14 +10,15 @@ public abstract class CompositeSceneElement extends SceneElementBase implements 
         super(name, x, y, width, height);
     }
 
-    public abstract Iterable<SceneElement> getSceneElements();
+    public abstract Iterable<Item> getSceneElements(Rect bounds);
 
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        double x = bounds.getMinX();
+        double y = bounds.getMinY();
         g.translate(x, y);
-        for (final SceneElement object : getSceneElements()) {
-            Rect childBounds = new Rect(object.getX(), object.getY(), object.getWidth(), object.getHeight());
-            object.draw(childBounds, g, fm);
+        for (final Item item : getSceneElements(bounds.topLeft(0, 0))) {
+            item.element.draw(item.bounds, g, fm);
         }
         g.translate(-x, -y);
     }

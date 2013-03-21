@@ -2,8 +2,9 @@ package net.avh4.framework.uilayer;
 
 import net.avh4.framework.uilayer.scene.Scene;
 
+@Deprecated
 public interface SceneCreator {
 
-	Scene getScene();
-
+    @Deprecated
+    Scene getScene();
 }
