@@ -45,5 +45,4 @@ public class AndroidSceneRendererPerformanceTest extends InstrumentationTestCase
         }
         return sb.toString();
     }
-
 }

@@ -2,9 +2,11 @@ package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.SceneCreator;
+import net.avh4.framework.uilayer.scene.ElementRenderer;
 import net.avh4.framework.uilayer.scene.GraphicsOperationsRenderer;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneElement;
+import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.SceneRenderer;
 
 import javax.swing.*;
@@ -22,7 +24,7 @@ public class SwingSceneRenderer extends JComponent {
         renderer = sceneRenderer;
     }
 
-    public SwingSceneRenderer(SceneRenderer sceneRenderer) {
+    public SwingSceneRenderer(GraphicsOperationsRenderer sceneRenderer) {
         this(new SwingGraphicsOperations(), sceneRenderer);
     }
 
@@ -39,7 +41,7 @@ public class SwingSceneRenderer extends JComponent {
     }
 
     public SwingSceneRenderer(Image image) {
-        this(new SceneRenderer(image));
+        this(new ElementRenderer(new SceneImage(image)));
     }
 
     @Override

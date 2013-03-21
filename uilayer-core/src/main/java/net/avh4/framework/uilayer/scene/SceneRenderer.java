@@ -2,10 +2,10 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.SceneCreator;
 import net.avh4.math.Rect;
 
+@Deprecated
 public class SceneRenderer implements GraphicsOperationsRenderer {
 
     private final SceneCreator creator;
@@ -25,10 +25,6 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
 
     public SceneRenderer(final SceneElement e) {
         this(new Scene(e));
-    }
-
-    public SceneRenderer(Image image) {
-        this(new SceneImage(0, 0, image));
     }
 
     @Override

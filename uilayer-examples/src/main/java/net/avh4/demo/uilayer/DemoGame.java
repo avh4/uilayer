@@ -19,7 +19,7 @@ public class DemoGame implements UI {
 
     public DemoGame() {
         s = new Scene("UILayer Demo Game");
-        s.add(new SceneImage(0, 0, 800, 600, "background.jpg"));
+        s.add(new SceneImage("background.jpg"));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class DemoGame implements UI {
     public void key(final int keyCode, boolean shift) {
         if (keyCode == KeyEvent.VK_SPACE) {
             s = new Scene("UILayer Demo Game");
-            s.add(new SceneImage(0, 0, 800, 600, "background.jpg"));
+            s.add(new SceneImage("background.jpg"));
         }
     }
 }
