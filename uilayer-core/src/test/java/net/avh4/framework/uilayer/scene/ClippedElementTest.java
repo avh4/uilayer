@@ -9,33 +9,25 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-
-@SuppressWarnings({"ChainedMethodCall", "NestedMethodCall", "LawOfDemeter"})
+@SuppressWarnings({"ChainedMethodCall", "NestedMethodCall"})
 public class ClippedElementTest extends RenderTestBase {
 
     private ClippedElementDelegate delegate;
     private ClippedElementDelegate delegate2;
-    private ClippedElement subjectAtOrigin;
-    private ClippedElement subjectAtXY;
-    private ClippedElement subjectSmallerThanMap;
+    private ClippedElement subject;
     private GraphicsOperations g;
-    private Rect boundsAtOrigin;
-    private Rect boundsAtXY;
-    private Rect boundsSmallerThanMap;
+    private FontMetricsService fm;
+    private final Rect boundsAtOrigin = new Rect(0, 0, 320, 640);
+    private final Rect boundsAtXY = new Rect(25, 50, 320, 640);
+    private final Rect boundsSmallerThanMap = new Rect(0, 0, 160, 96);
 
     @Before
     public void setup() throws Exception {
         g = Mockito.mock(GraphicsOperations.class);
+        fm = Mockito.mock(FontMetricsService.class);
         delegate = makeMockDelegate("Delegate");
         delegate2 = makeMockDelegate("Delegate 2");
-        subjectAtOrigin = new ClippedElement(delegate, 0, 0, 320, 640);
-        boundsAtOrigin = new Rect(0, 0, 320, 640);
-        subjectAtXY = new ClippedElement(delegate, 25, 50, 320, 640);
-        boundsAtXY = new Rect(25, 50, 320, 640);
-        subjectSmallerThanMap = new ClippedElement(delegate, 0, 0, 160, 96);
-        boundsSmallerThanMap = new Rect(0, 0, 160, 96);
+        subject = new ClippedElement(delegate);
     }
 
     private ClippedElementDelegate makeMockDelegate(final String name) {
@@ -53,58 +45,42 @@ public class ClippedElementTest extends RenderTestBase {
     }
 
     @Test
-    public void shouldHaveWidthFromTheMapAndTileSize() throws Exception {
-        assertThat(subjectAtOrigin.getWidth(), is(320.));
-    }
-
-    @Test
-    public void shouldHaveHeightFromTheMapAndTileSize() throws Exception {
-        assertThat(subjectAtOrigin.getHeight(), is(640.));
-    }
-
-    @Test
     public void shouldDrawTheTiles() throws Exception {
-        assertRenderingOf(subjectAtOrigin, "=== TRANSLATE to 0, 0 ===\n" +
+        draw(boundsAtOrigin, subject);
+        assertRenderingIs("" +
+                "=== TRANSLATE to 0, 0 ===\n" +
                 "Text: \"Delegate\" 0.0, 0.0 Font{'Pfennig.ttf' (12)} 0xff000000\n" +
                 "=== TRANSLATE to 0, 0 ===\n");
-    }
-
-    @Test
-    public void shouldHaveCoordinates() throws Exception {
-        assertThat(subjectAtXY.getX(), is(25.));
-        assertThat(subjectAtXY.getY(), is(50.));
     }
 
     @Test
     public void shouldDrawAtTheCorrectCoordinates() throws Exception {
-        assertRenderingOf(subjectAtXY, "=== TRANSLATE to 25, 50 ===\n" +
+        draw(boundsAtXY, subject);
+        assertRenderingIs("" +
+                "=== TRANSLATE to 25, 50 ===\n" +
                 "Text: \"Delegate\" 0.0, 0.0 Font{'Pfennig.ttf' (12)} 0xff000000\n" +
                 "=== TRANSLATE to 0, 0 ===\n");
     }
 
     @Test
-    public void shouldHaveDimensions() throws Exception {
-        assertThat(subjectSmallerThanMap.getWidth(), is(160.));
-        assertThat(subjectSmallerThanMap.getHeight(), is(96.));
-    }
-
-    @Test
     public void shouldClipMapToDimensions() throws Exception {
-        subjectSmallerThanMap.draw(boundsSmallerThanMap, g, null);
-        Mockito.verify(delegate).draw(g, null, 0, 0, 160, 96);
+        subject.draw(boundsSmallerThanMap, g, fm);
+        Mockito.verify(delegate).draw(g, fm, 0, 0, 160, 96);
     }
 
     @Test
     public void shouldClipMapFromCorrectOrigin() throws Exception {
-        subjectSmallerThanMap.setClipPosition(15, 30);
-        subjectSmallerThanMap.draw(boundsSmallerThanMap, g, null);
-        Mockito.verify(delegate).draw(g, null, 15, 30, 160, 96);
+        subject.setClipPosition(15, 30);
+        subject.draw(boundsSmallerThanMap, g, fm);
+        Mockito.verify(delegate).draw(g, fm, 15, 30, 160, 96);
     }
 
     @Test
     public void setDelegate_shouldChangeTheDelegate() throws Exception {
-        subjectAtOrigin.setDelegate(delegate2);
-        assertRenderingOf(subjectAtOrigin, "=== TRANSLATE to 0, 0 ===\n" +
+        subject.setDelegate(delegate2);
+        draw(boundsAtOrigin, subject);
+        assertRenderingIs("" +
+                "=== TRANSLATE to 0, 0 ===\n" +
                 "Text: \"Delegate 2\" 0.0, 0.0 Font{'Pfennig.ttf' (12)} 0xff000000\n" +
                 "=== TRANSLATE to 0, 0 ===\n");
     }

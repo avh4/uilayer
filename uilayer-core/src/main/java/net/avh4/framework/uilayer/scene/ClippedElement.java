@@ -3,13 +3,12 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Element;
 import net.avh4.math.Rect;
 
-public class ClippedElement extends SceneElementBase implements Element {
+public class ClippedElement implements Element {
     protected ClippedElementDelegate delegate;
     private int clipX;
     private int clipY;
 
-    public ClippedElement(ClippedElementDelegate delegate, int x, int y, int width, int height) {
-        super(null, x, y, width, height);
+    public ClippedElement(ClippedElementDelegate delegate) {
         this.delegate = delegate;
     }
 
