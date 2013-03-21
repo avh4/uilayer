@@ -4,23 +4,20 @@ import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.math.Rect;
 
-public class SceneLabel extends SceneElementBase implements Element {
+public class SceneLabel implements Element {
 
     protected String text;
     protected final Font font;
     protected final int color;
 
-    public SceneLabel(final String text, final int x, final int y,
-                      final Font font, final int color) {
-        super(text, x, y, 1, 1);
+    public SceneLabel(final String text, final Font font, final int color) {
         this.text = text;
         this.color = color;
         this.font = font;
     }
 
-    public SceneLabel(final String text, final int x, final int y,
-                      final String customFontResource, final int fontSize, final int color) {
-        this(text, x, y, new Font(customFontResource).size(fontSize), color);
+    public SceneLabel(final String text, final String customFontResource, final int fontSize, final int color) {
+        this(text, new Font(customFontResource).size(fontSize), color);
     }
 
     @Override
