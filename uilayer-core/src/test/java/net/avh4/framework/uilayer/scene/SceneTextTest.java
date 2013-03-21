@@ -27,8 +27,8 @@ public class SceneTextTest extends RenderTestBase {
         Mockito.stub(fm.stringWidth(Font.PFENNIG, "Word")).toReturn(50f);
         Mockito.stub(fm.stringWidth(Font.PFENNIG, "Word ")).toReturn(55f);
 
-        subject = new SceneText("Text box", "Text to display", 0, 0, 0, Font.PFENNIG, 0);
-        subjectWithTextAsName = new SceneText("Text to display", 0, 0, 0, Font.PFENNIG, 0);
+        subject = new SceneText("Text to display", Font.PFENNIG, 0);
+        subjectWithTextAsName = new SceneText("Text to display", Font.PFENNIG, 0);
     }
 
     @Test
@@ -43,11 +43,6 @@ public class SceneTextTest extends RenderTestBase {
     }
 
     @Test
-    public void shouldHaveName() throws Exception {
-        assertThat(subject.getName(), is("Text box"));
-    }
-
-    @Test
     public void shouldHaveText() throws Exception {
         assertThat(subject.getText(), is("Text to display"));
     }
@@ -59,41 +54,31 @@ public class SceneTextTest extends RenderTestBase {
     }
 
     @Test
-    public void withNoExplicitNameSpecified_shouldHaveTextAsName() throws Exception {
-        assertThat(subjectWithTextAsName.getName(), is("Text to display"));
-    }
-
-    @Test
-    public void shouldHaveHeightOfOneLineOfText() throws Exception {
-        assertThat(subject.getHeight(), is(Font.PFENNIG.getLineHeight()));
-    }
-
-    @Test
     public void shouldDrawTheTextWithTheCorrectBaselinePosition() throws Exception {
         Mockito.stub(fm.getAscent(Font.PFENNIG)).toReturn(13.0f);
-        subject = new SceneText("Word", 0, 0, 1000, Font.PFENNIG, Color.WHITE);
-        assertRenderingOf(subject, "Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
+        draw(new Rect(0, 0, 1000, 0), new SceneText("Word", Font.PFENNIG, Color.WHITE));
+        assertRenderingIs("Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
     }
 
     @Test
     public void shouldDrawColoredText() throws Exception {
         Mockito.stub(fm.getAscent(Font.PFENNIG)).toReturn(13.0f);
-        subject = new SceneText("Word", 0, 0, 1000, Font.PFENNIG, Color.BLUE);
-        assertRenderingOf(subject, "Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xff0000ff\n");
+        draw(new Rect(0, 0, 1000, 0), new SceneText("Word", Font.PFENNIG, Color.BLUE));
+        assertRenderingIs("Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xff0000ff\n");
     }
 
     @Test
     public void shouldWrapLines() throws Exception {
-        subject = new SceneText("Word Word", 0, 0, 50, Font.PFENNIG, Color.WHITE);
-        assertRenderingOf(subject, "" +
+        draw(new Rect(0, 0, 50, 0), new SceneText("Word Word", Font.PFENNIG, Color.WHITE));
+        assertRenderingIs("" +
                 "Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n" +
                 "Text: \"Word\" 0.0, 30.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
     }
 
     @Test
     public void shouldNotAskGraphicsOperationsToDrawNewlineCharacters() throws Exception {
-        subject = new SceneText("Word\nWord\n", 0, 0, 50, Font.PFENNIG, Color.WHITE);
-        assertRenderingOf(subject, "" +
+        draw(new Rect(0, 0, 50, 0), new SceneText("Word\nWord\n", Font.PFENNIG, Color.WHITE));
+        assertRenderingIs("" +
                 "Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n" +
                 "Text: \"Word\" 0.0, 30.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
     }
@@ -104,7 +89,7 @@ public class SceneTextTest extends RenderTestBase {
         for (int i = 0; i < 10000; i++) {
             sb.append("Word ");
         }
-        subject = new SceneText(sb.toString(), 0, 0, 50, Font.PFENNIG, Color.WHITE);
+        subject = new SceneText(sb.toString(), Font.PFENNIG, Color.WHITE);
         draw(new Rect(0, 0, 50, 0), subject);
         assertThat(g.getRendering().split("\n").length, lessThan(2000));
     }

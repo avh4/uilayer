@@ -4,24 +4,13 @@ import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.math.Rect;
 
-public class SceneText extends SceneElementBase implements Element {
+public class SceneText implements Element {
 
     protected String text;
     protected final Font font;
     protected final int color;
 
-    public SceneText(final String text, final int x, final int y,
-                     final int width, final Font customFont,
-                     final int color) {
-        this(text, text, x, y, width, customFont, color);
-    }
-
-    public SceneText(String text, int x, int y, int width, String customFontResource, int fontSize, int color) {
-        this(text, x, y, width, new Font(customFontResource).size(fontSize), color);
-    }
-
-    public SceneText(String name, String text, int x, int y, int width, Font customFont, int color) {
-        super(name, x, y, width, customFont.getLineHeight());
+    public SceneText(String text, Font customFont, int color) {
         this.text = text;
         this.color = color;
         font = customFont;
@@ -54,7 +43,7 @@ public class SceneText extends SceneElementBase implements Element {
             // If text exceeds the width, then move to next line.
             if (curX + wordWidth > bounds.getMinX() + bounds.getWidth()) {
                 curY += lineHeight;
-                curX = x;
+                curX = bounds.getMinX();
                 if (curY >= MAX_HEIGHT + lineHeight) {
                     return;
                 }
@@ -70,12 +59,7 @@ public class SceneText extends SceneElementBase implements Element {
     @Override
     public String toString() {
         return "SceneText{" +
-                "name='" + name + '\'' +
-                ", x=" + x +
-                ", y=" + y +
-                ", width=" + width +
-                ", height=" + height +
-                ", text='" + text + '\'' +
+                "text='" + text + '\'' +
                 ", font=" + font +
                 ", color=" + color +
                 '}';
