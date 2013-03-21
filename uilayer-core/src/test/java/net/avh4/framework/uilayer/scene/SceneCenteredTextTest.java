@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.math.Rect;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,20 +31,21 @@ public class SceneCenteredTextTest extends RenderTestBase {
 
     @Test
     public void testRenderCenteredText() throws Exception {
-        scene.add(new SceneRect(100, 50, 300, 150, Color.GREY));
-        scene.add(new SceneCenteredText("CENTER", 100, 50, 300, 150, Font.PFENNIG.size(64), Color.WHITE));
-        assertRenderingOfSceneIs("Rectangle: 0.0, 0.0, 800.0, 600.0, 0xff000000\n" +
+        Rect bounds = new Rect(100, 50, 300, 150);
+        draw(bounds, new SceneRect(Color.GREY));
+        draw(bounds, new SceneCenteredText("CENTER", 0, 0, 0, 0, Font.PFENNIG.size(64), Color.WHITE));
+        assertRenderingIs("" +
                 "Rectangle: 100.0, 50.0, 300.0, 150.0, 0xff7f7f7f\n" +
                 "Text: \"CENTER\" 134.5, 150.5 Font{'Pfennig.ttf' (64)} 0xffffffff\n");
     }
 
     @Test
     public void testBaselinesShouldBeAligned() throws Exception {
-        scene.add(new SceneRect(100, 50, 75, 150, Color.darken(.5, Color.BLUE)));
-        scene.add(new SceneCenteredText("A", 100, 50, 75, 150, Font.PFENNIG.size(64), Color.BLUE));
-        scene.add(new SceneRect(175, 50, 75, 150, Color.darken(.5, Color.GREEN)));
-        scene.add(new SceneCenteredText("a", 175, 50, 75, 150, Font.PFENNIG.size(64), Color.GREEN));
-        assertRenderingOfSceneIs("Rectangle: 0.0, 0.0, 800.0, 600.0, 0xff000000\n" +
+        draw(new Rect(100, 50, 75, 150), new SceneRect(Color.darken(.5, Color.BLUE)));
+        draw(new Rect(100, 50, 75, 150), new SceneCenteredText("A", 100, 50, 75, 150, Font.PFENNIG.size(64), Color.BLUE));
+        draw(new Rect(175, 50, 75, 150), new SceneRect(Color.darken(.5, Color.GREEN)));
+        draw(new Rect(175, 50, 75, 150), new SceneCenteredText("a", 175, 50, 75, 150, Font.PFENNIG.size(64), Color.GREEN));
+        assertRenderingIs("" +
                 "Rectangle: 100.0, 50.0, 75.0, 150.0, 0xff00007f\n" +
                 "Text: \"A\" 117.0, 150.5 Font{'Pfennig.ttf' (64)} 0xff0000ff\n" +
                 "Rectangle: 175.0, 50.0, 75.0, 150.0, 0xff007f00\n" +

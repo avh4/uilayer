@@ -105,7 +105,7 @@ public class SceneTextTest extends RenderTestBase {
             sb.append("Word ");
         }
         subject = new SceneText(sb.toString(), 0, 0, 50, Font.PFENNIG, Color.WHITE);
-        subject.draw(new Rect(0, 0, 50, 0), g, fm);
+        draw(new Rect(0, 0, 50, 0), subject);
         assertThat(g.getRendering().split("\n").length, lessThan(2000));
     }
 }

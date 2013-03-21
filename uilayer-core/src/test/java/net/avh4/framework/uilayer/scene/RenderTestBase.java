@@ -55,6 +55,7 @@ public class RenderTestBase {
         assertThat(g.getRendering(), matcher);
     }
 
+    @Deprecated
     protected void assertRenderingOfSceneIs(String s) throws IOException {
         renderer.render(scene.getWidth(), scene.getHeight(), g, fm);
         assertRenderingIs(s);
@@ -69,5 +70,9 @@ public class RenderTestBase {
     protected void assertRenderingOf(Rect bounds, Element subject, String s) throws IOException {
         subject.draw(bounds, g, fm);
         assertRenderingIs(s);
+    }
+
+    protected void draw(Rect bounds, Element element) {
+        element.draw(bounds, g, fm);
     }
 }

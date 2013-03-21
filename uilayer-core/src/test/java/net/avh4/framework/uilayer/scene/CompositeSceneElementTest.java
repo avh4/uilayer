@@ -17,8 +17,8 @@ public class CompositeSceneElementTest extends RenderTestBase {
         @Override
         public Iterable<Item> getSceneElements(Rect bounds) {
             ArrayList<Item> items = new ArrayList<Item>();
-            items.add(new Item(bounds, new SceneRect(0, 0, 0, 0, Color.RED)));
-            items.add(new Item(bounds.inset(5), new SceneRect(0, 0, 0, 0, Color.WHITE)));
+            items.add(new Item(bounds, new SceneRect(Color.RED)));
+            items.add(new Item(bounds.inset(5), new SceneRect(Color.WHITE)));
             items.add(new Item(bounds.inset(20), new SceneOval(0, 0, 0, 0, Color.BLUE)));
             return items;
         }

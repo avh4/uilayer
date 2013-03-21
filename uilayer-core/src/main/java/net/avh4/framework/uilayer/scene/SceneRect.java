@@ -3,13 +3,11 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Element;
 import net.avh4.math.Rect;
 
-public class SceneRect extends SceneElementBase implements Element {
+public class SceneRect implements Element {
 
     protected final int color;
 
-    public SceneRect(final int x, final int y, final int width,
-                     final int height, final int color) {
-        super(null, x, y, width, height);
+    public SceneRect(final int color) {
         this.color = color;
     }
 
