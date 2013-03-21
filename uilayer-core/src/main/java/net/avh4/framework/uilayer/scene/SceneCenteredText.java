@@ -4,13 +4,12 @@ import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.math.Rect;
 
-public class SceneCenteredText extends SceneElementBase implements Element {
+public class SceneCenteredText implements Element {
     protected final Font font;
     protected final int color;
     protected String text;
 
-    public SceneCenteredText(String text, int x, int y, int width, int height, Font font, int color) {
-        super(text, x, y, width, height);
+    public SceneCenteredText(String text, Font font, int color) {
         this.text = text;
         this.font = font;
         this.color = color;
