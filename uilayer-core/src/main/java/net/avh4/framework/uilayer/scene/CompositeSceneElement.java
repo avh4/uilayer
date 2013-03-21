@@ -22,7 +22,7 @@ public abstract class CompositeSceneElement extends SceneElementBase implements 
         g.translate(x, y);
         for (final SceneElement object : getSceneElements()) {
             Rect childBounds = new Rect(object.getX(), object.getY(), object.getWidth(), object.getHeight());
-            SceneRenderer.draw(object, childBounds, g, fm);
+            object.draw(childBounds, g, fm);
         }
         g.translate(-x, -y);
     }

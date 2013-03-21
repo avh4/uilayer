@@ -1,7 +1,6 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
-import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.SceneCreator;
@@ -45,11 +44,7 @@ public class SceneRenderer implements GraphicsOperationsRenderer {
 
         for (final SceneElement object : s) {
             Rect bounds = new Rect(object.getX(), object.getY(), object.getWidth(), object.getHeight());
-            draw(object, bounds, g, fm);
+            object.draw(bounds, g, fm);
         }
-    }
-
-    static void draw(final Element e, Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        e.draw(bounds, g, fm);
     }
 }
