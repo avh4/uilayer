@@ -1,5 +1,6 @@
 package net.avh4.framework.uilayer.scene;
 
+@Deprecated
 public abstract class SceneElementBase implements SceneElement {
 
     protected double x;

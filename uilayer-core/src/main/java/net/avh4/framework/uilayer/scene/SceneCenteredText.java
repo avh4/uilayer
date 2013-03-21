@@ -1,8 +1,10 @@
 package net.avh4.framework.uilayer.scene;
 
+import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.math.Rect;
 
-public class SceneCenteredText extends SceneElementBase {
+public class SceneCenteredText extends SceneElementBase implements Element {
     protected final Font font;
     protected final int color;
     protected String text;
@@ -22,11 +24,16 @@ public class SceneCenteredText extends SceneElementBase {
         return text;
     }
 
+    @Deprecated
     @Override
     public void draw(GraphicsOperations g, FontMetricsService fm) {
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final float ascent = fm.getAscent(font);
-        final double x = this.x + (width - fm.stringWidth(font, text)) / 2;
-        final double y = this.y + ascent + (height - ascent - fm.getDescent(font)) / 2;
+        final double x = bounds.getMinX() + (bounds.getWidth() - fm.stringWidth(font, text)) / 2;
+        final double y = bounds.getMinY() + ascent + (bounds.getHeight() - ascent - fm.getDescent(font)) / 2;
 
         g.drawText(text, x, y, font, color);
     }
