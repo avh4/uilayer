@@ -1,15 +1,16 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
+import net.avh4.math.Rect;
 import org.junit.Test;
 
 public class SceneOvalTest extends RenderTestBase {
 
     @Test
     public void testRenderOval() throws Exception {
-        scene.add(new SceneOval(50, 50, 200, 500, Color.RED));
-        scene.add(new SceneOval(450, 50, 200, 300, Color.YELLOW));
-        assertRenderingOfSceneIs("Rectangle: 0.0, 0.0, 800.0, 600.0, 0xff000000\n" +
+        draw(new Rect(50, 50, 200, 500), new SceneOval(Color.RED));
+        draw(new Rect(450, 50, 200, 300), new SceneOval(Color.YELLOW));
+        assertRenderingIs("" +
                 "Oval: 50.0, 50.0, 200.0, 500.0, 0xffff0000\n" +
                 "Oval: 450.0, 50.0, 200.0, 300.0, 0xffffff00\n");
     }

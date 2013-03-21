@@ -19,7 +19,7 @@ public class CompositeSceneElementTest extends RenderTestBase {
             ArrayList<Item> items = new ArrayList<Item>();
             items.add(new Item(bounds, new SceneRect(Color.RED)));
             items.add(new Item(bounds.inset(5), new SceneRect(Color.WHITE)));
-            items.add(new Item(bounds.inset(20), new SceneOval(0, 0, 0, 0, Color.BLUE)));
+            items.add(new Item(bounds.inset(20), new SceneOval(Color.BLUE)));
             return items;
         }
     }

@@ -75,16 +75,6 @@ public class Scene implements Iterable<SceneElement> {
         return (T) findSceneElement(what);
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends SceneElement> T findSceneElement(Class<T> elementType) {
-        for (SceneElement child : children) {
-            if (elementType.isInstance(child)) {
-                return (T) child;
-            }
-        }
-        return null;
-    }
-
     public void setTitle(String newTitle) {
         title = newTitle;
     }
