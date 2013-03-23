@@ -106,4 +106,9 @@ public class Designer implements UI {
         }
         return scene;
     }
+
+    @Override
+    public UpdateAction time() {
+        return NO_UPDATE;
+    }
 }

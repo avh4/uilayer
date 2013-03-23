@@ -25,7 +25,7 @@ public class UILayer {
     public static final UILayerService service = loadService();
 
     public static void main(final UI game) {
-        UILayer.main(game, game, game);
+        UILayer.main(game, game, game, game);
     }
 
     private static UILayerService loadService() {
@@ -54,8 +54,9 @@ public class UILayer {
         }
     }
 
-    public static void main(final Element game, final ClickReceiver receiver, final KeyReceiver keyReceiver) {
-        service.run(game, receiver, keyReceiver);
+    public static void main(final Element game, final ClickReceiver receiver, final KeyReceiver keyReceiver,
+                            TimerUpdate timerUpdate) {
+        service.run(game, receiver, keyReceiver, timerUpdate);
     }
 
     public static ExternalStorage getExternalStorage() {

@@ -41,4 +41,9 @@ public class MvcUi<M> implements UI {
     public Scene getScene() {
         return null;
     }
+
+    @Override
+    public UpdateAction time() {
+        return NO_UPDATE;
+    }
 }

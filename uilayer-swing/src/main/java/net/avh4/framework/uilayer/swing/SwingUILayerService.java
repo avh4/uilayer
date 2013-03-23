@@ -7,6 +7,7 @@ import net.avh4.framework.data.File;
 import net.avh4.framework.data.swing.SwingExternalStorage;
 import net.avh4.framework.data.swing.SwingFile;
 import net.avh4.framework.uilayer.Element;
+import net.avh4.framework.uilayer.TimerUpdate;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
@@ -14,6 +15,8 @@ import net.avh4.framework.uilayer.input.KeyReceiver;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -31,7 +34,7 @@ public class SwingUILayerService implements UILayerService {
 
     @Override
     public void run(final Element game, final ClickReceiver receiver,
-                    final KeyReceiver keyReceiver) {
+                    final KeyReceiver keyReceiver, final TimerUpdate timerUpdate) {
 
 //        final String title = scene != null ? scene.getTitle() : "(No scene)";
         final String title = game.toString();
@@ -52,6 +55,19 @@ public class SwingUILayerService implements UILayerService {
         // the KeyListener to work
 
         window.setVisible(true);
+
+        Timer timer = new Timer(30, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TimerUpdate.UpdateAction action = timerUpdate.time();
+                switch (action) {
+                    case NEEDS_REDRAW:
+                        component.repaint();
+                        break;
+                }
+            }
+        });
+        timer.start();
     }
 
     public static BufferedImage loadImage(final String imageName) {

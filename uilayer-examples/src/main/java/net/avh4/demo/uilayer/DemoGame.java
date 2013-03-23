@@ -47,4 +47,9 @@ public class DemoGame implements UI {
             s.add(new Rect(0, 0, 800, 600), new SceneImage("background.jpg"));
         }
     }
+
+    @Override
+    public UpdateAction time() {
+        return NO_UPDATE;
+    }
 }
