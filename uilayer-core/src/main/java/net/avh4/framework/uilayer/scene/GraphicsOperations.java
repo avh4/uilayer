@@ -1,18 +1,23 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Font;
+import net.avh4.math.Rect;
 
-public interface GraphicsOperations {
-    void drawRect(double leftX, double topY, double width, double height, int argbColor);
+public abstract class GraphicsOperations {
+    public void drawRect(Rect bounds, int argbColor) {
+        drawRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight(), argbColor);
+    }
 
-    void drawText(String text, double leftX, double baselineY, Font font, int argbColor);
+    public abstract void drawRect(double leftX, double topY, double width, double height, int argbColor);
 
-    void translate(double deltaX, double deltaY);
+    public abstract void drawText(String text, double leftX, double baselineY, Font font, int argbColor);
 
-    void drawLine(int startX, int startY, int stopX, int stopY, int argbColor);
+    public abstract void translate(double deltaX, double deltaY);
 
-    void drawOval(double leftX, double topY, double width, double height, int argbColor);
+    public abstract void drawLine(int startX, int startY, int stopX, int stopY, int argbColor);
 
-    void drawImage(String image, int destLeftX, int destTopY, int destRightX, int destBottomY,
-                   int sourceLeftX, int sourceTopY, int sourceRightX, int sourceBottomY);
+    public abstract void drawOval(double leftX, double topY, double width, double height, int argbColor);
+
+    public abstract void drawImage(String image, int destLeftX, int destTopY, int destRightX, int destBottomY,
+                                   int sourceLeftX, int sourceTopY, int sourceRightX, int sourceBottomY);
 }

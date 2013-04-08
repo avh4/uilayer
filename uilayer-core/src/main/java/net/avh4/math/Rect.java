@@ -6,7 +6,22 @@ public class Rect {
     private final double width;
     private final double height;
 
-    public Rect(double minX, double minY, double width, double height) {
+    public static Rect fromCenter(double centerX, double centerY, double width, double height) {
+        return new Rect(centerX - width / 2, centerY - height / 2, width, height);
+    }
+
+    public static Rect fromTopLeft(double minX, double minY, double width, double height) {
+        return new Rect(minX, minY, width, height);
+    }
+
+    public static Rect ofSize(double width, double height) {
+        return Rect.fromTopLeft(0, 0, width, height);
+    }
+
+    /**
+     * You should use Rect.fromTopLeft instead unless you are subclassing.
+     */
+    protected Rect(double minX, double minY, double width, double height) {
         this.minX = minX;
         this.minY = minY;
         this.width = width;
@@ -112,7 +127,7 @@ public class Rect {
     }
 
     public Rect topLeft(double leftX, double topY) {
-        return new Rect(0, 0, width, height);
+        return new Rect(0, 0, width, height); // TODO
     }
 
     public double getMidX() {
@@ -121,5 +136,51 @@ public class Rect {
 
     public double getMidY() {
         return minY + height / 2;
+    }
+
+    public Rect aspectRatio(double desiredWidth, double desiredHeight) {
+        if (width / height < desiredWidth / desiredHeight) {
+            return Rect.fromCenter(getMidX(), getMidY(), width, width / desiredWidth * desiredHeight);
+        } else {
+            return Rect.fromCenter(getMidX(), getMidY(), height / desiredHeight * desiredWidth, height);
+        }
+    }
+
+    public Rect scale(Rect fromRect, Rect toRect) {
+        double newWidth = width / fromRect.width * toRect.width;
+        double newHeight = height / fromRect.height * toRect.height;
+        double newX = (minX - fromRect.minX) / fromRect.width * toRect.width + toRect.minX;
+        double newY = (minY - fromRect.minY) / fromRect.height * toRect.height + toRect.minY;
+        return new Rect(newX, newY, newWidth, newHeight);
+    }
+
+    public Rect translate(Rect fromRect, Rect toRect) {
+        double newX = minX + fromRect.minX - toRect.minX;
+        double newY = minY + fromRect.minY - toRect.minY;
+        return new Rect(newX, newY, width, height);
+    }
+
+    public Rect size() {
+        return Rect.ofSize(width, height);
+    }
+
+    public double area() {
+        return width * height;
+    }
+
+    public static Rect interpolate(Rect a, Rect b, double percent) {
+        double minX = interpolate(a.minX, b.minX, percent);
+        double minY = interpolate(a.minY, b.minY, percent);
+        double width = interpolate(a.width, b.width, percent);
+        double height = interpolate(a.height, b.height, percent);
+        return new Rect(minX, minY, width, height);
+    }
+
+    private static double interpolate(double a, double b, double percent) {
+        return a + (b - a) * percent;
+    }
+
+    public Rect resizeFromCenter(int newWidth, int newHeight) {
+        return Rect.fromCenter(getMidX(), getMidY(), newWidth, newHeight);
     }
 }

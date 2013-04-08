@@ -21,8 +21,8 @@ public class SceneTest {
     @Before
     public void setUp() {
         subject = new Scene();
-        subjectWithElement = new Scene(new Item(new Rect(0, 0, 50, 60), new ScenePlaceholder("")));
-        subjectWithOffsetElement = new Scene(new Item(new Rect(5, 5, 50, 60), new ScenePlaceholder("")));
+        subjectWithElement = new Scene(new Item(Rect.fromTopLeft(0, 0, 50, 60), new ScenePlaceholder("")));
+        subjectWithOffsetElement = new Scene(new Item(Rect.fromTopLeft(5, 5, 50, 60), new ScenePlaceholder("")));
     }
 
     @Test
@@ -46,14 +46,14 @@ public class SceneTest {
 
     @Test
     public void testCanAddPlaceholder() {
-        subject.add(new Rect(0, 0, 800, 600), new ScenePlaceholder("Item 1"));
-        assertThat(subject, hasItem(new Item(new Rect(0, 0, 800, 600), new ScenePlaceholder("Item 1"))));
+        subject.add(Rect.fromTopLeft(0, 0, 800, 600), new ScenePlaceholder("Item 1"));
+        assertThat(subject, hasItem(new Item(Rect.fromTopLeft(0, 0, 800, 600), new ScenePlaceholder("Item 1"))));
     }
 
     @Test
     public void findSceneElement_withOneElement_shouldReturnMatchingElement() throws Exception {
         final ScenePlaceholder element = new ScenePlaceholder("Needle");
-        subject.add(new Rect(0, 0, 0, 0), element);
+        subject.add(Rect.fromTopLeft(0, 0, 0, 0), element);
 
         assertThat(subject.findSceneElement(element).element, sameInstance((Element) element));
     }
@@ -66,8 +66,8 @@ public class SceneTest {
     @Test
     public void findSceneElement_withTwoElements_shouldReturnMatchingElement() throws Exception {
         final ScenePlaceholder element = new ScenePlaceholder("Needle");
-        subject.add(new Rect(0, 0, 0, 0), new ScenePlaceholder("Red Herring"));
-        subject.add(new Rect(0, 0, 0, 0), element);
+        subject.add(Rect.fromTopLeft(0, 0, 0, 0), new ScenePlaceholder("Red Herring"));
+        subject.add(Rect.fromTopLeft(0, 0, 0, 0), element);
 
         assertThat(subject.findSceneElement(element).element, sameInstance((Element) element));
     }

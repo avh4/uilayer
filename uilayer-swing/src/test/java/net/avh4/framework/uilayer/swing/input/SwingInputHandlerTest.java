@@ -3,6 +3,7 @@ package net.avh4.framework.uilayer.swing.input;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
 import net.avh4.framework.uilayer.swing.SwingInputHandler;
+import net.avh4.math.Rect;
 import org.fest.swing.edt.FailOnThreadViolationRepaintManager;
 import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
@@ -63,11 +64,12 @@ public class SwingInputHandlerTest {
 
     @Test
     public void testDispatchClick() {
+        dummyEventSource.setSize(800, 600);
         final MouseEvent e = new MouseEvent(dummyEventSource, 0, 0, 0, 100,
                 100, 1, false);
         subject.mouseClicked(e);
 
-        verify(clickReceiver).click(100, 100);
+        verify(clickReceiver).click(Rect.ofSize(800, 600), 100, 100);
     }
 
     @Test

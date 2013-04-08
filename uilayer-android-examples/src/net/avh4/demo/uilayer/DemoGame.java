@@ -6,6 +6,7 @@ import net.avh4.framework.uilayer.android.KeyEvent;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.math.Rect;
 
 public class DemoGame implements UI {
 
@@ -27,7 +28,7 @@ public class DemoGame implements UI {
     }
 
     @Override
-    public void click(final double x, final double y) {
+    public void click(Rect bounds, final double x, final double y) {
         s.add(new ScenePlaceholder("Box"));
     }
 

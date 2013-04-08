@@ -56,20 +56,20 @@ public class SceneTextTest extends RenderTestBase {
     @Test
     public void shouldDrawTheTextWithTheCorrectBaselinePosition() throws Exception {
         Mockito.stub(fm.getAscent(Font.PFENNIG)).toReturn(13.0f);
-        draw(new Rect(0, 0, 1000, 0), new SceneText("Word", Font.PFENNIG, Color.WHITE));
+        draw(Rect.fromTopLeft(0, 0, 1000, 0), new SceneText("Word", Font.PFENNIG, Color.WHITE));
         assertRenderingIs("Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
     }
 
     @Test
     public void shouldDrawColoredText() throws Exception {
         Mockito.stub(fm.getAscent(Font.PFENNIG)).toReturn(13.0f);
-        draw(new Rect(0, 0, 1000, 0), new SceneText("Word", Font.PFENNIG, Color.BLUE));
+        draw(Rect.fromTopLeft(0, 0, 1000, 0), new SceneText("Word", Font.PFENNIG, Color.BLUE));
         assertRenderingIs("Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xff0000ff\n");
     }
 
     @Test
     public void shouldWrapLines() throws Exception {
-        draw(new Rect(0, 0, 50, 0), new SceneText("Word Word", Font.PFENNIG, Color.WHITE));
+        draw(Rect.fromTopLeft(0, 0, 50, 0), new SceneText("Word Word", Font.PFENNIG, Color.WHITE));
         assertRenderingIs("" +
                 "Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n" +
                 "Text: \"Word\" 0.0, 30.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
@@ -77,7 +77,7 @@ public class SceneTextTest extends RenderTestBase {
 
     @Test
     public void shouldNotAskGraphicsOperationsToDrawNewlineCharacters() throws Exception {
-        draw(new Rect(0, 0, 50, 0), new SceneText("Word\nWord\n", Font.PFENNIG, Color.WHITE));
+        draw(Rect.fromTopLeft(0, 0, 50, 0), new SceneText("Word\nWord\n", Font.PFENNIG, Color.WHITE));
         assertRenderingIs("" +
                 "Text: \"Word\" 0.0, 13.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n" +
                 "Text: \"Word\" 0.0, 30.0 Font{'Pfennig.ttf' (12)} 0xffffffff\n");
@@ -90,7 +90,7 @@ public class SceneTextTest extends RenderTestBase {
             sb.append("Word ");
         }
         subject = new SceneText(sb.toString(), Font.PFENNIG, Color.WHITE);
-        draw(new Rect(0, 0, 50, 0), subject);
+        draw(Rect.fromTopLeft(0, 0, 50, 0), subject);
         assertThat(g.getRendering().split("\n").length, lessThan(2000));
     }
 }

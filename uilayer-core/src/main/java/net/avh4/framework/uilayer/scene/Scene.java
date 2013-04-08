@@ -93,10 +93,10 @@ public class Scene implements Iterable<Item>, Element {
 
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        g.drawRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight(), Color.BLACK);
+        g.drawRect(bounds, Color.BLACK);
 
         for (final Item item : children) {
-            item.element.draw(item.bounds, g, fm);
+            item.element.draw(item.bounds.scale(Rect.ofSize(800, 600), bounds), g, fm);
         }
     }
 }

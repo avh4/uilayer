@@ -6,6 +6,7 @@ import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.math.Rect;
 
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
@@ -77,7 +78,7 @@ public class Designer implements UI {
     private boolean isDragging = false;
 
     @Override
-    public void click(double x, double y) {
+    public void click(Rect bounds, double x, double y) {
         // TODO: not tested
         if (!isDragging) {
             this.dragStart(x, y);

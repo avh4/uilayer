@@ -10,33 +10,38 @@ import static org.mockito.Mockito.*;
 
 public class UIUtilTest {
 
+    private UIUtil subject;
     private Scene scene;
     private UI ui;
+    private Rect bounds;
 
     @Before
     public void setup() throws Exception {
         scene = new Scene();
-        scene.add(new Rect(150, 200, 100, 30), new ScenePlaceholder("Button1"));
+        scene.add(Rect.fromTopLeft(150, 200, 100, 30), new ScenePlaceholder("Button1"));
 
         ui = mock(UI.class);
         stub(ui.getScene()).toReturn(scene);
+
+        bounds = Rect.fromTopLeft(0, 0, 800, 600);
+        subject = new UIUtil(bounds);
     }
 
     @Test
     public void clickOn_clicksTheCenterOfTheElement() throws Exception {
-        UIUtil.clickOn(ui, new ScenePlaceholder("Button1"));
-        verify(ui).click(200, 215);
+        subject.clickOn(ui, new ScenePlaceholder("Button1"));
+        verify(ui).click(bounds, 200, 215);
     }
 
     @Test
     public void clickOnTop_clicksTheTopOfTheElement() throws Exception {
-        UIUtil.clickOnTop(ui, new ScenePlaceholder("Button1"));
-        verify(ui).click(200, 201);
+        subject.clickOnTop(ui, new ScenePlaceholder("Button1"));
+        verify(ui).click(bounds, 200, 201);
     }
 
     @Test
     public void clickOnBottom_clicksTheBottomOfTheElement() throws Exception {
-        UIUtil.clickOnBottom(ui, new ScenePlaceholder("Button1"));
-        verify(ui).click(200, 229);
+        subject.clickOnBottom(ui, new ScenePlaceholder("Button1"));
+        verify(ui).click(bounds, 200, 229);
     }
 }

@@ -25,7 +25,7 @@ public class SceneCenteredTextTest extends RenderTestBase {
 
     @Test
     public void testRenderCenteredText() throws Exception {
-        Rect bounds = new Rect(100, 50, 300, 150);
+        Rect bounds = Rect.fromTopLeft(100, 50, 300, 150);
         draw(bounds, new SceneRect(Color.GREY));
         draw(bounds, new SceneCenteredText("CENTER", Font.PFENNIG.size(64), Color.WHITE));
         assertRenderingIs("" +
@@ -35,10 +35,10 @@ public class SceneCenteredTextTest extends RenderTestBase {
 
     @Test
     public void testBaselinesShouldBeAligned() throws Exception {
-        draw(new Rect(100, 50, 75, 150), new SceneRect(Color.darken(.5, Color.BLUE)));
-        draw(new Rect(100, 50, 75, 150), new SceneCenteredText("A", Font.PFENNIG.size(64), Color.BLUE));
-        draw(new Rect(175, 50, 75, 150), new SceneRect(Color.darken(.5, Color.GREEN)));
-        draw(new Rect(175, 50, 75, 150), new SceneCenteredText("a", Font.PFENNIG.size(64), Color.GREEN));
+        draw(Rect.fromTopLeft(100, 50, 75, 150), new SceneRect(Color.darken(.5, Color.BLUE)));
+        draw(Rect.fromTopLeft(100, 50, 75, 150), new SceneCenteredText("A", Font.PFENNIG.size(64), Color.BLUE));
+        draw(Rect.fromTopLeft(175, 50, 75, 150), new SceneRect(Color.darken(.5, Color.GREEN)));
+        draw(Rect.fromTopLeft(175, 50, 75, 150), new SceneCenteredText("a", Font.PFENNIG.size(64), Color.GREEN));
         assertRenderingIs("" +
                 "Rectangle: 100.0, 50.0, 75.0, 150.0, 0xff00007f\n" +
                 "Text: \"A\" 117.0, 150.5 Font{'Pfennig.ttf' (64)} 0xff0000ff\n" +

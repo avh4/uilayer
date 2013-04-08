@@ -43,7 +43,7 @@ public class SwingSceneRenderer extends JComponent {
             synchronized (fm) {
                 graphicsOperations.setGraphicsContext(g);
                 fm.setGraphicsContext(g);
-                Rect bounds = new Rect(0, 0, getWidth(), getHeight());
+                Rect bounds = Rect.fromTopLeft(0, 0, getWidth(), getHeight());
                 renderer.draw(bounds, graphicsOperations, fm);
                 graphicsOperations.setGraphicsContext(null);
                 fm.setGraphicsContext(null);

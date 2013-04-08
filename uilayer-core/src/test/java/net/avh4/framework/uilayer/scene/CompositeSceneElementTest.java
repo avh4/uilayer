@@ -32,7 +32,7 @@ public class CompositeSceneElementTest extends RenderTestBase {
 
     @Test
     public void testComponent() throws Exception {
-        assertRenderingOf(new Rect(0, 0, 100, 100),
+        assertRenderingOf(Rect.fromTopLeft(0, 0, 100, 100),
                 subject, "" +
                 "=== TRANSLATE to 0, 0 ===\n" +
                 "Rectangle: 0.0, 0.0, 100.0, 100.0, 0xffff0000\n" +
@@ -43,7 +43,7 @@ public class CompositeSceneElementTest extends RenderTestBase {
 
     @Test
     public void testTranslatedComponent() throws Exception {
-        assertRenderingOf(new Rect(300, 400, 100, 100),
+        assertRenderingOf(Rect.fromTopLeft(300, 400, 100, 100),
                 subject, "" +
                 "=== TRANSLATE to 300, 400 ===\n" +
                 "Rectangle: 0.0, 0.0, 100.0, 100.0, 0xffff0000\n" +

@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
+import net.avh4.math.Rect;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -36,7 +37,8 @@ public class SwingInputHandler implements MouseListener, KeyListener {
         if (clickReceiver == null) {
             return;
         }
-        clickReceiver.click(e.getX(), e.getY());
+        Rect bounds = Rect.fromTopLeft(0, 0, e.getComponent().getWidth(), e.getComponent().getHeight());
+        clickReceiver.click(bounds, e.getX(), e.getY());
         repaint();
     }
 

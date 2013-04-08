@@ -36,7 +36,7 @@ public class LightswitchGame implements ViewController<LightswitchGame.Model> {
         } else {
             scene.add(bounds, new ScenePlaceholder("Blackness", Color.BLACK));
         }
-        scene.add(new Rect(300, 400, 10, 17), new ScenePlaceholder("Switch", Color.WHITE));
+        scene.add(Rect.fromTopLeft(300, 400, 10, 17), new ScenePlaceholder("Switch", Color.WHITE));
         return scene;
     }
 

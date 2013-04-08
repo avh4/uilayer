@@ -17,9 +17,9 @@ public class ClippedElementTest extends RenderTestBase {
     private ClippedElement subject;
     private GraphicsOperations g;
     private FontMetricsService fm;
-    private final Rect boundsAtOrigin = new Rect(0, 0, 320, 640);
-    private final Rect boundsAtXY = new Rect(25, 50, 320, 640);
-    private final Rect boundsSmallerThanMap = new Rect(0, 0, 160, 96);
+    private final Rect boundsAtOrigin = Rect.fromTopLeft(0, 0, 320, 640);
+    private final Rect boundsAtXY = Rect.fromTopLeft(25, 50, 320, 640);
+    private final Rect boundsSmallerThanMap = Rect.fromTopLeft(0, 0, 160, 96);
 
     @Before
     public void setup() throws Exception {

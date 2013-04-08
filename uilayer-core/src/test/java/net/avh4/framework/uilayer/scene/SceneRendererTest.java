@@ -15,7 +15,7 @@ public class SceneRendererTest extends RenderTestBase {
 
     @Test
     public void testRenderEmptyScene() throws Exception {
-        Rect bounds = new Rect(0, 0, this.scene.getWidth(), this.scene.getHeight());
+        Rect bounds = Rect.fromTopLeft(0, 0, this.scene.getWidth(), this.scene.getHeight());
         this.scene.draw(bounds, g, fm);
         assertRenderingIs("Rectangle: 0.0, 0.0, 800.0, 600.0, 0xff000000\n");
     }
@@ -23,7 +23,7 @@ public class SceneRendererTest extends RenderTestBase {
     @Test
     public void testRenderSizedScene() throws Exception {
         scene.setSize(640, 960);
-        Rect bounds = new Rect(0, 0, this.scene.getWidth(), this.scene.getHeight());
+        Rect bounds = Rect.fromTopLeft(0, 0, this.scene.getWidth(), this.scene.getHeight());
         this.scene.draw(bounds, g, fm);
         assertRenderingIs("Rectangle: 0.0, 0.0, 640.0, 960.0, 0xff000000\n");
     }
@@ -32,8 +32,8 @@ public class SceneRendererTest extends RenderTestBase {
     public void testHiddenElement() throws Exception {
         final ScenePlaceholder hidden = new ScenePlaceholder("Hidden");
         hidden.setHidden(true);
-        scene.add(new Rect(100, 100, 200, 200), hidden);
-        Rect bounds = new Rect(0, 0, this.scene.getWidth(), this.scene.getHeight());
+        scene.add(Rect.fromTopLeft(100, 100, 200, 200), hidden);
+        Rect bounds = Rect.fromTopLeft(0, 0, this.scene.getWidth(), this.scene.getHeight());
         this.scene.draw(bounds, g, fm);
         assertRenderingIs("Rectangle: 0.0, 0.0, 800.0, 600.0, 0xff000000\n");
     }

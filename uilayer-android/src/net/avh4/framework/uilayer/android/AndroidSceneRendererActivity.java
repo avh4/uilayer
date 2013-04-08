@@ -53,7 +53,7 @@ public class AndroidSceneRendererActivity extends Activity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            ui.click((int) event.getX(),
+            ui.click(XXX, (int) event.getX(),
                     (int) event.getY() - getStatusBarHeight());
             uiView.invalidate();
         }

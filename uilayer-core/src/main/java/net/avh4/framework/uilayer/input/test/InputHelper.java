@@ -5,12 +5,15 @@ import net.avh4.framework.uilayer.UIUtil;
 import net.avh4.framework.uilayer.mvc.Controller;
 import net.avh4.framework.uilayer.mvc.MvcUi;
 import net.avh4.framework.uilayer.mvc.View;
+import net.avh4.math.Rect;
 
 public class InputHelper {
     private final UI ui;
+    private UIUtil uiUtil;
 
-    public InputHelper(UI ui) {
+    public InputHelper(UI ui, Rect bounds) {
         this.ui = ui;
+        uiUtil = new UIUtil(bounds);
     }
 
     public <M> InputHelper(M model, View<M> view, Controller<M> controller) {
@@ -22,11 +25,11 @@ public class InputHelper {
     }
 
     public void clickOnBottom(String goalName) {
-        UIUtil.clickOnBottom(ui, goalName);
+        uiUtil.clickOnBottom(ui, goalName);
     }
 
     public void clickOn(String elementName) {
-        UIUtil.clickOn(ui, elementName);
+        uiUtil.clickOn(ui, elementName);
     }
 
     public void type(String text) {

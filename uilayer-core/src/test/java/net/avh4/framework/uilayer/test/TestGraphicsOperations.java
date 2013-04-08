@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.test;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
 
-public class TestGraphicsOperations implements GraphicsOperations {
+public class TestGraphicsOperations extends GraphicsOperations {
     private StringBuffer sb = new StringBuffer();
     private int translateX = 0;
     private int translateY = 0;

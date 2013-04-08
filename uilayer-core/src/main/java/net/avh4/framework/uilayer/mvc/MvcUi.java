@@ -22,7 +22,7 @@ public class MvcUi<M> implements UI {
     }
 
     @Override
-    public void click(double x, double y) {
+    public void click(Rect bounds, double x, double y) {
         controller.click(model, x, y);
     }
 
@@ -44,6 +44,6 @@ public class MvcUi<M> implements UI {
 
     @Override
     public UpdateAction time() {
-        return NO_UPDATE;
+        return NEEDS_REDRAW;
     }
 }

@@ -10,41 +10,44 @@ import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.math.Rect;
 
 import java.awt.event.KeyEvent;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 public class DemoGame implements UI {
+
+    private final SceneImage background = new SceneImage("background.jpg");
+    private final ScenePlaceholder box = new ScenePlaceholder("Box");
+    private final ArrayList<Point2D> boxes = new ArrayList<Point2D>();
 
     public static void main(final String[] args) {
         final DemoGame game = new DemoGame();
         UILayer.main(game);
     }
 
-    private Scene s;
-
-    public DemoGame() {
-        s = new Scene("UILayer Demo Game");
-        s.add(new Rect(0, 0, 800, 600), new SceneImage("background.jpg"));
-    }
-
     @Override
     public Scene getScene() {
-        return s;
+        return null;
     }
 
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        s.draw(bounds, g, fm);
+        background.draw(bounds, g, fm);
+        for (Point2D point : boxes) {
+            double centerX = point.getX() * bounds.getWidth() / 800;
+            double centerY = point.getY() * bounds.getHeight() / 600;
+            box.draw(Rect.fromTopLeft(centerX - 25, centerY - 25, 50, 50), g, fm);
+        }
     }
 
     @Override
-    public void click(final double x, final double y) {
-        s.add(new Rect(x, y, 50, 50), new ScenePlaceholder("Box"));
+    public void click(Rect bounds, final double x, final double y) {
+        boxes.add(new Point2D.Double(x, y));
     }
 
     @Override
     public void key(final int keyCode, boolean shift) {
         if (keyCode == KeyEvent.VK_SPACE) {
-            s = new Scene("UILayer Demo Game");
-            s.add(new Rect(0, 0, 800, 600), new SceneImage("background.jpg"));
+            boxes.clear();
         }
     }
 

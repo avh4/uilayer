@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
-public class SwingGraphicsOperations implements GraphicsOperations {
+public class SwingGraphicsOperations extends GraphicsOperations {
     public static final String PROPERTY_KEY_USE_ANTIALIASING = "uilayer.swing.antialiasing";
     public static boolean USE_ANTIALIASING = System.getProperty(PROPERTY_KEY_USE_ANTIALIASING, "true").equals("true");
 
