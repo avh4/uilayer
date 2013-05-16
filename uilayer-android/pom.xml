@@ -18,7 +18,7 @@
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
                 <extensions>true</extensions>
-                <version>3.1.1</version>
+                <version>3.5.0</version>
             </plugin>
         </plugins>
     </build>
@@ -27,8 +27,7 @@
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
-            <version>2.3.3</version>
-            <scope>provided</scope>
+            <version>${android.version}</version>
         </dependency>
         <dependency>
             <groupId>net.avh4.framework</groupId>
