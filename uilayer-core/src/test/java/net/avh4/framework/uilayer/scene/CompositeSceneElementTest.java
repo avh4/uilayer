@@ -1,7 +1,7 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Color;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -6,7 +6,7 @@ import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;

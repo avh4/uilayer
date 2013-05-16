@@ -5,7 +5,7 @@ import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.test.annotations.RequiresPreciseFontRendering;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;

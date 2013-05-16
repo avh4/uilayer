@@ -1,6 +1,6 @@
 package net.avh4.framework.uilayer.input;
 
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 public interface ClickReceiver {
 

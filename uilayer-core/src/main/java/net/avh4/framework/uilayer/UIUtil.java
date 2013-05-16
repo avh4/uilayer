@@ -1,7 +1,7 @@
 package net.avh4.framework.uilayer;
 
 import net.avh4.framework.uilayer.scene.Item;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 public class UIUtil {
     private final Rect bounds;

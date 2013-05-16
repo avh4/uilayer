@@ -7,7 +7,7 @@ import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;

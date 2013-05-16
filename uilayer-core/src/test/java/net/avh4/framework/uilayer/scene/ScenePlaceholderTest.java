@@ -1,6 +1,6 @@
 package net.avh4.framework.uilayer.scene;
 
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

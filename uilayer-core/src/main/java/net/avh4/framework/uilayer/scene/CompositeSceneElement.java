@@ -1,7 +1,7 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Element;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 public abstract class CompositeSceneElement implements Element {
 

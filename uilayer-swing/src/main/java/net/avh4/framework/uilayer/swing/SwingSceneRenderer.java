@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.swing;
 import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.scene.SceneImage;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 import javax.swing.*;
 import java.awt.*;

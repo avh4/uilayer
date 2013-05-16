@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
 import net.avh4.framework.uilayer.test.TestGraphicsOperations;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.mockito.Mockito;

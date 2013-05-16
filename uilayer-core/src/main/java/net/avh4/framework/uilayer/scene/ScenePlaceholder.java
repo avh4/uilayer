@@ -2,7 +2,7 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 import net.avh4.util.Util;
 
 public class ScenePlaceholder extends HideableElement implements Element {

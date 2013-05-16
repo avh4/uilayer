@@ -10,7 +10,7 @@ import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneOval;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.framework.uilayer.scene.SceneRect;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 import java.awt.event.KeyEvent;
 

@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.scene;
 import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.ResourceImage;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 public class SceneImage implements Element {
     protected Image image;

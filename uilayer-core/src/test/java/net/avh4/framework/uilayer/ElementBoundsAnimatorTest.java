@@ -2,7 +2,7 @@ package net.avh4.framework.uilayer;
 
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

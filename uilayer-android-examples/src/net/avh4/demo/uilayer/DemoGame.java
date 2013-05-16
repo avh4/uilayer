@@ -6,7 +6,7 @@ import net.avh4.framework.uilayer.android.KeyEvent;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 public class DemoGame implements UI {
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../geometry/geometry.iml" filepath="$PROJECT_DIR$/../geometry/geometry.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer.iml" filepath="$PROJECT_DIR$/uilayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-android/uilayer-android.iml" filepath="$PROJECT_DIR$/uilayer-android/uilayer-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-android-examples/uilayer-android-examples.iml" filepath="$PROJECT_DIR$/uilayer-android-examples/uilayer-android-examples.iml" />

@@ -35,6 +35,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="geometry" />
         <module name="uilayer-android" />
         <module name="uilayer-android-examples" />
         <module name="uilayer-android-tests" />
@@ -45,6 +46,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="geometry" target="1.7" />
       <module name="uilayer" target="1.6" />
       <module name="uilayer-android" target="1.6" />
       <module name="uilayer-android-examples" target="1.6" />

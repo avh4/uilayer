@@ -5,7 +5,7 @@ import net.avh4.framework.uilayer.UIUtil;
 import net.avh4.framework.uilayer.mvc.Controller;
 import net.avh4.framework.uilayer.mvc.MvcUi;
 import net.avh4.framework.uilayer.mvc.View;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 public class InputHelper {
     private final UI ui;

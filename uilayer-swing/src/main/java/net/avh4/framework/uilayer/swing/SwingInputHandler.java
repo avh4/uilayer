@@ -2,7 +2,7 @@ package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

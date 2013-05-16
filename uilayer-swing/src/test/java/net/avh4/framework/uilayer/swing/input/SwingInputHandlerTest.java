@@ -3,7 +3,7 @@ package net.avh4.framework.uilayer.swing.input;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
 import net.avh4.framework.uilayer.swing.SwingInputHandler;
-import net.avh4.math.Rect;
+import net.avh4.math.geometry.Rect;
 import org.fest.swing.edt.FailOnThreadViolationRepaintManager;
 import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
