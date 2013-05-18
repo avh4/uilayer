@@ -63,4 +63,17 @@ public class ColorTest {
         assertThat(Color.fromHSL(180, 1f, .5f), is(Color.fromRGB(0x00, 0xff, 0xff)));
         assertThat(Color.fromHSL(180, .5f, .5f), is(Color.fromRGB(0x40, 0xbf, 0xbf)));
     }
+
+    @Test
+    public void testFromRGBA() throws Exception {
+        assertThat(Color.fromRGBA(0x01, 0x02, 0x03, 0x04), is(0x04010203));
+    }
+
+    @Test
+    public void testFromWA() throws Exception {
+        assertThat(Color.fromWA(0.0, 0.0), is(Color.fromRGBA(0x00, 0x00, 0x00, 0x00)));
+        assertThat(Color.fromWA(0.0, 0.5), is(Color.fromRGBA(0x00, 0x00, 0x00, 0x80)));
+        assertThat(Color.fromWA(0.5, 0.0), is(Color.fromRGBA(0x80, 0x80, 0x80, 0x00)));
+        assertThat(Color.fromWA(1.0, 1.0), is(Color.fromRGBA(0xff, 0xff, 0xff, 0xff)));
+    }
 }

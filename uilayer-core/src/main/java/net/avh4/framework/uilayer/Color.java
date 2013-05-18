@@ -1,6 +1,6 @@
 package net.avh4.framework.uilayer;
 
-public class Color {
+public abstract class Color {
 
     public static final int BLACK = 0xff000000;
     public static final int BLUE = 0xff0000ff;
@@ -79,5 +79,18 @@ public class Color {
         }
 
         return fromRGB((int) Math.round(r * 255), (int) Math.round(g * 255), (int) Math.round(b * 255));
+    }
+
+    public static int fromWA(double white, double alpha) {
+        int whiteInt = (int) Math.round(white * 255);
+        int alphaInt = (int) Math.round(alpha * 255);
+        return fromRGBA(whiteInt, whiteInt, whiteInt, alphaInt);
+    }
+
+    public static int fromRGBA(int red, int green, int blue, int alpha) {
+        return (alpha & 0xff) << 24
+                | (red & 0xff) << 16
+                | (green & 0xff) << 8
+                | (blue & 0xff);
     }
 }
