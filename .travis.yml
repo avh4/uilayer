@@ -1,4 +1,2 @@
 language: java
-install: mvn -P skip-android install -DskipTests=true
-script: mvn -P skip-android test
 after-failure: script/publish_approval_images.sh
