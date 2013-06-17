@@ -33,9 +33,9 @@ public class SwingGraphicsOperations extends GraphicsOperations {
     }
 
     @Override
-    public void drawLine(int startX, int startY, int stopX, int stopY, int argbColor) {
+    public void drawLine(double startX, double startY, double stopX, double stopY, int argbColor) {
         g.setColor(loadColor(argbColor));
-        g.drawLine(startX, startY, stopX, stopY);
+        g.drawLine((int) startX, (int) startY, (int) stopX, (int) stopY);
     }
 
     @Override

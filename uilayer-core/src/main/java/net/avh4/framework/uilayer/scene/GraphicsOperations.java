@@ -14,7 +14,7 @@ public abstract class GraphicsOperations {
 
     public abstract void translate(double deltaX, double deltaY);
 
-    public abstract void drawLine(int startX, int startY, int stopX, int stopY, int argbColor);
+    public abstract void drawLine(double startX, double startY, double stopX, double stopY, int argbColor);
 
     public abstract void drawOval(double leftX, double topY, double width, double height, int argbColor);
 

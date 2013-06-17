@@ -38,7 +38,7 @@ public class TestGraphicsOperations extends GraphicsOperations {
     }
 
     @Override
-    public void drawLine(int startX, int startY, int stopX, int stopY, int argbColor) {
+    public void drawLine(double startX, double startY, double stopX, double stopY, int argbColor) {
         sb.append("Line: ");
         sb.append(startX).append(", ");
         sb.append(startY).append(", ");
