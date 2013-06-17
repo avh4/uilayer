@@ -12,6 +12,25 @@ public abstract class Color {
     public static final int YELLOW = 0xffffff00;
     public static final int DARK_GRAY = 0xff404040;
 
+    public static abstract class Solarized {
+        public static final int base03 = 0xff002b36;
+        public static final int base02 = 0xff073642;
+        public static final int base01 = 0xff586e75;
+        public static final int base00 = 0xff657b83;
+        public static final int base0 = 0xff839496;
+        public static final int base1 = 0xff93a1a1;
+        public static final int base2 = 0xffeee8d5;
+        public static final int base3 = 0xfffdf6e3;
+        public static final int yellow = 0xffb58900;
+        public static final int orange = 0xffcb4b16;
+        public static final int red = 0xffdc322f;
+        public static final int magenta = 0xffd33682;
+        public static final int violet = 0xff6c71c4;
+        public static final int blue = 0xff268bd2;
+        public static final int cyan = 0xff2aa198;
+        public static final int green = 0xff859900;
+    }
+
     public static int getAlpha(final int color) {
         return 0xff & (color >> 24);
     }
