@@ -4,6 +4,8 @@ import net.avh4.framework.data.ExternalStorage;
 import net.avh4.framework.data.ExternalStorageException;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
+import net.avh4.framework.uilayer.scene.FontMetricsService;
+import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.math.geometry.Rect;
@@ -102,7 +104,7 @@ public class Designer implements UI {
         Scene scene = new Scene();
         int i = 0;
         for (Rectangle2D placeholder : placeholders) {
-            scene.add(new ScenePlaceholder("" + i));
+            scene.add(Rect.ofSize(800, 600), new ScenePlaceholder("" + i));
             i++;
         }
         return scene;
@@ -111,5 +113,10 @@ public class Designer implements UI {
     @Override
     public UpdateAction time() {
         return NO_UPDATE;
+    }
+
+    @Override
+    public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
+        getScene().draw(bounds, g, fm);
     }
 }

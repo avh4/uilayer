@@ -14,10 +14,10 @@ public class ClippedElement implements Element {
 
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        double x = bounds.getMinX();
-        double y = bounds.getMinY();
+        double x = bounds.minX();
+        double y = bounds.minY();
         g.translate(x, y);
-        delegate.draw(g, fm, clipX, clipY, bounds.getWidth(), bounds.getHeight());
+        delegate.draw(g, fm, clipX, clipY, bounds.width(), bounds.height());
         g.translate(-x, -y);
     }
 

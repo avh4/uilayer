@@ -12,17 +12,17 @@ public class UIUtil {
 
     public void clickOn(UI ui, Object what) {
         final Item item = findSceneElement(ui, what);
-        ui.click(bounds, item.bounds.getMidX(), item.bounds.getMidY());
+        ui.click(bounds, item.bounds.midX(), item.bounds.midY());
     }
 
     public void clickOnTop(UI ui, Object what) {
         final Item item = findSceneElement(ui, what);
-        ui.click(bounds, item.bounds.getMidX(), item.bounds.getMinY() + 1);
+        ui.click(bounds, item.bounds.midX(), item.bounds.minY() + 1);
     }
 
     public void clickOnBottom(UI ui, Object what) {
         final Item item = findSceneElement(ui, what);
-        ui.click(bounds, item.bounds.getMidX(), item.bounds.maxY() - 1);
+        ui.click(bounds, item.bounds.midX(), item.bounds.maxY() - 1);
     }
 
     private static Item findSceneElement(UI ui, Object what) {

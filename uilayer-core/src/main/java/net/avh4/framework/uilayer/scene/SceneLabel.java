@@ -24,8 +24,8 @@ public class SceneLabel implements Element {
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final double labelWidth = fm.stringWidth(font, text);
 
-        final double x = bounds.getMinX() - labelWidth / 2;
-        final double y = bounds.getMinY() + fm.getLineHeight(font);
+        final double x = bounds.minX() - labelWidth / 2;
+        final double y = bounds.minY() + fm.getLineHeight(font);
 
         g.drawText(text, x, y, font, color);
     }

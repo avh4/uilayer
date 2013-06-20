@@ -13,6 +13,6 @@ public class SceneRect implements Element {
 
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        g.drawRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight(), color);
+        g.drawRect(bounds, color);
     }
 }

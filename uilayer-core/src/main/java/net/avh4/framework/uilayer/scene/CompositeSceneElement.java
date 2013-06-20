@@ -9,8 +9,8 @@ public abstract class CompositeSceneElement implements Element {
 
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        double x = bounds.getMinX();
-        double y = bounds.getMinY();
+        double x = bounds.minX();
+        double y = bounds.minY();
         g.translate(x, y);
         for (final Item item : getSceneElements(bounds.topLeft(0, 0))) {
             item.element.draw(item.bounds, g, fm);

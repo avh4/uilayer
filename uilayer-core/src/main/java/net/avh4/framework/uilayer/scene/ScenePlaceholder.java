@@ -41,10 +41,10 @@ public class ScenePlaceholder extends HideableElement implements Element {
     @Override
     public void drawGivenVisible(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final int MARGIN = 5;
-        double x = bounds.getMinX();
-        double y = bounds.getMinY();
-        double height = bounds.getHeight();
-        g.drawRect(x, y, bounds.getWidth(), height, color);
+        double x = bounds.minX();
+        double y = bounds.minY();
+        double height = bounds.height();
+        g.drawRect(x, y, bounds.width(), height, color);
         g.drawText(name, x + MARGIN, y + height - MARGIN, Font.PFENNIG, textColor);
     }
 }

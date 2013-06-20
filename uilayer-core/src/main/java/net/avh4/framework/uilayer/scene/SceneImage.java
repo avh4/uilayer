@@ -57,10 +57,10 @@ public class SceneImage implements Element {
 
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        double x = bounds.getMinX();
-        double y = bounds.getMinY();
-        double width = bounds.getWidth();
-        double height = bounds.getHeight();
+        double x = bounds.minX();
+        double y = bounds.minY();
+        double width = bounds.width();
+        double height = bounds.height();
         if (image == null) {
             new ScenePlaceholder("Missing Image").draw(Rect.fromTopLeft(x, y, width, height), g, fm);
         } else {

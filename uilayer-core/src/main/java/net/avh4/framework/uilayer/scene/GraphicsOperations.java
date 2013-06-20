@@ -5,7 +5,7 @@ import net.avh4.math.geometry.Rect;
 
 public abstract class GraphicsOperations {
     public void drawRect(Rect bounds, int argbColor) {
-        drawRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight(), argbColor);
+        drawRect(bounds.minX(), bounds.minY(), bounds.width(), bounds.height(), argbColor);
     }
 
     public abstract void drawRect(double leftX, double topY, double width, double height, int argbColor);

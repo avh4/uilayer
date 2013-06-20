@@ -31,8 +31,8 @@ public class SceneText implements Element {
         // http://stackoverflow.com/questions/400566/full-justification-with-a-java-graphics-drawstring-replacement
         final float lineHeight = fm.getLineHeight(font);
 
-        double curX = bounds.getMinX();
-        double curY = bounds.getMinY() + fm.getAscent(font);
+        double curX = bounds.minX();
+        double curY = bounds.minY() + fm.getAscent(font);
 
         final String[] words = text.replaceAll("\n", " ").split(" ");
 
@@ -41,9 +41,9 @@ public class SceneText implements Element {
             final float wordWidth = fm.stringWidth(font, word);
 
             // If text exceeds the width, then move to next line.
-            if (curX + wordWidth > bounds.getMinX() + bounds.getWidth()) {
+            if (curX + wordWidth > bounds.minX() + bounds.width()) {
                 curY += lineHeight;
-                curX = bounds.getMinX();
+                curX = bounds.minX();
                 if (curY >= MAX_HEIGHT + lineHeight) {
                     return;
                 }

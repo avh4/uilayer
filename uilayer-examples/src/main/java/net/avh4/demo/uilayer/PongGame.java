@@ -48,7 +48,7 @@ public class PongGame implements UI {
         Rect tinyGame = bounds.aspectRatio(800, 600);
         if (tinyGame.contains(tap)) {
             Rect tapInReferenceSpace = tap.translate(Rect.ofSize(0, 0), tinyGame).scale(tinyGame.size(), Rect.ofSize(800, 600));
-            click(tapInReferenceSpace.getMidX(), tapInReferenceSpace.getMidY());
+            click(tapInReferenceSpace.midX(), tapInReferenceSpace.midY());
         }
     }
 

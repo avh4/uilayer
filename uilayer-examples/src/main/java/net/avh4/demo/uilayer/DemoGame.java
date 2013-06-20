@@ -33,8 +33,8 @@ public class DemoGame implements UI {
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         background.draw(bounds, g, fm);
         for (Point2D point : boxes) {
-            double centerX = point.getX() * bounds.getWidth() / 800;
-            double centerY = point.getY() * bounds.getHeight() / 600;
+            double centerX = point.getX() * bounds.width() / 800;
+            double centerY = point.getY() * bounds.height() / 600;
             box.draw(Rect.fromTopLeft(centerX - 25, centerY - 25, 50, 50), g, fm);
         }
     }

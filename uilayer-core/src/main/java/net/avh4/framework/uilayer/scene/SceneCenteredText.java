@@ -26,8 +26,8 @@ public class SceneCenteredText implements Element {
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         final float ascent = fm.getAscent(font);
-        final double x = bounds.getMinX() + (bounds.getWidth() - fm.stringWidth(font, text)) / 2;
-        final double y = bounds.getMinY() + ascent + (bounds.getHeight() - ascent - fm.getDescent(font)) / 2;
+        final double x = bounds.minX() + (bounds.width() - fm.stringWidth(font, text)) / 2;
+        final double y = bounds.minY() + ascent + (bounds.height() - ascent - fm.getDescent(font)) / 2;
 
         g.drawText(text, x, y, font, color);
     }
