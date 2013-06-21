@@ -16,6 +16,10 @@ public abstract class GraphicsOperations {
 
     public abstract void drawLine(double startX, double startY, double stopX, double stopY, int argbColor);
 
+    public void drawOval(Rect bounds, int argbColor) {
+        drawOval(bounds.minX(), bounds.minY(), bounds.width(), bounds.height(), argbColor);
+    }
+
     public abstract void drawOval(double leftX, double topY, double width, double height, int argbColor);
 
     public abstract void drawImage(String image, int destLeftX, int destTopY, int destRightX, int destBottomY,
