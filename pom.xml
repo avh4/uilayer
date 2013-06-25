@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -11,7 +12,7 @@
     <packaging>pom</packaging>
 
     <name>uilayer</name>
-    <description />
+    <description/>
     <url>https://github.com/avh4/uilayer</url>
     <licenses>
         <license>
@@ -38,7 +39,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <uilayer.version>${project.version}</uilayer.version>
-        <imagecomparison.version>0.2.0</imagecomparison.version>
+        <imagecomparison.version>0.3.2</imagecomparison.version>
         <junit.version>4.8.2</junit.version>
         <hamcrest.version>1.2.1</hamcrest.version>
         <mockito.version>1.8.5</mockito.version>

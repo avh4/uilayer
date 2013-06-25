@@ -29,9 +29,9 @@
     <orderEntry type="library" name="Maven: com.google.guava:guava:14.0-rc2" level="project" />
     <orderEntry type="library" name="Maven: org.easytesting:fest-assert:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.easytesting:fest-util:1.1.6" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: net.avh4.util:imagecomparison:0.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.avh4.util:imagecomparison:0.3.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: commons-codec:commons-codec:1.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: net.avh4.util:imagecomparison-swing:0.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.avh4.util:imagecomparison-swing:0.3.2" level="project" />
   </component>
 </module>
 

@@ -2,8 +2,8 @@ package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Image;
-import net.avh4.util.imagecomparison.Renderer;
-import net.avh4.util.imagecomparison.SwingRenderer;
+import net.avh4.util.imagerender.Renderer;
+import net.avh4.util.imagerender.SwingRenderer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

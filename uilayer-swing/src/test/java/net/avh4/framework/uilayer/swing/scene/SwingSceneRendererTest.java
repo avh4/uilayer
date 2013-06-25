@@ -11,7 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.MethodRule;
 
-import static net.avh4.util.imagecomparison.ImageComparisonMatchers.isApproved;
+import static net.avh4.util.imagecomparison.hamcrest.ImageComparisonMatchers.isApproved;
 import static org.junit.Assert.assertThat;
 
 public class SwingSceneRendererTest {
