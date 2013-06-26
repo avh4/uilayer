@@ -3,7 +3,6 @@ package net.avh4.framework.uilayer.mvc;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
-import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.math.geometry.Rect;
 
 public class MvcUi<M> implements UI {
@@ -34,12 +33,6 @@ public class MvcUi<M> implements UI {
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         view.draw(model, bounds, g, fm);
-    }
-
-    @Deprecated
-    @Override
-    public Scene getScene() {
-        return null;
     }
 
     @Override

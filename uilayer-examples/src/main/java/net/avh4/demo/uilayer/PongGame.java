@@ -6,7 +6,6 @@ import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
-import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneOval;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.framework.uilayer.scene.SceneRect;
@@ -28,12 +27,6 @@ public class PongGame implements UI {
 
     public static void main(String[] args) {
         UILayer.main(new PongGame());
-    }
-
-    @Deprecated
-    @Override
-    public Scene getScene() {
-        return null;
     }
 
     @Override

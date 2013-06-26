@@ -89,12 +89,6 @@ public class ChooserDemo implements UI {
         getScene(bounds).draw(bounds, g, fm);
     }
 
-    @Deprecated
-    @Override
-    public Scene getScene() {
-        return null;
-    }
-
     @Override
     public UpdateAction time() {
         return NO_UPDATE;

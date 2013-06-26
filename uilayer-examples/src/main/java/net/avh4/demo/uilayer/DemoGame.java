@@ -4,7 +4,6 @@ import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
-import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.SceneImage;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.math.geometry.Rect;
@@ -22,11 +21,6 @@ public class DemoGame implements UI {
     public static void main(final String[] args) {
         final DemoGame game = new DemoGame();
         UILayer.main(game);
-    }
-
-    @Override
-    public Scene getScene() {
-        return null;
     }
 
     @Override

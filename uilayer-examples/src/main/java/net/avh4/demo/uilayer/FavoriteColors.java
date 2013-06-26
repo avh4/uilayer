@@ -9,7 +9,6 @@ import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.animation.AnimatedBoolean;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
-import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.math.geometry.Rect;
 
 public class FavoriteColors implements UI {
@@ -53,11 +52,6 @@ public class FavoriteColors implements UI {
 
     public static void main(String[] args) {
         UILayer.main(new FavoriteColors());
-    }
-
-    @Override
-    public Scene getScene() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override

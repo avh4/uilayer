@@ -29,7 +29,7 @@ public class LightswitchGame implements ViewController<LightswitchGame.Model> {
     public void key(Model model, int keyCode, boolean shift) {
     }
 
-    public Scene getScene(Model model, Rect bounds) {
+    private Scene getScene(Model model, Rect bounds) {
         final Scene scene = new Scene("Lightswitch");
         if (model.lightsOn) {
             scene.add(bounds, new ScenePlaceholder("Room"));
