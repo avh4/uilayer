@@ -8,6 +8,7 @@ public class Font {
     public static UILayerService service = UILayer.service;
 
     public static final Font PFENNIG = new Font("Pfennig.ttf");
+    public static final Font OPEN_SANS = new Font("OpenSans-Regular.ttf");
 
     private final String resourceName;
     private final int size;
