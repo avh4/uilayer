@@ -9,6 +9,7 @@ import net.avh4.framework.uilayer.UILayer;
 import net.avh4.framework.uilayer.animation.AnimatedBoolean;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
+import net.avh4.math.geometry.Point;
 import net.avh4.math.geometry.Rect;
 
 public class FavoriteColors implements UI {
@@ -60,6 +61,10 @@ public class FavoriteColors implements UI {
         int row = (int) (y * NUM_ROWS / bounds.height());
 
         colors[col][row].dismiss();
+    }
+
+    @Override
+    public void move(Rect bounds, Point p) {
     }
 
     @Override

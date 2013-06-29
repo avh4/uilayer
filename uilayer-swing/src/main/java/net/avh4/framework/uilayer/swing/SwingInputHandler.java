@@ -2,6 +2,7 @@ package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
+import net.avh4.math.geometry.Point;
 import net.avh4.math.geometry.Rect;
 
 import java.awt.*;
@@ -9,8 +10,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class SwingInputHandler implements MouseListener, KeyListener {
+public class SwingInputHandler implements MouseListener, KeyListener, MouseMotionListener {
 
     private final ClickReceiver clickReceiver;
     private final KeyReceiver keyReceiver;
@@ -37,9 +39,12 @@ public class SwingInputHandler implements MouseListener, KeyListener {
         if (clickReceiver == null) {
             return;
         }
-        Rect bounds = Rect.fromTopLeft(0, 0, e.getComponent().getWidth(), e.getComponent().getHeight());
-        clickReceiver.click(bounds, e.getX(), e.getY());
+        clickReceiver.click(getBoundsRect(e), e.getX(), e.getY());
         repaint();
+    }
+
+    private Rect getBoundsRect(MouseEvent e) {
+        return Rect.fromTopLeft(0, 0, e.getComponent().getWidth(), e.getComponent().getHeight());
     }
 
     private void repaint() {
@@ -80,5 +85,15 @@ public class SwingInputHandler implements MouseListener, KeyListener {
 
     @Override
     public void keyReleased(final KeyEvent e) {
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        this.clickReceiver.move(getBoundsRect(e), Point.at(e.getX(), e.getY()));
+        repaint();
     }
 }

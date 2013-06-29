@@ -50,6 +50,7 @@ public class SwingUILayerService implements UILayerService {
                 keyReceiver, component);
         component.addMouseListener(inputHandler);
         component.addKeyListener(inputHandler);
+        component.addMouseMotionListener(inputHandler);
 
         component.requestFocusInWindow(); // Required to get keyboard focus for
         // the KeyListener to work

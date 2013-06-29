@@ -8,6 +8,7 @@ import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.math.geometry.Point;
 import net.avh4.math.geometry.Rect;
 
 import java.awt.event.KeyEvent;
@@ -91,6 +92,11 @@ public class Designer implements UI {
     }
 
     @Override
+    public void move(Rect bounds, Point p) {
+        // TODO
+    }
+
+    @Override
     public void key(int keyCode, boolean shift) {
         // TODO: not tested
         if (keyCode == KeyEvent.VK_S) {
@@ -98,8 +104,7 @@ public class Designer implements UI {
         }
     }
 
-    @Override
-    public Scene getScene() {
+    private Scene getScene() {
         // TODO: not tested
         Scene scene = new Scene();
         int i = 0;

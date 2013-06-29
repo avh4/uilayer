@@ -9,6 +9,7 @@ import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.SceneOval;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
 import net.avh4.framework.uilayer.scene.SceneRect;
+import net.avh4.math.geometry.Point;
 import net.avh4.math.geometry.Rect;
 
 import java.awt.event.KeyEvent;
@@ -34,6 +35,10 @@ public class PongGame implements UI {
         click2(bounds.divide(0, 0, .5, 1), x, y);
         click2(bounds.divide(.5, 0, 1, .5), x, y);
         click2(bounds.divide(.5, .5, 1, 1), x, y);
+    }
+
+    @Override
+    public void move(Rect bounds, Point p) {
     }
 
     private void click2(Rect bounds, double x, double y) {

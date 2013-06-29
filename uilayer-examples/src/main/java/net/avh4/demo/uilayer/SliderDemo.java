@@ -44,7 +44,15 @@ public class SliderDemo implements UI {
 
     @Override
     public void click(Rect bounds, double x, double y) {
-        final Point point = new Point(x, y);
+        final Point point = Point.at(x, y);
+        final Rect sliderBounds = bounds.resizeFromCenter(300, SLIDER_HEIGHT * 3);
+        clickSlider(sliderBounds.top(SLIDER_HEIGHT), point, hueAtom);
+        clickSlider(sliderBounds.top(SLIDER_HEIGHT).translate(0, SLIDER_HEIGHT), point, saturationAtom);
+        clickSlider(sliderBounds.top(SLIDER_HEIGHT).translate(0, 2 * SLIDER_HEIGHT), point, lightnessAtom);
+    }
+
+    @Override
+    public void move(Rect bounds, Point point) {
         final Rect sliderBounds = bounds.resizeFromCenter(300, SLIDER_HEIGHT * 3);
         clickSlider(sliderBounds.top(SLIDER_HEIGHT), point, hueAtom);
         clickSlider(sliderBounds.top(SLIDER_HEIGHT).translate(0, SLIDER_HEIGHT), point, saturationAtom);

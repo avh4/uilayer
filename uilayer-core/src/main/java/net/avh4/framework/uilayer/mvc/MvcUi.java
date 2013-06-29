@@ -3,6 +3,7 @@ package net.avh4.framework.uilayer.mvc;
 import net.avh4.framework.uilayer.UI;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
+import net.avh4.math.geometry.Point;
 import net.avh4.math.geometry.Rect;
 
 public class MvcUi<M> implements UI {
@@ -23,6 +24,11 @@ public class MvcUi<M> implements UI {
     @Override
     public void click(Rect bounds, double x, double y) {
         controller.click(model, x, y);
+    }
+
+    @Override
+    public void move(Rect bounds, Point p) {
+        // TODO
     }
 
     @Override
