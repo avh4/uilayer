@@ -7,6 +7,7 @@ import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.framework.uilayer.scene.Scene;
 import net.avh4.framework.uilayer.scene.ScenePlaceholder;
+import net.avh4.math.geometry.Point;
 import net.avh4.math.geometry.Rect;
 
 public class LightswitchGame implements ViewController<LightswitchGame.Model> {
@@ -21,7 +22,7 @@ public class LightswitchGame implements ViewController<LightswitchGame.Model> {
     }
 
     @Override
-    public void click(Model model, double x, double y) {
+    public void click(Model model, Point p) {
         model.lightsOn = !model.lightsOn;
     }
 

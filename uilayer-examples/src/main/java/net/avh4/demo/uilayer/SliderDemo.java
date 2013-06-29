@@ -43,8 +43,7 @@ public class SliderDemo implements UI {
     }
 
     @Override
-    public void click(Rect bounds, double x, double y) {
-        final Point point = Point.at(x, y);
+    public void click(Rect bounds, Point point) {
         final Rect sliderBounds = bounds.resizeFromCenter(300, SLIDER_HEIGHT * 3);
         clickSlider(sliderBounds.top(SLIDER_HEIGHT), point, hueAtom);
         clickSlider(sliderBounds.top(SLIDER_HEIGHT).translate(0, SLIDER_HEIGHT), point, saturationAtom);

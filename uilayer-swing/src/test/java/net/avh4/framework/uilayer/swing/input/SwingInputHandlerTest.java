@@ -70,7 +70,7 @@ public class SwingInputHandlerTest {
                 100, 1, false);
         subject.mouseClicked(e);
 
-        verify(clickReceiver).click(Rect.ofSize(800, 600), 100, 100);
+        verify(clickReceiver).click(Rect.ofSize(800, 600), Point.at(100, 100));
     }
 
     @Test

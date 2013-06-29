@@ -10,14 +10,13 @@ import net.avh4.math.geometry.Point;
 import net.avh4.math.geometry.Rect;
 
 import java.awt.event.KeyEvent;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class DemoGame implements UI {
 
     private final SceneImage background = new SceneImage("background.jpg");
     private final ScenePlaceholder box = new ScenePlaceholder("Box");
-    private final ArrayList<Point2D> boxes = new ArrayList<Point2D>();
+    private final ArrayList<Point> boxes = new ArrayList<Point>();
 
     public static void main(final String[] args) {
         final DemoGame game = new DemoGame();
@@ -27,16 +26,15 @@ public class DemoGame implements UI {
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
         background.draw(bounds, g, fm);
-        for (Point2D point : boxes) {
-            double centerX = point.getX() * bounds.width() / 800;
-            double centerY = point.getY() * bounds.height() / 600;
-            box.draw(Rect.fromTopLeft(centerX - 25, centerY - 25, 50, 50), g, fm);
+        for (Point point : boxes) {
+            Point center = point.translate(Rect.unit(), bounds);
+            box.draw(Rect.fromCenter(center, 50, 50), g, fm);
         }
     }
 
     @Override
-    public void click(Rect bounds, final double x, final double y) {
-        boxes.add(new Point2D.Double(x, y));
+    public void click(Rect bounds, final Point p) {
+        boxes.add(p.translate(bounds, Rect.unit()));
     }
 
     @Override

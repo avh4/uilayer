@@ -39,7 +39,7 @@ public class SwingInputHandler implements MouseListener, KeyListener, MouseMotio
         if (clickReceiver == null) {
             return;
         }
-        clickReceiver.click(getBoundsRect(e), e.getX(), e.getY());
+        clickReceiver.click(getBoundsRect(e), Point.at(e.getX(), e.getY()));
         repaint();
     }
 

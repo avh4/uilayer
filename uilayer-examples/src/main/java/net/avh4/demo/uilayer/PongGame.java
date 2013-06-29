@@ -31,18 +31,18 @@ public class PongGame implements UI {
     }
 
     @Override
-    public void click(Rect bounds, double x, double y) {
-        click2(bounds.divide(0, 0, .5, 1), x, y);
-        click2(bounds.divide(.5, 0, 1, .5), x, y);
-        click2(bounds.divide(.5, .5, 1, 1), x, y);
+    public void click(Rect bounds, Point p) {
+        click2(bounds.divide(0, 0, .5, 1), p);
+        click2(bounds.divide(.5, 0, 1, .5), p);
+        click2(bounds.divide(.5, .5, 1, 1), p);
     }
 
     @Override
     public void move(Rect bounds, Point p) {
     }
 
-    private void click2(Rect bounds, double x, double y) {
-        Rect tap = Rect.fromCenter(x, y, 0, 0);
+    private void click2(Rect bounds, Point p) {
+        Rect tap = Rect.fromCenter(p, 0, 0);
         Rect tinyGame = bounds.aspectRatio(800, 600);
         if (tinyGame.contains(tap)) {
             Rect tapInReferenceSpace = tap.translate(Rect.ofSize(0, 0), tinyGame).scale(tinyGame.size(), Rect.ofSize(800, 600));

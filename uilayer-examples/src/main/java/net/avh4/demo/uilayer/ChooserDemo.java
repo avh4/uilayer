@@ -31,8 +31,8 @@ public class ChooserDemo implements UI {
     }
 
     @Override
-    public void click(Rect bounds, double x, double y) {
-        if (x < 400) {
+    public void click(Rect bounds, Point p) {
+        if (p.x() < 400) {
             chooseString();
         } else {
             chooseFile();

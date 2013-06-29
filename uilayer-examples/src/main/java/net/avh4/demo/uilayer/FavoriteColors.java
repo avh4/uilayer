@@ -56,9 +56,9 @@ public class FavoriteColors implements UI {
     }
 
     @Override
-    public void click(Rect bounds, double x, double y) {
-        int col = (int) (x * NUM_COLS / bounds.width());
-        int row = (int) (y * NUM_ROWS / bounds.height());
+    public void click(Rect bounds, Point p) {
+        int col = (int) (p.x() * NUM_COLS / bounds.width());
+        int row = (int) (p.y() * NUM_ROWS / bounds.height());
 
         colors[col][row].dismiss();
     }

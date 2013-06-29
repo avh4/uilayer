@@ -22,8 +22,8 @@ public class MvcUi<M> implements UI {
     }
 
     @Override
-    public void click(Rect bounds, double x, double y) {
-        controller.click(model, x, y);
+    public void click(Rect bounds, Point p) {
+        controller.click(model, p);
     }
 
     @Override
