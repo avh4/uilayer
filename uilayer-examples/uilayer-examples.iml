@@ -17,6 +17,7 @@
     <orderEntry type="library" name="Maven: org.picocontainer:picocontainer:2.14.1" level="project" />
     <orderEntry type="module" module-name="geometry" />
     <orderEntry type="library" name="Maven: junit:junit:4.11" level="project" />
+    <orderEntry type="library" name="Maven: org.pcollections:pcollections:2.1.2" level="project" />
     <orderEntry type="module" module-name="uilayer-swing" scope="RUNTIME" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: commons-io:commons-io:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:12.0" level="project" />
