@@ -28,6 +28,12 @@ public class SwingFontMetricsService implements FontMetricsService {
         return getFontMetrics(font).getHeight();
     }
 
+    @Override
+    public float getAscender(Font font) {
+        final FontMetrics fontMetrics = getFontMetrics(font);
+        return fontMetrics.getAscent() - fontMetrics.getDescent();
+    }
+
     private FontMetrics getFontMetrics(Font font) {
         return g.getFontMetrics(SwingUILayerService.loadFont(font));
     }

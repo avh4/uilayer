@@ -10,4 +10,6 @@ public interface FontMetricsService {
     float getDescent(Font font);
 
     float getLineHeight(Font font);
+
+    float getAscender(Font font);
 }
