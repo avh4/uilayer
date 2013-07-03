@@ -13,6 +13,6 @@ public class SceneOval implements Element {
 
     @Override
     public void draw(Rect bounds, GraphicsOperations g, FontMetricsService fm) {
-        g.drawOval(bounds.minX(), bounds.minY(), bounds.width(), bounds.height(), color);
+        g.drawOval(bounds, color);
     }
 }
