@@ -5,7 +5,7 @@ import java.util.concurrent.Semaphore;
 public class Deferred<T> implements Promise<T> {
     private T value;
     private boolean isResolved;
-    private Semaphore semaphore = new Semaphore(0);
+    private final Semaphore semaphore = new Semaphore(0);
     private Function<T, ?> pendingCallback;
 
     synchronized public void resolve(T value) {
