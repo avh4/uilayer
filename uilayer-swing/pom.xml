@@ -37,7 +37,6 @@
         <dependency>
             <groupId>net.avh4.framework</groupId>
             <artifactId>uilayer-core</artifactId>
-            <version>${uilayer.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>

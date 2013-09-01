@@ -38,7 +38,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <uilayer.version>${project.version}</uilayer.version>
         <imagecomparison.version>0.3.2</imagecomparison.version>
         <junit.version>4.8.2</junit.version>
         <hamcrest.version>1.2.1</hamcrest.version>
@@ -134,12 +133,12 @@
             <dependency>
                 <groupId>net.avh4.framework</groupId>
                 <artifactId>uilayer-core</artifactId>
-                <version>${uilayer.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.avh4.framework</groupId>
                 <artifactId>uilayer-swing</artifactId>
-                <version>${uilayer.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>info.cukes</groupId>
