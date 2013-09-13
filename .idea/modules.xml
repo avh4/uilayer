@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/geometry/geometry.iml" filepath="$PROJECT_DIR$/geometry/geometry.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer.iml" filepath="$PROJECT_DIR$/uilayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-core/uilayer-core.iml" filepath="$PROJECT_DIR$/uilayer-core/uilayer-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/uilayer-designer/uilayer-designer.iml" filepath="$PROJECT_DIR$/uilayer-designer/uilayer-designer.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-examples/uilayer-examples.iml" filepath="$PROJECT_DIR$/uilayer-examples/uilayer-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayer-swing/uilayer-swing.iml" filepath="$PROJECT_DIR$/uilayer-swing/uilayer-swing.iml" />
     </modules>

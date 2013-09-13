@@ -40,7 +40,6 @@
         <module name="uilayer-android-examples" />
         <module name="uilayer-android-tests" />
         <module name="uilayer-core" />
-        <module name="uilayer-designer" />
         <module name="uilayer-examples" />
         <module name="uilayer-swing" />
       </profile>

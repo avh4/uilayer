@@ -55,7 +55,6 @@
                 <module>uilayer-core</module>
                 <module>uilayer-swing</module>
                 <module>uilayer-examples</module>
-                <!--<module>uilayer-designer</module>-->
             </modules>
         </profile>
     </profiles>
