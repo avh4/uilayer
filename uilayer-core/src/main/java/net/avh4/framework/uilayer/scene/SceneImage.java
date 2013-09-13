@@ -2,7 +2,7 @@ package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Image;
-import net.avh4.framework.uilayer.ResourceImage;
+import net.avh4.framework.uilayer.UILayer;
 import net.avh4.math.geometry.Rect;
 
 public class SceneImage implements Element {
@@ -30,7 +30,7 @@ public class SceneImage implements Element {
      *                  package.
      */
     public SceneImage(final String imageName) {
-        this(new ResourceImage(imageName));
+        this(UILayer.loadImageResource(imageName));
     }
 
     /**
@@ -39,7 +39,7 @@ public class SceneImage implements Element {
      */
     public SceneImage(final String imageName, final int clipX,
                       final int clipY, final int clipWidth, final int clipHeight) {
-        this(new ResourceImage(imageName), clipX, clipY, clipWidth, clipHeight);
+        this(UILayer.loadImageResource(imageName), clipX, clipY, clipWidth, clipHeight);
     }
 
     public SceneImage() {
@@ -64,9 +64,7 @@ public class SceneImage implements Element {
         if (image == null) {
             new ScenePlaceholder("Missing Image").draw(Rect.fromTopLeft(x, y, width, height), g, fm);
         } else {
-            g.translate(x, y);
-            image.drawImage(g, clipX, clipY, clipWidth, clipHeight, width, height);
-            g.translate(-x, -y);
+            g.drawImage(image, x, y, x + width, y + height, clipX, clipY, clipX + clipWidth, clipY + clipHeight);
         }
     }
 

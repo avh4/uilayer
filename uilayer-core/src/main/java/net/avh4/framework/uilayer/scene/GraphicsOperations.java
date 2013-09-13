@@ -1,6 +1,7 @@
 package net.avh4.framework.uilayer.scene;
 
 import net.avh4.framework.uilayer.Font;
+import net.avh4.framework.uilayer.Image;
 import net.avh4.math.geometry.Rect;
 
 public abstract class GraphicsOperations {
@@ -27,6 +28,6 @@ public abstract class GraphicsOperations {
 
     public abstract void drawOval(double leftX, double topY, double width, double height, int argbColor);
 
-    public abstract void drawImage(String image, int destLeftX, int destTopY, int destRightX, int destBottomY,
+    public abstract void drawImage(Image image, double destLeftX, double destTopY, double destRightX, double destBottomY,
                                    int sourceLeftX, int sourceTopY, int sourceRightX, int sourceBottomY);
 }

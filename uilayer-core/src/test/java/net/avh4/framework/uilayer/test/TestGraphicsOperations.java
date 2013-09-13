@@ -1,6 +1,7 @@
 package net.avh4.framework.uilayer.test;
 
 import net.avh4.framework.uilayer.Font;
+import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
 
 public class TestGraphicsOperations extends GraphicsOperations {
@@ -58,7 +59,7 @@ public class TestGraphicsOperations extends GraphicsOperations {
     }
 
     @Override
-    public void drawImage(String image, int destLeftX, int destTopY, int destRightX, int destBottomY, int sourceLeftX, int sourceTopY, int sourceRightX, int sourceBottomY) {
+    public void drawImage(Image image, double destLeftX, double destTopY, double destRightX, double destBottomY, int sourceLeftX, int sourceTopY, int sourceRightX, int sourceBottomY) {
         sb.append("Image: ");
         sb.append(destLeftX).append(", ");
         sb.append(destTopY).append(", ");

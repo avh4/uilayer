@@ -7,6 +7,7 @@ import net.avh4.framework.data.File;
 import net.avh4.framework.data.swing.SwingExternalStorage;
 import net.avh4.framework.data.swing.SwingFile;
 import net.avh4.framework.uilayer.Element;
+import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.TimerUpdate;
 import net.avh4.framework.uilayer.UILayerService;
 import net.avh4.framework.uilayer.input.ClickReceiver;
@@ -71,7 +72,7 @@ public class SwingUILayerService implements UILayerService {
         timer.start();
     }
 
-    public static BufferedImage loadImage(final String imageName) {
+    private static BufferedImage loadImage(final String imageName) {
         if (imageCache.containsKey(imageName)) {
             return imageCache.get(imageName);
         }
@@ -93,20 +94,14 @@ public class SwingUILayerService implements UILayerService {
     }
 
     @Override
-    public int getImageWidth(final String image) {
-        final BufferedImage i = loadImage(image);
-        return i.getWidth();
+    public Image loadImageResource(String resourceName) {
+        return new SwingImage(loadImage(resourceName));
     }
 
     @Override
-    public int getImageHeight(final String image) {
-        final BufferedImage i = loadImage(image);
-        return i.getHeight();
-    }
-
-    @Override
-    public int getPixel(String image, int x, int y) {
-        return loadImage(image).getRGB(x, y);
+    public Image loadImageFile(String filename) throws IOException {
+        BufferedImage bi = ImageIO.read(new java.io.File(filename));
+        return new SwingImage(bi);
     }
 
     @Override

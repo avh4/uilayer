@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: net.avh4.math:geometry:0.0.3-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/avh4/math/geometry/0.0.3-SNAPSHOT/geometry-0.0.3-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/geometry/geometry-0.0.3-SNAPSHOT-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/avh4/math/geometry/0.0.3-SNAPSHOT/geometry-0.0.3-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/geometry/geometry-0.0.3-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/avh4/math/geometry/0.0.3-SNAPSHOT/geometry-0.0.3-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,6 +1,7 @@
 package net.avh4.framework.uilayer.swing;
 
 import net.avh4.framework.uilayer.Font;
+import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.scene.GraphicsOperations;
 
 import java.awt.*;
@@ -45,9 +46,10 @@ public class SwingGraphicsOperations extends GraphicsOperations {
     }
 
     @Override
-    public void drawImage(String image, int destLeftX, int destTopY, int destRightX, int destBottomY,
+    public void drawImage(Image image, double destLeftX, double destTopY, double destRightX, double destBottomY,
                           int sourceLeftX, int sourceTopY, int sourceRightX, int sourceBottomY) {
-        g.drawImage(SwingUILayerService.loadImage(image), destLeftX, destTopY, destRightX, destBottomY,
+        java.awt.Image awtImage = ((SwingImage) image).getAwtImage();
+        g.drawImage(awtImage, (int) destLeftX, (int) destTopY, (int) destRightX, (int) destBottomY,
                 sourceLeftX, sourceTopY, sourceRightX, sourceBottomY, null);
     }
 

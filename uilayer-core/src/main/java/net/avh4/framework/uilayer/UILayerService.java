@@ -7,17 +7,16 @@ import net.avh4.framework.data.File;
 import net.avh4.framework.uilayer.input.ClickReceiver;
 import net.avh4.framework.uilayer.input.KeyReceiver;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UILayerService {
 
     void run(Element game, ClickReceiver receiver, KeyReceiver keyReceiver, TimerUpdate timerUpdate);
 
-    int getImageWidth(String image);
+    Image loadImageResource(String resourceName);
 
-    int getImageHeight(String image);
-
-    int getPixel(String image, int x, int y);
+    Image loadImageFile(String filename) throws IOException;
 
     int getFontHeight(Font font);
 

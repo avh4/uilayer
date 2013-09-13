@@ -43,17 +43,17 @@ public class SwingUILayerServiceTest {
 
     @Test
     public void testGetImageWidth() throws Exception {
-        assertThat(service.getImageWidth("tile1.png"), is(101));
+        assertThat(service.loadImageResource("tile1.png").getWidth(), is(101));
     }
 
     @Test
     public void testGetImageHeight() throws Exception {
-        assertThat(service.getImageHeight("tile1.png"), is(101));
+        assertThat(service.loadImageResource("tile1.png").getHeight(), is(101));
     }
 
     @Test
     public void testGetPixel() throws Exception {
-        assertThat(service.getPixel("tile1.png", 11, 12), is(0xaa0023ae));
+        assertThat(service.loadImageResource("tile1.png").getPixel(11, 12), is(0xaa0023ae));
     }
 
     @Test

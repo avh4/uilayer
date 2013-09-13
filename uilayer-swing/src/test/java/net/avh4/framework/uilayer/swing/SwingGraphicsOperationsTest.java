@@ -3,6 +3,7 @@ package net.avh4.framework.uilayer.swing;
 import net.avh4.framework.uilayer.Color;
 import net.avh4.framework.uilayer.Element;
 import net.avh4.framework.uilayer.Font;
+import net.avh4.framework.uilayer.Image;
 import net.avh4.framework.uilayer.scene.FontMetricsService;
 import net.avh4.framework.uilayer.test.annotations.RequiresPreciseFontRendering;
 import net.avh4.math.geometry.Rect;
@@ -26,6 +27,8 @@ public class SwingGraphicsOperationsTest {
     private SwingSceneRenderer subject;
     protected SwingGraphicsOperations g;
     protected Runnable graphicsOperations;
+    private Image tile1;
+    private Image tile2;
 
     @Rule
     public MethodRule r = new RequiresPreciseFontRendering.Rule();
@@ -37,6 +40,10 @@ public class SwingGraphicsOperationsTest {
 
     @Before
     public void setUp() {
+        final SwingUILayerService service = new SwingUILayerService();
+        tile1 = service.loadImageResource("tile1.png");
+        tile2 = service.loadImageResource("tile2.png");
+
         g = new SwingGraphicsOperations();
         final Element mockRenderer = Mockito.mock(Element.class);
         Mockito.doAnswer(new Answer<Void>() {
@@ -95,7 +102,7 @@ public class SwingGraphicsOperationsTest {
         graphicsOperations = new Runnable() {
             @Override
             public void run() {
-                g.drawImage("tile1.png", 100, 100, 150, 150, 0, 0, 101, 101);
+                g.drawImage(tile1, 100, 100, 150, 150, 0, 0, 101, 101);
             }
         };
         assertRenderingIsApproved();
@@ -106,9 +113,9 @@ public class SwingGraphicsOperationsTest {
         graphicsOperations = new Runnable() {
             @Override
             public void run() {
-                g.drawImage("tile1.png", 100, 100, 250, 250, 0, 0, 101, 101);
-                g.drawImage("tile2.png", 150, 150, 225, 225, 0, 0, 94, 94);
-                g.drawImage("tile1.png", 100, 300, 116, 316, 0, 0, 101, 101);
+                g.drawImage(tile1, 100, 100, 250, 250, 0, 0, 101, 101);
+                g.drawImage(tile2, 150, 150, 225, 225, 0, 0, 94, 94);
+                g.drawImage(tile1, 100, 300, 116, 316, 0, 0, 101, 101);
             }
         };
         assertRenderingIsApproved();
@@ -119,7 +126,7 @@ public class SwingGraphicsOperationsTest {
         graphicsOperations = new Runnable() {
             @Override
             public void run() {
-                g.drawImage("tile1.png", 100, 100, 150, 150, 0, 0, 25, 25);
+                g.drawImage(tile1, 100, 100, 150, 150, 0, 0, 25, 25);
             }
         };
         assertRenderingIsApproved();
@@ -130,7 +137,7 @@ public class SwingGraphicsOperationsTest {
         graphicsOperations = new Runnable() {
             @Override
             public void run() {
-                g.drawImage("tile1.png", 100, 100, 150, 150, 25, 25, 50, 50);
+                g.drawImage(tile1, 100, 100, 150, 150, 25, 25, 50, 50);
             }
         };
         assertRenderingIsApproved();

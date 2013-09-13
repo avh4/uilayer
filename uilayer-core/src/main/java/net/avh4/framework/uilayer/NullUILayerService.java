@@ -23,17 +23,12 @@ class NullUILayerService implements UILayerService {
     }
 
     @Override
-    public int getImageWidth(String image) {
+    public Image loadImageResource(String resourceName) {
         throw exception;
     }
 
     @Override
-    public int getImageHeight(String image) {
-        throw exception;
-    }
-
-    @Override
-    public int getPixel(String image, int x, int y) {
+    public Image loadImageFile(String filename) {
         throw exception;
     }
 

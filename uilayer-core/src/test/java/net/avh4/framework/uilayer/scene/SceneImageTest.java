@@ -5,15 +5,10 @@ import net.avh4.math.geometry.Rect;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.stub;
 
 @SuppressWarnings({"LawOfDemeter", "NestedMethodCall", "ChainedMethodCall"})
@@ -29,20 +24,6 @@ public class SceneImageTest extends RenderTestBase {
         MockitoAnnotations.initMocks(this);
         stub(image.getWidth()).toReturn(IMAGE_WIDTH);
         stub(image.getHeight()).toReturn(IMAGE_HEIGHT);
-        Mockito.doAnswer(new Answer<Void>() {
-            @Override
-            public Void answer(InvocationOnMock invocation) throws Throwable {
-                assertThat(invocation.getArguments()[0], sameInstance((Object) g));
-                StringBuilder sb = new StringBuilder("%%% DRAW IMAGE ");
-                for (int i = 1; i < 7; i++) {
-                    sb.append(invocation.getArguments()[i]).append(" ");
-                }
-                sb.append("%%%");
-                g.drawMockOperation(sb.toString());
-                return null;
-            }
-        }).when(image).drawImage(any(GraphicsOperations.class),
-                anyInt(), anyInt(), anyInt(), anyInt(), anyInt(), anyInt());
     }
 
     @Test
@@ -56,23 +37,16 @@ public class SceneImageTest extends RenderTestBase {
 
     @Test
     public void shouldDrawImage() throws Exception {
-        draw(Rect.fromTopLeft(0, 0, 50, 50), new SceneImage(image));
-        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 50.0 50.0 %%%\n"));
-    }
-
-    @Test
-    public void shouldDrawImageInCorrectPosition() throws Exception {
         draw(Rect.fromTopLeft(100, 120, 50, 50), new SceneImage(image));
         assertRenderingIs("" +
-                "=== TRANSLATE to 100, 120 ===\n" +
-                "%%% DRAW IMAGE 0 0 101 101 50.0 50.0 %%%\n" +
-                "=== TRANSLATE to 0, 0 ===\n");
+                "Image: 100.0, 120.0, 150.0, 170.0\n    from \"image\": 0, 0, 101, 101\n");
     }
 
     @Test
     public void testRenderClippedImage() throws Exception {
         draw(Rect.fromTopLeft(0, 0, 50, 55), new SceneImage(image, 0, 1, 20, 22));
-        assertRendering(containsString("%%% DRAW IMAGE 0 1 20 22 50.0 55.0 %%%\n"));
+        assertRenderingIs("" +
+                "Image: 0.0, 0.0, 50.0, 55.0\n    from \"image\": 0, 1, 20, 23\n");
     }
 
     @Test
@@ -80,7 +54,8 @@ public class SceneImageTest extends RenderTestBase {
         final SceneImage image = new SceneImage(this.image, 0, 0, 20, 22);
         image.setClipPosition(10, 11);
         draw(Rect.fromTopLeft(0, 0, 50, 55), image);
-        assertRendering(containsString("%%% DRAW IMAGE 10 11 20 22 50.0 55.0 %%%\n"));
+        assertRenderingIs("" +
+                "Image: 0.0, 0.0, 50.0, 55.0\n    from \"image\": 10, 11, 30, 33\n");
     }
 
     @Test
@@ -96,7 +71,8 @@ public class SceneImageTest extends RenderTestBase {
         SceneImage image = new SceneImage();
         image.setImage(this.image);
         draw(Rect.fromTopLeft(10, 11, 100, 200), image);
-        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 100.0 200.0 %%%\n"));
+        assertRenderingIs("" +
+                "Image: 10.0, 11.0, 110.0, 211.0\n    from \"image\": 0, 0, 101, 101\n");
     }
 
     @Test
@@ -105,6 +81,7 @@ public class SceneImageTest extends RenderTestBase {
         image.setClipPosition(70, 77);
         image.setImage(this.image);
         draw(Rect.fromTopLeft(10, 11, 100, 200), image);
-        assertRendering(containsString("%%% DRAW IMAGE 0 0 101 101 100.0 200.0 %%%\n"));
+        assertRenderingIs("" +
+                "Image: 10.0, 11.0, 110.0, 211.0\n    from \"image\": 0, 0, 101, 101\n");
     }
 }

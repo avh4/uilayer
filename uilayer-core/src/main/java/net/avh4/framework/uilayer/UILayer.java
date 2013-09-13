@@ -8,6 +8,8 @@ import net.avh4.framework.uilayer.mvc.Controller;
 import net.avh4.framework.uilayer.mvc.MvcUi;
 import net.avh4.framework.uilayer.mvc.View;
 
+import java.io.IOException;
+
 public class UILayer {
 
     private static final String SWING_SERVICE = "net.avh4.framework.uilayer.swing.SwingUILayerService";
@@ -57,6 +59,14 @@ public class UILayer {
     public static void main(final Element game, final ClickReceiver receiver, final KeyReceiver keyReceiver,
                             TimerUpdate timerUpdate) {
         service.run(game, receiver, keyReceiver, timerUpdate);
+    }
+
+    public static Image loadImageResource(String resourceName) {
+        return service.loadImageResource(resourceName);
+    }
+
+    public static Image loadImageFile(String filename) throws IOException {
+        return service.loadImageFile(filename);
     }
 
     public static ExternalStorage getExternalStorage() {
