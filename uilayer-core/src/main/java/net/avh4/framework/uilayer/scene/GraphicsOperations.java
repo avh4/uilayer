@@ -30,4 +30,19 @@ public abstract class GraphicsOperations {
 
     public abstract void drawImage(Image image, double destLeftX, double destTopY, double destRightX, double destBottomY,
                                    int sourceLeftX, int sourceTopY, int sourceRightX, int sourceBottomY);
+
+    public void drawImage(Image image, Rect bounds, Rect sourceClip) {
+        drawImage(image, bounds.minX(), bounds.minY(), bounds.maxX(), bounds.maxY(),
+                (int) sourceClip.minX(), (int) sourceClip.minY(), (int) sourceClip.maxX(), (int) sourceClip.maxY());
+    }
+
+    public void drawImage(Image image, Rect bounds) {
+        drawImage(image, bounds.minX(), bounds.minY(), bounds.maxX(), bounds.maxY(),
+                0, 0, image.getWidth(), image.getHeight());
+    }
+
+    private void drawImage(Image image, Rect bounds, int sourceLeftX, int sourceTopY, int sourceRightX, int sourceBottomY) {
+        drawImage(image, bounds.minX(), bounds.minY(), bounds.maxX(), bounds.maxY(),
+                sourceLeftX, sourceTopY, sourceRightX, sourceBottomY);
+    }
 }
