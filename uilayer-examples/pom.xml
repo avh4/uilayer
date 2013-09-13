@@ -3,7 +3,7 @@
     <parent>
         <groupId>net.avh4.framework</groupId>
         <artifactId>uilayer</artifactId>
-        <version>3.2.1</version>
+        <version>3.2.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>uilayer-examples</artifactId>
