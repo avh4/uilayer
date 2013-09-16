@@ -11,7 +11,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="geometry" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit-dep:4.8.2" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:1.8.5" level="project" />
@@ -19,7 +18,7 @@
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: org.picocontainer:picocontainer:2.14.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-library:1.2.1" level="project" />
-    <orderEntry type="library" name="Maven: net.avh4.math:geometry:0.0.3" level="project" />
+    <orderEntry type="module" module-name="geometry" />
     <orderEntry type="library" name="Maven: junit:junit:4.11" level="project" />
     <orderEntry type="library" name="Maven: org.pcollections:pcollections:2.1.2" level="project" />
   </component>
