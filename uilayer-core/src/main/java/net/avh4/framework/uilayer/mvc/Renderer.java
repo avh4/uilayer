@@ -5,5 +5,5 @@ import net.avh4.framework.uilayer.scene.GraphicsOperations;
 import net.avh4.math.geometry.Rect;
 
 public interface Renderer<VM> {
-    void draw(VM data, Rect rect, GraphicsOperations g, FontMetricsService fm);
+    void draw(VM data, Rect bounds, GraphicsOperations g, FontMetricsService fm);
 }
